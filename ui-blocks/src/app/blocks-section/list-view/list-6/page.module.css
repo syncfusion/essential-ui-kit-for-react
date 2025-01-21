@@ -1,0 +1,9 @@
+#custom-field-list :global(.e-listbox-wrapper) {
+    border: 0px;
+}
+
+#custom-field-list :global(.e-list-item) {
+    border: 1px solid #E5E7EB !important;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}

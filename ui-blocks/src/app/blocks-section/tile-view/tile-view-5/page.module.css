@@ -1,0 +1,5 @@
+#job-details :global(.e-list-item) {
+    border-bottom: 0px;
+    border-radius: 16px;
+    margin-bottom: 16px;
+}

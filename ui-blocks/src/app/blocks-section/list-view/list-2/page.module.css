@@ -1,0 +1,3 @@
+#inbox-list :global(.e-list-item) {
+    border-bottom: 0px;
+}

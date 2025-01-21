@@ -1,0 +1,11 @@
+#floating-article :global(.e-list-item) {
+  height: auto;
+  padding: 0;
+}
+
+#floating-article :global(.e-dlg-header-content),
+#floating-article :global(.e-dlg-content) {
+  border: 0;
+  border-radius: 0;
+  padding: 0 !important;
+}

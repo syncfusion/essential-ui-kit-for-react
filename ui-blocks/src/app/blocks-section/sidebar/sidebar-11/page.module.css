@@ -1,0 +1,3 @@
+#contact-sidebar :global(.e-list-item) {
+    border-bottom: none !important;
+}

@@ -1,0 +1,6 @@
+#calendar-todo-list :global(.e-list-item) {
+    border-bottom: none !important;
+}
+#calendar-todo-list :global(.e-footer-container) {
+    display: none;
+}

@@ -1,0 +1,13 @@
+#transaction-details :global(.e-list-item) {
+    border-bottom: 0px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+#transaction-details :global(.e-breadcrumb .e-home) {
+    height: inherit;
+}
+
+#transaction-details :global(.e-breadcrumb-text) {
+    padding: 0px !important;
+}

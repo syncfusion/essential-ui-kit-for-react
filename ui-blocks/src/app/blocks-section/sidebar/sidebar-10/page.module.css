@@ -1,0 +1,3 @@
+#quick-access-sidebar :global(.e-list-item) {
+    border-bottom: none !important;
+}

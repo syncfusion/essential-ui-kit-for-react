@@ -1,0 +1,37 @@
+{
+  "name": "react-ui-kit",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@syncfusion/ej2-react-buttons": "^27.2.4",
+    "@syncfusion/ej2-react-calendars": "^27.2.3",
+    "@syncfusion/ej2-react-dropdowns": "^27.2.5",
+    "@syncfusion/ej2-react-grids": "^27.2.5",
+    "@syncfusion/ej2-react-inputs": "^27.2.4",
+    "@syncfusion/ej2-react-layouts": "^27.2.3",
+    "@syncfusion/ej2-react-lists": "^27.2.5",
+    "@syncfusion/ej2-react-navigations": "^27.2.5",
+    "@syncfusion/ej2-react-notifications": "^27.2.4",
+    "@syncfusion/ej2-react-progressbar": "^27.2.2",
+    "@syncfusion/ej2-react-richtexteditor": "^27.2.5",
+    "@syncfusion/ej2-react-splitbuttons": "^27.2.2",
+    "@syncfusion/ej2-react-popups": "^27.2.2",
+    "next": "14.2.11",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.11",
+    "typescript": "^5"
+  }
+}
