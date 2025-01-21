@@ -1,0 +1,7 @@
+#user-contact-sidebar :global(.e-list-item ){
+    border-bottom: none !important;
+}
+
+#user-contact-sidebar :global(.e-accordion .e-acrdn-item.e-selected.e-select.e-active) {
+    background: transparent;
+}

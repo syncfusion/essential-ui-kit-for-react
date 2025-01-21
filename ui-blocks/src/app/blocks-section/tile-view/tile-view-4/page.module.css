@@ -1,0 +1,13 @@
+#bus-details :global(.e-list-item) {
+    border-bottom: 0px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+}
+
+#bus-details :global(.e-breadcrumb .e-home) {
+    height: inherit;
+}
+
+#bus-details :global(.e-breadcrumb-text) {
+    padding: 0px !important;
+}

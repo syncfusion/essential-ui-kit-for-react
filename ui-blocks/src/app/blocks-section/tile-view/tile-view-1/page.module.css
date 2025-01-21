@@ -1,0 +1,9 @@
+#ticket-details :global(.e-list-item) {
+    border-bottom: 0px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+#ticket-details :global(.e-btn-icon) {
+    color: inherit !important;
+}
