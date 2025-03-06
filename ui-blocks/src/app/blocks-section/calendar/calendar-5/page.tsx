@@ -94,7 +94,7 @@ export default function Calendar5() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-900">
-                        <div id={styles["calendar-todo-list"]} style={{ height: "752px", width: width, float: "right" }}>
+                        <div id={styles["calendar-todo-list"]} style={{ height: "792px", width: width, float: "right" }}>
                             <SidebarComponent className="w-full h-full flex flex-col bg-white dark:bg-gray-900" ref={sidebar} position="Right" type="Push" width={width} isOpen={true} showBackdrop={true} style={{ display: "block" }}>
                                 <div className="flex-none border-b border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900">
                                     <div className="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-600">
@@ -135,7 +135,7 @@ export default function Calendar5() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div id={styles["calendar-todo-list"]} style={{ height: '778px', width: width, float: 'right' }}>
+                        <div id={styles["calendar-todo-list"]} style={{ height: "825px", width: width, float: "right" }}>
                             <SidebarComponent className="d-flex flex-column bg-body" ref={sidebar} position="Right" type="Push" width={width} isOpen={true} showBackdrop={true} style={{ display: 'block' }}>
                                 <div className="bg-body">
                                     <div className="border-bottom flex-shrink-0 border-light-subtle">

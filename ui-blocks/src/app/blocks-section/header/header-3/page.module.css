@@ -1,14 +1,14 @@
-#tab :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-tab-text),
-#tab :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-badge) {
+#tab_tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-tab-text),
+#tab_tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-badge) {
     color: #4F46E5 !important;
 }
 
-:global(.dark) #tab :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-tab-text),
-:global(.dark) #tab :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-badge) {
+:global(.dark) #tab_tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-tab-text),
+:global(.dark) #tab_tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-badge) {
     color: #22d3ee !important;
 }
 
-#tab :global(.e-tab-wrap) {
+.tab :global(.e-tab-wrap) {
     display: flex;
     align-items: center;
 }

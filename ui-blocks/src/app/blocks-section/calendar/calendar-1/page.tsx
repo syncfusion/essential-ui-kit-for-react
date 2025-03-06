@@ -50,7 +50,7 @@ export default function Calendar1() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-800">
-                        <div style={{ height: "815px", width: width, float: "right" }}>
+                        <div style={{ height: "850px", width: width, float: "right" }}>
                             <SidebarComponent className="w-full bg-white dark:bg-gray-800" width={width} position="Right" ref={sidebar} type="Push" isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: "block" }}>
                                 <div className="border-b border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800">
                                     <div className="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-600">
@@ -123,7 +123,7 @@ export default function Calendar1() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div style={{ height: "930px", width: width, float: 'right' }}>
+                        <div style={{ height: "965px", width: width, float: 'right' }}>
                             <SidebarComponent className="d-flex flex-column h-100 bg-body" width={width} position="Right" ref={sidebar} isOpen={true} type="Push" closeOnDocumentClick={false} showBackdrop={true} style={{ display: "block" }}>
                                 <div className="bg-body">
                                     <div className="border-bottom">
