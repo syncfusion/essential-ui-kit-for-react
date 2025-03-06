@@ -85,7 +85,7 @@ export default function Header3() {
                                 </div>
                             </div>
                             <div className="flex items-center justify-between px-4 sm:px-6 relative">
-                                <div id={styles.tab} className="w-full">
+                                <div id={styles.tab_tw} className={`${styles.tab} w-full`}>
                                     <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode} created={onTabCreated} selected={onTabSelected}>
                                         <TabItemsDirective>
                                             <TabItemDirective
@@ -156,7 +156,7 @@ export default function Header3() {
                                 </div>
                             </div>
                             <div className="d-flex align-items-center justify-content-between px-3 px-sm-4 position-relative">
-                                <div id={styles.tab} className="w-100">
+                                <div className={`${styles.tab} w-100`}>
                                     <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode} created={onTabCreated} selected={onTabSelected}>
                                         <TabItemsDirective>
                                             <TabItemDirective headerTemplate={() => (

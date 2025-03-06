@@ -66,7 +66,9 @@ export default function Header12() {
                                 <div className="flex gap-3 items-center">
                                     <div className="space-x-2 flex items-center">
                                         <label className="text-sm font-normal text-gray-900 dark:text-white text-nowrap">Select Range:</label>
-                                        <DropDownListComponent dataSource={["Last Week", "Last Month", "Last Year", "Custom Range"]} placeholder="Select range"></DropDownListComponent>
+                                        <span className="w-44">
+                                            <DropDownListComponent dataSource={["Last Week", "Last Month", "Last Year", "Custom Range"]} placeholder="Select range"></DropDownListComponent>
+                                        </span>
                                     </div>
                                     <div className="h-5 border-l border-gray-200 dark:border-gray-600"></div>
                                     <ButtonComponent content="Generate report" type="button"></ButtonComponent>
@@ -104,7 +106,9 @@ export default function Header12() {
                                 <div className="d-flex align-items-center gap-3">
                                     <div className="d-flex align-items-center gap-2">
                                         <label className="fs-6 fw-normal text-body text-nowrap">Select Range:</label>
-                                        <DropDownListComponent dataSource={["Last Week", "Last Month", "Last Year", "Custom Range"]} placeholder="Select range"></DropDownListComponent>
+                                        <span style={{width: "186px"}}>
+                                            <DropDownListComponent dataSource={["Last Week", "Last Month", "Last Year", "Custom Range"]} placeholder="Select range"></DropDownListComponent>
+                                        </span>
                                     </div>
                                     <div className="border-start" style={{ height: "16px" }}></div>
                                     <ButtonComponent cssClass="e-outline" content="Generate report" type="button"></ButtonComponent>

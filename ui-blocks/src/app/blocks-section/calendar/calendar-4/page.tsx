@@ -50,7 +50,7 @@ export default function Calendar4() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-900">
-                        <div style={{ height: '650px', width: width, float: 'right' }}>
+                        <div style={{ height: '685px', width: width, float: 'right' }}>
                             <SidebarComponent className="w-full bg-white dark:bg-gray-900" ref={sidebar} position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: 'block' }}>
                                 <div className="bg-white dark:bg-gray-900 min-h-screen">
                                     <div className="border-b border-gray-200 dark:border-gray-600">
@@ -118,7 +118,7 @@ export default function Calendar4() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div style={{ height: '676px', width: width, float: 'right' }}>
+                        <div style={{ height: '702px', width: width, float: 'right' }}>
                             <SidebarComponent className="bg-body" ref={sidebar} position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: 'block' }}>
                                 <div className="bg-body">
                                     <div className="border-bottom border-light-subtle">
