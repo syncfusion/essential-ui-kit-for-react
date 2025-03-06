@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { CheckBoxComponent, ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import Image from 'next/image';
 
 export default function Signin2() {
     /* SB Code - Start */
@@ -17,7 +16,7 @@ export default function Signin2() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -40,14 +39,14 @@ export default function Signin2() {
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="flex flex-col lg:flex-row" style={{ minHeight: '770px' }}>
                             <div className="w-full lg:w-7/12 p-0">
-                                <Image className="w-full h-full object-cover" src="/assets/images/authentication/split-screen/split-screen.png" alt="image" width={32} height={32} sizes="100vw" />
+                                <img className="w-full h-full object-cover" src="/react/essential-ui-kit/blocks/assets/images/authentication/split-screen/split-screen.png" alt="image" width={32} height={32} sizes="100vw" />
                             </div>
                             <div className="w-full lg:w-5/12 p-0">
                                 <div className="bg-gray-50 dark:bg-gray-950">
                                     <div className="flex items-center justify-center">
                                         <div className="w-full max-w-md rounded-lg px-4 py-14 md:px-6 md:py-20">
                                             <div className="flex justify-center mb-6">
-                                                <Image className="mr-2" src="/assets/images/common/brand-logos/svg/vector.svg" alt="company logo" width={32} height={32} />
+                                                <img className="mr-2" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" alt="company logo" width={32} height={32} />
                                                 <h2 className="text-center font-semibold text-gray-900 dark:text-white text-xl">Company Name</h2>
                                             </div>
                                             <h2 className="text-2xl font-semibold text-gray-900 dark:text-white text-center mb-2">Sign in</h2>
@@ -63,7 +62,7 @@ export default function Signin2() {
                                                 </div>
                                                 <div className="flex items-center justify-between mb-6">
                                                     <CheckBoxComponent cssClass="e-bigger" label="Remember me"></CheckBoxComponent>
-                                                    <a href="javascript:void(0);" className="text-primary-600 dark:text-primary-400 font-medium text-base" style={{ paddingRight: 0 }}>Forgot password?</a>
+                                                    <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-base" style={{ paddingRight: 0 }}>Forgot password?</a>
                                                 </div>
                                                 <div className="e-bigger mt-6">
                                                     <ButtonComponent className="w-full e-primary" type="submit">Sign in</ButtonComponent>
@@ -72,7 +71,7 @@ export default function Signin2() {
                                             <div>
                                                 <span className="flex items-center justify-center gap-2">
                                                     <p className="text-center text-base text-gray-900 dark:text-white">Don't have an account yet?</p>
-                                                    <a href="javascript:void(0);" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">Sign up</a>
+                                                    <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">Sign up</a>
                                                 </span>
                                                 <div className="relative flex justify-center items-center mt-10">
                                                     <span className="bg-gray-50 dark:bg-gray-950 px-2 z-10 absolute text-sm text-gray-700 dark:text-gray-300">Or continue with</span>
@@ -80,11 +79,11 @@ export default function Signin2() {
                                                 </div>
                                                 <div className="flex items-center justify-center pt-10 gap-4 flex-col">
                                                     <ButtonComponent className="w-full flex items-center justify-center px-4 py-2 e-outline" type="submit">
-                                                        <Image src="/assets/images/common/brand-logos/png/google.png" alt="google logo" width={16} height={16} />
+                                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/google.png" alt="google logo" width={16} height={16} />
                                                         <span className="text-base pl-2.5">Sign in with Google</span>
                                                     </ButtonComponent>
                                                     <ButtonComponent className="w-full flex items-center justify-center px-4 py-2 e-outline" type="submit">
-                                                        <Image src="/assets/images/common/brand-logos/png/microsoft.png" alt="microsoft logo" width={16} height={16} />
+                                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/microsoft.png" alt="microsoft logo" width={16} height={16} />
                                                         <span className="text-base pl-2.5">Sign in with Microsoft</span>
                                                     </ButtonComponent>
                                                 </div>
@@ -101,13 +100,13 @@ export default function Signin2() {
                     <section>
                         <div className="d-flex flex-column flex-lg-row h-100" style={{ minHeight: '770px' }}>
                             <div className="col-12 col-lg-7 p-0">
-                                <Image className="img-fluid w-100 h-100 object-fit-cover" src="/assets/images/authentication/split-screen/split-screen.png" alt="image" width={32} height={32} sizes="100vw" />
+                                <img className="img-fluid w-100 h-100 object-fit-cover" src="/react/essential-ui-kit/blocks/assets/images/authentication/split-screen/split-screen.png" alt="image" width={32} height={32} sizes="100vw" />
                             </div>
                             <div className="col-12 col-lg-5 p-0">
                                 <div className="d-flex justify-content-center align-items-center bg-body">
                                     <div className="max-w-lg bg-body rounded-lg p-4 p-md-5 w-100" style={{ maxWidth: '508px' }}>
                                         <div className="d-flex justify-content-center align-items-center mb-4">
-                                            <Image className="me-2" src="/assets/images/common/brand-logos/svg/vector.svg" alt="company logo" width={32} height={32} />
+                                            <img className="me-2" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" alt="company logo" width={32} height={32} />
                                             <h5 className="text-center fw-bold mb-0 fs-5 text-body">Company Name</h5>
                                         </div>
                                         <div className="mb-4 text-center">
@@ -125,7 +124,7 @@ export default function Signin2() {
                                             </div>
                                             <div className="d-flex align-items-center justify-content-between">
                                                 <CheckBoxComponent cssClass="e-bigger" label="Remember me"></CheckBoxComponent>
-                                                <a href="javascript:void(0);" className="text-primary fs-6 fw-medium text-decoration-none" style={{ paddingRight: '0 !important', paddingTop: '4px !important' }}>Forgot password?</a>
+                                                <a href="#" className="text-primary fs-6 fw-medium text-decoration-none" style={{ paddingRight: '0 !important', paddingTop: '4px !important' }}>Forgot password?</a>
                                             </div>
                                             <div className="mt-4 e-bigger">
                                                 <ButtonComponent className="e-block e-primary" type="submit">Sign in</ButtonComponent>
@@ -133,7 +132,7 @@ export default function Signin2() {
                                         </form>
                                         <div className="d-flex flex-wrap align-items-center justify-content-center mt-3 gap-1">
                                             <p className="text-body w-sm-auto m-0">Don't have an account yet?</p>
-                                            <a href="javascript:void(0);" className="text-primary fs-6 fw-medium text-decoration-none">Sign up</a>
+                                            <a href="#" className="text-primary fs-6 fw-medium text-decoration-none">Sign up</a>
                                         </div>
                                         <div>
                                             <div className="d-flex justify-content-center align-items-center position-relative mt-3">
@@ -142,11 +141,11 @@ export default function Signin2() {
                                             </div>
                                             <div className="d-flex flex-column mt-3 align-items-center justify-content-center gap-3">
                                                 <ButtonComponent className="e-outline e-block d-flex align-items-center justify-content-center px-3 py-2" type="submit">
-                                                    <Image src="/assets/images/common/brand-logos/png/google.png" width={24} height={24} alt="google logo" />
+                                                    <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/google.png" width={24} height={24} alt="google logo" />
                                                     <span className="fs-6 fw-medium" style={{ paddingLeft: '8px' }}>Sign in with Google</span>
                                                 </ButtonComponent>
                                                 <ButtonComponent className="e-outline e-block d-flex align-items-center justify-content-center px-3 py-2" type="submit">
-                                                    <Image src="/assets/images/common/brand-logos/png/microsoft.png" width={24} height={24} alt="microsoft logo" />
+                                                    <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/microsoft.png" width={24} height={24} alt="microsoft logo" />
                                                     <span className="fs-6 fw-medium" style={{ paddingLeft: '8px' }}>Sign in with Microsoft</span>
                                                 </ButtonComponent>
                                             </div>

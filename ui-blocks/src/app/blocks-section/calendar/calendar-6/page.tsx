@@ -78,7 +78,7 @@ export default function Calendar6() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     }
@@ -86,11 +86,11 @@ export default function Calendar6() {
 
     useEffect(() => {
         /* SB Code - Start */
-        setTimeout(() => {
-            timeline.current?.refresh();  
-        }, 250);
         window.addEventListener('message', handleMessageEvent);
         /* SB Code - End */
+        setTimeout(() => {
+            timeline.current?.refresh();
+        }, 250);
         window.addEventListener('resize', handleResize);
         getUniqueMonths();
         

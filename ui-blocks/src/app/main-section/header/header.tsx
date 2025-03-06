@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import styles from './header.module.css';
 
 export default function Header() {
@@ -8,7 +7,7 @@ export default function Header() {
         <header className={styles['header-content']} role="banner">
             <div className={styles['title-container']}>
                 <span className={styles['ui-kit-img']}>
-                    <Image src="/assets/images/sample-browser/ui-kit.png" alt="Essential UI Kit for React: Logo" width={40} height={40} />
+                    <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/ui-kit.png" alt="Essential UI Kit for React: Logo" width={40} height={40} />
                 </span>
                 <div>
                     <div className={styles['title-text']}>Essential UI Kit</div>
@@ -20,7 +19,7 @@ export default function Header() {
                     Documentation
                 </a>
                 <a href="https://github.com/syncfusion/essential-ui-kit-for-react" target="_blank" className={styles['github-logo']} aria-label="GitHub Repository: Essential Studio UI Kit for React" tabIndex={0}>
-                    <Image src="/assets/images/sample-browser/github.svg" alt="GitHub Logo" width={24} height={24} />
+                    <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/github.svg" alt="GitHub Logo" width={24} height={24} />
                 </a>
             </div>
         </header>

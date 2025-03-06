@@ -18,7 +18,7 @@ export default function Checkout1() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -225,7 +225,7 @@ export default function Checkout1() {
                                             </div>
                                             <p className="text-center text-sm mt-3 text-gray-500 dark:text-gray-400">
                                                 One or more items in your cart require an account{" "}
-                                                <a href="javascript:void(0);" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0 underline">Sign in or Create an account now</a>
+                                                <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0 underline">Sign in or Create an account now</a>
                                             </p>
                                         </div>
                                     </div>
@@ -431,7 +431,7 @@ export default function Checkout1() {
                                             </div>
                                             <p className="text-center text-sm text-dark-emphasis mt-3">
                                                 One or more items in your cart require an account{" "}
-                                                <a href="javascript:void(0);" className="text-primary text-decoration-underline p-0 underline">Sign in or Create an account now</a>
+                                                <a href="#" className="text-primary text-decoration-underline p-0 underline">Sign in or Create an account now</a>
                                             </p>
                                         </div>
                                     </div>

@@ -1,0 +1,14 @@
+#dialog :global(.e-footer-content) {
+    border: inherit;
+    border-inline: none;
+    border-bottom: 0;
+}
+
+#upload-template :global(.e-file-select-wrap) {
+    display: none;
+}
+
+#upload-template :global(.e-upload) {
+    float: none;
+    border: none;
+}

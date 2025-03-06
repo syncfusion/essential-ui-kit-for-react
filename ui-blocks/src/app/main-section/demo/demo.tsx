@@ -1,8 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import { useRef, useEffect, useState } from "react";
 import styles from './demo.module.css';
+import IframeComponent from "./iframe";
 
 declare let hljs: any;
 
@@ -46,16 +46,14 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
     const iframeURL = blockName + '/' + componentUrl;
 
     useEffect(() => {
-        const iframe = iframeRef.current;
-        if (iframe) {
-            iframe.removeEventListener('load', handleLoad);
-            iframe.addEventListener('load', handleLoad);
-            iframe.src = iframeURL;
-            return () => {
-                iframe.removeEventListener('load', handleLoad);
-            };
+        const iframeDocument = iframeRef.current?.contentDocument || iframeRef.current?.contentWindow?.document;
+        if (theme === 'tailwind') {
+            iframeDocument?.documentElement?.classList.add(isDarkMode ? 'dark' : 'light');
+        } else {
+            iframeDocument?.documentElement?.setAttribute('data-bs-theme', isDarkMode ? 'dark' : 'light');
         }
-    }, []);
+
+    }, [theme, isDarkMode]);
 
     useEffect(() => {
         if (!document.querySelector('link[href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/github.min.css"]')) {
@@ -74,10 +72,25 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);
+            const iframeDoc = iframeRef.current?.contentDocument || iframeRef.current?.contentWindow?.document;
+            iframeDoc?.removeEventListener("click", handleLinkClick);
         };
     }, []);
 
-    const handleLoad = () => addStylesheetsToIframe(theme);
+    
+    const handleLinkClick = (event) => {
+        const target = event.target.closest("a");
+        if (target && target.getAttribute("href") === "#") {
+            event.preventDefault();
+        }
+    };
+
+    const handleLoad = () => {
+        const iframeDoc = iframeRef.current?.contentDocument || iframeRef.current?.contentWindow?.document;    
+        iframeDoc?.addEventListener("click", handleLinkClick);
+
+        addStylesheetsToIframe(theme);
+    }
 
     const handleResize = () => {
         if (currentView === Mode.Tablet && window.innerWidth <= 996 && iframeRef.current) {
@@ -94,7 +107,12 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
         const targetElement = event.target as HTMLElement;
         const isPreview = targetElement.getAttribute('tab-text') === 'Preview';
         setIsPreviewMode(isPreview);
-        isPreview ? showPreview() : showSourceCode();
+        if (isPreview) {
+            showPreview();
+        }
+        else {
+            showSourceCode();
+        }
     };
 
     const showPreview = () => {
@@ -116,7 +134,7 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
     const showSourceCode = () => {
         const tsxCodeBlock = document.getElementById(`${componentUrl}_tsx-code`);
         const cssCodeBlock = document.getElementById(`${componentUrl}_css-code`);
-        fetch(`/assets/code-snippet/${componentUrl}/page.tsx`)
+        fetch(`/react/essential-ui-kit/blocks/assets/code-snippet/${componentUrl}/page.tsx`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network error: Unable to fetch data. Please try again.');
@@ -138,7 +156,7 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
                     tsxCodeBlock.textContent = 'No content available.';
                 }
             });
-        fetch(`/assets/code-snippet/${componentUrl}/page.module.css`)
+        fetch(`/react/essential-ui-kit/blocks/assets/code-snippet/${componentUrl}/page.module.css`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network error: Unable to fetch data. Please try again.');
@@ -233,7 +251,12 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
         toggleDropdown('hide');
         if (theme !== selectedTheme) {
             onHandleOverlayVisibility('show');
-            selectedTheme === 'tailwind' ? setThemeIndex(0) : setThemeIndex(1);
+            if (selectedTheme === 'tailwind') {
+                setThemeIndex(0);
+            }
+            else {
+                setThemeIndex(1);
+            }
             setTheme(selectedTheme);
             const message = JSON.stringify({
                 name: componentUrl,
@@ -266,24 +289,24 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
         const stylesheets: { [key: string]: { [key: string]: string } } = {
             tailwindlight: {
                 'syncfusion-style': 'https://cdn.syncfusion.com/ej2/27.2.4/tailwind.css',
-                'font-icon-style': '/assets/font-icons/tailwind/tailwind-icons.css',
-                'framework-style': '/assets/themes/tailwind/tailwind.css',
-                'framework-support-style': '/assets/themes/tailwind/indigo.css',
+                'font-icon-style': '/react/essential-ui-kit/blocks/assets/font-icons/tailwind/tailwind-icons.css',
+                'framework-style': '/react/essential-ui-kit/blocks/assets/themes/tailwind/tailwind.css',
+                'framework-support-style': '/react/essential-ui-kit/blocks/assets/themes/tailwind/indigo.css',
             },
             tailwinddark: {
                 'syncfusion-style': 'https://cdn.syncfusion.com/ej2/27.2.4/tailwind-dark.css',
-                'font-icon-style': '/assets/font-icons/tailwind/tailwind-icons.css',
-                'framework-style': '/assets/themes/tailwind/tailwind.css',
-                'framework-support-style': '/assets/themes/tailwind/cyan.css',
+                'font-icon-style': '/react/essential-ui-kit/blocks/assets/font-icons/tailwind/tailwind-icons.css',
+                'framework-style': '/react/essential-ui-kit/blocks/assets/themes/tailwind/tailwind.css',
+                'framework-support-style': '/react/essential-ui-kit/blocks/assets/themes/tailwind/cyan.css',
             },
             bootstrap5light: {
                 'syncfusion-style': 'https://cdn.syncfusion.com/ej2/27.2.4/bootstrap5.3.css',
-                'font-icon-style': '/assets/font-icons/bootstrap5_3/bootstrap5_3-icons.css',
+                'font-icon-style': '/react/essential-ui-kit/blocks/assets/font-icons/bootstrap5_3/bootstrap5_3-icons.css',
                 'framework-style': 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
             },
             bootstrap5dark: {
                 'syncfusion-style': 'https://cdn.syncfusion.com/ej2/27.2.4/bootstrap5.3-dark.css',
-                'font-icon-style': '/assets/font-icons/bootstrap5_3/bootstrap5_3-icons.css',
+                'font-icon-style': '/react/essential-ui-kit/blocks/assets/font-icons/bootstrap5_3/bootstrap5_3-icons.css',
                 'framework-style': 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
             },
         };
@@ -309,11 +332,6 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
             })
             .catch((error) => console.error('Error loading stylesheets:', error));
 
-        if (selectedTheme === 'tailwind') {
-            iframeDocument.documentElement.classList.add(mode ? 'dark' : 'light');
-        } else {
-            iframeDocument.documentElement.setAttribute('data-bs-theme', mode ? 'dark' : 'light');
-        }
     };
 
     const toggleLightDarkModes = () => {
@@ -373,7 +391,7 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
                             tabIndex={0}
                             onClick={togglePreviewCode}
                             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && togglePreviewCode(e)}>
-                            <Image src="/assets/images/sample-browser/preview.svg" tab-text='Preview' alt="Preview Tab" width={24} height={24} />
+                            <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/preview.svg" tab-text='Preview' alt="Preview Tab" width={24} height={24} />
                             <div className={styles['tab-text']} tab-text='Preview'>Preview</div>
                         </li>
                         <li
@@ -384,7 +402,7 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
                             tabIndex={0}
                             onClick={togglePreviewCode}
                             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && togglePreviewCode(e)}>
-                            <Image src="/assets/images/sample-browser/code.svg" tab-text='Code' alt="Code Tab" width={24} height={24} />
+                            <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/code.svg" tab-text='Code' alt="Code Tab" width={24} height={24} />
                             <div className={styles['tab-text']} tab-text='Code'>Code</div>
                         </li>
                     </ul>
@@ -396,7 +414,7 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
                             role="button"
                             tabIndex={0}
                             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && switchMode(Mode.Desktop)}>
-                            <Image src="/assets/images/sample-browser/monitor.svg" alt="Desktop View" width={20} height={20} />
+                            <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/monitor.svg" alt="Desktop View" width={20} height={20} />
                         </div>
                         <div
                             className={`${styles['device']} ${'tablet'} ${currentView === Mode.Tablet ? styles['active'] : ''}`}
@@ -405,7 +423,7 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
                             role="button"
                             tabIndex={0}
                             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && switchMode(Mode.Tablet)}>
-                            <Image src="/assets/images/sample-browser/tablet.svg" alt="Tablet View" width={20} height={20} />
+                            <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/tablet.svg" alt="Tablet View" width={20} height={20} />
                         </div>
                         <div
                             className={`${styles['device']} ${'mobile'} ${currentView === Mode.Mobile ? styles['active'] : ''}`}
@@ -414,7 +432,7 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
                             role="button"
                             tabIndex={0}
                             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && switchMode(Mode.Mobile)}>
-                            <Image src="/assets/images/sample-browser/smartphone.svg" alt="Mobile View" width={20} height={20} />
+                            <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/smartphone.svg" alt="Mobile View" width={20} height={20} />
                         </div>
                     </div>
                     <div ref={themeDropdownRef} className={styles['custom-dropdown']}>
@@ -425,11 +443,11 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
                             onClick={() => toggleDropdown()}
                             tabIndex={0}>
                             <div className={styles['theme-icon']}>
-                                <Image src="/assets/images/sample-browser/theme.svg" alt="Choose Theme" width={16} height={16} />
+                                <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/theme.svg" alt="Choose Theme" width={16} height={16} />
                             </div>
                             <div className={styles['dropdown-text']}>Choose theme</div>
                             <div className={styles['down-icon']}>
-                                <Image src="/assets/images/sample-browser/chevron-down.svg" alt="Show/Hide Dropdown" width={16} height={16} />
+                                <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/chevron-down.svg" alt="Show/Hide Dropdown" width={16} height={16} />
                             </div>
                         </button>
                         <div ref={themeDropdownContentRef} className={styles['dropdown-content']} role="menu">
@@ -441,7 +459,7 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
                                 tabIndex={0}
                                 onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onThemeChange('tailwind')}>
                                 <span className={styles['select-icon']}>
-                                    {themeIndex === 0 && <Image src="/assets/images/sample-browser/tick.svg" alt="Selected Theme" width={24} height={24} />}
+                                    {themeIndex === 0 && <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/tick.svg" alt="Selected Theme" width={24} height={24} />}
                                 </span>
                                 Tailwind
                             </div>
@@ -453,7 +471,7 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
                                 tabIndex={0}
                                 onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onThemeChange('bootstrap5')}>
                                 <span className={styles['select-icon']}>
-                                    {themeIndex === 1 && <Image src="/assets/images/sample-browser/tick.svg" alt="Selected Theme" width={24} height={24} />}
+                                    {themeIndex === 1 && <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/tick.svg" alt="Selected Theme" width={24} height={24} />}
                                 </span>
                                 Bootstrap 5.3
                             </div>
@@ -472,18 +490,19 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
                                 e.preventDefault();
                             }
                         }}>
-                        <Image width={20} height={20}
-                            src={isDarkMode ? '/assets/images/sample-browser/sun.svg' : '/assets/images/sample-browser/moon.svg'}
+                        <img width={20} height={20}
+                            src={isDarkMode ? '/react/essential-ui-kit/blocks/assets/images/sample-browser/sun.svg' : '/react/essential-ui-kit/blocks/assets/images/sample-browser/moon.svg'}
                             alt="Toggle between Light and Dark Mode" />
                     </div>
                 </div>
                 <div className={styles['iframe-container']}>
-                    <iframe
+                    <IframeComponent
                         ref={iframeRef}
                         src={iframeURL}
                         className={styles['preview-container']}
-                        title="Preview Content">
-                    </iframe>
+                        title="Preview Content"
+                        handleLoad={handleLoad}>
+                    </IframeComponent>
                     <div ref={overlayRef} className={styles['iframe-overlay']}>
                         <img src="https://placehold.co/100x50?text=Loading..." alt="Loading Indicator" className={styles['overlay-image']} />
                     </div>
@@ -514,7 +533,7 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
                                 role="button"
                                 tabIndex={0}
                                 onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && copyCode()}>
-                                <Image src="/assets/images/sample-browser/copy.svg" alt="Copy Code to Clipboard" width={20} height={20} />
+                                <img src="/react/essential-ui-kit/blocks/assets/images/sample-browser/copy.svg" alt="Copy Code to Clipboard" width={20} height={20} />
                             </div>
                         </div>
                         {['tsx', 'css'].map(tab => (

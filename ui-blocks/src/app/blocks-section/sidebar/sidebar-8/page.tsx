@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from 'react';
 import { SidebarComponent, AccordionComponent, AccordionItemDirective, AccordionItemsDirective } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function Sidebar8() {
@@ -60,7 +59,7 @@ export default function Sidebar8() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -86,7 +85,7 @@ export default function Sidebar8() {
                                 <div className="flex items-center p-3 justify-between">
                                     <div className="flex items-center">
                                         <span className="e-avatar e-avatar-circle e-avatar-small">
-                                            <Image src="/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
+                                            <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
                                         <div className="ml-3">
                                             <div className="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
@@ -111,7 +110,7 @@ export default function Sidebar8() {
                                     <div className="e-list-wrapper flex items-center">
                                         <span className="flex items-center">
                                             <span className="e-avatar e-avatar-xsmall e-avatar-circle">
-                                                <Image src={`/assets/images/common/avatar/${data.profileImage}`} width={24} height={24} alt="profile" />
+                                                <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.profileImage}`} width={24} height={24} alt="profile" />
                                             </span>
                                             <span className="text-base text-gray-700 dark:text-gray-300 ml-3">{data.name}</span>
                                         </span>
@@ -134,7 +133,7 @@ export default function Sidebar8() {
                                 <div className="d-flex justify-content-between align-items-center px-3 pb-3 mt-4">
                                     <div className="d-flex align-items-center">
                                         <span className="e-avatar e-avatar-small e-avatar-circle">
-                                            <Image src="/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
+                                            <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
                                         <div className="ms-2">
                                             <div className="fs-6 fw-medium text-body">John Wick</div>
@@ -159,7 +158,7 @@ export default function Sidebar8() {
                                     <div className="e-list-wrapper d-flex justify-content-between align-items-center ps-1">
                                         <span className="d-flex align-items-center">
                                             <span className="e-avatar e-avatar-xsmall e-avatar-circle">
-                                                <Image src={`/assets/images/common/avatar/${data.profileImage}`} width={24} height={24} alt="profile picture" />
+                                                <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.profileImage}`} width={24} height={24} alt="profile picture" />
                                             </span>
                                             <span className="fs-6 fw-normal ps-2 ms-1">{data.name}</span>
                                         </span>

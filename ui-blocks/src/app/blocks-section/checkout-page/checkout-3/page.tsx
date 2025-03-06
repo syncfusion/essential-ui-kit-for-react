@@ -5,7 +5,6 @@ import { GridComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { TextBoxComponent, TextAreaComponent, MaskedTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { ButtonComponent, RadioButtonComponent, CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
-import Image from 'next/image';
 
 export default function Checkout3() {
     /* SB Code - Start */
@@ -60,7 +59,7 @@ export default function Checkout3() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -89,7 +88,7 @@ export default function Checkout3() {
                                     <ColumnsDirective>
                                         <ColumnDirective field="Items" width="56" textAlign="Center" template={({ image })=> (
                                             <div className="flex items-center justify-center">
-                                                <Image className="rounded-lg" src={`/assets/images/checkout/checkout-product-list/${image}`} width={32} height={32} alt="product image" />
+                                                <img className="rounded-lg" src={`/react/essential-ui-kit/blocks/assets/images/checkout/checkout-product-list/${image}`} width={32} height={32} alt="product image" />
                                             </div>
                                             )}
                                         />
@@ -230,7 +229,7 @@ export default function Checkout3() {
                                         <ColumnsDirective>
                                             <ColumnDirective field="Items" width="56" textAlign="Center" template={({ image })=> (
                                                 <div className="d-flex align-items-center justify-content-center">
-                                                    <Image className="rounded-3 ms-1" src={`/assets/images/checkout/checkout-product-list/${image}`} width={32} height={32} alt="product image" />
+                                                    <img className="rounded-3 ms-1" src={`/react/essential-ui-kit/blocks/assets/images/checkout/checkout-product-list/${image}`} width={32} height={32} alt="product image" />
                                                 </div>
                                                 )}
                                             />

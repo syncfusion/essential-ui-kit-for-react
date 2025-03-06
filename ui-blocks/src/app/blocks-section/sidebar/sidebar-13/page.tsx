@@ -5,7 +5,6 @@ import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { ButtonComponent, CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ToastComponent } from '@syncfusion/ej2-react-notifications';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function Sidebar13() {
@@ -51,7 +50,7 @@ export default function Sidebar13() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -77,7 +76,7 @@ export default function Sidebar13() {
                                 <div className="flex h-screen">
                                     <div className="py-6" style={{ width: '72px' }}>
                                         <div className="flex justify-center items-center px-3 mb-2">
-                                            <Image src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                            <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         </div>
                                         <ListViewComponent cssClass="border-0 e-bigger" dataSource={data} template={(data: any) => (
                                             <div className="e-list-wrapper flex justify-center items-center">
@@ -90,7 +89,7 @@ export default function Sidebar13() {
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center">
                                                 <span className="e-avatar e-avatar-circle e-avatar-small">
-                                                    <Image src="/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
+                                                    <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
                                                 </span>
                                                 <div className="ml-3">
                                                     <div className="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
@@ -137,7 +136,7 @@ export default function Sidebar13() {
                                     </div>
                                 </div>
                                 <div id="toast" className="absolute bottom-0 right-0"></div>
-                                <ToastComponent ref={toast} target="#toast" position={{ X: 'Right', Y: 'Bottom' }} cssClass="e-toast-info" width={224} title={() => <div className="pr-2">Adaptive Tiles Meeting</div>} content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast.current?.show()}></ToastComponent>
+                                <ToastComponent ref={toast} target="#toast" title="<div className='pr-2'>Adaptive Tiles Meeting</div>" position={{ X: 'Right', Y: 'Bottom' }} cssClass="e-toast-info" width={224} content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast.current?.show()}></ToastComponent>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
@@ -155,7 +154,7 @@ export default function Sidebar13() {
                                 <div className="d-flex vh-100">
                                     <div className="py-4 d-flex flex-column align-items-center" style={{ width: '72px' }}>
                                         <div className="d-flex justify-content-center align-items-center px-3 mb-2">
-                                            <Image src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                            <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         </div>
                                         <ListViewComponent cssClass="border-0 e-bigger" dataSource={data} template={(data: any) => (
                                             <div className="e-list-wrapper d-flex justify-content-center align-items-center">
@@ -168,7 +167,7 @@ export default function Sidebar13() {
                                         <div className="d-flex justify-content-between align-items-center">
                                             <div className="d-flex align-items-center">
                                                 <span className="e-avatar e-avatar-circle e-avatar-small">
-                                                    <Image src="/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
+                                                    <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
                                                 </span>
                                                 <div className="ms-3">
                                                     <div className="text-body fs-6 fw-medium">John Wick</div>
@@ -214,7 +213,7 @@ export default function Sidebar13() {
                                             <p className={`fs-6 text-body ms-2 ps-1 mb-0 ${checkbox4 ? 'text-decoration-line-through' : ''}`}>Effortlessly resolve 70% of customer inquiries with our all-in-one platform.</p>
                                         </div>
                                         <div id="toast" className="position-absolute bottom-0 end-0"></div>
-                                        <ToastComponent ref={toast} target="#toast" position={{ X: 'Right', Y: 'Bottom' }} cssClass="e-toast-info" width={224} title={() => <div>Adaptive Tiles Meeting</div>} content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast.current?.show()}></ToastComponent>
+                                        <ToastComponent ref={toast} target="#toast" title="<div>Adaptive Tiles Meeting</div>" position={{ X: 'Right', Y: 'Bottom' }} cssClass="e-toast-info" width={224} content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast.current?.show()}></ToastComponent>
                                     </div>
                                 </div>
                             </SidebarComponent>

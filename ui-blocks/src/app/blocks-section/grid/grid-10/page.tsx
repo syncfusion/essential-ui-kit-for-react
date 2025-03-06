@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { GridComponent, ColumnDirective, ColumnsDirective } from "@syncfusion/ej2-react-grids";
-import Image from "next/image";
 
 export default function Grid10() {
     /* SB Code - Start */
@@ -171,7 +170,7 @@ export default function Grid10() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -199,7 +198,7 @@ export default function Grid10() {
                                         template={(data: any) => (
                                             <div className="flex items-center gap-3">
                                                 <div className="w-8">
-                                                    <Image className="rounded h-8" src={`/assets/images/advance-grid/product-sales-table/${data.productImage}`} width={32} height={32} alt="product image" />
+                                                    <img className="rounded h-8" src={`/react/essential-ui-kit/blocks/assets/images/advance-grid/product-sales-table/${data.productImage}`} width={32} height={32} alt="product image" />
                                                 </div>
                                                 <div className="text-sm">{data.product}</div>
                                             </div>
@@ -212,7 +211,7 @@ export default function Grid10() {
                                     <ColumnDirective field="totalSalesRep" headerText="Sales Representative" width="186"
                                         template={(data: any) => (
                                             <div className="flex gap-5 items-center">
-                                                <span className={`e-avatar e-avatar-circle e-avatar-small text-white dark:text-black ${ data.totalSalesRep.colorTheme === "Red" ? "!bg-red-600" : data.totalSalesRep.colorTheme === "Green" ? "!bg-green-600" : data.totalSalesRep.colorTheme === "Blue" ? "!bg-cyan-600" : data.totalSalesRep.colorTheme === "Orange" ? "!bg-orange-600" : data.totalSalesRep.colorTheme === "Purple" ? "!bg-indigo-600" : ""}`}>{data.totalSalesRep.initial}</span>
+                                                <span className={`e-avatar e-avatar-circle e-avatar-small text-white ${ data.totalSalesRep.colorTheme === "Red" ? "!bg-red-600" : data.totalSalesRep.colorTheme === "Green" ? "!bg-green-600" : data.totalSalesRep.colorTheme === "Blue" ? "!bg-cyan-600" : data.totalSalesRep.colorTheme === "Orange" ? "!bg-orange-600" : data.totalSalesRep.colorTheme === "Purple" ? "!bg-indigo-600" : ""}`}>{data.totalSalesRep.initial}</span>
                                                 <p>{data.totalSalesRep.name}</p>
                                             </div>
                                         )}
@@ -233,7 +232,7 @@ export default function Grid10() {
                                         template={(data: any) => (
                                             <div className="d-flex align-items-center gap-2">
                                                 <div style={{ width: "32px" }}>
-                                                    <Image className="rounded" src={`/assets/images/advance-grid/product-sales-table/${data.productImage}`} width={32} height={32} alt="product image" />
+                                                    <img className="rounded" src={`/react/essential-ui-kit/blocks/assets/images/advance-grid/product-sales-table/${data.productImage}`} width={32} height={32} alt="product image" />
                                                 </div>
                                                 <div>{data.product}</div>
                                             </div>

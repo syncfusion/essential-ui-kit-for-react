@@ -1,0 +1,29 @@
+#checkboxs :global(.e-checkbox.e-checkbox-left .e-checkbox-wrapper ) {
+    margin-top:25px;
+}
+
+#checkboxs :global(.e-checkbox.e-checkbox-left ) {
+     display:flex;
+     gap: 4px;
+}
+ 
+#dialog :global(.e-dlg-header-content+.e-dlg-content) {
+    border: inherit;
+    border-inline: none;
+    border-radius: 0;
+}
+ 
+#dialog :global(.e-listview .e-list-item.e-focused),
+#dialog :global(.e-listview .e-list-item.e-focused.e-active.e-checklist),
+#dialog :global(.e-listview .e-list-item.e-hover) {
+    background: transparent;
+}
+ 
+#dialog :global(.e-checkbox-wrapper .e-label) {
+    font-weight: 500;
+}
+ 
+#dialog :global(.e-listview .e-list-item) {
+    border: 0;
+}
+ 

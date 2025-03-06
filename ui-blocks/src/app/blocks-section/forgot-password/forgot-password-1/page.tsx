@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import Image from 'next/image';
 
 export default function ForgetPassword1() {
     /* SB Code - Start */
@@ -17,7 +16,7 @@ export default function ForgetPassword1() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -42,7 +41,7 @@ export default function ForgetPassword1() {
                             <div className="w-full max-w-md rounded-lg p-4 py-12">
                                 <div className="flex justify-center mb-6">
                                     <div className="flex items-center justify-center">
-                                        <Image className="mr-2" src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                        <img className="mr-2" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         <h2 className="text-center text-xl font-semibold text-gray-900 dark:text-white">Company Name</h2>
                                     </div>
                                 </div>
@@ -55,11 +54,11 @@ export default function ForgetPassword1() {
                                     </div>
                                 </form>
                                 <div className="e-bigger">
-                                    <ButtonComponent ejs-button className="w-full e-primary" type="submit">Send Reset Link</ButtonComponent>
+                                    <ButtonComponent className="w-full e-primary" type="submit">Send Reset Link</ButtonComponent>
                                 </div>
                                 <span className="flex items-center justify-center gap-2 mt-6">
                                     <p className="text-center text-gray-900 dark:text-white">Return to</p>
-                                    <a href="javascript:void(0);" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">Sign in</a>
+                                    <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">Sign in</a>
                                 </span>
                             </div>
                         </div>
@@ -71,7 +70,7 @@ export default function ForgetPassword1() {
                         <div className="max-w-md bg-body rounded-lg p-4 py-5 w-100" style={{ maxWidth: '450px' }}>
                             <div className="d-flex justify-content-center mb-4">
                                 <div className="d-flex align-items-center">
-                                    <Image className="me-2" src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                    <img className="me-2" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                     <h2 className="text-center fs-5 fw-bold mb-0 text-body">Company Name</h2>
                                 </div>
                             </div>
@@ -84,11 +83,11 @@ export default function ForgetPassword1() {
                                 </div>
                             </form>
                             <div className="e-bigger">
-                                <ButtonComponent ejs-button className="e-block e-primary" type="submit">Send Reset Link</ButtonComponent>
+                                <ButtonComponent className="e-block e-primary" type="submit">Send Reset Link</ButtonComponent>
                             </div>
                             <div className="d-flex align-items-center justify-content-center gap-1 mt-4">
                                 <p className="text-center text-body mb-0">Return to</p>
-                                <a href="javascript:void(0);" className="text-primary p-0 text-decoration-none fs-6 fw-medium">Sign in</a>
+                                <a href="#" className="text-primary p-0 text-decoration-none fs-6 fw-medium">Sign in</a>
                             </div>
                         </div>
                     </section>

@@ -211,7 +211,7 @@ export default function Grid4() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -245,7 +245,7 @@ export default function Grid4() {
                                 <ColumnsDirective>
                                     <ColumnDirective field="contactId" headerText="Contact ID" width="90"
                                         template={(data: any) => (
-                                            <a className="text-primary-700 dark:text-primary-500 font-medium" href="javascript:void(0);">{data.contactId}</a>
+                                            <a className="text-primary-700 dark:text-primary-500 font-medium" href="#">{data.contactId}</a>
                                         )}
                                     />
                                     <ColumnDirective field="profile" headerText="Profile" textAlign="Left" width="264"
@@ -253,9 +253,9 @@ export default function Grid4() {
                                             <div className="flex gap-3 items-center py-1">
                                                 <div className="w-8 h-8">
                                                     {data.profile.avatar ? (
-                                                        <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/assets/images/common/avatar/${data.profile.avatar}')` }}></span>
+                                                        <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.profile.avatar}')` }}></span>
                                                     ) : (
-                                                        <span className={`e-avatar e-avatar-circle e-avatar-small ${ data.profile.colorTheme === "Red" ? "!bg-red-100 !text-red-700 dark:!text-red-400" : data.profile.colorTheme === "Green" ? "!bg-green-100 !text-green-700 dark:!text-green-500" : data.profile.colorTheme === "Blue" ? "!bg-cyan-100 !text-cyan-700 dark:!text-cyan-600" : data.profile.colorTheme === "Orange" ? "!bg-orange-100 !text-orange-700 dark:!text-orange-500" : ""}`}>{data.profile.initial}</span>
+                                                        <span className={`e-avatar e-avatar-circle e-avatar-small ${ data.profile.colorTheme === "Red" ? "!bg-red-100 !text-red-700" : data.profile.colorTheme === "Green" ? "!bg-green-100 !text-green-700" : data.profile.colorTheme === "Blue" ? "!bg-cyan-100 !text-cyan-700" : data.profile.colorTheme === "Orange" ? "!bg-orange-100 !text-orange-700" : ""}`}>{data.profile.initial}</span>
                                                     )}
                                                 </div>
                                                 <div className="flex flex-col text-sm">
@@ -284,7 +284,7 @@ export default function Grid4() {
                                         template={(data: any) => (
                                             <div className="flex gap-3 items-center py-1.5">
                                                 <div className="w-8 h-8">
-                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/assets/images/common/avatar/${data.avatar}')`}}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar}')`}}></span>
                                                 </div>
                                                 <div className="flex flex-col text-sm">
                                                     <p className="text-gray-900 dark:text-gray-50">{data.assignedTo.name}</p>
@@ -329,7 +329,7 @@ export default function Grid4() {
                                 <ColumnsDirective>
                                     <ColumnDirective field="contactId" headerText="Contact ID" width="100"
                                         template={(data: any) => (
-                                            <a className="text-primary fw-medium text-decoration-none" href="javascript:void(0);">{data.contactId}</a>
+                                            <a className="text-primary fw-medium text-decoration-none" href="#">{data.contactId}</a>
                                         )}
                                     />
                                     <ColumnDirective field="profile" headerText="Profile" textAlign="Left" width="264"
@@ -337,7 +337,7 @@ export default function Grid4() {
                                             <div className="d-flex gap-3 align-items-center">
                                                 <div className="rounded-circle overflow-hidden" style={{ width: "32px", height: "32px" }}>
                                                     {data.profile.avatar ? (
-                                                        <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/assets/images/common/avatar/${data.profile.avatar}')` }}></span>
+                                                        <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.profile.avatar}')` }}></span>
                                                     ) : (
                                                         <span className={`e-avatar e-avatar-circle e-avatar-small ${ data.profile.colorTheme === "Red"? "bg-danger-subtle text-danger": data.profile.colorTheme === "Green" ? "bg-success-subtle text-success" : data.profile.colorTheme === "Blue" ? "bg-info-subtle text-info" : data.profile.colorTheme === "Orange" ? "bg-warning-subtle text-warning" : ""}`}>{data.profile.initial}</span>
                                                     )}
@@ -368,7 +368,7 @@ export default function Grid4() {
                                         template={(data: any) => (
                                             <div className="d-flex gap-3 align-items-center py-1">
                                                 <div className="rounded-circle overflow-hidden" style={{ width: "32px", height: "32px" }}>
-                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/assets/images/common/avatar/${data.avatar}')` }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar}')` }}></span>
                                                 </div>
                                                 <div className="d-flex flex-column">
                                                     <p className="text-body mb-0">{data.assignedTo.name}</p>

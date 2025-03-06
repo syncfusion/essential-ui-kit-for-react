@@ -1,0 +1,25 @@
+#dialog :global(.e-query-builder),
+#dialog :global(.e-query-builder .e-rule-container),
+#dialog :global(.e-query-builder .e-rule-list> ::after),
+#dialog :global(.e-query-builder .e-rule-list> ::before) {
+    border: none;
+}
+
+#dialog :global(.e-query-builder .e-group-header) {
+    display: none;
+}
+
+#dialog :global(.e-query-builder .e-group-body) {
+    padding-left: 0;
+}
+
+#dialog :global(.e-query-builder .e-group-container),
+#dialog :global(.e-rule-list) {
+    padding: 0 !important;
+}
+
+#dialog :global(.e-dialog),
+#dialog :global(.e-dialog .e-dlg-header-content),
+#dialog :global(.e-dialog .e-footer-content) {
+    border-radius: 0 !important;
+}

@@ -1,18 +1,3 @@
 body {
     margin: 0 !important;
 }
-
-.e-richtexteditor .e-rte-content .e-content ol {
-    list-style: auto;
-    margin-left: 24px;
-}
-
-.e-richtexteditor .e-rte-content .e-content ul {
-    list-style: disc;
-    margin-left: 24px;
-}
-
-.e-rte-fontcolor-dropdown .e-colorpicker-wrapper .e-container.e-color-palette,
-.e-rte-backgroundcolor-dropdown .e-colorpicker-wrapper .e-container.e-color-palette {
-    width: auto !important;
-}

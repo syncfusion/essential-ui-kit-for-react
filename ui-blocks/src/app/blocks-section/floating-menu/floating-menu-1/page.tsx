@@ -40,7 +40,11 @@ export default function FloatingMenu1() {
 
     const toggleDialog = (): void => {
         if (dialogRef.current) {
-            toggleState ? dialogRef.current.hide() : dialogRef.current.show();
+            if (toggleState) {
+                dialogRef.current.hide();
+            } else {
+                dialogRef.current.show();
+            }
             setToggleState(!toggleState);
         }
     };
@@ -69,7 +73,7 @@ export default function FloatingMenu1() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -98,7 +102,7 @@ export default function FloatingMenu1() {
                             <DialogComponent id={styles["floating-article"]} className="sm:!rounded-t !rounded-none overflow-hidden !border-0" width="400px" minHeight="591px" ref={dialogRef} open={setDialogPosition} created={() => dialogRef.current?.show()}
                                 header={() => {
                                     return (
-                                        <div className="flex flex-col justify-between items-center bg-indigo-600 dark:bg-cyan-400 p-3">
+                                        <div className="flex flex-col justify-between items-center bg-primary-600 dark:bg-primary-400 p-3">
                                             <div className="w-full text-center">
                                                 <p className="text-lg font-semibold text-white dark:text-gray-900">Help</p>
                                                 <div className="e-input-group e-bigger mt-3">

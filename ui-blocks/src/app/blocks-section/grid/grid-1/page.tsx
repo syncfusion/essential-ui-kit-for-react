@@ -210,7 +210,7 @@ export default function Grid1() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -237,14 +237,14 @@ export default function Grid1() {
                                     <ColumnDirective type="checkbox" isPrimaryKey={true} textAlign="Center" width="40" />
                                     <ColumnDirective field="leadId" headerText="Lead ID" textAlign="Left" width="60"
                                         template={(data: any) => (
-                                            <a className="text-primary-700 dark:text-primary-500 font-medium" href="javascript:void(0);">{data.leadId}</a>
+                                            <a className="text-primary-700 dark:text-primary-500 font-medium" href="#">{data.leadId}</a>
                                         )}
                                     />
                                     <ColumnDirective field="customerDetails" headerText="Name" textAlign="Left" width="285"
                                         template={(data: any) => (
                                             <div className="flex items-center gap-3 py-1.5">
                                                 <div className="w-8 h-8">
-                                                    <span className={`e-avatar e-avatar-circle e-avatar-small ${data.details.colorTheme === "Red" ? "!bg-red-100 !text-red-700 dark:!text-red-400" : data.details.colorTheme === "Green" ? "!bg-green-100 !text-green-700 dark:!text-green-500" : data.details.colorTheme === "Blue" ? "!bg-cyan-100 !text-cyan-700 dark:!text-cyan-600" : data.details.colorTheme === "Orange" ? "!bg-orange-100 !text-orange-700 dark:!text-orange-500" : data.details.colorTheme === "Purple" ? "!bg-indigo-100 !text-indigo-700 dark:!bg-cyan-800 dark:!text-cyan-400" : ""}`}>{data.details.initial}</span>
+                                                    <span className={`e-avatar e-avatar-circle e-avatar-small ${data.details.colorTheme === "Red" ? "!bg-red-100 !text-red-700" : data.details.colorTheme === "Green" ? "!bg-green-100 !text-green-700" : data.details.colorTheme === "Blue" ? "!bg-cyan-100 !text-cyan-700" : data.details.colorTheme === "Orange" ? "!bg-orange-100 !text-orange-700" : data.details.colorTheme === "Purple" ? "!bg-indigo-100 !text-indigo-700" : ""}`}>{data.details.initial}</span>
                                                 </div>
                                                 <div className="flex flex-col text-sm">
                                                     <p className="text-gray-900 dark:text-gray-50">{data.details.name}</p>
@@ -286,7 +286,7 @@ export default function Grid1() {
                                         template={(data: any) => (
                                             <div className="flex items-center gap-3">
                                                 <div className="w-8 h-8">
-                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/assets/images/common/avatar/${data.assignee.avatar}')` }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.assignee.avatar}')` }}></span>
                                                 </div>
                                                 <div className="text-sm text-gray-900 dark:text-gray-50">{data.assignee.name}</div>
                                             </div>
@@ -308,7 +308,7 @@ export default function Grid1() {
                                     <ColumnDirective type="checkbox" isPrimaryKey={true} textAlign="Center" width="40" />
                                     <ColumnDirective field="leadId" headerText="Lead ID" textAlign="Left" width="63"
                                         template={(data: any) => (
-                                            <a className="text-primary fw-medium text-decoration-none" href="javascript:void(0);">{data.leadId}</a>
+                                            <a className="text-primary fw-medium text-decoration-none" href="#">{data.leadId}</a>
                                         )}
                                     />
                                     <ColumnDirective field="customerDetails" headerText="Name" textAlign="Left" width="290"
@@ -357,7 +357,7 @@ export default function Grid1() {
                                         template={(data: any) => (
                                             <div className="d-flex align-items-center gap-3">
                                                 <div className="rounded-circle overflow-hidden" style={{ width: "32px", height: "32px" }}>
-                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/assets/images/common/avatar/${data.assignee.avatar}')` }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.assignee.avatar}')` }}></span>
                                                 </div>
                                                 <div className="text-body">{data.assignee.name}</div>
                                             </div>

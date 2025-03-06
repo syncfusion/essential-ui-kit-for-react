@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { CheckBoxComponent, ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import Image from 'next/image';
 
 export default function SignUp3() {
     /* SB Code - Start */
@@ -17,7 +16,7 @@ export default function SignUp3() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -39,7 +38,7 @@ export default function SignUp3() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="flex flex-col lg:flex-row mx-auto p-0" style={{ minHeight: '720px' }}>
-                            <div className="w-full lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style={{ backgroundImage: 'url("/assets/images/authentication/feature-list/feature-list.png")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                            <div className="w-full lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style={{ backgroundImage: 'url("/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                                 <div className="flex flex-wrap mx-0 w-full sm:p-6 xl:p-0 md:p-8 lg:px-6">
                                     <div className="hidden xl:block xl:w-1/6"></div>
                                     <div className="w-full xl:w-2/3">
@@ -74,7 +73,7 @@ export default function SignUp3() {
                                 <div className="bg-gray-50 dark:bg-gray-950 flex items-center justify-center">
                                     <div className="w-full max-w-md rounded-lg p-4 py-12">
                                         <div className="flex justify-center mb-6">
-                                            <Image className="mr-2" src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                            <img className="mr-2" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                             <h2 className="text-center text-xl font-semibold text-gray-900 dark:text-white">Company Name</h2>
                                         </div>
                                         <h2 className="text-2xl font-semibold text-center mb-2 text-gray-900 dark:text-white">Sign up</h2>
@@ -96,8 +95,8 @@ export default function SignUp3() {
                                                 <div className="flex items-start md:items-center justify-start mb-6">
                                                     <CheckBoxComponent cssClass="e-bigger md:mt-0 mt-1"></CheckBoxComponent>
                                                     <span className="pl-3 text-base text-gray-900 dark:text-white">I agree with{" "}
-                                                        <a href="javascript:void(0);" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">terms</a>{" "}and{" "}
-                                                        <a href="javascript:void(0);" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">privacy policy</a>
+                                                        <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">terms</a>{" "}and{" "}
+                                                        <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">privacy policy</a>
                                                     </span>
                                                 </div>
                                                 <div className="e-bigger">
@@ -112,10 +111,10 @@ export default function SignUp3() {
                                             </div>
                                             <div className="flex items-center justify-center pt-10 space-x-4">
                                                 <ButtonComponent cssClass="e-outline flex items-center justify-center px-4 py-2" type="submit">
-                                                    <Image src="/assets/images/common/brand-logos/png/google.png" width={20} height={20} alt="google logo" />
+                                                    <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/google.png" width={20} height={20} alt="google logo" />
                                                 </ButtonComponent>
                                                 <ButtonComponent cssClass="e-outline flex items-center justify-center px-4 py-2" type="submit">
-                                                    <Image src="/assets/images/common/brand-logos/png/facebook.png" width={20} height={20} alt="facebook logo" />
+                                                    <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/facebook.png" width={20} height={20} alt="facebook logo" />
                                                 </ButtonComponent>
                                                 <ButtonComponent cssClass="e-outline flex items-center justify-center px-4 py-2" type="submit">
                                                     <svg className="svg-icon" width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -123,12 +122,12 @@ export default function SignUp3() {
                                                     </svg>
                                                 </ButtonComponent>
                                                 <ButtonComponent cssClass="e-outline flex items-center justify-center px-4 py-2" type="submit">
-                                                    <Image src="/assets/images/common/brand-logos/png/microsoft.png" width={20} height={20} alt="microsoft logo" />
+                                                    <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/microsoft.png" width={20} height={20} alt="microsoft logo" />
                                                 </ButtonComponent>
                                             </div>
                                             <span className="flex items-center justify-center gap-2 mt-5">
                                                 <p className="text-center text-base text-gray-900 dark:text-white">Already have an account?</p>
-                                                <a href="javascript:void(0);" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">Sign in</a>
+                                                <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">Sign in</a>
                                             </span>
                                         </div>
                                     </div>
@@ -140,7 +139,7 @@ export default function SignUp3() {
             case 'bootstrap5':
                 return (
                     <section className="container-fluid d-md-flex d-block flex-wrap mx-auto p-0" style={{ minHeight: '720px' }}>
-                        <div className="col-12 col-lg-7 d-flex align-items-center bg-success p-4 p-lg-4" style={{ backgroundImage: 'url("/assets/images/authentication/feature-list/feature-list.png")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                        <div className="col-12 col-lg-7 d-flex align-items-center bg-success p-4 p-lg-4" style={{ backgroundImage: 'url("/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                             <div className="row mx-0 w-100 py-5">
                                 <div className="col-xl-2 d-lg-block"></div>
                                 <div className="col-xl-8">
@@ -175,7 +174,7 @@ export default function SignUp3() {
                             <div className="d-flex justify-content-center align-items-center bg-body">
                                 <div className="bg-body rounded-lg p-4 py-5 w-100" style={{ maxWidth: '450px' }}>
                                     <div className="d-flex justify-content-center align-items-center mb-4">
-                                        <Image className="me-2" src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                        <img className="me-2" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         <h5 className="text-center text-body fw-bold mb-0 fs-5">Company Name</h5>
                                     </div>
                                     <h4 className="fw-bold text-body text-center mb-2 fs-4">Sign up</h4>
@@ -196,8 +195,8 @@ export default function SignUp3() {
                                         <div className="mb-4">
                                             <CheckBoxComponent cssClass="e-bigger"></CheckBoxComponent>
                                             <span className="ms-2 text-body">I agree with{" "}
-                                                <a href="javascript:void(0);" className="text-primary fs-6 px-0 text-decoration-none" style={{ paddingTop: '1px' }}>terms</a>{" "}and{" "}
-                                                <a href="javascript:void(0);" className="text-primary fs-6 px-0 text-decoration-none" style={{ paddingTop: '1px' }}>privacy policy</a>
+                                                <a href="#" className="text-primary fs-6 px-0 text-decoration-none" style={{ paddingTop: '1px' }}>terms</a>{" "}and{" "}
+                                                <a href="#" className="text-primary fs-6 px-0 text-decoration-none" style={{ paddingTop: '1px' }}>privacy policy</a>
                                             </span>
                                         </div>
                                         <div className="e-bigger">
@@ -210,10 +209,10 @@ export default function SignUp3() {
                                     </div>
                                     <div className="d-flex justify-content-center mt-3 gap-3">
                                         <ButtonComponent cssClass="e-outline" type="submit">
-                                            <Image src="/assets/images/common/brand-logos/png/google.png" width={24} height={24} alt="google logo" />
+                                            <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/google.png" width={24} height={24} alt="google logo" />
                                         </ButtonComponent>
                                         <ButtonComponent cssClass="e-outline" type="submit">
-                                            <Image src="/assets/images/common/brand-logos/png/facebook.png" width={24} height={24} alt="facebook logo" />
+                                            <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/facebook.png" width={24} height={24} alt="facebook logo" />
                                         </ButtonComponent>
                                         <ButtonComponent cssClass="e-outline" type="submit">
                                             <svg className="svg-icon" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -221,12 +220,12 @@ export default function SignUp3() {
                                             </svg>
                                         </ButtonComponent>
                                         <ButtonComponent cssClass="e-outline" type="submit">
-                                            <Image src="/assets/images/common/brand-logos/png/microsoft.png" width={24} height={24} alt="microsoft logo" />
+                                            <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/microsoft.png" width={24} height={24} alt="microsoft logo" />
                                         </ButtonComponent>
                                     </div>
                                     <span className="d-flex align-items-center justify-content-center gap-1 mt-3">
                                         <p className="text-center justify-center text-body mb-0">Already have an account?</p>
-                                        <a href="javascript:void(0);" className="text-primary py-0 text-decoration-none fs-6 fw-medium">Sign in</a>
+                                        <a href="#" className="text-primary py-0 text-decoration-none fs-6 fw-medium">Sign in</a>
                                     </span>
                                 </div>
                             </div>

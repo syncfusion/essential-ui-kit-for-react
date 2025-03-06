@@ -170,7 +170,7 @@ export default function Grid6() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -200,7 +200,7 @@ export default function Grid6() {
                                         template={(data: any) => (
                                             <div className="flex gap-3 items-center py-1.5">
                                                 <div className="w-8 h-8">
-                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/assets/images/common/avatar/${data.customerDetails.avatar}')` }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.customerDetails.avatar}')` }}></span>
                                                 </div>
                                                 <div className="flex flex-col text-sm">
                                                     <p className="text-gray-900 dark:text-gray-50">{data.customerDetails.name}</p>
@@ -211,7 +211,7 @@ export default function Grid6() {
                                     />
                                     <ColumnDirective field="invoiceNumber" headerText="Invoice Number" width="150"
                                         template={(data: any) => (
-                                            <a className="text-primary-700 dark:text-primary-500 font-medium" href="javascript:void(0);">{data.invoiceNumber}</a>
+                                            <a className="text-primary-700 dark:text-primary-500 font-medium" href="#">{data.invoiceNumber}</a>
                                         )}
                                     />
                                     <ColumnDirective field="description" headerText="Description" width="214" />
@@ -254,7 +254,7 @@ export default function Grid6() {
                                         template={(data: any) => (
                                             <div className="d-flex gap-3 align-items-center py-1">
                                                 <div style={{ width: "32px", height: "32px" }}>
-                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/assets/images/common/avatar/${data.customerDetails.avatar}')` }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.customerDetails.avatar}')` }}></span>
                                                 </div>
                                                 <div className="d-flex flex-column">
                                                     <p className="text-body mb-0">{data.customerDetails.name}</p>
@@ -265,7 +265,7 @@ export default function Grid6() {
                                     />
                                     <ColumnDirective field="invoiceNumber" headerText="Invoice Number" width="165"
                                         template={(data: any) => (
-                                            <a className="text-primary fw-medium text-decoration-none" href="javascript:void(0);">{data.invoiceNumber}</a>
+                                            <a className="text-primary fw-medium text-decoration-none" href="#">{data.invoiceNumber}</a>
                                         )}
                                     />
                                     <ColumnDirective field="description" headerText="Description" width="214" />

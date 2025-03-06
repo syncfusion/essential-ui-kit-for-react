@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from 'react';
 import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function Sidebar6() {
@@ -77,7 +76,7 @@ export default function Sidebar6() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -104,7 +103,7 @@ export default function Sidebar6() {
                                     <div>
                                         <div className="flex items-center justify-between py-4 px-3">
                                             <div className="flex items-center">
-                                                <Image src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                                <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                                 <div className="ml-3">
                                                     <div className="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
                                                     <p className="mb-0 text-gray-900 dark:text-white">johnwick&#64;123.com</p>
@@ -125,7 +124,7 @@ export default function Sidebar6() {
                                             <p className="text-base px-4 py-3 text-gray-700 dark:text-gray-300">Bergside Projects</p>
                                             <ListViewComponent className="!border-0" dataSource={data2} template={(data: any) => (
                                                 <div className="e-list-wrapper flex items-center px-1">
-                                                    <span className={`e-icons e-bullet-3 !text-indigo-600 dark:!text-cyan-400`}></span>
+                                                    <span className={`e-icons e-bullet-3 !text-indigo-600 dark:!text-indigo-400`}></span>
                                                     <span className="text-base font-normal pl-4">
                                                         {data.field === 'Library' || data.field === 'Blocks' ? 'Tailwind ' + data.field : data.field}
                                                     </span>
@@ -163,7 +162,7 @@ export default function Sidebar6() {
                                     <div>
                                         <div className="d-flex align-items-center justify-content-between p-3">
                                             <div className="d-flex align-items-center">
-                                                <Image src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                                <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                                 <div className="ms-2">
                                                     <div className="fs-6 fw-medium text-body">John Wick</div>
                                                     <p className="mb-0 text-body-secondary">johnwick&#64;123.com</p>

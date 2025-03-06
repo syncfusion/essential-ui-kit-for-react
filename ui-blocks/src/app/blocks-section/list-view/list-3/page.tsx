@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import Image from 'next/image';
 
 export default function List3() {
     /* SB Code - Start */
@@ -66,7 +65,7 @@ export default function List3() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -97,7 +96,7 @@ export default function List3() {
                                 <ListViewComponent className="!border-0" cssClass="e-list-template" dataSource={data} template={(data: any) => (
                                     <div className="e-list-wrapper !px-1 sm:!px-3 border-b border-gray-200 dark:border-gray-600 !py-3 flex items-start">
                                         <span className="e-avatar e-avatar-circle shrink-0">
-                                            <Image src={`/assets/images/common/avatar/${data.avatar}`} width={40} height={40} alt="profile picture" />
+                                            <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar}`} width={40} height={40} alt="profile picture" />
                                         </span>
                                         <span className="ml-3 flex flex-col items-start">
                                             <div className="flex justify-between items-center">
@@ -127,7 +126,7 @@ export default function List3() {
                                 <ListViewComponent className="border-0" cssClass="e-list-template" dataSource={data} template={(data: any) => (
                                     <div className="e-list-wrapper px-1 px-sm-3 d-flex align-items-start w-100">
                                         <span className="e-avatar e-avatar-circle flex-shrink-0">
-                                            <Image src={`/assets/images/common/avatar/${data.avatar}`} width={40} height={40} alt="profile picture" />
+                                            <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar}`} width={40} height={40} alt="profile picture" />
                                         </span>
                                         <div className="ms-2 ps-1 d-flex flex-column flex-grow-1 align-items-start">
                                             <div className="d-flex justify-content-between align-items-center">

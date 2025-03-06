@@ -41,7 +41,11 @@ export default function FloatingMenu2() {
 
     const toggleDialog = (): void => {
         if (dialogRef.current) {
-            toggleState ? dialogRef.current.hide() : dialogRef.current.show();
+            if (toggleState) {
+                dialogRef.current.hide();
+            } else {
+                dialogRef.current.show();
+            }
             setToggleState(!toggleState);
         }
     };
@@ -77,7 +81,7 @@ export default function FloatingMenu2() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -106,7 +110,7 @@ export default function FloatingMenu2() {
                             <DialogComponent id={styles["floating-chat"]} className="sm:!rounded-t !rounded-none overflow-hidden !border-0" width="400px" minHeight="580px" ref={dialogRef} open={setDialogPosition} created={() => dialogRef.current?.show()}
                                 header={() => {
                                     return (
-                                        <div className="flex justify-between items-center bg-indigo-600 dark:bg-cyan-400 py-4 px-4 sm:px-6">
+                                        <div className="flex justify-between items-center bg-primary-600 dark:bg-primary-400 py-4 px-4 sm:px-6">
                                             <div className="flex gap-4 items-center">
                                                 <div className="relative">
                                                     <span className="e-avatar e-avatar-circle e-icons e-user text-2xl"></span>

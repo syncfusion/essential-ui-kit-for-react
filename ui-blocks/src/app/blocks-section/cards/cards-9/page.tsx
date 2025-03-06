@@ -14,7 +14,7 @@ export default function Card9() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -43,7 +43,7 @@ export default function Card9() {
                                         <p className="mt-3 mb-2 text-base">Wander through lush, green forests where towering trees and vibrant wildlife await. Discover serene trails, picturesque streams, and the calming sounds of nature.</p>
                                     </div>
                                     <div className="e-card-header items-center">
-                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-6.jpg)" }}></span>
+                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-6.jpg)" }}></span>
                                         <div className="e-card-header-caption !pl-3">
                                             <div className="e-card-header-title">
                                                 <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">John Wick</p>
@@ -60,7 +60,7 @@ export default function Card9() {
                                         <p className="mt-3 mb-2 text-base">Escape to idyllic islands where turquoise waters and sandy beaches create a tropical paradise. Enjoy water sports, beach lounging, and local cuisine while soaking up the sun.</p>
                                     </div>
                                     <div className="e-card-header items-center">
-                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-3.jpg)" }}></span>
+                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg)" }}></span>
                                         <div className="e-card-header-caption !pl-3">
                                             <div className="e-card-header-title">
                                                 <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">Adam Smith</p>
@@ -77,7 +77,7 @@ export default function Card9() {
                                         <p className="mt-3 mb-2 text-base">Dive into the rich cultural tapestry of world-renowned cities. Explore museums, historical sites, and vibrant neighborhoods that offer a deep dive into art, history.</p>
                                     </div>
                                     <div className="e-card-header items-center">
-                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-2.jpg)" }}></span>
+                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg)" }}></span>
                                         <div className="e-card-header-caption !pl-3">
                                             <div className="e-card-header-title">
                                                 <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">Levi Ackerman</p>
@@ -104,7 +104,7 @@ export default function Card9() {
                                             <p className="fs-6 mb-2">Wander through lush, green forests where towering trees and vibrant wildlife await. Discover serene trails, picturesque streams, and the calming sounds of nature.</p>
                                         </div>
                                         <div className="e-card-header align-items-center mb-2">
-                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-6.jpg)" }}></span>
+                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-6.jpg)" }}></span>
                                             <div className="e-card-header-caption">
                                                 <div className="e-card-header-title text-body">
                                                     <p className="h6 fw-bold mb-0 text-truncate">John Wick</p>
@@ -123,7 +123,7 @@ export default function Card9() {
                                             <p className="fs-6 mb-2">Escape to idyllic islands where turquoise waters and sandy beaches create a tropical paradise. Enjoy water sports, beach lounging, and local cuisine while soaking up the sun.</p>
                                         </div>
                                         <div className="e-card-header align-items-center mb-2">
-                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-3.jpg)" }}></span>
+                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg)" }}></span>
                                             <div className="e-card-header-caption">
                                                 <div className="e-card-header-title text-body">
                                                     <p className="h6 fw-bold mb-0 text-truncate">Adam Smith</p>
@@ -142,7 +142,7 @@ export default function Card9() {
                                             <p className="fs-6 mb-2">Dive into the rich cultural tapestry of world-renowned cities. Explore museums, historical sites, and vibrant neighborhoods that offer a deep dive into art, history.</p>
                                         </div>
                                         <div className="e-card-header align-items-center mb-2">
-                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-2.jpg)" }}></span>
+                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg)" }}></span>
                                             <div className="e-card-header-caption">
                                                 <div className="e-card-header-title text-body">
                                                     <p className="h6 fw-bold mb-0 text-truncate">Levi Ackerman</p>

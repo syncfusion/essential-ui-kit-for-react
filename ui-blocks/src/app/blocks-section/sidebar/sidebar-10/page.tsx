@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from 'react';
 import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function Sidebar10() {
@@ -45,7 +44,7 @@ export default function Sidebar10() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -70,7 +69,7 @@ export default function Sidebar10() {
                             <SidebarComponent key={"sidebar-10-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="72px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
                                 <div className="pt-6">
                                     <div className="flex justify-center items-center mb-3 px-3">
-                                        <Image src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                     </div>
                                     <ListViewComponent className="border-0 e-bigger" dataSource={data} template={(data: any) => (
                                         <div className="e-list-wrapper flex justify-center items-center">
@@ -97,7 +96,7 @@ export default function Sidebar10() {
                             <SidebarComponent key={"sidebar-10-bs"} className="border-end border-light-subtle" width="72px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
                                 <div className="pt-4 d-flex flex-column align-items-center">
                                     <div className="d-flex justify-content-center align-items-center px-3 mb-2">
-                                        <Image src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                     </div>
                                     <ListViewComponent className="border-0 e-bigger" dataSource={data} template={(data: any) => (
                                         <div className="e-list-wrapper d-flex justify-content-center align-items-center">

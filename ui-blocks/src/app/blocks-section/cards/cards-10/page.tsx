@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 export default function Card10() {
     /* SB Code - Start */
@@ -15,7 +14,7 @@ export default function Card10() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -40,11 +39,11 @@ export default function Card10() {
                             <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 xl:gap-10">
                                 <div className="e-card rounded-lg sm:flex-row e-bigger">
                                     <div className="relative sm:w-72 h-60 sm:h-auto shrink-0">
-                                        <Image src="/assets/images/card/image-author-info-card/ai-innovations.jpg" layout="fill" objectFit="cover" alt="AI innovations" />
+                                        <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-author-info-card/ai-innovations.jpg" alt="AI innovations" />
                                     </div>
                                     <div className="e-card-stacked pb-2">
                                         <div className="e-card-header mb-1 items-center">
-                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-1.jpg)" }}></span>
+                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg)" }}></span>
                                             <div className="e-card-header-caption !pl-3">
                                                 <div className="e-card-header-title">
                                                     <p className="text-base text-gray-900 dark:text-white font-semibold truncate">James Adam</p>
@@ -62,11 +61,11 @@ export default function Card10() {
                                 </div>
                                 <div className="e-card rounded-lg sm:flex-row e-bigger">
                                     <div className="relative sm:w-72 h-60 sm:h-auto shrink-0">
-                                        <Image src="/assets/images/card/image-author-info-card/cybersecurity-solutions.jpg" layout="fill" objectFit="cover" alt="cybersecurity solutions" />
+                                        <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-author-info-card/cybersecurity-solutions.jpg" alt="cybersecurity solutions" />
                                     </div>
                                     <div className="e-card-stacked pb-2">
                                         <div className="e-card-header mb-1 items-center">
-                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-10.jpg)" }}></span>
+                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-10.jpg)" }}></span>
                                             <div className="e-card-header-caption !pl-3">
                                                 <div className="e-card-header-title">
                                                     <p className="text-base text-gray-900 dark:text-white font-semibold truncate">Toni Potts</p>
@@ -84,11 +83,11 @@ export default function Card10() {
                                 </div>
                                 <div className="e-card rounded-lg sm:flex-row e-bigger">
                                     <div className="relative sm:w-72 h-60 sm:h-auto shrink-0">
-                                        <Image src="/assets/images/card/image-author-info-card/virtual-reality.jpg" layout="fill" objectFit="cover" alt="virtual reality" />
+                                        <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-author-info-card/virtual-reality.jpg" alt="virtual reality" />
                                     </div>
                                     <div className="e-card-stacked pb-2">
                                         <div className="e-card-header mb-1 items-center">
-                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-2.jpg)" }}></span>
+                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg)" }}></span>
                                             <div className="e-card-header-caption !pl-3">
                                                 <div className="e-card-header-title">
                                                     <p className="text-base text-gray-900 dark:text-white font-semibold truncate">Jeffrey Stark</p>
@@ -106,11 +105,11 @@ export default function Card10() {
                                 </div>
                                 <div className="e-card rounded-lg sm:flex-row e-bigger">
                                     <div className="relative sm:w-72 h-60 sm:h-auto shrink-0">
-                                        <Image src="/assets/images/card/image-author-info-card/smart-home-tech.jpg" layout="fill" objectFit="cover" alt="smart home tech" />
+                                        <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-author-info-card/smart-home-tech.jpg" alt="smart home tech" />
                                     </div>
                                     <div className="e-card-stacked pb-2">
                                         <div className="e-card-header mb-1 items-center">
-                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-6.jpg)" }}></span>
+                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-6.jpg)" }}></span>
                                             <div className="e-card-header-caption !pl-3">
                                                 <div className="e-card-header-title">
                                                     <p className="text-base text-gray-900 dark:text-white font-semibold truncate">Adam Smith</p>
@@ -138,11 +137,11 @@ export default function Card10() {
                                 <div className="col-lg-6 d-flex">
                                     <div className="e-card e-bigger rounded-3 d-flex flex-sm-row flex-col">
                                         <div className="position-relative" style={{ minWidth: "266px", minHeight: "266px" }}>
-                                            <Image src="/assets/images/card/image-author-info-card/ai-innovations.jpg" layout="fill" objectFit="cover" alt="AI innovations" />
+                                            <img className="object-fit-cover w-100 h-100" src="/react/essential-ui-kit/blocks/assets/images/card/image-author-info-card/ai-innovations.jpg" alt="AI innovations" />
                                         </div>
                                         <div className="e-card-stacked p-2">
                                             <div className="e-card-header align-items-center">
-                                                <span className="e-avatar e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-1.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg)" }}></span>
                                                 <div className="e-card-header-caption">
                                                     <div className="e-card-header-title text-body">
                                                         <p className="fs-6 fw-medium mb-0 text-truncate">James Adam</p>
@@ -162,11 +161,11 @@ export default function Card10() {
                                 <div className="col-lg-6 d-flex">
                                     <div className="e-card e-bigger rounded-3 d-flex flex-sm-row flex-col">
                                         <div className="position-relative" style={{ minWidth: "266px", minHeight: "266px" }}>
-                                            <Image src="/assets/images/card/image-author-info-card/cybersecurity-solutions.jpg" layout="fill" objectFit="cover" alt="cybersecurity solutions" />
+                                            <img className="object-fit-cover w-100 h-100" src="/react/essential-ui-kit/blocks/assets/images/card/image-author-info-card/cybersecurity-solutions.jpg" alt="cybersecurity solutions" />
                                         </div>
                                         <div className="e-card-stacked p-2">
                                             <div className="e-card-header align-items-center">
-                                                <span className="e-avatar e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-10.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-10.jpg)" }}></span>
                                                 <div className="e-card-header-caption">
                                                     <div className="e-card-header-title text-body">
                                                         <p className="fs-6 fw-medium mb-0 text-truncate">Toni Potts</p>
@@ -186,11 +185,11 @@ export default function Card10() {
                                 <div className="col-lg-6 d-flex">
                                     <div className="e-card e-bigger rounded-3 d-flex flex-sm-row flex-col">
                                         <div className="position-relative" style={{ minWidth: "266px", minHeight: "266px" }}>
-                                            <Image src="/assets/images/card/image-author-info-card/virtual-reality.jpg" layout="fill" objectFit="cover" alt="virtual reality" />
+                                            <img className="object-fit-cover w-100 h-100" src="/react/essential-ui-kit/blocks/assets/images/card/image-author-info-card/virtual-reality.jpg" alt="virtual reality" />
                                         </div>
                                         <div className="e-card-stacked p-2">
                                             <div className="e-card-header align-items-center">
-                                                <span className="e-avatar e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-2.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg)" }}></span>
                                                 <div className="e-card-header-caption">
                                                     <div className="e-card-header-title text-body">
                                                         <p className="fs-6 fw-medium mb-0 text-truncate">Jeffrey Stark</p>
@@ -210,11 +209,11 @@ export default function Card10() {
                                 <div className="col-lg-6 d-flex">
                                     <div className="e-card e-bigger rounded-3 d-flex flex-sm-row flex-col">
                                         <div className="position-relative" style={{ minWidth: "266px", minHeight: "266px" }}>
-                                            <Image src="/assets/images/card/image-author-info-card/smart-home-tech.jpg" layout="fill" objectFit="cover" alt="smart home tech" />
+                                            <img className="object-fit-cover w-100 h-100" src="/react/essential-ui-kit/blocks/assets/images/card/image-author-info-card/smart-home-tech.jpg" alt="smart home tech" />
                                         </div>
                                         <div className="e-card-stacked p-2">
                                             <div className="e-card-header align-items-center">
-                                                <span className="e-avatar e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-6.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-6.jpg)" }}></span>
                                                 <div className="e-card-header-caption">
                                                     <div className="e-card-header-title text-body">
                                                         <p className="fs-6 fw-medium mb-0 text-truncate">Adam Smith</p>

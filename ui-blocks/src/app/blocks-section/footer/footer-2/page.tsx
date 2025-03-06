@@ -14,7 +14,7 @@ export default function Footer2() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -38,9 +38,9 @@ export default function Footer2() {
                         <footer className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 xl:px-10 sm:px-6 px-4 py-6">
                             <p className="text-base text-gray-500 dark:text-gray-400">© 2024 ShopNezt. All rights reserved.</p>
                             <div className="flex gap-4">
-                                <a href="javascript:void(0);" className="sf-icon-twitter text-2xl text-gray-500 dark:text-gray-400"></a>
-                                <a href="javascript:void(0);" className="sf-icon-facebook text-2xl text-gray-500 dark:text-gray-400"></a>
-                                <a href="javascript:void(0);" className="sf-icon-linkedin text-2xl text-gray-500 dark:text-gray-400"></a>
+                                <a href="#" className="sf-icon-twitter text-2xl text-gray-500 dark:text-gray-400"></a>
+                                <a href="#" className="sf-icon-facebook text-2xl text-gray-500 dark:text-gray-400"></a>
+                                <a href="#" className="sf-icon-linkedin text-2xl text-gray-500 dark:text-gray-400"></a>
                             </div>
                         </footer>
                     </section>
@@ -51,9 +51,9 @@ export default function Footer2() {
                         <footer className="py-4 px-3 px-md-4 px-xl-5 d-flex flex-column-reverse flex-sm-row align-items-center justify-content-between gap-3">
                             <p className="text-body-secondary mb-0">© 2024 ShopNezt. All rights reserved.</p>
                             <div className="d-flex gap-3">
-                                <a href="javascript:void(0);" className="sf-icon-twitter text-body-secondary fs-4 text-decoration-none"></a>
-                                <a href="javascript:void(0);" className="sf-icon-facebook text-body-secondary fs-4 text-decoration-none"></a>
-                                <a href="javascript:void(0);" className="sf-icon-linkedin text-body-secondary fs-4 text-decoration-none"></a>
+                                <a href="#" className="sf-icon-twitter text-body-secondary fs-4 text-decoration-none"></a>
+                                <a href="#" className="sf-icon-facebook text-body-secondary fs-4 text-decoration-none"></a>
+                                <a href="#" className="sf-icon-linkedin text-body-secondary fs-4 text-decoration-none"></a>
                             </div>
                         </footer>
                     </section>

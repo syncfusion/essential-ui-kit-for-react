@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
-import Image from "next/image";
 
 export default function Card8() {
     /* SB Code - Start */
@@ -16,7 +15,7 @@ export default function Card8() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -41,7 +40,7 @@ export default function Card8() {
                             <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 xl:gap-10">
                                 <div className="e-card rounded-lg sm:flex-row e-bigger">
                                     <div className="relative sm:w-64 h-52 sm:h-auto shrink-0">
-                                        <Image src="/assets/images/card/split-image-card/majestic-mountains.jpg" layout="fill" objectFit="cover" alt="majestic mountains" />
+                                        <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/split-image-card/majestic-mountains.jpg" alt="majestic mountains" />
                                     </div>
                                     <div className="e-card-stacked">
                                         <div className="e-card-header">
@@ -59,7 +58,7 @@ export default function Card8() {
                                 </div>
                                 <div className="e-card rounded-lg sm:flex-row e-bigger">
                                     <div className="relative sm:w-64 h-52 sm:h-auto shrink-0">
-                                        <Image src="/assets/images/card/split-image-card/serene-beaches.jpg" layout="fill" objectFit="cover" alt="serene beaches" />
+                                        <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/split-image-card/serene-beaches.jpg" alt="serene beaches" />
                                     </div>
                                     <div className="e-card-stacked">
                                         <div className="e-card-header">
@@ -77,7 +76,7 @@ export default function Card8() {
                                 </div>
                                 <div className="e-card rounded-lg sm:flex-row e-bigger">
                                     <div className="relative sm:w-64 h-52 sm:h-auto shrink-0">
-                                        <Image src="/assets/images/card/split-image-card/charming-villages.jpg" layout="fill" objectFit="cover" alt="charming villages" />
+                                        <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/split-image-card/charming-villages.jpg" alt="charming villages" />
                                     </div>
                                     <div className="e-card-stacked">
                                         <div className="e-card-header">
@@ -95,7 +94,7 @@ export default function Card8() {
                                 </div>
                                 <div className="e-card rounded-lg sm:flex-row e-bigger">
                                     <div className="relative sm:w-64 h-52 sm:h-auto shrink-0">
-                                        <Image src="/assets/images/card/split-image-card/bustling-metropolises.jpg" layout="fill" objectFit="cover" alt="bustling metropolises" />
+                                        <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/split-image-card/bustling-metropolises.jpg" alt="bustling metropolises" />
                                     </div>
                                     <div className="e-card-stacked">
                                         <div className="e-card-header">
@@ -123,7 +122,7 @@ export default function Card8() {
                                 <div className="col-lg-6 d-flex">
                                     <div className="e-card e-bigger rounded-3 d-flex flex-sm-row flex-col">
                                         <div className="position-relative" style={{ minWidth: "266px", minHeight: "266px" }}>
-                                            <Image src="/assets/images/card/split-image-card/majestic-mountains.jpg" layout="fill" objectFit="cover" alt="majestic mountains" />
+                                            <img className="object-fit-cover w-100 h-100" src="/react/essential-ui-kit/blocks/assets/images/card/split-image-card/majestic-mountains.jpg" alt="majestic mountains" />
                                         </div>
                                         <div className="e-card-stacked pt-2 p-sm-2">
                                             <div className="e-card-header mb-2">
@@ -143,7 +142,7 @@ export default function Card8() {
                                 <div className="col-lg-6 d-flex">
                                     <div className="e-card e-bigger rounded-3 d-flex flex-sm-row flex-col">
                                         <div className="position-relative" style={{ minWidth: "266px", minHeight: "266px" }}>
-                                            <Image src="/assets/images/card/split-image-card/serene-beaches.jpg" layout="fill" objectFit="cover" alt="serene beaches" />
+                                            <img className="object-fit-cover w-100 h-100" src="/react/essential-ui-kit/blocks/assets/images/card/split-image-card/serene-beaches.jpg" alt="serene beaches" />
                                         </div>
                                         <div className="e-card-stacked pt-2 p-sm-2">
                                             <div className="e-card-header mb-2">
@@ -163,7 +162,7 @@ export default function Card8() {
                                 <div className="col-lg-6 d-flex">
                                     <div className="e-card e-bigger rounded-3 d-flex flex-sm-row flex-col">
                                         <div className="position-relative" style={{ minWidth: "266px", minHeight: "266px" }}>
-                                            <Image src="/assets/images/card/split-image-card/charming-villages.jpg" layout="fill" objectFit="cover" alt="charming villages" />
+                                            <img className="object-fit-cover w-100 h-100" src="/react/essential-ui-kit/blocks/assets/images/card/split-image-card/charming-villages.jpg" alt="charming villages" />
                                         </div>
                                         <div className="e-card-stacked pt-2 p-sm-2">
                                             <div className="e-card-header mb-2">
@@ -183,7 +182,7 @@ export default function Card8() {
                                 <div className="col-lg-6 d-flex">
                                     <div className="e-card e-bigger rounded-3 d-flex flex-sm-row flex-col">
                                         <div className="position-relative" style={{ minWidth: "266px", minHeight: "266px" }}>
-                                            <Image src="/assets/images/card/split-image-card/bustling-metropolises.jpg" layout="fill" objectFit="cover" alt="bustling metropolises" />
+                                            <img className="object-fit-cover w-100 h-100" src="/react/essential-ui-kit/blocks/assets/images/card/split-image-card/bustling-metropolises.jpg" alt="bustling metropolises" />
                                         </div>
                                         <div className="e-card-stacked pt-2 p-sm-2">
                                             <div className="e-card-header mb-2">

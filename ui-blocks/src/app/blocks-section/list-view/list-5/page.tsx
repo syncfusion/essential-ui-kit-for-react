@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 
 export default function List5() {
     /* SB Code - Start */
@@ -86,7 +85,7 @@ export default function List5() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -120,7 +119,7 @@ export default function List5() {
                                 </div>
                                 <ListViewComponent className="!border-0 mt-2" cssClass="e-list-template" dataSource={data} template={(data: any) => (
                                     <div className="e-list-wrapper flex items-center !px-1 sm:!px-3 border-b border-gray-200 dark:border-gray-600">
-                                        <Image className="rounded-full" src={`/assets/images/listview/country-code/${data.pic}`} width={36} height={36} alt="flag image" />
+                                        <img className="rounded-full" src={`/react/essential-ui-kit/blocks/assets/images/listview/country-code/${data.pic}`} width={36} height={36} alt="flag image" />
                                         <div className="pl-4 w-full">
                                             <span className="flex items-center justify-between">
                                                 <span className="e-list-item-header text-sm font-medium text-gray-900 dark:text-white">{data.country}</span>
@@ -145,7 +144,7 @@ export default function List5() {
                                 </div>
                                 <ListViewComponent className="border-0 mt-2" cssClass="e-list-template" dataSource={data} template={(data: any) => (
                                     <div className="e-list-wrapper d-flex align-items-center px-1 px-sm-3">
-                                        <Image className="rounded-circle" src={`/assets/images/listview/country-code/${data.pic}`} width={36} height={36} alt="flag image" />
+                                        <img className="rounded-circle" src={`/react/essential-ui-kit/blocks/assets/images/listview/country-code/${data.pic}`} width={36} height={36} alt="flag image" />
                                         <div className="ps-3 w-100">
                                             <span className="d-flex align-items-center justify-content-between">
                                                 <span className="e-list-item-header fw-medium">{data.country}</span>

@@ -1,0 +1,14 @@
+#rte-list :global(.e-content ol) {
+    list-style: auto;
+    margin-left: 24px;
+}
+
+#rte-list :global(.e-content ul) {
+    list-style: disc;
+    margin-left: 24px;
+}
+
+#rte-list :global(.e-container.e-color-palette),
+#rte-list :global(.e-container.e-color-palette) {
+    width: auto !important;
+}

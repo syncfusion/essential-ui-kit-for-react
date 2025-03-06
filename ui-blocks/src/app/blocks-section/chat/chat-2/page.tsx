@@ -127,7 +127,7 @@ export default function Chat2() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -153,7 +153,7 @@ export default function Chat2() {
                                     <div className="flex items-center">
                                         <span className="flex items-center gap-3">
                                             <div className="relative h-8">
-                                                <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-3.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg)" }}></span>
                                                 <div className="w-3 h-3 rounded-full bg-green-700 dark:bg-green-500 absolute border border-white dark:border-black" style={{ bottom: "-2px", right: "-2px" }}></div>
                                             </div>
                                             <span className="text-base font-semibold text-gray-900 dark:text-white">Mark Davis</span>
@@ -178,7 +178,7 @@ export default function Chat2() {
                                                 const senderTemplate = (
                                                     <div className="flex justify-end ml-auto sm:mr-3 gap-3 items-start w-4/5 sm:w-9/12 lg:w-11/12">
                                                         <div className="flex flex-col gap-1 items-end">
-                                                            <div className="py-2 px-3 rounded-lg rounded-se-none bg-indigo-100 dark:bg-cyan-800">
+                                                            <div className="py-2 px-3 rounded-lg rounded-se-none bg-primary-100 dark:bg-primary-800">
                                                                 <div className="text-gray-900 dark:text-gray-50">{data.text}</div>
                                                             </div>
                                                             <div className="flex">
@@ -193,7 +193,7 @@ export default function Chat2() {
                                                     <div className="flex justify-start gap-3 items-start sm:w-11/12">
                                                         {data.avatar && (
                                                             <div>
-                                                                <span className="e-avatar e-avatar-circle e-avatar-small shrink-0" style={{ backgroundImage: `url(/assets/images/common/avatar/${data.avatar})` }}></span>
+                                                                <span className="e-avatar e-avatar-circle e-avatar-small shrink-0" style={{ backgroundImage: `url(/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar})` }}></span>
                                                             </div>
                                                         )}
                                                         <div className="flex flex-col gap-1">
@@ -224,7 +224,7 @@ export default function Chat2() {
                                                 <div className="flex justify-start gap-2 items-start">
                                                     {data.avatar && (
                                                         <div>
-                                                            <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url(/assets/images/common/avatar/${data.avatar})` }}></span>
+                                                            <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url(/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar})` }}></span>
                                                         </div>
                                                     )}
                                                     <div className="flex flex-col gap-1">
@@ -240,7 +240,7 @@ export default function Chat2() {
                                                 <div className="flex justify-start gap-2 items-start">
                                                     {data.avatar && (
                                                         <div>
-                                                            <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url(/assets/images/common/avatar/${data.avatar})` }}></span>
+                                                            <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url(/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar})` }}></span>
                                                         </div>
                                                     )}
                                                     <div className="flex flex-col gap-1">
@@ -269,7 +269,7 @@ export default function Chat2() {
                                     <div className="d-flex align-items-center">
                                         <span className="d-flex align-items-center gap-3">
                                             <div className="position-relative" style={{ height: "32px" }}>
-                                                <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-3.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg)" }}></span>
                                                 <div className="position-absolute bg-success border border-light rounded-circle p-1" style={{ bottom: "-1px", right: "-1px" }}></div>
                                             </div>
                                             <span className="h6 mb-0 text-body">Mark Davis</span>
@@ -308,7 +308,7 @@ export default function Chat2() {
                                                     <div className="d-flex justify-content-start gap-2 align-items-start me-sm-3">
                                                         {data.avatar && (
                                                             <div>
-                                                                <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url(/assets/images/common/avatar/${data.avatar})` }}></span>
+                                                                <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url(/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar})` }}></span>
                                                             </div>
                                                         )}
                                                         <div className="d-flex flex-column gap-1">
@@ -341,7 +341,7 @@ export default function Chat2() {
                                                     <div className="d-flex justify-content-start gap-2 align-items-start">
                                                         {data.avatar && (
                                                             <div>
-                                                                <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url(/assets/images/common/avatar/${data.avatar})` }}></span>
+                                                                <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url(/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar})` }}></span>
                                                             </div>
                                                         )}
                                                         <div className="d-flex flex-column gap-1">
@@ -357,7 +357,7 @@ export default function Chat2() {
                                                     <div className="d-flex justify-content-start gap-2 align-items-start">
                                                         {data.avatar && (
                                                             <div>
-                                                                <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url(/assets/images/common/avatar/${data.avatar})` }}></span>
+                                                                <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url(/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar})` }}></span>
                                                             </div>
                                                         )}
                                                         <div className="d-flex flex-column gap-1">

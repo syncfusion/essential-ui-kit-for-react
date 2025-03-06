@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 
 export default function List8() {
     /* SB Code - Start */
@@ -84,7 +83,7 @@ export default function List8() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -120,7 +119,7 @@ export default function List8() {
                                     <div className="e-list-wrapper e-list-multi-line border-b border-gray-200 dark:border-gray-600 !py-4 !px-1 sm:!px-3">
                                         <div className="flex justify-between">
                                             <div className="flex items-center grow">
-                                                <Image className="e-avatar e-avatar-circle e-avatar-large shrink-0" src={`/assets/images/common/avatar/${data.image}`} width={48} height={48} alt="profile picture" />
+                                                <img className="e-avatar e-avatar-circle e-avatar-large shrink-0" src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.image}`} width={48} height={48} alt="profile picture" />
                                                 <div className="ml-3 w-11/12">
                                                     <div className="flex justify-between w-full relative">
                                                         <span className="e-list-item-header flex items-center !text-base !font-medium !text-wrap !line-clamp-2 w-3/5 sm:w-4/5 truncate !text-gray-900 dark:!text-gray-200">{data.name}</span>
@@ -155,7 +154,7 @@ export default function List8() {
                                     <div className="e-list-wrapper e-list-multi-line py-3 px-1 px-sm-3">
                                         <div className="d-flex justify-content-between">
                                             <div className="d-flex w-100">
-                                                <Image className="e-avatar e-avatar-circle e-avatar-large flex-shrink-0" src={`/assets/images/common/avatar/${data.image}`} width={48} height={48} alt="profile picture" />
+                                                <img className="e-avatar e-avatar-circle e-avatar-large flex-shrink-0" src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.image}`} width={48} height={48} alt="profile picture" />
                                                 <span className="ms-3 w-100">
                                                     <div className="d-flex justify-content-between position-relative">
                                                         <span className="e-list-item-header text-wrap fs-6 fw-medium text-truncate col-6 col-sm-12" style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", minWidth: "150px", maxWidth: "350px" }}>{data.name}</span>

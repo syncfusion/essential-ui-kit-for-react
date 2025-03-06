@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import Image from 'next/image';
 
 export default function List7() {
     /* SB Code - Start */
@@ -76,7 +75,7 @@ export default function List7() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -109,10 +108,10 @@ export default function List7() {
                                         <div className="flex justify-between">
                                             <div className="flex items-center">
                                                 {data.letter ? (
-                                                    <span className={`e-avatar e-avatar-large shrink-0 !text-base ${data.tag === "report" ? "bg-indigo-100 dark:bg-cyan-800 text-indigo-600 dark:text-cyan-400" : "bg-orange-100 text-orange-700"}`}>{data.letter}</span>
+                                                    <span className={`e-avatar e-avatar-large shrink-0 !text-base ${data.tag === "report" ? "bg-indigo-100 text-indigo-600" : "bg-orange-100 text-orange-700"}`}>{data.letter}</span>
                                                 ) : (
                                                     <span className="e-avatar e-avatar-large shrink-0">
-                                                        <Image src={`/assets/images/common/avatar/${data.image}`} width={48} height={48} alt="profile picture" />
+                                                        <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.image}`} width={48} height={48} alt="profile picture" />
                                                     </span>
                                                 )}
                                                 <span className="ml-3">
@@ -146,7 +145,7 @@ export default function List7() {
                                                     <span className={`e-avatar e-avatar-large fw-normal fs-5 flex-shrink-0 ${data.tag === "report" ? "bg-primary-subtle text-primary" : "bg-warning-subtle text-warning-emphasis"}`}>{data.letter}</span>
                                                 ) : (
                                                     <span className="e-avatar e-avatar-large flex-shrink-0">
-                                                        <Image src={`/assets/images/common/avatar/${data.image}`} width={48} height={48} alt="profile picture" />
+                                                        <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.image}`} width={48} height={48} alt="profile picture" />
                                                     </span>
                                                 )}
                                                 <span className="ms-3">

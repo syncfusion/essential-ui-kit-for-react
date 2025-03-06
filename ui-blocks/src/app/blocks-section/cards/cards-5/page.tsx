@@ -15,7 +15,7 @@ export default function Card5() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -40,7 +40,7 @@ export default function Card5() {
                             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
                                 <div className="e-card e-bigger rounded-lg justify-start">
                                     <div className="e-card-header items-center">
-                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-13.jpg)" }}></span>
+                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-13.jpg)" }}></span>
                                         <div className="e-card-header-caption !pl-3">
                                             <div className="e-card-header-title">
                                                 <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">Kristin Watson</p>
@@ -58,7 +58,7 @@ export default function Card5() {
                                 </div>
                                 <div className="e-card e-bigger rounded-lg justify-start">
                                     <div className="e-card-header items-center">
-                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-4.jpg)" }}></span>
+                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-4.jpg)" }}></span>
                                         <div className="e-card-header-caption !pl-3">
                                             <div className="e-card-header-title">
                                                 <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">Brooklyn Simmons</p>
@@ -76,7 +76,7 @@ export default function Card5() {
                                 </div>
                                 <div className="e-card e-bigger rounded-lg justify-start">
                                     <div className="e-card-header items-center">
-                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-12.jpg)" }}></span>
+                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-12.jpg)" }}></span>
                                         <div className="e-card-header-caption !pl-3">
                                             <div className="e-card-header-title">
                                                 <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">Annie Amber</p>
@@ -104,7 +104,7 @@ export default function Card5() {
                                 <div className="col-sm-6 col-lg-4">
                                     <div className="e-card shadow p-2 e-bigger h-100 justify-content-start">
                                         <div className="e-card-header align-items-center mb-2">
-                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-13.jpg)" }}></span>
+                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-13.jpg)" }}></span>
                                             <div className="e-card-header-caption">
                                                 <div className="e-card-header-title text-body">
                                                     <p className="h6 fw-bold mb-0 text-truncate">Kristin Watson</p>
@@ -124,7 +124,7 @@ export default function Card5() {
                                 <div className="col-sm-6 col-lg-4">
                                     <div className="e-card shadow p-2 e-bigger h-100 justify-content-start">
                                         <div className="e-card-header align-items-center mb-2">
-                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-4.jpg)" }}></span>
+                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-4.jpg)" }}></span>
                                             <div className="e-card-header-caption">
                                                 <div className="e-card-header-title text-body">
                                                     <p className="h6 fw-bold mb-0 text-truncate">Brooklyn Simmons</p>
@@ -144,7 +144,7 @@ export default function Card5() {
                                 <div className="col-sm-6 col-lg-4">
                                     <div className="e-card shadow p-2 e-bigger h-100 justify-content-start">
                                         <div className="e-card-header align-items-center mb-2">
-                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-12.jpg)" }}></span>
+                                            <span className="e-avatar e-avatar-large e-avatar-circle" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-12.jpg)" }}></span>
                                             <div className="e-card-header-caption">
                                                 <div className="e-card-header-title text-body">
                                                     <p className="h6 fw-bold mb-0 text-truncate">Annie Amber</p>

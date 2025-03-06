@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
-import Image from "next/image";
 
 export default function Card3() {
     /* SB Code - Start */
@@ -16,7 +15,7 @@ export default function Card3() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -42,7 +41,7 @@ export default function Card3() {
                                 <div className="e-card gap-2 rounded-lg e-bigger">
                                     <div className="e-card-header">
                                         <div className="e-card-image overflow-hidden rounded-lg h-56">
-                                            <Image src="/assets/images/card/image-title-description-card-button/adventure-trails.jpg" layout="fill" objectFit="cover" alt="adventure trails" />
+                                            <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/adventure-trails.jpg" alt="adventure trails" />
                                         </div>
                                     </div>
                                     <div className="e-card-content flex-1">
@@ -56,7 +55,7 @@ export default function Card3() {
                                 <div className="e-card gap-2 rounded-lg e-bigger">
                                     <div className="e-card-header">
                                         <div className="e-card-image overflow-hidden rounded-lg h-56">
-                                            <Image src="/assets/images/card/image-title-description-card-button/historic-landmarks.jpg" layout="fill" objectFit="cover" alt="historic landmarks" />
+                                            <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/historic-landmarks.jpg" alt="historic landmarks" />
                                         </div>
                                     </div>
                                     <div className="e-card-content flex-1">
@@ -70,7 +69,7 @@ export default function Card3() {
                                 <div className="e-card gap-2 rounded-lg e-bigger">
                                     <div className="e-card-header">
                                         <div className="e-card-image overflow-hidden rounded-lg h-56">
-                                            <Image src="/assets/images/card/image-title-description-card-button/vibrant-street-markets.jpg" layout="fill" objectFit="cover" alt="vibrant street markets" />
+                                            <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/vibrant-street-markets.jpg" alt="vibrant street markets" />
                                         </div>
                                     </div>
                                     <div className="e-card-content flex-1">
@@ -94,7 +93,7 @@ export default function Card3() {
                                     <div className="e-card e-bigger rounded-3 p-2">
                                         <div className="e-card-header">
                                             <div className="e-card-image rounded-3 overflow-hidden mb-2" style={{ height: "232px" }}>
-                                                <Image src="/assets/images/card/image-title-description-card-button/adventure-trails.jpg" layout="fill" objectFit="cover" alt="adventure trails" />
+                                                <img className="object-fit-cover w-100 h-100" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/adventure-trails.jpg" alt="adventure trails" />
                                             </div>
                                         </div>
                                         <div className="e-card-stacked flex-grow-1">
@@ -112,7 +111,7 @@ export default function Card3() {
                                     <div className="e-card e-bigger rounded-3 p-2">
                                         <div className="e-card-header">
                                             <div className="e-card-image rounded-3 overflow-hidden mb-2" style={{ height: "232px" }}>
-                                                <Image src="/assets/images/card/image-title-description-card-button/historic-landmarks.jpg" layout="fill" objectFit="cover" alt="historic landmarks" />
+                                                <img className="object-fit-cover w-100 h-100" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/historic-landmarks.jpg" alt="historic landmarks" />
                                             </div>
                                         </div>
                                         <div className="e-card-stacked flex-grow-1">
@@ -130,7 +129,7 @@ export default function Card3() {
                                     <div className="e-card e-bigger rounded-3 p-2">
                                         <div className="e-card-header">
                                             <div className="e-card-image rounded-3 overflow-hidden mb-2" style={{ height: "232px" }}>
-                                                <Image src="/assets/images/card/image-title-description-card-button/vibrant-street-markets.jpg" layout="fill" objectFit="cover" alt="vibrant street markets" />
+                                                <img className="object-fit-cover w-100 h-100" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/vibrant-street-markets.jpg" alt="vibrant street markets" />
                                             </div>
                                         </div>
                                         <div className="e-card-stacked flex-grow-1">
