@@ -5,16 +5,15 @@ import { SidebarComponent, AccordionComponent, AccordionItemsDirective, Accordio
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { ToastComponent } from '@syncfusion/ej2-react-notifications';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function Sidebar2() {
     /* SB Code - Start */ 
     const [theme, setTheme] = useState('tailwind');
-    const accordion = useRef<AccordionComponent | null>(null);
     /* SB Code - End */ 
     const sidebar = useRef<SidebarComponent | null>(null);
     const toast = useRef<ToastComponent | null>(null);
+    const accordion = useRef<AccordionComponent | null>(null);
 
     const data: any[] = [
         {
@@ -43,7 +42,7 @@ export default function Sidebar2() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -71,7 +70,7 @@ export default function Sidebar2() {
                             <SidebarComponent key={"sidebar-2-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
                                 <div className="h-screen">
                                     <div className="flex items-center py-4 px-3">
-                                        <Image src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         <span className="text-lg font-bold text-gray-900 dark:text-white ml-3">Company Name</span>
                                     </div>
                                     <div className="mt-1">
@@ -107,7 +106,7 @@ export default function Sidebar2() {
                                         </AccordionItemsDirective>
                                     </AccordionComponent>
                                     <div id="toast" className="!absolute bottom-0 left-0"></div>
-                                    <ToastComponent ref={toast} target="#toast" position={{ X: 'Left', Y: 'Bottom' }} cssClass="e-toast-info" width="224" title={() => <div className="pr-2">Adaptive Tiles Meeting</div>} content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast.current?.show()}></ToastComponent>
+                                    <ToastComponent ref={toast} target="#toast" position={{ X: 'Left', Y: 'Bottom' }} cssClass="e-toast-info" width="224" title="<div className='pr-2'>Adaptive Tiles Meeting</div>" content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast.current?.show()}></ToastComponent>
                                 </div>
                             </SidebarComponent>
                         </div>
@@ -125,7 +124,7 @@ export default function Sidebar2() {
                             <SidebarComponent key={"sidebar-2-bs"} width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
                                 <div className="min-vh-100">
                                     <div className="d-flex align-items-center p-3">
-                                        <Image src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         <span className="fs-5 ms-2 fw-bold text-body lh-sm">Company Name</span>
                                     </div>
                                     <div className="mt-1">
@@ -161,7 +160,7 @@ export default function Sidebar2() {
                                         </AccordionItemsDirective>
                                     </AccordionComponent>
                                     <div id="toast" className="position-absolute bottom-0 start-0"></div>
-                                    <ToastComponent ref={toast} target="#toast" position={{ X: 'Left', Y: 'Bottom' }} cssClass="e-toast-info" width="224" title={() => <div>Adaptive Tiles Meeting</div>} content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast.current?.show()}></ToastComponent>
+                                    <ToastComponent ref={toast} target="#toast" position={{ X: 'Left', Y: 'Bottom' }} cssClass="e-toast-info" width="224" title="<div>Adaptive Tiles Meeting</div>" content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast.current?.show()}></ToastComponent>
                                 </div>
                             </SidebarComponent>
                         </div>

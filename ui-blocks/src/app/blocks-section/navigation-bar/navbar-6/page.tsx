@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { MenuComponent } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownButtonComponent } from '@syncfusion/ej2-react-splitbuttons';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function Navbar6() {
@@ -34,7 +33,7 @@ export default function Navbar6() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -64,7 +63,7 @@ export default function Navbar6() {
                                 <div className="ms-6 me-2 lg:me-6 my-2 flex items-center justify-between">
                                     <div className="flex items-center mr-6">
                                         <span className="flex items-center">
-                                            <Image className="mr-3 h-7" src="/assets/images/common/brand-logos/svg/vector.svg" width={28} height={28} alt="company logo" />
+                                            <img className="mr-3 h-7" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={28} height={28} alt="company logo" />
                                             <span className="text-lg font-semibold text-gray-900 dark:text-white">
                                                 Company Name
                                             </span>
@@ -72,7 +71,7 @@ export default function Navbar6() {
                                         <div className="flex items-center ms-5">
                                             <div className="hidden sm:flex mr-2">
                                                 <span className="e-avatar e-avatar-xsmall e-avatar-circle">
-                                                    <Image src="/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
+                                                    <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                                 </span>
                                             </div>
                                             <div>
@@ -122,13 +121,13 @@ export default function Navbar6() {
                             <div className="ps-4 pe-2 pe-lg-4 my-2 d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center me-4">
                                     <span className="d-flex align-items-center">
-                                        <Image className="me-2" src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                        <img className="me-2" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         <h5 className="fw-bold text-body fs-5 mb-0">Company Name</h5>
                                     </span>
                                     <div className="d-flex align-items-center ms-3 ps-1">
                                         <div className="d-flex align-items-center d-none d-sm-flex me-2">
                                             <span className="e-avatar e-avatar-xsmall e-avatar-circle">
-                                                <Image src="/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
+                                                <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                             </span>
                                         </div>
                                         <div>

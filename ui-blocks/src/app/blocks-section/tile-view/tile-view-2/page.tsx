@@ -6,7 +6,6 @@ import { ButtonComponent, SwitchComponent } from '@syncfusion/ej2-react-buttons'
 import { DropDownButtonComponent } from '@syncfusion/ej2-react-splitbuttons';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function TileView2() {
@@ -59,7 +58,7 @@ export default function TileView2() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -92,7 +91,7 @@ export default function TileView2() {
                                     <div className="e-appbar-spacer"></div>
                                     <ButtonComponent className="e-flat sf-icon-notification-bell-01 e-small !text-base ml-1" type="button"></ButtonComponent>
                                     <span className="e-avatar e-avatar-circle e-avatar-small shrink-0 ml-2 sm:ml-3">
-                                        <Image src="/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
                                     </span>
                                 </div>
                             </AppBarComponent>
@@ -115,7 +114,7 @@ export default function TileView2() {
                                     <ListViewComponent cssClass="e-list-template !border-0 mt-6" dataSource={productDetails} template={(data: any) => (
                                         <div className="e-card flex flex-row p-4 sm:py-5 sm:px-5">
                                             <div className="e-card-image !w-auto shrink-0">
-                                                <Image className="!w-28 h-24 sm:h-28" src={`/assets/images/tile-view/shopping-cart/${data.image}`} width={112} height={108} alt="product picture" />
+                                                <img className="!w-28 h-24 sm:h-28" src={`/react/essential-ui-kit/blocks/assets/images/tile-view/shopping-cart/${data.image}`} width={112} height={108} alt="product picture" />
                                             </div>
                                             <div className="e-card-stacked ml-3 flex sm:!flex-row flex-col w-full sm:!justify-between">
                                                 <div className="e-card-header !p-0 !flex !flex-col !justify-start">
@@ -166,7 +165,7 @@ export default function TileView2() {
                                     <div className="e-appbar-spacer"></div>
                                     <ButtonComponent className="e-icons e-flat sf-icon-notification-bell-01 fs-6" type="button"></ButtonComponent>
                                     <span className="e-avatar e-avatar-circle e-avatar-small ms-3">
-                                        <Image src="/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
                                     </span>
                                 </div>
                             </AppBarComponent>
@@ -191,7 +190,7 @@ export default function TileView2() {
                                     <ListViewComponent cssClass="border-0 mt-4 e-list-template" dataSource={productDetails} template={(data: any) => (
                                         <div className="e-card d-flex flex-row p-2 rounded-3">
                                             <div className="e-card-image w-auto ps-2">
-                                                <Image src={`/assets/images/tile-view/shopping-cart/${data.image}`} width={112} height={108} alt="product picture" />
+                                                <img src={`/react/essential-ui-kit/blocks/assets/images/tile-view/shopping-cart/${data.image}`} width={112} height={108} alt="product picture" />
                                             </div>
                                             <div className="e-card-stacked ms-2 ps-1 py-1 d-flex flex-column flex-sm-row w-100 justify-content-between">
                                                 <div className="e-card-header flex flex-column p-0 justify-content-start">

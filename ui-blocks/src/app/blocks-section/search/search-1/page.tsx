@@ -2,7 +2,6 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
-import Image from 'next/image';
 
 export default function Search1() {
     /* SB Code - Start */
@@ -91,7 +90,7 @@ export default function Search1() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
         setTimeout(() => {
@@ -136,7 +135,7 @@ export default function Search1() {
                                             <div className="flex items-center">
                                                 <div className="indent-0 shrink-0">
                                                     {data.image && (
-                                                        <Image className="rounded-xl" src={`/assets/images/search/${data.image}`} alt={`${data.title.toLowerCase()} logo`} layout="responsive" width={100} height={100} />
+                                                        <img className="rounded-xl" src={`/react/essential-ui-kit/blocks/assets/images/search/${data.image}`} alt={`${data.title.toLowerCase()} logo`} />
                                                     )}
                                                     {data.tag && (
                                                         <span className={`e-avatar indent-0 e-avatar-large ${data.tag === "Automation" ? "text-green-600 bg-green-200 dark:bg-green-800 dark:text-green-200" : data.tag === "Logging" ? "text-cyan-600 bg-cyan-100 dark:bg-cyan-800 dark:text-cyan-200" : data.tag === "Integration" ? "text-orange-600 bg-orange-100 dark:bg-orange-800 dark:text-orange-200" : ""}`}>
@@ -154,7 +153,7 @@ export default function Search1() {
                                                     <div className="flex h-full items-center relative">
                                                         {data.avatar.map((img: string, index: number) => (
                                                             <span key={index} className="absolute e-avatar e-avatar-circle overflow-hidden" style={{ width: "32px", height: "32px", right: `${index * 22}px`, }}>
-                                                                <Image src={`/assets/images/common/avatar/${img}`} className="w-100 h-100 object-cover" alt="logo" layout="responsive" width={100} height={100} />
+                                                                <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${img}`} className="w-100 h-100 object-cover" alt="logo" />
                                                             </span>
                                                         ))}
                                                     </div>
@@ -187,7 +186,7 @@ export default function Search1() {
                                             <div className="d-flex align-items-center">
                                                 <div className="flex-shrink-0">
                                                     {data.image && (
-                                                        <Image className="rounded-3" src={`/assets/images/search/${data.image}`} alt={`${data.title.toLowerCase()} logo`} layout="responsive" width={100} height={100} />
+                                                        <img className="rounded-3" src={`/react/essential-ui-kit/blocks/assets/images/search/${data.image}`} alt={`${data.title.toLowerCase()} logo`} />
                                                     )}
                                                     {data.tag && (
                                                         <span className={`e-avatar ms-0 e-avatar-large ${data.tag === 'Automation' ? 'text-success-emphasis bg-success-subtle' : data.tag === 'Logging' ? 'text-info-emphasis bg-info-subtle' : 'text-warning-emphasis bg-warning-subtle'}`}>
@@ -205,7 +204,7 @@ export default function Search1() {
                                                     <div className="d-flex position-relative align-items-center h-100">
                                                         {data.avatar.map((img: string, index: number) => (
                                                             <span key={index} className="position-absolute e-avatar e-avatar-circle overflow-hidden" style={{ width: '32px', height: '32px', right: `${index * 22}px` }}>
-                                                                <Image src={`/assets/images/common/avatar/${img}`} className="w-100 h-100 object-cover" alt="avatar" layout="responsive" width={100} height={100} />
+                                                                <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${img}`} className="w-100 h-100 object-cover" alt="avatar" />
                                                             </span>
                                                         ))}
                                                     </div>

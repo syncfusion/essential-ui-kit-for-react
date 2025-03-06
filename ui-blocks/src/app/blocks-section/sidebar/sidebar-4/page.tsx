@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from 'react';
 import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function Sidebar4() {
@@ -88,7 +87,7 @@ export default function Sidebar4() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -115,7 +114,7 @@ export default function Sidebar4() {
                                     <div className="flex justify-between items-center p-4">
                                         <div className="flex items-center">
                                             <span className="e-avatar e-avatar-circle e-avatar-small">
-                                                <Image src="/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
+                                                <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
                                             </span>
                                             <div className="ml-3">
                                                 <div className="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
@@ -175,7 +174,7 @@ export default function Sidebar4() {
                                     <div className="d-flex justify-content-between align-items-center p-3">
                                         <div className="d-flex align-items-center">
                                             <span className="e-avatar e-avatar-circle e-avatar-small">
-                                                <Image src="/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
+                                                <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
                                             </span>
                                             <div className="ms-3">
                                                 <div className="fs-6 fw-medium text-body">John Wick</div>

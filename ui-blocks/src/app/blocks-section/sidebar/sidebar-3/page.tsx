@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from 'react';
 import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function Sidebar3() {
@@ -70,7 +69,7 @@ export default function Sidebar3() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -97,7 +96,7 @@ export default function Sidebar3() {
                                     <div>
                                         <div className="flex flex-col justify-center items-center pt-6">
                                             <span className="e-avatar e-avatar-xlarge e-avatar-circle">
-                                                <Image src="/assets/images/common/avatar/avatar-2.jpg" width={56} height={56} alt="profile picture" />
+                                                <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={56} height={56} alt="profile picture" />
                                             </span>
                                             <div className="text-xl font-medium leading-normal text-gray-900 dark:text-white mt-4">John Wick</div>
                                             <p className="mb-0 text-base text-gray-900 dark:text-white mt-2">johnwick&#64;123.com</p>
@@ -134,7 +133,7 @@ export default function Sidebar3() {
                                     <div>
                                         <div className="d-flex flex-column justify-content-center align-items-center pt-4 mb-3">
                                             <span className="e-avatar e-avatar-xlarge e-avatar-circle">
-                                                <Image src="/assets/images/common/avatar/avatar-2.jpg" width={56} height={56} alt="profile picture" />
+                                                <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={56} height={56} alt="profile picture" />
                                             </span>
                                             <div className="fs-5 fw-medium text-body mt-3">John Wick</div>
                                             <p className="mb-0 fs-6 text-body-secondary mt-2">johnwick&#64;123.com</p>

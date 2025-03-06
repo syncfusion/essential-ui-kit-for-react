@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { GridComponent, ColumnsDirective, ColumnDirective } from "@syncfusion/ej2-react-grids";
 import { StepperComponent, StepsDirective, StepDirective } from "@syncfusion/ej2-react-navigations";
-import Image from "next/image";
 
 export default function ReturnBlock1() {
     /* SB Code - Start */
@@ -95,7 +94,7 @@ export default function ReturnBlock1() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -143,7 +142,7 @@ export default function ReturnBlock1() {
                                             <ColumnDirective field="product" headerText="Product" width="488" template={(data: any) => (
                                                 <div className="flex items-center">
                                                     <div className="e-avatar e-avatar-small mr-6 shrink-0">
-                                                        <Image src={"/assets/images/return-block/return-form/" + data.product.productImage + ".png"} width={32} height={32} alt={data.product.productName.toLowerCase()} />
+                                                        <img src={"/react/essential-ui-kit/blocks/assets/images/return-block/return-form/" + data.product.productImage + ".png"} width={32} height={32} alt={data.product.productName.toLowerCase()} />
                                                     </div>
                                                     <p className="text-base text-gray-900 dark:text-white line-clamp-2">{data.product.productName}</p>
                                                 </div>)}
@@ -186,7 +185,7 @@ export default function ReturnBlock1() {
                                             <ColumnDirective field="product" headerText="Product" width="438" template={(data: any) => (
                                                 <div className="d-flex align-items-center">
                                                     <div className="e-avatar e-avatar-small flex-shrink-0 rounded-1 me-4">
-                                                        <Image src={"/assets/images/return-block/return-form/" + data.product.productImage + ".png"} width={32} height={32} alt={data.product.productName.toLowerCase()} />
+                                                        <img src={"/react/essential-ui-kit/blocks/assets/images/return-block/return-form/" + data.product.productImage + ".png"} width={32} height={32} alt={data.product.productName.toLowerCase()} />
                                                     </div>
                                                     <p className="fs-6 mb-0 lh-base text-body">{data.product.productName}</p>
                                                 </div>)}

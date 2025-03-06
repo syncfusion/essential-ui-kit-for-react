@@ -1,0 +1,8 @@
+#breadcrumb :global(.e-breadcrumb .e-breadcrumb-item:first-child .e-breadcrumb-text) {
+    padding-left: 0 !important;
+}
+
+#tab :global(.e-tab-wrap) {
+    display: flex;
+    align-items: center;
+}

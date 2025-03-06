@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
-import Image from "next/image";
 
 export default function Footer3() {
     /* SB Code - Start */
@@ -17,7 +16,7 @@ export default function Footer3() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -51,7 +50,7 @@ export default function Footer3() {
                             </div>
                             <div className="flex sm:flex-row flex-col gap-3 justify-between items-center pt-4 sm:py-7 border-t border-gray-200 dark:border-gray-600">
                                 <div className="flex items-center gap-2.5">
-                                    <Image src="/assets/images/common/brand-logos/png/shopnezt.png" width={28} height={28} alt="company logo" />
+                                    <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/shopnezt.png" width={28} height={28} alt="company logo" />
                                     <p className="font-semibold text-lg text-gray-900 dark:text-gray-50">ShopNezt</p>
                                 </div>
                                 <p className="text-gray-500 dark:text-gray-400">© 2024 ShopNezt. All rights reserved.</p>
@@ -75,7 +74,7 @@ export default function Footer3() {
                             </div>
                             <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 border-top border-light-subtle pt-3 mt-2 mt-sm-0 pb-sm-3">
                                 <div className="d-flex align-items-center gap-2 mb-1 mb-sm-0">
-                                    <Image src="/assets/images/common/brand-logos/png/shopnezt.png" width={30} height={30} alt="company logo" />
+                                    <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/shopnezt.png" width={30} height={30} alt="company logo" />
                                     <h5 className="mb-0 text-body">ShopNezt</h5>
                                 </div>
                                 <p className="mb-0 text-body-secondary">© 2024 ShopNezt. All rights reserved.</p>

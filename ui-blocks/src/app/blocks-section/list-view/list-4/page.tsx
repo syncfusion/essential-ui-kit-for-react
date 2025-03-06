@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
-import Image from 'next/image';
 
 export default function List4() {
     /* SB Code - Start */
@@ -82,7 +81,7 @@ export default function List4() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -113,7 +112,7 @@ export default function List4() {
                                 <ListViewComponent className="!border-0" cssClass="e-list-template" dataSource={data} template={(data: any) => (
                                     <div className="e-list-wrapper !px-1 sm:!px-3 border-b border-gray-200 dark:border-gray-600 !py-4 flex flex-col">
                                         <span className="flex">
-                                            <Image className="rounded-lg" src={`/assets/images/listview/carts/${data.pic}`} width={80} height={80} alt="product image" />
+                                            <img className="rounded-lg" src={`/react/essential-ui-kit/blocks/assets/images/listview/carts/${data.pic}`} width={80} height={80} alt="product image" />
                                             <span className="ml-4 flex flex-col">
                                                 <span className="e-list-item-header text-sm font-medium text-gray-900 dark:text-white !text-wrap !line-clamp-1 w-full truncate">{data.header}</span>
                                                 <p className="flex space-x-3 mt-1">
@@ -165,7 +164,7 @@ export default function List4() {
                                 <ListViewComponent className="border-0" cssClass="e-list-template" dataSource={data} template={(data: any)=> (
                                     <div className="e-list-wrapper px-1 px-sm-3 py-3 d-flex flex-column">
                                         <span className="d-flex">
-                                            <Image className="rounded" src={`/assets/images/listview/carts/${data.pic}`} width={80} height={80} alt="product image" />
+                                            <img className="rounded" src={`/react/essential-ui-kit/blocks/assets/images/listview/carts/${data.pic}`} width={80} height={80} alt="product image" />
                                             <span className="ms-2 ps-1 d-flex flex-column">
                                                 <p className="e-list-item-header fw-medium mb-0 w-100 text-wrap overflow-hidden" style={{ display: "-webkit-box", WebkitLineClamp: 1, WebkitBoxOrient: "vertical" }}>{data.header}</p>
                                                 <p className="mt-1 mb-0">

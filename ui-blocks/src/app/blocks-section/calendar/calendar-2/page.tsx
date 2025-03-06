@@ -9,11 +9,11 @@ import { SliderComponent } from '@syncfusion/ej2-react-inputs';
 export default function Calendar2() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
-    const accordion1 = useRef<AccordionComponent | null>(null);
-    const accordion2 = useRef<AccordionComponent | null>(null);
     /* SB Code - End */
     const [width, setWidth] = useState("310px");
     const sidebar = useRef<SidebarComponent | null>(null);
+    const accordion1 = useRef<AccordionComponent | null>(null);
+    const accordion2 = useRef<AccordionComponent | null>(null);
     const tooltipInfo = { isVisible: true, format: 'c0' };
 
     const handleResize = () => {
@@ -29,7 +29,7 @@ export default function Calendar2() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     }

@@ -1,0 +1,20 @@
+#dialogs :global(.e-dlg-content) {
+    border: inherit;
+    border-inline: none;
+    border-radius: 0;
+}
+
+#dialogs :global(.e-accordion .e-acrdn-item) {
+    border: inherit;
+}
+
+#dialogs :global(.e-accordion .e-acrdn-item .e-acrdn-header .e-toggle-icon) {
+    margin-top: 33px;
+    transform: translate(25%, -50%)
+}
+
+#dialogs :global(.e-stepper .e-step-container .e-step),
+#dialogs :global(.e-stepper .e-step-container .e-indicator) {
+    min-width: 10px;
+    min-height: 10px;
+}

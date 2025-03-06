@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page } from "@syncfusion/ej2-react-grids";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
-import Image from "next/image";
 
 export default function Grid7() {
     /* SB Code - Start */
@@ -252,7 +251,7 @@ export default function Grid7() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -287,14 +286,14 @@ export default function Grid7() {
                                 <ColumnsDirective>
                                     <ColumnDirective field="transactionId" headerText="Transaction ID" width="116"
                                         template={(data: any) => (
-                                            <a className="text-primary-700 dark:text-primary-500 font-medium" href="javascript:void(0);">{data.transactionId}</a>
+                                            <a className="text-primary-700 dark:text-primary-500 font-medium" href="#">{data.transactionId}</a>
                                         )}
                                     />
                                     <ColumnDirective field="customerDetails" headerText="Customer Name" width="320"
                                         template={(data: any) => (
                                             <div className="flex gap-3 items-center py-1.5">
                                                 <div className="w-8 h-8">
-                                                    <span className={`e-avatar e-avatar-circle e-avatar-small ${ data.customerDetails.colorTheme === "Red" ? "!bg-red-100 !text-red-700 dark:!text-red-400" : data.customerDetails.colorTheme === "Green" ? "!bg-green-100 !text-green-700 dark:!text-green-500" : data.customerDetails.colorTheme === "Blue" ? "!bg-cyan-100 !text-cyan-700 dark:!text-cyan-600" : data.customerDetails.colorTheme === "Orange" ? "!bg-orange-100 !text-orange-700 dark:!text-orange-500" : data.customerDetails.colorTheme === "Purple" ? "!bg-indigo-100 !text-indigo-700 dark:!bg-cyan-800 dark:!text-cyan-400" : ""}`}>{data.customerDetails.initial}</span>
+                                                    <span className={`e-avatar e-avatar-circle e-avatar-small ${ data.customerDetails.colorTheme === "Red" ? "!bg-red-100 !text-red-700" : data.customerDetails.colorTheme === "Green" ? "!bg-green-100 !text-green-700" : data.customerDetails.colorTheme === "Blue" ? "!bg-cyan-100 !text-cyan-700" : data.customerDetails.colorTheme === "Orange" ? "!bg-orange-100 !text-orange-700" : data.customerDetails.colorTheme === "Purple" ? "!bg-indigo-100 !text-indigo-700" : ""}`}>{data.customerDetails.initial}</span>
                                                 </div>
                                                 <div className="flex flex-col text-sm">
                                                     <p className="text-gray-900 dark:text-gray-50">{data.customerDetails.name}</p>
@@ -308,7 +307,7 @@ export default function Grid7() {
                                         template={(data: any) => (
                                             <div className="flex items-center gap-3">
                                                 <div className="w-10 h-10">
-                                                    <Image className="rounded" src={`/assets/images/advance-grid/sales-transactions-table/${data.product.image}`} width={40} height={40} alt="product image" />
+                                                    <img className="rounded" src={`/react/essential-ui-kit/blocks/assets/images/advance-grid/sales-transactions-table/${data.product.image}`} width={40} height={40} alt="product image" />
                                                 </div>
                                                 <p>{data.product.name}</p>
                                             </div>
@@ -321,7 +320,7 @@ export default function Grid7() {
                                         template={(data: any) => (
                                             <div className="flex items-center gap-3">
                                                 <div className="w-8 h-8">
-                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/assets/images/common/avatar/${data.salesRep.avatar}')` }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.salesRep.avatar}')` }}></span>
                                                 </div>
                                                 <p>{data.salesRep.name}</p>
                                             </div>
@@ -360,7 +359,7 @@ export default function Grid7() {
                                 <ColumnsDirective>
                                     <ColumnDirective field="transactionId" headerText="Transaction ID" width="126"
                                         template={(data: any) => (
-                                            <a className="text-primary fw-medium text-decoration-none" href="javascript:void(0);">{data.transactionId}</a>
+                                            <a className="text-primary fw-medium text-decoration-none" href="#">{data.transactionId}</a>
                                         )}
                                     />
                                     <ColumnDirective field="customerDetails" headerText="Customer Name" textAlign="Left" width="270"
@@ -381,7 +380,7 @@ export default function Grid7() {
                                         template={(data: any) => (
                                             <div className="d-flex align-items-center gap-3">
                                                 <div style={{ width: "40px", height: "40px" }}>
-                                                    <Image className="rounded" src={`/assets/images/advance-grid/sales-transactions-table/${data.product.image}`} width={40} height={40} alt="product image" />
+                                                    <img className="rounded" src={`/react/essential-ui-kit/blocks/assets/images/advance-grid/sales-transactions-table/${data.product.image}`} width={40} height={40} alt="product image" />
                                                 </div>
                                                 <p className="mb-0">{data.product.name}</p>
                                             </div>
@@ -394,7 +393,7 @@ export default function Grid7() {
                                         template={(data: any) => (
                                             <div className="d-flex align-items-center gap-3">
                                                 <div style={{ width: "32px", height: "32px" }}>
-                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/assets/images/common/avatar/${data.salesRep.avatar}')` }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.salesRep.avatar}')` }}></span>
                                                 </div>
                                                 <p className="mb-0">{data.salesRep.name}</p>
                                             </div>

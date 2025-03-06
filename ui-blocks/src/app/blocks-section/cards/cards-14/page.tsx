@@ -14,7 +14,7 @@ export default function Card14() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -43,7 +43,7 @@ export default function Card14() {
                                             <h1 className="text-xl font-semibold text-gray-950 dark:text-gray-50 truncate">Enchanting Forests</h1>
                                             <p className="text-base mt-3 mb-5">Wander through lush, green forests where towering trees and vibrant wildlife await. Discover serene trails, picturesque streams, and the calming sounds of nature.</p>
                                         </div>
-                                        <a href="javascript:void(0);" className="text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2.5 w-max py-1 text-lg">
+                                        <a href="#" className="text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2.5 w-max py-1 text-lg">
                                             View More
                                             <span className="e-icons e-chevron-right-double text-xl"></span>
                                         </a>
@@ -55,7 +55,7 @@ export default function Card14() {
                                             <h1 className="text-xl font-semibold text-gray-950 dark:text-gray-50 truncate">Cultural Capitals</h1>
                                             <p className="text-base mt-3 mb-5">Dive into the rich cultural tapestry of world-renowned cities. Explore museums, historical sites, and vibrant neighborhoods that offer a deep dive into art and history.</p>
                                         </div>
-                                        <a href="javascript:void(0);" className="text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2.5 w-max py-1 text-lg">
+                                        <a href="#" className="text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2.5 w-max py-1 text-lg">
                                             View More
                                             <span className="e-icons e-chevron-right-double text-xl"></span>
                                         </a>
@@ -67,7 +67,7 @@ export default function Card14() {
                                             <h1 className="text-xl font-semibold text-gray-950 dark:text-gray-50 truncate">Sunny Islands</h1>
                                             <p className="text-base mt-3 mb-5">Escape to idyllic islands where turquoise waters and sandy beaches create a tropical paradise. Enjoy water sports, beach lounging, and local cuisine.</p>
                                         </div>
-                                        <a href="javascript:void(0);" className="text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2.5 w-max py-1 text-lg">
+                                        <a href="#" className="text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2.5 w-max py-1 text-lg">
                                             View More
                                             <span className="e-icons e-chevron-right-double text-xl"></span>
                                         </a>
@@ -89,7 +89,7 @@ export default function Card14() {
                                         </div>
                                         <div className="e-card-content pt-2">
                                             <p className="fs-6 mb-4">Wander through lush, green forests where towering trees and vibrant wildlife await. Discover serene trails, picturesque streams, and the calming sounds of nature.</p>
-                                            <a href="javascript:void(0);" className="text-decoration-none d-flex align-items-center fs-6 gap-2 fw-medium">
+                                            <a href="#" className="text-decoration-none d-flex align-items-center fs-6 gap-2 fw-medium">
                                                 Learn More
                                                 <span className="e-icons e-chevron-right-double fs-6"></span>
                                             </a>
@@ -103,7 +103,7 @@ export default function Card14() {
                                         </div>
                                         <div className="e-card-content pt-2">
                                             <p className="fs-6 mb-4">Dive into the rich cultural tapestry of world-renowned cities. Explore museums, historical sites, and vibrant neighborhoods that offer a deep dive into art and history.</p>
-                                            <a href="javascript:void(0);" className="text-decoration-none d-flex align-items-center fs-6 gap-2 fw-medium">
+                                            <a href="#" className="text-decoration-none d-flex align-items-center fs-6 gap-2 fw-medium">
                                                 Learn More
                                                 <span className="e-icons e-chevron-right-double fs-6"></span>
                                             </a>
@@ -117,7 +117,7 @@ export default function Card14() {
                                         </div>
                                         <div className="e-card-content pt-2">
                                             <p className="fs-6 mb-4">Escape to idyllic islands where turquoise waters and sandy beaches create a tropical paradise. Enjoy water sports, beach lounging, and local cuisine.</p>
-                                            <a href="javascript:void(0);" className="text-decoration-none d-flex align-items-center fs-6 gap-2 fw-medium">
+                                            <a href="#" className="text-decoration-none d-flex align-items-center fs-6 gap-2 fw-medium">
                                                 Learn More
                                                 <span className="e-icons e-chevron-right-double fs-6"></span>
                                             </a>

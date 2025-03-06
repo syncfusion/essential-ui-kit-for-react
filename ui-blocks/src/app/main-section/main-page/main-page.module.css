@@ -11,7 +11,7 @@
 .main-container-header {
     padding: 32px 35px;
     justify-content: space-between;
-    background: url("/assets/images/sample-browser/main-banner.png") no-repeat 45% 100% / cover;
+    background: url("/react/essential-ui-kit/blocks/assets/images/sample-browser/main-banner.png") no-repeat 45% 100% / cover;
 }
 
 .main-title {
@@ -174,10 +174,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    display:flex;
+    align-items: center;
 }
 
 .component-count {
-    background: #f9fafb;
+    background: #F3F4F6;
     font-size: 10px;
     display: flex;
     align-items: center;
@@ -191,13 +193,19 @@
 
 .component-list-text span,
 .block-footer .block-title span {
-    background: #dcfce7;
-    color: #15803d;
+    background: #15803D;
+    color: white;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 12px;
     border-radius: 12px;
     padding: 2px;
     margin-left: 8px;
+    width: 38px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	box-sizing: border-box;
 }
 
 .blocks-list {
@@ -247,12 +255,23 @@
     overflow: hidden;
     text-overflow: ellipsis;
     width: 60%;
+    display: flex;
+    align-items: center;
 }
 
 .block-count {
     color: #6b7280;
     text-align: end;
     width: 40%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.block-count-radius {    
+    background: #F3F4F6;
+    border-radius: 12px;
+    padding: 2px 8px;
+    flex-shrink: 0;
 }
 
 @media (min-width: 1440px) {

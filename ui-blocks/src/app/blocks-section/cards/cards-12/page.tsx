@@ -15,7 +15,7 @@ export default function Card12() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -49,9 +49,9 @@ export default function Card12() {
                                     <div className="e-card-actions leading-9">
                                         <div className="flex justify-between h-10">
                                             <div className="relative">
-                                                <span className="e-avatar e-avatar-circle absolute" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-5.jpg)" }}></span>
-                                                <span className="e-avatar e-avatar-circle absolute left-7" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-13.jpg)" }}></span>
-                                                <span className="e-avatar e-avatar-circle bg-indigo-600 text-white absolute left-14">2+</span>
+                                                <span className="e-avatar e-avatar-circle absolute" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-5.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle absolute left-7" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-13.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle bg-primary-600 text-white absolute left-14">2+</span>
                                             </div>
                                             <RatingComponent cssClass="e-small" precision="Exact" value={3.5}></RatingComponent>
                                         </div>
@@ -68,9 +68,9 @@ export default function Card12() {
                                     <div className="e-card-actions leading-9">
                                         <div className="flex justify-between h-10">
                                             <div className="relative">
-                                                <span className="e-avatar e-avatar-circle absolute" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-5.jpg)" }}></span>
-                                                <span className="e-avatar e-avatar-circle absolute left-7" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-13.jpg)" }}></span>
-                                                <span className="e-avatar e-avatar-circle bg-indigo-600 text-white absolute left-14">2+</span>
+                                                <span className="e-avatar e-avatar-circle absolute" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-5.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle absolute left-7" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-13.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle bg-primary-600 text-white absolute left-14">2+</span>
                                             </div>
                                             <RatingComponent cssClass="e-small" precision="Exact" value={3.5}></RatingComponent>
                                         </div>
@@ -87,9 +87,9 @@ export default function Card12() {
                                     <div className="e-card-actions leading-9">
                                         <div className="flex justify-between h-10">
                                             <div className="relative">
-                                                <span className="e-avatar e-avatar-circle absolute" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-5.jpg)" }}></span>
-                                                <span className="e-avatar e-avatar-circle absolute left-7" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-13.jpg)" }}></span>
-                                                <span className="e-avatar e-avatar-circle bg-indigo-600 text-white absolute left-14">2+</span>
+                                                <span className="e-avatar e-avatar-circle absolute" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-5.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle absolute left-7" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-13.jpg)" }}></span>
+                                                <span className="e-avatar e-avatar-circle bg-primary-600 text-white absolute left-14">2+</span>
                                             </div>
                                             <RatingComponent cssClass="e-small" precision="Exact" value={3.5}></RatingComponent>
                                         </div>
@@ -116,8 +116,8 @@ export default function Card12() {
                                         <div className="e-card-actions">
                                             <div className="d-flex w-100 align-items-center justify-content-between flex-row">
                                                 <div className="position-relative px-5 py-4">
-                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute start-0 top-0" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-5.jpg)" }}></span>
-                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute ms-4 start-0 top-0" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-13.jpg)" }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute start-0 top-0" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-5.jpg)" }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute ms-4 start-0 top-0" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-13.jpg)" }}></span>
                                                     <span className="e-avatar e-avatar-circle e-avatar-large position-absolute ms-5 start-0 top-0 bg-primary text-white">2+</span>
                                                 </div>
                                                 <RatingComponent cssClass="e-small align-self-start" precision="Exact" value={3.5}></RatingComponent>
@@ -137,8 +137,8 @@ export default function Card12() {
                                         <div className="e-card-actions">
                                             <div className="d-flex w-100 align-items-center justify-content-between">
                                                 <div className="position-relative px-5 py-4">
-                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute start-0 top-0" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-5.jpg)" }}></span>
-                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute ms-4 start-0 top-0" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-13.jpg)" }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute start-0 top-0" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-5.jpg)" }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute ms-4 start-0 top-0" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-13.jpg)" }}></span>
                                                     <span className="e-avatar e-avatar-circle e-avatar-large position-absolute ms-5 start-0 top-0 bg-primary text-white">2+</span>
                                                 </div>
                                                 <RatingComponent cssClass="e-small align-self-start" precision="Exact" value={3.5}></RatingComponent>
@@ -158,8 +158,8 @@ export default function Card12() {
                                         <div className="e-card-actions">
                                             <div className="d-flex w-100 align-items-center justify-content-between">
                                                 <div className="position-relative px-5 py-4">
-                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute start-0 top-0" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-5.jpg)" }}></span>
-                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute ms-4 start-0 top-0" style={{ backgroundImage: "url(/assets/images/common/avatar/avatar-13.jpg)" }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute start-0 top-0" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-5.jpg)" }}></span>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-large position-absolute ms-4 start-0 top-0" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-13.jpg)" }}></span>
                                                     <span className="e-avatar e-avatar-circle e-avatar-large position-absolute ms-5 start-0 top-0 bg-primary text-white">2+</span>
                                                 </div>
                                                 <RatingComponent cssClass="e-small align-self-start" precision="Exact" value={3.5}></RatingComponent>

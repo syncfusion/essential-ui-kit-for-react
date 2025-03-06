@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 
 export default function SignOut3() {
     /* SB Code - Start */
@@ -15,7 +14,7 @@ export default function SignOut3() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -37,7 +36,7 @@ export default function SignOut3() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="flex flex-col lg:flex-row mx-auto p-0" style={{ minHeight: '580px' }}>
-                            <div className="w-full lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style={{ backgroundImage: 'url("/assets/images/authentication/feature-list/feature-list.png")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                            <div className="w-full lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style={{ backgroundImage: 'url("/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                                 <div className="flex flex-wrap mx-0 w-full sm:p-6 xl:p-0 md:p-8 lg:px-6">
                                     <div className="hidden xl:block xl:w-1/6"></div>
                                     <div className="w-full xl:w-2/3">
@@ -72,7 +71,7 @@ export default function SignOut3() {
                                 <div className="bg-gray-50 dark:bg-gray-950">
                                     <div className="py-12">
                                         <div className="flex items-center justify-center">
-                                            <Image className="mr-2" src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                            <img className="mr-2" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                             <h2 className="text-center text-xl font-semibold text-gray-900 dark:text-white">Company Name</h2>
                                         </div>
                                         <div className="flex items-center justify-center pt-20">
@@ -83,7 +82,7 @@ export default function SignOut3() {
                                                 </div>
                                                 <span className="flex items-center justify-center gap-2 mt-7">
                                                     <p className="text-center text-base text-gray-900 dark:text-white">Go to</p>
-                                                    <a href="javascript:void(0);" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">Sign in</a>
+                                                    <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0">Sign in</a>
                                                 </span>
                                             </div>
                                         </div>
@@ -96,7 +95,7 @@ export default function SignOut3() {
             case 'bootstrap5':
                 return (
                     <section className="container-fluid d-md-flex d-block flex-wrap mx-auto p-0" style={{ minHeight: '580px' }}>
-                        <div className="col-12 col-lg-7 d-flex align-items-center bg-success p-4 p-lg-4" style={{ backgroundImage: "url('/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                        <div className="col-12 col-lg-7 d-flex align-items-center bg-success p-4 p-lg-4" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                             <div className="row mx-0 w-100 py-5">
                                 <div className="col-xl-2 d-lg-block"></div>
                                 <div className="col-xl-8">
@@ -131,7 +130,7 @@ export default function SignOut3() {
                             <div className="d-flex justify-content-center bg-body">
                                 <div className="max-w-md bg-body rounded-lg p-4 py-5">
                                     <div className="d-flex justify-content-center align-items-center mb-5">
-                                        <Image className="me-2" src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                        <img className="me-2" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         <h2 className="text-center text-body fs-5 fw-bold mb-0">Company Name</h2>
                                     </div>
                                     <div className="d-flex flex-column justify-content-center align-items-center pt-5">
@@ -139,7 +138,7 @@ export default function SignOut3() {
                                         <p className="text-center text-light-emphasis m-0">Redirecting in 5 seconds</p>
                                         <div className="d-flex align-items-center justify-content-center gap-1 mt-4">
                                             <p className="text-body mb-0">Go to</p>
-                                            <a href="javascript:void(0);" className="text-primary fs-6 p-0 text-decoration-none fw-medium">Sign in</a>
+                                            <a href="#" className="text-primary fs-6 p-0 text-decoration-none fw-medium">Sign in</a>
                                         </div>
                                     </div>
                                 </div>

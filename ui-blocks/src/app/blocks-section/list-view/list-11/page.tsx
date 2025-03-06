@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { BreadcrumbComponent, BreadcrumbItemsDirective, BreadcrumbItemDirective, BreadcrumbOverflowMode } from '@syncfusion/ej2-react-navigations';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function List11() {
@@ -63,7 +62,7 @@ export default function List11() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -96,7 +95,7 @@ export default function List11() {
                                         <div className="flex justify-between">
                                             <div className="flex items-center">
                                                 <span className="shrink-0">
-                                                    <Image src={`/assets/images/listview/my-files/${data.image}`} width={40} height={40} alt="document image" />
+                                                    <img src={`/react/essential-ui-kit/blocks/assets/images/listview/my-files/${data.image}`} width={40} height={40} alt="document image" />
                                                 </span>
                                                 <span>
                                                     <div className="flex mb-1">
@@ -131,7 +130,7 @@ export default function List11() {
                                         <div className="d-flex justify-content-between">
                                             <div className="d-flex align-items-center">
                                                 <span className="flex-shrink-0">
-                                                    <Image src={`/assets/images/listview/my-files/${data.image}`} width={40} height={40} alt="document image" />
+                                                    <img src={`/react/essential-ui-kit/blocks/assets/images/listview/my-files/${data.image}`} width={40} height={40} alt="document image" />
                                                 </span>
                                                 <span>
                                                     <div className="d-flex">

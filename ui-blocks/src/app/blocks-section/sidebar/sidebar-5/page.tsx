@@ -5,7 +5,6 @@ import { SidebarComponent, AccordionComponent, AccordionItemsDirective, Accordio
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { ToastComponent } from '@syncfusion/ej2-react-notifications';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function Sidebar5() {
@@ -43,7 +42,7 @@ export default function Sidebar5() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -68,14 +67,14 @@ export default function Sidebar5() {
                             <SidebarComponent key={"sidebar-5-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
                                 <div className="h-screen">
                                     <div className="flex items-center py-4 px-3">
-                                        <Image src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         <span className="text-lg font-bold text-gray-900 dark:text-white ml-3">Company Name</span>
                                     </div>
                                     <div className="mt-1">
                                         <ListViewComponent className="border-0" dataSource={data} template={(data: any) => (
                                             <div className="e-list-wrapper flex items-center justify-between pr-2">
                                                 <div className="text-base leading-6 flex items-center">
-                                                    <span className={`e-icons ${data.fontIcon}`}></span>
+                                                    <span className={`e-icons text-base ${data.fontIcon}`}></span>
                                                     <span className="font-normal pl-4">{data.field}</span>
                                                 </div>
                                                 {data.field === 'Notifications' && (
@@ -93,8 +92,8 @@ export default function Sidebar5() {
                                         </AccordionItemsDirective>
                                     </AccordionComponent>
                                     <div id="toastmsg" className="!absolute" style={{ bottom: '25%' }}></div>
-                                    <ToastComponent ref={toast1} target="#toastmsg" position={{ X: 'Left', Y: 'Bottom' }} cssClass="e-toast-info" width="224" title={() => <div className="pr-2">Adaptive Tiles Meeting</div>} content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast1.current?.show()}></ToastComponent>
-                                    <ToastComponent ref={toast2} target="#toastmsg" position={{ X: 'Left', Y: 'Top' }} cssClass="e-toast-warning" width="224" title={() => <div className="pr-2">Adaptive Tiles Meeting</div>} content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast2.current?.show()}></ToastComponent>
+                                    <ToastComponent ref={toast1} target="#toastmsg" position={{ X: 'Left', Y: 'Bottom' }} cssClass="e-toast-info" width="224" title="<div className='pr-2'>Adaptive Tiles Meeting</div>" content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast1.current?.show()}></ToastComponent>
+                                    <ToastComponent ref={toast2} target="#toastmsg" position={{ X: 'Left', Y: 'Top' }} cssClass="e-toast-warning" width="224" title="<div className='pr-2'>Adaptive Tiles Meeting</div>" content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast2.current?.show()}></ToastComponent>
                                 </div>
                             </SidebarComponent>
                         </div>
@@ -112,13 +111,13 @@ export default function Sidebar5() {
                             <SidebarComponent key={"sidebar-5-bs"} width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
                                 <div className="vh-100">
                                     <div className="d-flex align-items-center p-3">
-                                        <Image src="/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         <span className="fs-5 ms-2 fw-bold text-body lh-sm">Company Name</span>
                                     </div>
                                     <ListViewComponent className="border-0 e-bigger" dataSource={data} template={(data: any) => (
                                         <div className="e-list-wrapper px-1 d-flex justify-content-between align-items-center">
                                             <div className="fs-6 lh-base">
-                                                <span className={`e-icons ${data.fontIcon}`}></span>
+                                                <span className={`e-icons fs-6 ${data.fontIcon}`}></span>
                                                 <span className="fw-normal ps-2 ms-1">{data.field}</span>
                                             </div>
                                             {data.field === 'Notifications' && (
@@ -135,8 +134,8 @@ export default function Sidebar5() {
                                         </AccordionItemsDirective>
                                     </AccordionComponent>
                                     <div id="toastmsg" className="position-absolute" style={{ bottom: '25%' }}></div>
-                                    <ToastComponent ref={toast1} target="#toastmsg" position={{ X: 'Left', Y: 'Bottom' }} cssClass="e-toast-info" width="224" title={() => <div>Adaptive Tiles Meeting</div>} content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast1.current?.show()}></ToastComponent>
-                                    <ToastComponent ref={toast2} target="#toastmsg" position={{ X: 'Left', Y: 'Top' }} cssClass="e-toast-warning" width="224" title={() => <div>Adaptive Tiles Meeting</div>} content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast2.current?.show()}></ToastComponent>
+                                    <ToastComponent ref={toast1} target="#toastmsg" position={{ X: 'Left', Y: 'Bottom' }} cssClass="e-toast-info" width="224" title="<div>Adaptive Tiles Meeting</div>" content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast1.current?.show()}></ToastComponent>
+                                    <ToastComponent ref={toast2} target="#toastmsg" position={{ X: 'Left', Y: 'Top' }} cssClass="e-toast-warning" width="224" title="<div>Adaptive Tiles Meeting</div>" content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast2.current?.show()}></ToastComponent>
                                 </div>
                             </SidebarComponent>
                         </div>

@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from 'react';
 import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function Sidebar12() {
@@ -67,7 +66,7 @@ export default function Sidebar12() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -99,7 +98,7 @@ export default function Sidebar12() {
                                         <div className="e-list-wrapper flex items-center justify-between">
                                             <div className="flex items-center">
                                                 <span className="e-avatar e-avatar-xsmall e-avatar-circle">
-                                                    <Image src={`/assets/images/side-panel/crypto-sidebar/${data.image}`} width={24} height={24} alt="profile picture" />
+                                                    <img src={`/react/essential-ui-kit/blocks/assets/images/side-panel/crypto-sidebar/${data.image}`} width={24} height={24} alt="profile picture" />
                                                 </span>
                                                 <span className="text-base ml-2 text-gray-700 dark:text-gray-300">{data.name}</span>
                                                 <span className="ml-1.5 text-xs text-gray-500 dark:text-gray-400" style={{ lineHeight: '18px' }}>BTC</span>
@@ -137,7 +136,7 @@ export default function Sidebar12() {
                                         <div className="e-list-wrapper d-flex justify-content-between align-items-center">
                                             <div className="d-flex align-items-center">
                                                 <span className="e-avatar e-avatar-xsmall e-avatar-circle">
-                                                    <Image src={`/assets/images/side-panel/crypto-sidebar/${data.image}`} width={24} height={24} alt="profile picture" />
+                                                    <img src={`/react/essential-ui-kit/blocks/assets/images/side-panel/crypto-sidebar/${data.image}`} width={24} height={24} alt="profile picture" />
                                                 </span>
                                                 <span className="text-body fs-6 ms-2">{data.name}</span>
                                                 <span className="ms-1 text-body-secondary !small" style={{ lineHeight: '18px' }}>BTC</span>

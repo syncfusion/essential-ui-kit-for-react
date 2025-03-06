@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import Image from 'next/image';
 
 export default function List10() {
     /* SB Code - Start */
@@ -65,7 +64,7 @@ export default function List10() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -98,7 +97,7 @@ export default function List10() {
                                         <div className="flex justify-between">
                                             <div className="flex w-full">
                                                 <span className="shrink-0">
-                                                    <Image className="rounded-md" src={`/assets/images/listview/task-management/${data.logo}`} width={48} height={48} alt="brand logo" />
+                                                    <img className="rounded-md" src={`/react/essential-ui-kit/blocks/assets/images/listview/task-management/${data.logo}`} width={48} height={48} alt="brand logo" />
                                                 </span>
                                                 <span className="ml-4 w-11/12">
                                                     <div className="flex justify-between">
@@ -111,7 +110,7 @@ export default function List10() {
                                                             </span>
                                                         </div>
                                                         <span className="e-avatar e-avatar-circle shrink-0 ml-4">
-                                                            <Image src={`/assets/images/common/avatar/${data.image}`} width={40} height={40} alt="brand logo" />
+                                                            <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.image}`} width={40} height={40} alt="brand logo" />
                                                         </span>
                                                     </div>
                                                 </span>
@@ -132,7 +131,7 @@ export default function List10() {
                                     <div className="e-list-wrapper e-list-multi-line py-3 px-2 px-sm-3">
                                         <div className="d-flex justify-content-between">
                                             <span className="flex-shrink-0">
-                                                <Image className="rounded-2" src={`/assets/images/listview/task-management/${data.logo}`} width={48} height={48} alt="brand logo" />
+                                                <img className="rounded-2" src={`/react/essential-ui-kit/blocks/assets/images/listview/task-management/${data.logo}`} width={48} height={48} alt="brand logo" />
                                             </span>
                                             <div className="flex-grow-1">
                                                 <div className="d-flex justify-content-between">
@@ -145,7 +144,7 @@ export default function List10() {
                                                         </span>
                                                     </div>
                                                     <span className="e-avatar e-avatar-circle flex-shrink-0">
-                                                        <Image src={`/assets/images/common/avatar/${data.image}`} width={40} height={40} alt="profile" />
+                                                        <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.image}`} width={40} height={40} alt="profile" />
                                                     </span>
                                                 </div>
                                             </div>

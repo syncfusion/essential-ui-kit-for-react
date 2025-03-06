@@ -5,6 +5,7 @@ import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { TextBoxComponent, UploaderComponent } from '@syncfusion/ej2-react-inputs';
 import { RichTextEditorComponent, Inject, HtmlEditor, Toolbar, ToolbarType, Link, Image, Table } from '@syncfusion/ej2-react-richtexteditor';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
+import styles from './page.module.css';
 
 export default function Email1() {
     /* SB Code - Start */
@@ -25,7 +26,7 @@ export default function Email1() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -40,6 +41,18 @@ export default function Email1() {
         };
         /* SB Code - End */
     }, []);
+
+    /* SB Code - Start */
+    useEffect(() => {
+        const colorPalettes: NodeListOf<Element> = document.querySelectorAll(".e-container.e-color-palette");
+        for (let i = 0; i < colorPalettes.length; i++) {
+            const elem = colorPalettes[i] as HTMLElement;
+            if (elem.style.width) {
+                elem.style.removeProperty("width");
+            }
+        }
+    }, [theme]); 
+    /* SB Code - End */ 
     
     const getContent = () => {
         switch (theme) {
@@ -57,8 +70,8 @@ export default function Email1() {
                                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-3">To:</label>
                                         <MultiSelectComponent cssClass='e-bigger w-full pl-1' dataSource={[{ text: 'Thomas' }, { text: 'Henry' }]} fields={{ text: "text" }} value={["Thomas"]} placeholder="Select recipients" mode="Box"></MultiSelectComponent>
                                         <div className="absolute right-12" style={{ bottom:'8px' }}>
-                                            <a href="javascript:void(0);" className="mr-4 text-sm font-medium text-gray-700 dark:text-white">Cc</a>
-                                            <a href="javascript:void(0);" className="text-sm font-medium text-gray-700 dark:text-white">Bcc</a>
+                                            <a href="#" className="mr-4 text-sm font-medium text-gray-700 dark:text-white">Cc</a>
+                                            <a href="#" className="text-sm font-medium text-gray-700 dark:text-white">Bcc</a>
                                         </div>
                                     </div>
                                     <div className="mb-4 flex items-center">
@@ -66,7 +79,7 @@ export default function Email1() {
                                         <TextBoxComponent cssClass='e-bigger w-full' type="text" value='Issue with Online Banking App - Transactions Not Completing' placeholder="Enter the subject" floatLabelType="Never"></TextBoxComponent>
                                     </div>
                                     <div className="mb-4">
-                                        <RichTextEditorComponent key={"RTE-1-tw"} toolbarSettings={{
+                                        <RichTextEditorComponent id={styles["rte-list"]} key={"RTE-1-tw"} toolbarSettings={{
                                             items: ['Bold', 'Italic', 'Underline', 'StrikeThrough', '|', 'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|', 'Alignments', 'OrderedList', 'UnorderedList', 'Blockquote', '|', 'CreateLink', 'Image', 'CreateTable'], type: 'MultiRow' as ToolbarType }} style={{ maxHeight: "540px", overflowY: 'auto' }}>
                                             <p>Dear Support Team,</p>
                                             <p className="!mb-0">I am having trouble completing transactions in the Online Banking App. The app freezes at the confirmation screen every time I attempt to transfer money.</p>
@@ -78,7 +91,7 @@ export default function Email1() {
                                             <p>Please assist with resolving this issue as soon as possible. Let me know if you need any further details.</p>
                                             <p className="!mb-0">Best regards,</p>
                                             <p className="font-bold !mb-0">Peterson</p>
-                                            <p className="!mb-0"><a href="javascript:void(0);">peterson&#64;email.com</a></p>
+                                            <p className="!mb-0"><a href="#">peterson&#64;email.com</a></p>
                                             <Inject services={[Toolbar, HtmlEditor, Link, Image, Table]} />
                                         </RichTextEditorComponent>
                                     </div>
@@ -108,8 +121,8 @@ export default function Email1() {
                                         <label className="form-label small text-body-secondary ps-1 pe-3 mb-0">To:</label>
                                         <MultiSelectComponent cssClass="e-bigger ps-1" dataSource={[{ text: "Thomas" }, { text: "Henry" }]} fields={{ text: "text" }} value={["Thomas"]} mode="Box" placeholder="Select recipients"></MultiSelectComponent>
                                         <div className="position-absolute d-flex align-items-center end-0 me-4 pe-2" style={{ bottom:'8px' }}>
-                                            <a href="javascript:void(0);" className="me-3 small text-body-secondary text-decoration-none fw-medium">Cc</a>
-                                            <a href="javascript:void(0);" className="small text-body-secondary text-decoration-none fw-medium">Bcc</a>
+                                            <a href="#" className="me-3 small text-body-secondary text-decoration-none fw-medium">Cc</a>
+                                            <a href="#" className="small text-body-secondary text-decoration-none fw-medium">Bcc</a>
                                         </div>
                                     </div>
                                     <div className="mb-3 d-flex align-items-center">
@@ -117,7 +130,7 @@ export default function Email1() {
                                         <TextBoxComponent cssClass="e-bigger w-100" type="text" value='Issue with Online Banking App - Transactions Not Completing' placeholder="Enter the subject" floatLabelType="Never"></TextBoxComponent>
                                     </div>
                                     <div className="mb-3">
-                                        <RichTextEditorComponent key={"RTE-1-bs"} toolbarSettings={{
+                                        <RichTextEditorComponent id={styles["rte-list"]} key={"RTE-1-bs"} toolbarSettings={{
                                             items: ['Bold', 'Italic', 'Underline', 'StrikeThrough', '|', 'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|', 'Alignments', 'OrderedList', 'UnorderedList', 'Blockquote', '|', 'CreateLink', 'Image', 'CreateTable'], type: 'MultiRow' as ToolbarType }} style={{ maxHeight: "540px", overflowY: "auto" }}>
                                             <p>Dear Support Team,</p>
                                             <p className="mb-0">I am having trouble completing transactions in the Online Banking App. The app freezes at the confirmation screen every time I attempt to transfer money.</p>
@@ -129,7 +142,7 @@ export default function Email1() {
                                             <p>Please assist with resolving this issue as soon as possible. Let me know if you need any further details.</p>
                                             <p className="mb-0">Best regards,</p>
                                             <p className="fw-bold mb-0">Peterson</p>
-                                            <p className="mb-0"><a href="javascript:void(0);">peterson&#64;email.com</a></p>
+                                            <p className="mb-0"><a href="#">peterson&#64;email.com</a></p>
                                             <Inject services={[Toolbar, HtmlEditor, Link, Image, Table]} />
                                         </RichTextEditorComponent>
                                     </div>

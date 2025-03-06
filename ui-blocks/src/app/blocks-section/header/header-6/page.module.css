@@ -1,0 +1,8 @@
+#tab :global(.e-tab-wrap) {
+    display: flex;
+    align-items: center;
+}
+
+#dropdown :global(.e-caret) {
+    display: none;
+}

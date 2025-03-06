@@ -11,6 +11,7 @@
   "dependencies": {
     "@syncfusion/ej2-react-buttons": "^27.2.4",
     "@syncfusion/ej2-react-calendars": "^27.2.3",
+    "@syncfusion/ej2-react-charts": "^27.2.2",
     "@syncfusion/ej2-react-dropdowns": "^27.2.5",
     "@syncfusion/ej2-react-grids": "^27.2.5",
     "@syncfusion/ej2-react-inputs": "^27.2.4",
@@ -18,11 +19,12 @@
     "@syncfusion/ej2-react-lists": "^27.2.5",
     "@syncfusion/ej2-react-navigations": "^27.2.5",
     "@syncfusion/ej2-react-notifications": "^27.2.4",
+    "@syncfusion/ej2-react-popups": "^27.2.2",
     "@syncfusion/ej2-react-progressbar": "^27.2.2",
+    "@syncfusion/ej2-react-querybuilder": "^27.2.2",
     "@syncfusion/ej2-react-richtexteditor": "^27.2.5",
     "@syncfusion/ej2-react-splitbuttons": "^27.2.2",
-    "@syncfusion/ej2-react-popups": "^27.2.2",
-    "next": "14.2.11",
+    "next": "15.1.7",
     "react": "^18",
     "react-dom": "^18"
   },
@@ -31,7 +33,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.2.11",
+    "eslint-config-next": "15.1.7",
     "typescript": "^5"
   }
 }

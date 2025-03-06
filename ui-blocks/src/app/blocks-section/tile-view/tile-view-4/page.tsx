@@ -5,7 +5,6 @@ import { AppBarComponent, BreadcrumbComponent, BreadcrumbItemDirective, Breadcru
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { RatingComponent } from "@syncfusion/ej2-react-inputs";
 import { ListViewComponent } from "@syncfusion/ej2-react-lists";
-import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function TileView4() {
@@ -77,7 +76,7 @@ export default function TileView4() {
                     setTheme(blockData.theme);
                 }
             } catch (error) {
-                console.error('Error parsing message data: ', error);
+                console.log('Error parsing message data: ', error);
             }
         }
     };
@@ -110,7 +109,7 @@ export default function TileView4() {
                                     <div className="e-appbar-spacer"></div>
                                     <ButtonComponent className="e-flat sf-icon-notification-bell-ring-03 text-base" type="button"></ButtonComponent>
                                     <span className="e-avatar e-avatar-circle e-avatar-small shrink-0 ml-6">
-                                        <Image src="/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
                                     </span>
                                 </div>
                             </AppBarComponent>
@@ -132,7 +131,7 @@ export default function TileView4() {
                                 <ListViewComponent className="!border-0" cssClass="e-list-template" dataSource={busDetails} template={(data: any) => (
                                     <div className="e-card flex-col gap-3 p-6 rounded-2xl sm:flex-row">
                                         <span className="e-avatar e-avatar-xlarge e-avatar-circle shrink-0">
-                                            <Image src={"/assets/images/tile-view/travels/" + data.logo} width={56} height={56} alt="company logo" />
+                                            <img src={"/react/essential-ui-kit/blocks/assets/images/tile-view/travels/" + data.logo} width={56} height={56} alt="company logo" />
                                         </span>
                                         <div className="e-card-stacked !justify-normal !flex-col gap-2 w-full">
                                             <div className="e-card-header gap-1 !flex-col !p-0">
@@ -182,7 +181,7 @@ export default function TileView4() {
                                     <div className="e-appbar-spacer"></div>
                                     <ButtonComponent className="e-flat sf-icon-notification-bell-ring-03 fs-6" type="button"></ButtonComponent>
                                     <span className="e-avatar e-avatar-circle e-avatar-small flex-shrink-0 ms-4">
-                                        <Image src="/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
                                     </span>
                                 </div>
                             </AppBarComponent>
@@ -204,7 +203,7 @@ export default function TileView4() {
                                 <ListViewComponent className="border-0" cssClass="e-list-template" dataSource={busDetails} template={(data: any) => (
                                     <div className="e-card d-flex flex-column gap-3 p-4 rounded-4 flex-sm-row">
                                         <span className="e-avatar e-avatar-xlarge e-avatar-circle flex-shrink-0">
-                                            <Image src={"/assets/images/tile-view/travels/" + data.logo} width={56} height={56} alt="company logo" />
+                                            <img src={"/react/essential-ui-kit/blocks/assets/images/tile-view/travels/" + data.logo} width={56} height={56} alt="company logo" />
                                         </span>
                                         <div className="e-card-stacked flex-column flex-grow-1 justify-content-start">
                                             <div className="e-card-header p-0 flex-column">
