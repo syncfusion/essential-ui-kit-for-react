@@ -5,7 +5,7 @@ const nextConfig = {
         return [
           {
             source: "/react/essential-ui-kit/blocks/assets/:path*",
-            destination: "/assets/:path*", // Preserve everything after "assets/"
+            destination: "/assets/:path*",
           },
           {
             source: '/:path*',
