@@ -9,7 +9,7 @@ export default function List5() {
     /* SB Code - End */
     const [width, setWidth] = useState({});
 
-    const data: any[] = [
+    const countries: any[] = [
         {
             id: '1',
             country: 'Afghanistan',
@@ -117,7 +117,7 @@ export default function List5() {
                                     <span className="e-input-group-icon e-icons e-search !text-base"></span>
                                     <input className="e-input !pl-0 e-bigger" type="text" placeholder="Search country" />
                                 </div>
-                                <ListViewComponent className="!border-0 mt-2" cssClass="e-list-template" dataSource={data} template={(data: any) => (
+                                <ListViewComponent className="!border-0 mt-2" cssClass="e-list-template" dataSource={countries} template={(data: any) => (
                                     <div className="e-list-wrapper flex items-center !px-1 sm:!px-3 border-b border-gray-200 dark:border-gray-600">
                                         <img className="rounded-full" src={`/react/essential-ui-kit/blocks/assets/images/listview/country-code/${data.pic}`} width={36} height={36} alt="flag image" />
                                         <div className="pl-4 w-full">
@@ -142,7 +142,7 @@ export default function List5() {
                                     <span className="e-input-group-icon e-icons e-search border-0 fs-6"></span>
                                     <input className="e-input e-bigger" type="text" placeholder="Search country" />
                                 </div>
-                                <ListViewComponent className="border-0 mt-2" cssClass="e-list-template" dataSource={data} template={(data: any) => (
+                                <ListViewComponent className="border-0 mt-2" cssClass="e-list-template" dataSource={countries} template={(data: any) => (
                                     <div className="e-list-wrapper d-flex align-items-center px-1 px-sm-3">
                                         <img className="rounded-circle" src={`/react/essential-ui-kit/blocks/assets/images/listview/country-code/${data.pic}`} width={36} height={36} alt="flag image" />
                                         <div className="ps-3 w-100">

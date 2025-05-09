@@ -76,7 +76,7 @@ export default function Statistics4() {
                         <div className="px-4 sm:px-6 xl:px-11 py-12">
                             <div className="grid sm:grid-cols-2 gap-6 lg:gap-4 lg:grid-cols-4">
                                 {metricsData.map((data, index) => (
-                                    <div key={index} className="e-card pt-6 rounded-lg shadow-none !border-gray-300 dark:!border-gray-600">
+                                    <div key={index} className="e-card pt-6 rounded-lg shadow-none">
                                         <div className="e-card-stacked">
                                             <div className="e-card-header !py-0 !justify-between mb-4 !px-6">
                                                 <div className="e-card-header-caption !flex-row !item-center">

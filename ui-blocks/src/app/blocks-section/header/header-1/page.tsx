@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { OverflowMode, TabComponent, TabItemDirective, TabItemsDirective } from "@syncfusion/ej2-react-navigations";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
-import styles from "./page.module.css";
 
 export default function Header1() {
     /* SB Code - Start */
@@ -67,7 +66,7 @@ export default function Header1() {
                                     <ButtonComponent cssClass="e-flat" iconCss="e-icons e-settings" type="button"></ButtonComponent>
                                 </div>
                             </div>
-                            <div id={styles.tab} className="flex mt-3 px-4 sm:px-6 w-full justify-between items-center">
+                            <div className="flex mt-3 px-4 sm:px-6 w-full justify-between items-center">
                                 <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode}>
                                     <TabItemsDirective>
                                         <TabItemDirective headerTemplate={() => <div>Overview</div>}></TabItemDirective>
@@ -91,7 +90,7 @@ export default function Header1() {
                                     <ButtonComponent cssClass="e-flat" iconCss="e-icons e-settings" type="button"></ButtonComponent>
                                 </div>
                             </div>
-                            <div id={styles.tab} className="d-flex mt-3 px-3 px-sm-4 w-100 justify-content-between align-items-center">
+                            <div className="d-flex mt-3 px-3 px-sm-4 w-100 justify-content-between align-items-center">
                                 <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode}>
                                     <TabItemsDirective>
                                         <TabItemDirective headerTemplate={() => <div>Overview</div>}></TabItemDirective>

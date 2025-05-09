@@ -76,8 +76,8 @@ export default function Modals3() {
                                 )}
                                 footerTemplate={() =>
                                     <div className="flex justify-end gap-2 sm:gap-1 py-2">
-                                        <ButtonComponent cssClass="grow sm:grow-0 !ml-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary grow sm:grow-0" type="button">Add Member</ButtonComponent>
+                                        <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" type="button">Cancel</ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" type="button">Add Member</ButtonComponent>
                                     </div>
                                 }
                             >
@@ -93,12 +93,12 @@ export default function Modals3() {
                                         </StepperComponent>
                                     </div>
                                     <div className="sm:overflow-y-scroll" style={{ height: "298px", scrollbarWidth: "none" }}>
-                                        <AccordionComponent expandMode="Single" className="border-0" ref={accordions}>
+                                        <AccordionComponent expandMode="Single" className="border-0" ref={accordions} expanding={(e) => {if (stepper?.current) {stepper.current.activeStep = e.index;}}}>
                                             <AccordionItemsDirective>
                                                 <AccordionItemDirective cssClass="mb-3 !border !rounded-lg" expanded={activeStep === 0}
                                                     header={() =>
                                                         <div className="flex gap-2.5 items-center mr-4">
-                                                            <span className="e-avatar e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i className="e-icons sf-icon-users text-xl"></i></span>
+                                                            <span className="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i className="e-icons sf-icon-users text-xl"></i></span>
                                                             <div className="flex flex-col gap-0.5">
                                                                 <p className="text-base">User Information</p>
                                                                 <p className="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Basic details about the team member</p>
@@ -133,7 +133,7 @@ export default function Modals3() {
                                                 <AccordionItemDirective cssClass="mb-3 !border !rounded-lg" expanded={activeStep === 1}
                                                     header={() =>
                                                         <div className="flex gap-2.5 items-center mr-4">
-                                                            <span className="e-avatar e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i className="e-icons sf-icon-building-03 text-xl"></i></span>
+                                                            <span className="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i className="e-icons sf-icon-building-03 text-xl"></i></span>
                                                             <div className="flex flex-col gap-0.5">
                                                                 <p className="text-base">Workspace Access</p>
                                                                 <p className="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Workspace and role assignment</p>
@@ -160,7 +160,7 @@ export default function Modals3() {
                                                 <AccordionItemDirective cssClass="mb-3 !border !rounded-lg" expanded={stepper.current?.activeStep === 2}
                                                     header={() =>
                                                         <div className="flex gap-2.5 items-center mr-4">
-                                                            <span className="e-avatar e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i className="e-icons sf-icon-shield text-xl"></i></span>
+                                                            <span className="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i className="e-icons sf-icon-shield text-xl"></i></span>
                                                             <div className="flex flex-col gap-0.5">
                                                                 <p className="text-base">Security Settings</p>
                                                                 <p className="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Configure security and authentication</p>
@@ -189,7 +189,7 @@ export default function Modals3() {
                                                 <AccordionItemDirective cssClass="mb-3 !border !rounded-lg" expanded={stepper.current?.activeStep === 3}
                                                     header={() =>
                                                         <div className="flex gap-2.5 items-center mr-4">
-                                                            <span className="e-avatar e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i className="e-icons sf-icon-laptop-01 text-xl"></i></span>
+                                                            <span className="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i className="e-icons sf-icon-laptop-01 text-xl"></i></span>
                                                             <div className="flex flex-col gap-0.5">
                                                                 <p className="text-base">Resource Access</p>
                                                                 <p className="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Configure access to various tools</p>
@@ -272,8 +272,8 @@ export default function Modals3() {
                                 )}
                                 footerTemplate={() => (
                                     <div className="d-flex justify-content-end gap-2 py-1">
-                                        <ButtonComponent className="flex-grow-1 flex-sm-grow-0 ms-0 e-outline" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary flex-grow-1 flex-sm-grow-0" type="button">Add Member</ButtonComponent>
+                                        <ButtonComponent className="col col-sm-auto ms-0 e-outline" type="button">Cancel</ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary col col-sm-auto" type="button">Add Member</ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -289,12 +289,12 @@ export default function Modals3() {
                                         </StepperComponent>
                                     </div>
                                     <div className="overflow-auto" style={{ height: "298px", scrollbarWidth: "none" }}>
-                                        <AccordionComponent className="border-0" expandMode="Single">
+                                        <AccordionComponent className="border-0" expandMode="Single" expanding={(e) => {if (stepper?.current) {stepper.current.activeStep = e.index;}}}>
                                             <AccordionItemsDirective>
                                                 <AccordionItemDirective cssClass="mb-3 border rounded-3 overflow-hidden" expanded={activeStep === 0} 
                                                     header={() =>
                                                         <div className="d-flex gap-2 align-items-center me-3">
-                                                            <span className="e-avatar e-avatar rounded-3 border bg-body-secondary"><i className="e-icons sf-icon-users fs-4"></i></span>
+                                                            <span className="e-avatar rounded-3 border bg-body-secondary"><i className="e-icons sf-icon-users fs-4"></i></span>
                                                             <div className="d-flex flex-column ms-1">
                                                                 <p className="fs-6 fw-medium mb-0">User Information</p>
                                                                 <p className="text-body text-wrap text-opacity-50 text-truncate mb-0" style={{ display: "-webkit-box", WebkitLineClamp: 1, WebkitBoxOrient: "vertical", overflow: "hidden" }}>Basic details about the team member</p>
@@ -323,7 +323,7 @@ export default function Modals3() {
                                                 <AccordionItemDirective cssClass="mb-3 border rounded-3 overflow-hidden" expanded={activeStep === 1}
                                                     header={() =>
                                                         <div className="d-flex gap-2 align-items-center me-3">
-                                                            <span className="e-avatar e-avatar rounded-3 border bg-body-secondary"><i className="e-icons sf-icon-building-03 fs-4"></i></span>
+                                                            <span className="e-avatar rounded-3 border bg-body-secondary"><i className="e-icons sf-icon-building-03 fs-4"></i></span>
                                                             <div className="d-flex flex-column ms-1">
                                                                 <p className="fs-6 fw-medium mb-0">Workspace Access</p>
                                                                 <p className="text-body text-wrap text-opacity-50 text-truncate mb-0" style={{ display: "-webkit-box", WebkitLineClamp: 1, WebkitBoxOrient: "vertical", overflow: "hidden" }}>Workspace and role assignment</p>
@@ -346,7 +346,7 @@ export default function Modals3() {
                                                 <AccordionItemDirective cssClass="mb-3 border rounded-3 overflow-hidden" expanded={activeStep === 2}
                                                     header={() => (
                                                         <div className="d-flex gap-2 align-items-center me-3">
-                                                            <span className="e-avatar e-avatar rounded-3 border bg-body-secondary">
+                                                            <span className="e-avatar rounded-3 border bg-body-secondary">
                                                                 <i className="e-icons sf-icon-shield fs-4"></i>
                                                             </span>
                                                             <div className="d-flex flex-column ms-1">
@@ -377,7 +377,7 @@ export default function Modals3() {
                                                 <AccordionItemDirective cssClass="border rounded-3 overflow-hidden" expanded={activeStep === 3}
                                                     header={() => (
                                                         <div className="d-flex gap-2 align-items-center me-3">
-                                                            <span className="e-avatar e-avatar rounded-3 border bg-body-secondary">
+                                                            <span className="e-avatar rounded-3 border bg-body-secondary">
                                                                 <i className="e-icons sf-icon-laptop-01 fs-4"></i>
                                                             </span>
                                                             <div className="d-flex flex-column ms-1">

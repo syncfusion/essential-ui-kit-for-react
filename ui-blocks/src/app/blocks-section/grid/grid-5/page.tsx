@@ -9,7 +9,7 @@ export default function Grid5() {
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
 
-    const data: any[] = [
+    const gridData: any[] = [
         {
             id: 1,
             assetId: "AS001",
@@ -156,7 +156,7 @@ export default function Grid5() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="mx-auto w-full py-12 sm:px-6 px-4">
-                            <GridComponent dataSource={data} key={"grid-5-tw"} width="100%" height={560} gridLines="None">
+                            <GridComponent dataSource={gridData} key={"grid-5-tw"} width="100%" height={560} gridLines="None">
                                 <ColumnsDirective>
                                     <ColumnDirective type="checkbox" isPrimaryKey={true} textAlign="Center" width="40" />
                                     <ColumnDirective field="assetId" headerText="Asset ID" width="90"
@@ -195,7 +195,7 @@ export default function Grid5() {
                 return (
                     <section className="bg-body">
                         <div className="w-100 py-5 px-3 px-sm-4 mx-auto">
-                            <GridComponent dataSource={data} key={"grid-5-bs"} width="100%" height={545} gridLines="None">
+                            <GridComponent dataSource={gridData} key={"grid-5-bs"} width="100%" height={545} gridLines="None">
                                 <ColumnsDirective>
                                     <ColumnDirective type="checkbox" isPrimaryKey={true} textAlign="Center" width="40" />
                                     <ColumnDirective field="assetId" headerText="Asset ID" width="90"

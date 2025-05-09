@@ -191,21 +191,29 @@
     padding: 2px 8px;
 }
 
-.component-list-text span,
-.block-footer .block-title span {
-    background: #15803D;
-    color: white;
+.sampleStatus {
     font-weight: 400;
     font-size: 12px;
     border-radius: 12px;
     padding: 2px;
     margin-left: 8px;
-    width: 38px;
     height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-	box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.newStatus {
+    color: #FFFFFF;
+    background: #198754;
+    width: 38px;
+}
+
+.updatedStatus {
+    color:#000000;
+    background: #FFC107;
+    width: 65px;
 }
 
 .blocks-list {

@@ -79,13 +79,13 @@ export default function Header3() {
                                 <div className="flex items-center">
                                     <h1 className="text-lg font-semibold text-gray-900 dark:text-white ms-4 sm:ms-6">Employees</h1>
                                 </div>
-                                <div className="flex sm:hidden gap-4">
+                                <div className="flex lg:hidden gap-4">
                                     <ButtonComponent iconCss="e-icons e-search" type="button"></ButtonComponent>
                                     <ButtonComponent cssClass="me-4 sm:me-6" iconCss="e-icons e-filter" type="button"></ButtonComponent>
                                 </div>
                             </div>
                             <div className="flex items-center justify-between px-4 sm:px-6 relative">
-                                <div id={styles.tab_tw} className={`${styles.tab} w-full`}>
+                                <div id={styles.tab_tw} className="w-full">
                                     <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode} created={onTabCreated} selected={onTabSelected}>
                                         <TabItemsDirective>
                                             <TabItemDirective
@@ -132,12 +132,6 @@ export default function Header3() {
                                         <ButtonComponent iconCss="e-icons e-filter" content="Filter" type="button"></ButtonComponent>
                                     </div>
                                 </div>
-                                <div className="hidden sm:flex lg:hidden">
-                                    <div className="flex gap-3 pb-3 me-6 absolute top-0 end-0">
-                                        <ButtonComponent iconCss="e-icons e-search" type="button"></ButtonComponent>
-                                        <ButtonComponent iconCss="e-icons e-filter" type="button"></ButtonComponent>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </section>
@@ -150,13 +144,13 @@ export default function Header3() {
                                 <div className="d-flex align-items-center">
                                     <h1 className="fs-6 fw-bold text-body ms-3 ms-sm-4 mb-0">Employees</h1>
                                 </div>
-                                <div className="d-flex d-sm-none gap-3">
+                                <div className="d-flex d-lg-none gap-3">
                                     <ButtonComponent cssClass="e-outline" iconCss="e-icons e-search" type="button"></ButtonComponent>
                                     <ButtonComponent cssClass="e-outline me-3 me-sm-4" iconCss="e-icons e-filter" type="button"></ButtonComponent>
                                 </div>
                             </div>
                             <div className="d-flex align-items-center justify-content-between px-3 px-sm-4 position-relative">
-                                <div className={`${styles.tab} w-100`}>
+                                <div className="w-100">
                                     <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode} created={onTabCreated} selected={onTabSelected}>
                                         <TabItemsDirective>
                                             <TabItemDirective headerTemplate={() => (
@@ -197,12 +191,6 @@ export default function Header3() {
                                             <span className="e-input-group-icon e-icons e-search border-start-0"></span>
                                         </div>
                                         <ButtonComponent cssClass="e-outline" iconCss="e-icons e-filter" type="button" content="Filter"></ButtonComponent>
-                                    </div>
-                                </div>
-                                <div className="d-none d-sm-flex d-lg-none">
-                                    <div className="d-flex gap-3 pt-3 me-4 position-absolute top-0 end-0 translate-middle-y">
-                                        <ButtonComponent cssClass="e-outline" iconCss="e-icons e-search" type="button"></ButtonComponent>
-                                        <ButtonComponent cssClass="e-outline" iconCss="e-icons e-filter" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </div>

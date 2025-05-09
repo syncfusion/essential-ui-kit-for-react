@@ -9,7 +9,7 @@ export default function Grid4() {
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
 
-    const data: any[] = [
+    const gridData: any[] = [
         {
             id: 1,
             contactId: "C0001",
@@ -241,7 +241,7 @@ export default function Grid4() {
                                     </div>
                                 </div>
                             </div>
-                            <GridComponent dataSource={data} key={"grid-4-tw"} width="100%" height={668} clipMode="EllipsisWithTooltip">
+                            <GridComponent dataSource={gridData} key={"grid-4-tw"} width="100%" height={668} clipMode="EllipsisWithTooltip">
                                 <ColumnsDirective>
                                     <ColumnDirective field="contactId" headerText="Contact ID" width="90"
                                         template={(data: any) => (
@@ -325,7 +325,7 @@ export default function Grid4() {
                                     </div>
                                 </div>
                             </div>
-                            <GridComponent dataSource={data} key={"grid-4-bs"} width="100%" height={668} clipMode="EllipsisWithTooltip">
+                            <GridComponent dataSource={gridData} key={"grid-4-bs"} width="100%" height={668} clipMode="EllipsisWithTooltip">
                                 <ColumnsDirective>
                                     <ColumnDirective field="contactId" headerText="Contact ID" width="100"
                                         template={(data: any) => (

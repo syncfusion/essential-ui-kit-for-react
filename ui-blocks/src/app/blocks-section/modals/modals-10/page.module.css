@@ -1,0 +1,17 @@
+#dialog :global(.e-dlg-content) {
+    padding: 0;
+}
+
+#dialog :global(.e-listview .e-list-group-item) {
+    height: auto;
+    background-color: transparent;
+    border: 0;
+}
+
+#dialog :global(.e-message .e-msg-content) {
+    padding: 0;
+}
+
+#dialog :global(.e-listview .e-list-item) {
+    border: 0;
+}

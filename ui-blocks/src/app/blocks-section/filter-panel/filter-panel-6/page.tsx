@@ -32,12 +32,22 @@ export default function FilterPanel6() {
     }
 
     /* SB Code - Start */
+    const refreshDialog = (timeout: number) => {
+        setTimeout(() => {
+            industryAccordion.current?.refresh();
+            sizeAccordion.current?.refresh();
+            locationAccordion.current?.refresh();
+            typeAccordion.current?.refresh();
+        }, timeout);
+    }
+
     const handleMessageEvent = (event: MessageEvent) => {
         if (event.origin === window.location.origin) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'filter-panel-6' && blockData.theme) {
                     setTheme(blockData.theme);
+                    refreshDialog(200);
                 }
             } catch (error) {
                 console.log('Error parsing message data: ', error);
@@ -49,12 +59,7 @@ export default function FilterPanel6() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
-        setTimeout(() => {
-            industryAccordion.current?.refresh();
-            sizeAccordion.current?.refresh();
-            locationAccordion.current?.refresh();
-            typeAccordion.current?.refresh();
-        }, 800);
+        refreshDialog(1000);
         /* SB Code - End */
         window.addEventListener('resize', setSidebarWidth);
 

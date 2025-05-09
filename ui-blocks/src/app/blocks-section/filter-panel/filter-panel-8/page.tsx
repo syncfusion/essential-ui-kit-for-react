@@ -19,12 +19,21 @@ export default function FilterPanel8() {
     }
 
     /* SB Code - Start */
+    const refreshDialog = (timeout: number) => {
+        setTimeout(() => {
+            gettingStartedAccordion.current?.refresh();
+            billingAccordion.current?.refresh();
+            supportAccordion.current?.refresh();
+        }, timeout);
+    }
+
     const handleMessageEvent = (event: MessageEvent) => {
         if (event.origin === window.location.origin) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'filter-panel-8' && blockData.theme) {
                     setTheme(blockData.theme);
+                    refreshDialog(200);
                 }
             } catch (error) {
                 console.log('Error parsing message data: ', error);
@@ -36,11 +45,7 @@ export default function FilterPanel8() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
-        setTimeout(() => {
-            gettingStartedAccordion.current?.refresh();
-            billingAccordion.current?.refresh();
-            supportAccordion.current?.refresh();
-        }, 800);
+        refreshDialog(1000);
         /* SB Code - End */
         window.addEventListener('resize', setSidebarWidth);
 
@@ -81,7 +86,7 @@ export default function FilterPanel8() {
                                                                 <h6 className="text-sm font-medium text-gray-900 dark:text-white">Recently updated only</h6>
                                                                 <SwitchComponent cssClass="mr-2" checked={true}></SwitchComponent>
                                                             </div>
-                                                            <RadioButtonComponent label="Welcome guide" name="guidelines" value="welcome-guide"></RadioButtonComponent>
+                                                            <RadioButtonComponent label="Welcome guide" name="guidelines" value="welcome-guide" checked={true}></RadioButtonComponent>
                                                             <RadioButtonComponent label="Creating your first project" name="guidelines" value="creating-project"></RadioButtonComponent>
                                                             <RadioButtonComponent label="Understanding the dashboard" name="guidelines" value="understanding-dashboard"></RadioButtonComponent>
                                                             <RadioButtonComponent label="Basic configuration steps" name="guidelines" value="basic-configuration"></RadioButtonComponent>

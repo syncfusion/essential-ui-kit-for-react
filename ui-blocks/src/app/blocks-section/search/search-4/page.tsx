@@ -135,7 +135,6 @@ export default function Search4() {
                                     placeholder="Search"
                                     focus={() => search.current?.showPopup()}
                                     created={openPopup}
-                                   
                                     itemTemplate={(data: any) => (
                                         <div className="flex items-center px-5 py-2">
                                             <span className={`indent-0 e-avatar e-avatar-medium e-avatar-circle text-sm shrink-0 ${avatarColorClass(data.colorTheme)}`}>{data.initial}</span>
@@ -164,7 +163,6 @@ export default function Search4() {
                                     placeholder="Search"
                                     focus={() => search.current?.showPopup()}
                                     created={openPopup}
-                                   
                                     itemTemplate={(data: any) => (
                                         <div className="d-flex align-items-center px-3 p-2" style={{ textIndent: 0 }}>
                                             <span className={`e-avatar e-avatar-medium e-avatar-circle shrink-0 ${data.colorTheme === 'Orange' ? 'text-warning-emphasis bg-warning-subtle' : data.colorTheme === 'Blue' ? 'text-info-emphasis bg-info-subtle' : 'text-danger-emphasis bg-danger-subtle'}`}>

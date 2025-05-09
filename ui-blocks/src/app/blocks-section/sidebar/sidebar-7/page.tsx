@@ -13,7 +13,7 @@ export default function Sidebar7() {
     /* SB Code - End */ 
     const sidebar = useRef<SidebarComponent | null>(null);
 
-    const data1: any[] = [  
+    const navigationMenu: any[] = [  
         {
             id: 1,
             field: 'Dashboard',
@@ -36,7 +36,7 @@ export default function Sidebar7() {
         }
     ];
 
-    const data2: any[] = [ 
+    const supportMenu: any[] = [ 
         {
             id: 1,
             field: 'Docs',
@@ -104,7 +104,7 @@ export default function Sidebar7() {
                                             </div>
                                         </div>
                                         <div>
-                                            <ListViewComponent className="border-0" dataSource={data1} template={(data: any) => (
+                                            <ListViewComponent className="border-0" dataSource={navigationMenu} template={(data: any) => (
                                                 <div className="e-list-wrapper flex items-center px-1">
                                                     <span className={`e-icons ${data.fontIcon} text-base`}></span>
                                                     <span className="text-base font-normal pl-4">{data.field}</span>
@@ -113,7 +113,7 @@ export default function Sidebar7() {
                                         </div>
                                         <hr className="m-4 border-gray-200 dark:border-gray-700" />
                                         <div>
-                                            <ListViewComponent className="border-0" dataSource={data2} template={(data: any) => (
+                                            <ListViewComponent className="border-0" dataSource={supportMenu} template={(data: any) => (
                                                 <div className="e-list-wrapper flex items-center px-1">
                                                     <span className={`e-icons ${data.fontIcon}`}></span>
                                                     <span className="text-base font-normal pl-4">{data.field}</span>
@@ -166,7 +166,7 @@ export default function Sidebar7() {
                                             </div>
                                         </div>
                                         <div className="mt-3">
-                                            <ListViewComponent className="border-0 e-bigger" dataSource={data1} template={(data: any) => (
+                                            <ListViewComponent className="border-0 e-bigger" dataSource={navigationMenu} template={(data: any) => (
                                                 <div className="e-list-wrapper d-flex align-items-center px-1">
                                                     <span className={`e-icons ${data.fontIcon} fs-6`}></span>
                                                     <span className="fs-6 fw-normal ps-2 ms-1">{data.field}</span>
@@ -175,7 +175,7 @@ export default function Sidebar7() {
                                         </div>
                                         <p className="m-3 fs-6 text-body-secondary">Others</p>
                                         <div>
-                                            <ListViewComponent className="border-0 e-bigger" dataSource={data2} template={(data: any) => (
+                                            <ListViewComponent className="border-0 e-bigger" dataSource={supportMenu} template={(data: any) => (
                                                 <div className="e-list-wrapper d-flex align-items-center px-1">
                                                     <span className={`e-icons ${data.fontIcon}`}></span>
                                                     <span className="fs-6 fw-normal ps-2 ms-1">{data.field}</span>

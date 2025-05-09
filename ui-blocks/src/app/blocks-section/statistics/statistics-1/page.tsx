@@ -63,15 +63,15 @@ export default function Statistics1() {
                         <div className="px-4 sm:px-6 xl:px-11 py-12">
                             <div className="grid sm:grid-cols-2 gap-6 lg:gap-4 xl:grid-cols-4">
                                 {metricsData.map((data, index) => (
-                                    <div key={index} className="e-card pt-6 e-bigger rounded-lg shadow-none !border-gray-300 dark:!border-gray-600">
+                                    <div key={index} className="e-card pt-6 e-bigger rounded-lg shadow-none">
                                         <div className="e-card-stacked">
                                             <div className="e-card-header !py-0 !justify-between items-center flex-row">
-                                                <h4 className="text-base font-medium text-gray-800 dark:text-gray-300">{data.metricName}</h4>
-                                                <p className="text-xl font-semibold text-gray-900 dark:text-white lg:mt-2 xl:mt-0">{data.currentValue}</p>
+                                                <h4 className="text-base font-medium text-gray-700 dark:text-gray-200">{data.metricName}</h4>
+                                                <p className="text-xl font-semibold text-gray-900 dark:text-white">{data.currentValue}</p>
                                             </div>
                                             <div className="e-card-content !pb-6 mt-2">
                                                 <span className={`font-medium ${data.currentPercentage > 0 ? "text-green-700 dark:text-green-500" : "text-red-600 dark:text-red-400"}`}>{data.currentPercentage > 0 ? "+" : ""}{data.currentPercentage}&#37;</span>
-                                                <span className="ml-2 text-gray-800 dark:text-gray-300">vs previous 27 days</span>
+                                                <span className="ml-2 text-gray-700 dark:text-gray-200">vs previous 27 days</span>
                                             </div>
                                         </div>
                                     </div>
@@ -91,7 +91,7 @@ export default function Statistics1() {
                                             <div className="e-card-stacked">
                                                 <div className="e-card-header py-0 px-4 flex-row justify-content-between align-items-center">
                                                     <h4 className="fs-6 fw-medium text-body-secondary mb-0 lh-base">{data.metricName}</h4>
-                                                    <p className="text-body mt-lg-2 mt-xl-0 fs-5 fw-bold mb-0 lh-sm">{data.currentValue}</p>
+                                                    <p className="text-body fs-5 fw-bold mb-0 lh-sm">{data.currentValue}</p>
                                                 </div>
                                                 <div className="e-card-content px-4 pb-4 pt-2">
                                                     <span className={`fw-medium ${data.currentPercentage > 0 ? 'text-success' : 'text-danger'}`}>{data.currentPercentage > 0 ? '+' : ''}{data.currentPercentage}&#37;</span>

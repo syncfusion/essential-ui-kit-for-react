@@ -15,7 +15,7 @@ export default function Grid9() {
         captionTemplate: '<span class="groupItems">${key}</span>'
       };
 
-    const data: any[] = [
+    const gridData: any[] = [
         { id: 1, category: "User Management", permission: "Create Users", systemAdmin: true, itManager: true, hrManager: false, financeManager: false, salesManager: false, customerServiceRep: false, generalEmployee: false },
         { id: 2, category: "User Management", permission: "Edit Users", systemAdmin: true, itManager: true, hrManager: false, financeManager: false, salesManager: false, customerServiceRep: false, generalEmployee: false },
         { id: 3, category: "User Management", permission: "Delete Users", systemAdmin: true, itManager: false, hrManager: false, financeManager: false, salesManager: false, customerServiceRep: false, generalEmployee: false },
@@ -71,7 +71,7 @@ export default function Grid9() {
                             <div className="flex justify-end items-center mb-6">
                                 <ButtonComponent cssClass="e-primary w-max" content="Edit Permissions" iconCss="e-icons e-edit" iconPosition="Left" type="button"></ButtonComponent>
                             </div>
-                            <GridComponent dataSource={data} key={"grid-9-tw"} width="100%" height={1117} rowHeight={44} allowGrouping={true} groupSettings={groupSettings} gridLines="Both">
+                            <GridComponent dataSource={gridData} key={"grid-9-tw"} width="100%" height={1117} rowHeight={44} allowGrouping={true} groupSettings={groupSettings} gridLines="Both">
                                 <ColumnsDirective>
                                     <ColumnDirective field="category" headerText="Category" width="120" />
                                     <ColumnDirective field="permission" headerText="Permission" width="230" textAlign="Left" />
@@ -123,7 +123,7 @@ export default function Grid9() {
                             <div className="d-flex justify-content-end align-items-center mb-4">
                                 <ButtonComponent cssClass="e-primary" content="Edit Permissions" iconCss="e-icons e-edit" iconPosition="Left" type="button"></ButtonComponent>
                             </div>
-                            <GridComponent dataSource={data} key={"grid-9-bs"} width="100%" height={1117} rowHeight={44} allowGrouping={true} groupSettings={groupSettings} gridLines="Both">
+                            <GridComponent dataSource={gridData} key={"grid-9-bs"} width="100%" height={1117} rowHeight={44} allowGrouping={true} groupSettings={groupSettings} gridLines="Both">
                                 <ColumnsDirective>
                                     <ColumnDirective field="category" headerText="Category" width="140" />
                                     <ColumnDirective field="permission" headerText="Permission" textAlign="Left" width="220" />

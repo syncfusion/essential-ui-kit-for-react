@@ -83,7 +83,7 @@ export default function ForgetPassword3() {
                                         <form action="#" className="mt-6 mb-6" onSubmit={(event) => event.preventDefault()}>
                                             <div className="mb-4">
                                                 <label className="block text-sm mb-1 font-medium text-gray-700 dark:text-gray-300">Email</label>
-                                                <TextBoxComponent cssClass="e-bigger" className="py-2" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
+                                                <TextBoxComponent cssClass="e-bigger" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
                                             </div>
                                         </form>
                                         <div className="e-bigger">
@@ -147,7 +147,7 @@ export default function ForgetPassword3() {
                                     <form action="#" className="mt-4 mb-4" onSubmit={(event) => event.preventDefault()}>
                                         <div className="mb-3">
                                             <label className="form-label mb-1 fw-medium text-dark-emphasis small">Email</label>
-                                            <TextBoxComponent cssClass="e-bigger" className="py-2" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
+                                            <TextBoxComponent cssClass="e-bigger" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
                                         </div>
                                     </form>
                                     <div className="e-bigger">

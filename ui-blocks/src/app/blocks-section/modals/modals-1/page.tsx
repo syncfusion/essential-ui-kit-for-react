@@ -12,12 +12,14 @@ export default function Modals1() {
     /* SB Code - Start */
     const [theme, setTheme] = useState("tailwind");
     /* SB Code - End */
-    const [containerHeight, setContainerHeight] = useState("826px");
     const dialog = useRef<DialogComponent>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const checkWindowSize = () => {
         const isMobile = window.innerWidth <= 640;
-        setContainerHeight(isMobile ? " 726px" : " 826px");
+        if (containerRef.current) {
+            containerRef.current.style.minHeight = isMobile ? "726px" : "826px";
+        }
         if (dialog) {
             dialog.current?.show(isMobile);
         }
@@ -57,9 +59,9 @@ export default function Modals1() {
             case "tailwind":
                 return (
                     <section>
-                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: containerHeight }}>
+                        <div ref={containerRef} id="dialog-container" className="relative flex justify-center">
                             <ButtonComponent className="h-fit my-5" type="button" onClick={() => dialog.current?.show()}>Contact Information</ButtonComponent>
-                            <DialogComponent ref={dialog} key={"modal-1-tw"} className="rounded-none sm:rounded-lg sm:m-4" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '726px'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="548px" isModal={true}
+                            <DialogComponent ref={dialog} key={"modal-1-tw"} className="rounded-none sm:rounded-lg sm:m-4" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="548px" isModal={true}
                                 header={() =>
                                     <div>
                                         <div className="font-semibold leading-normal mb-0.5">Contact Information</div>
@@ -68,8 +70,8 @@ export default function Modals1() {
                                 }
                                 footerTemplate={() => (
                                     <div className="flex justify-end gap-2 sm:gap-1 mt-1 mb-2">
-                                        <ButtonComponent className="grow sm:grow-0 !ml-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent className="e-primary grow sm:grow-0" type="button">Save Contact</ButtonComponent>
+                                        <ButtonComponent className="w-1/2 sm:w-fit !ml-0" type="button">Cancel</ButtonComponent>
+                                        <ButtonComponent className="e-primary w-1/2 sm:w-fit" type="button">Save Contact</ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -130,7 +132,7 @@ export default function Modals1() {
                                                 <DatePickerComponent placeholder="MM/DD/YYYY"></DatePickerComponent >
                                             </div>
                                             <div className="flex flex-col gap-1">
-                                                <label>Tags/ Labels</label>
+                                                <label>Tags/Labels</label>
                                                 <DropDownListComponent placeholder="Select keywords or tags"></DropDownListComponent>
                                             </div>
                                             <div className="flex flex-col gap-1">
@@ -147,9 +149,9 @@ export default function Modals1() {
             case "bootstrap5":
                 return (
                     <section>
-                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: containerHeight }}>
+                        <div ref={containerRef} id="dialog-container" className="position-relative d-flex align-items-start">
                             <ButtonComponent className="mx-auto my-3 e-outline" type="button" onClick={() => dialog.current?.show()}>Contact Information</ButtonComponent>
-                            <DialogComponent ref={dialog} key={"modal-1-bs"} className="rounded-3 m-sm-2" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '736px'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="548px" isModal={true}
+                            <DialogComponent ref={dialog} key={"modal-1-bs"} className="rounded-3 m-sm-2" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="548px" isModal={true}
                                 header={() =>
                                     <div>
                                         <div className="fw-bold text-body">Contact Information</div>
@@ -158,8 +160,8 @@ export default function Modals1() {
                                 }
                                 footerTemplate={() => (
                                     <div className="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                                        <ButtonComponent className="flex-grow-1 flex-sm-grow-0 ms-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent className="e-primary flex-grow-1 flex-sm-grow-0" type="button">Save Contact</ButtonComponent>
+                                        <ButtonComponent className="col col-sm-auto ms-0" type="button">Cancel</ButtonComponent>
+                                        <ButtonComponent className="e-primary col col-sm-auto" type="button">Save Contact</ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -220,7 +222,7 @@ export default function Modals1() {
                                                 <DatePickerComponent placeholder="MM/DD/YYYY"></DatePickerComponent>
                                             </div>
                                             <div className="col-12 col-sm-6 d-flex flex-column gap-1">
-                                                <label>Tags/ Labels</label>
+                                                <label>Tags/Labels</label>
                                                 <DropDownListComponent placeholder="Select keywords or tags"></DropDownListComponent>
                                             </div>
                                             <div className="col-12 col-sm-6 d-flex flex-column gap-1">

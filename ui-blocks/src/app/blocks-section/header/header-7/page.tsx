@@ -73,7 +73,7 @@ export default function Header7() {
                                     <BreadcrumbComponent ref={breadcrumb} enableNavigation={false} overflowMode={overflowMode} maxItems={maxItems} items={[{ iconCss: "e-icons e-folder", text: "Reports" }, { text: "Business Metrics" }]}></BreadcrumbComponent>
                                 </div>
                                 <div className="flex gap-2">
-                                    <div className="flex items-center -space-x-3 mr-2">
+                                    <div className="flex items-center -space-x-3 mr-1">
                                         <span className="e-avatar e-avatar-small e-avatar-circle z-30">
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
@@ -85,7 +85,7 @@ export default function Header7() {
                                         </span>
                                         <span className="e-avatar e-avatar-small e-avatar-circle z-0 block sm:hidden text-sm bg-gray-700 dark:bg-gray-200 text-white dark:text-black pl-1">+ 2</span>
                                     </div>
-                                    <div className="flex items-center gap-1">
+                                    <div className="flex gap-1">
                                         <ButtonComponent cssClass="e-flat hidden sm:block" type="button">
                                             <div className="flex items-center gap-1">
                                                 <span className="sf-icon-share-arrow-04 text-base"></span>
@@ -101,7 +101,7 @@ export default function Header7() {
                                 <div className="flex justify-between gap-3 sm:gap-6">
                                     <div className="block">
                                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Business Metrics</h3>
-                                        <p className="mt-1 text-sm text-gray-900 dark:text-white">Overview of our sales pipeline, customer demographics, product subscriptions, and more.</p>
+                                        <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">Overview of our sales pipeline, customer demographics, product subscriptions, and more.</p>
                                     </div>
                                     <div className="flex items-start space-x-3">
                                         <ButtonComponent type="button">
@@ -127,7 +127,7 @@ export default function Header7() {
                     <section className="bg-body">
                         <div key={"header-7-bs"} style={{ minHeight: "36rem" }}>
                             <div className="d-flex justify-content-between align-items-center px-3 px-sm-4 py-2 border-bottom">
-                                <div id="breadcrumb">
+                                <div>
                                     <BreadcrumbComponent ref={breadcrumb} enableNavigation={false} overflowMode={overflowMode} maxItems={maxItems} items={[{ iconCss: "e-icons e-folder", text: "Reports" }, { text: "Business Metrics" }]}></BreadcrumbComponent>
                                 </div>
                                 <div className="d-flex my-1">
@@ -143,7 +143,7 @@ export default function Header7() {
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
                                     </div>
-                                    <div className="d-flex align-items-center gap-1">
+                                    <div className="d-flex gap-1">
                                         <ButtonComponent className="d-none d-sm-block e-flat" cssClass="e-flat" type="button">
                                             <div className="d-flex align-items-center gap-1">
                                                 <span className="sf-icon-share-arrow-04 fs-6"></span>

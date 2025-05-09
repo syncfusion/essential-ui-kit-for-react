@@ -12,7 +12,7 @@ export default function Sidebar8() {
     /* SB Code - End */ 
     const sidebar = useRef<SidebarComponent | null>(null);
 
-    const data: any[] = [
+    const contactList: any[] = [
         {
             id: 1,
             name: 'Darlene Robertson',
@@ -106,7 +106,7 @@ export default function Sidebar8() {
                                 </div>
                                 <hr className="my-4 mx-3 border-gray-200 dark:border-gray-700" />
                                 <p className="text-base text-gray-900 dark:text-white pb-3 px-3">Active Contacts</p>
-                                <ListViewComponent className="border-0" dataSource={data} template={(data: any)=>(
+                                <ListViewComponent className="border-0" dataSource={contactList} template={(data: any)=>(
                                     <div className="e-list-wrapper flex items-center">
                                         <span className="flex items-center">
                                             <span className="e-avatar e-avatar-xsmall e-avatar-circle">
@@ -154,7 +154,7 @@ export default function Sidebar8() {
                                 </div>
                                 <hr className="mx-3 opacity-100 border-light-subtle" />
                                 <p className="fs-6 text-body-secondary m-3">Active Contacts</p>
-                                <ListViewComponent className="border-0 e-bigger pb-3" dataSource={data} template={(data: any) => (
+                                <ListViewComponent className="border-0 e-bigger pb-3" dataSource={contactList} template={(data: any) => (
                                     <div className="e-list-wrapper d-flex justify-content-between align-items-center ps-1">
                                         <span className="d-flex align-items-center">
                                             <span className="e-avatar e-avatar-xsmall e-avatar-circle">

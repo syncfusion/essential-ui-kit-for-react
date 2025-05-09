@@ -61,7 +61,7 @@ export default function MainPage() {
                 <div className={styles['main-container-header']}>
                     <h1 className={styles['main-title']}>Develop Apps Faster with Pre-Built Blocks</h1>
                     <p className={styles['main-description']}>
-                        Accelerate your web app development with 160+ responsive blocks for React, fully compatible with Tailwind and Bootstrap 5.3.
+                        Accelerate your web app development with 175+ responsive blocks for React, fully compatible with Tailwind and Bootstrap 5.3.
                     </p>
                     <div className={styles['button-container']}>
                         <a href="https://www.syncfusion.com/feedback/react" target="_blank" className={styles['request-btn']} role="button" tabIndex={0} rel="noopener noreferrer" aria-label="Request a block">
@@ -108,7 +108,12 @@ export default function MainPage() {
                                                             onClick={() => navigateToDemo(block.url)}
                                                             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigateToDemo(block.url)}>
                                                             <div className={styles['component-list-text']}>
-                                                                {block.name} {block.isNew && <span>New</span>}
+                                                                {block.name}
+                                                                {(block.isNew || block.isUpdated) && (
+                                                                    <span className={`${styles['sampleStatus']} ${block.isNew ? styles['newStatus'] : ''} ${block.isUpdated ? styles['updatedStatus'] : ''}`}>
+                                                                        {block.isNew ? 'New' : (block.isUpdated ? 'Updated' : '')}
+                                                                    </span>
+                                                                )}
                                                             </div>
                                                             <div className={styles['component-count']}>{`${block.subBlockList.length} Blocks`}</div>
                                                         </li>
@@ -135,7 +140,12 @@ export default function MainPage() {
                                                             </div>
                                                             <div className={styles['block-footer']} title={block.name}>
                                                                 <div className={styles['block-title']}>
-                                                                    {block.name} {block.isNew && <span>New</span>}
+                                                                    {block.name}
+                                                                    {(block.isNew || block.isUpdated) && (
+                                                                        <span className={`${styles['sampleStatus']} ${block.isNew ? styles['newStatus'] : ''} ${block.isUpdated ? styles['updatedStatus'] : ''}`}>
+                                                                            {block.isNew ? 'New' : (block.isUpdated ? 'Updated' : '')}
+                                                                        </span>
+                                                                    )}
                                                                 </div>
                                                                 <div className={styles['block-count']}>
                                                                     <div className={styles['block-count-radius']}>{`${block.subBlockList.length} Blocks`}</div>

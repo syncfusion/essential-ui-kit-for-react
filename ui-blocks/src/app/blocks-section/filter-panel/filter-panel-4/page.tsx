@@ -23,13 +23,21 @@ export default function FilterPanel4() {
         setWidth(window.innerWidth < 400 ? '100%' : '320px')
     }
 
-    /* SB Code - Start */    
+    /* SB Code - Start */  
+    const refreshDialog = (timeout: number) => {
+        setTimeout(() => {
+            requesterAccordion.current?.refresh();
+            ticketAccordion.current?.refresh();
+        }, timeout);
+    }
+   
     const handleMessageEvent = (event: MessageEvent) => {
         if (event.origin === window.location.origin) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'filter-panel-4' && blockData.theme) {
                     setTheme(blockData.theme);
+                    refreshDialog(200);
                 }
             } catch (error) {
                 console.log('Error parsing message data: ', error);
@@ -41,10 +49,7 @@ export default function FilterPanel4() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
-        setTimeout(() => {
-            requesterAccordion.current?.refresh();
-            ticketAccordion.current?.refresh();
-        }, 800);
+        refreshDialog(1000);
         /* SB Code - End */
         window.addEventListener('resize', setSidebarWidth);
 
@@ -101,7 +106,7 @@ export default function FilterPanel4() {
                                                 <span className="e-avatar e-avatar-medium e-avatar-circle bg-primary-600 dark:bg-primary-400 text-sm text-white dark:text-black">MG</span>
                                                 <div>
                                                     <h2 className="text-sm font-medium text-gray-900 dark:text-white">Michael Green</h2>
-                                                    <a href="#" className="text-xs font-normal text-gray-500 dark:text-gray-400">michael.green@gmail.com</a>
+                                                    <a href="#" className="text-xs font-normal text-gray-500 dark:text-gray-400">michael.green@example.com</a>
                                                 </div>
                                             </div>
                                         )}>
@@ -163,7 +168,7 @@ export default function FilterPanel4() {
                                                     headerTemplate={() => ( 
                                                         <div className="d-flex align-items-center gap-2">
                                                             <span className="e-icons e-print-layout fs-6"></span>
-                                                            <span className="fw-medium fs-6 text-body">Details</span>
+                                                            <span className="fw-medium fs-6">Details</span>
                                                         </div>
                                                     )} 
                                                 />
@@ -171,7 +176,7 @@ export default function FilterPanel4() {
                                                     headerTemplate={() => (
                                                         <div className="d-flex align-items-center gap-2">
                                                             <span className="e-icons e-grid-view fs-6"></span>
-                                                            <span className="fw-medium fs-6 text-body">Apps</span>
+                                                            <span className="fw-medium fs-6">Apps</span>
                                                         </div>
                                                     )}
                                                 />
@@ -194,7 +199,7 @@ export default function FilterPanel4() {
                                                         <span className="e-avatar e-avatar-medium e-avatar-circle bg-primary text-white">MG</span>
                                                         <div>
                                                             <h2 className="fs-6 mb-1 fw-medium text-body">Michael Green</h2>
-                                                            <a href="#" className="fs-6 fw-normal text-secondary">michael.green@gmail.com</a>
+                                                            <a href="#" className="fs-6 fw-normal text-secondary">michael.green@example.com</a>
                                                         </div>
                                                     </div>
                                                 )}>

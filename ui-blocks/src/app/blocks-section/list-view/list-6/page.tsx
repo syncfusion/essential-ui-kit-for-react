@@ -11,7 +11,7 @@ export default function List6() {
     /* SB Code - End */
     const [width, setWidth] = useState({});
 
-    const data: any[] = [
+    const fieldData: any[] = [
         {
             id: 1,
             field: 'Full Name',
@@ -84,7 +84,7 @@ export default function List6() {
                     <section className="bg-white dark:bg-gray-900">
                         <div id={styles["custom-field-list"]} className="lg:max-w-md w-full mx-auto px-4 pt-8 pb-4 min-h-screen">
                             <p className="text-sm text-gray-700 dark:text-gray-200 mb-4">Increase the amount of data that you collect re-order the fields.</p>
-                            <ListBoxComponent key={"list-6-tw"} className="e-bigger" dataSource={data} allowDragAndDrop={true} fields={{ text: 'field', iconCss: 'fontIcon' }} itemTemplate={(data: any) => (
+                            <ListBoxComponent key={"list-6-tw"} className="e-bigger" dataSource={fieldData} allowDragAndDrop={true} fields={{ text: 'field', iconCss: 'fontIcon' }} itemTemplate={(data: any) => (
                                 <div className="list-wrapper flex items-center space-x-3 p-2">
                                     <span className="sf-icon-drag-dot-vertical text-base text-gray-500 dark:text-gray-300"></span>
                                     <span className={`text-base text-gray-500 dark:text-gray-300 ${data.fontIcon}`}></span>
@@ -100,7 +100,7 @@ export default function List6() {
                     <section className="bg-body">
                         <div id={styles["custom-field-list"]} className="container-lg w-100 mx-auto px-3 py-5 min-vh-100" style={width}>
                             <p className="small">Increase the amount of data that you collect re-order the fields.</p>
-                            <ListBoxComponent key={"list-6-bs"} className="e-bigger" dataSource={data} allowDragAndDrop={true} fields={{ text: 'field', iconCss: 'fontIcon' }} itemTemplate={(data: any) => (
+                            <ListBoxComponent key={"list-6-bs"} className="e-bigger" dataSource={fieldData} allowDragAndDrop={true} fields={{ text: 'field', iconCss: 'fontIcon' }} itemTemplate={(data: any) => (
                                 <div className="list-wrapper d-flex align-items-center gap-2 p-2">
                                     <span className="e-icons sf-icon-drag-dot-vertical fs-6 pe-1"></span>
                                     <span className={`pe-1 fs-6 ${data.fontIcon}`}></span>

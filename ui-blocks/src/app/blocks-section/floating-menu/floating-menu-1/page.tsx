@@ -162,7 +162,7 @@ export default function FloatingMenu1() {
                                                         <p className="fw-medium m-0 mb-1 text-truncate">{data.question}</p>
                                                         <p className="m-0" style={{ maxWidth: "320px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{data.answer}</p>
                                                     </div>
-                                                    <ButtonComponent className="e-flat e-round e-lib e-inherit flex-shrink-0" iconCss="e-icons e-chevron-right" type="button"></ButtonComponent>
+                                                    <ButtonComponent className="e-flat e-round e-inherit flex-shrink-0" iconCss="e-icons e-chevron-right" type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                         );

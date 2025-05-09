@@ -12,12 +12,10 @@ export default function Modals7() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const [containerHeight, setContainerHeight] = useState("724px");
     const dialog = useRef<DialogComponent>(null);
 
     const checkWindowSize = () => {
         const isMobile = window.innerWidth <= 640;
-        setContainerHeight(isMobile ? "624px" : "724px");
         if (dialog) {
             dialog.current?.show(isMobile);
         }
@@ -34,14 +32,6 @@ export default function Modals7() {
                 hiddenSelectElement.parentNode.insertBefore(iconElement, hiddenSelectElement);
             }
         }
-    };
-
-    const focusIn = (event: React.FocusEvent<HTMLInputElement>) => {
-        event.target.parentElement?.classList.add("e-input-focus");
-    };
-    
-    const focusOut = (event: React.FocusEvent<HTMLInputElement>) => {
-        event.target.parentElement?.classList.remove("e-input-focus");
     };
 
     /* SB Code - Start */
@@ -79,14 +69,14 @@ export default function Modals7() {
             case 'tailwind':
                 return (
                     <section>
-                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: containerHeight }}>
+                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: "724px" }}>
                             <ButtonComponent className="h-fit my-5" type="button" onClick={() => dialog.current?.show()}>Track New Feature</ButtonComponent>
-                            <DialogComponent id={styles["dialog"]} className="rounded-none sm:rounded-lg sm:m-4" ref={dialog} key={"modal-8-tw"} width="515px" isModal={true} target="#dialog-container" showCloseIcon={true} beforeOpen={(event) => { event.maxHeight = '624px'; }} open={(e) => { e.preventFocus = true; }}
+                            <DialogComponent id={styles["dialog"]} className="rounded-none sm:rounded-lg sm:m-4" ref={dialog} key={"modal-8-tw"} width="515px" isModal={true} target="#dialog-container" showCloseIcon={true} beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }}
                                 header={() => <div className="font-semibold leading-normal">Track New Feature</div>} 
                                 footerTemplate={() => (
                                     <div className="flex flex-row justify-end gap-2 sm:gap-1 mt-1 sm:mt-0 mb-2">
-                                        <ButtonComponent className="grow sm:grow-0 !ml-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent className="e-primary grow sm:grow-0" type="button">Save Feature</ButtonComponent>
+                                        <ButtonComponent className="w-1/2 sm:w-fit !ml-0" type="button">Cancel</ButtonComponent>
+                                        <ButtonComponent className="e-primary w-1/2 sm:w-fit" type="button">Save Feature</ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -105,11 +95,11 @@ export default function Modals7() {
                                     <div className="flex flex-col gap-4 sm:gap-3">
                                         <div className="flex flex-col sm:flex-row sm:items-center gap-1">
                                             <label className="flex items-center gap-1 w-44 text-sm font-medium shrink-0">Source<span className="e-icons e-circle-info text-gray-500 dark:text-gray-300"></span></label>
-                                            <div className="e-input-group">
-                                                <span className="flex items-center border-r border-inherit px-1">
+                                            <div className="border rounded shadow-sm flex grow border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800">
+                                                <span className="flex items-center border-r border-gray-300 dark:border-gray-500 pl-3 pr-1.5">
                                                     <CheckBoxComponent label="Event" labelPosition="Before" checked={true}></CheckBoxComponent>
                                                 </span>
-                                                <input className="e-input" type="text" onFocus={focusIn} onBlur={focusOut} placeholder="Company attributes" />
+                                                <TextBoxComponent className="grow" cssClass="!border-0" type="text" placeholder="Company attributes"></TextBoxComponent>
                                             </div>
                                         </div>
                                         <div className="flex flex-col sm:flex-row sm:items-center gap-1">
@@ -148,16 +138,16 @@ export default function Modals7() {
             case 'bootstrap5':
                 return (
                     <section>
-                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: containerHeight }}>
+                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: "724px" }}>
                             <ButtonComponent className="mx-auto my-3 e-outline" type="button" onClick={() => dialog.current?.show()}>Track New Feature</ButtonComponent>
-                            <DialogComponent id={styles["dialog"]} ref={dialog} key={"modal-8-bs"} className="rounded-3 m-sm-2" target="#dialog-container" isModal={true} showCloseIcon={true} width="515px" open={(e) => { e.preventFocus = true; }} beforeOpen={(e) => { e.maxHeight = "630px"; }}
+                            <DialogComponent id={styles["dialog"]} ref={dialog} key={"modal-8-bs"} className="rounded-3 m-sm-2" target="#dialog-container" isModal={true} showCloseIcon={true} width="515px" open={(e) => { e.preventFocus = true; }} beforeOpen={(e) => { e.maxHeight = "100%"; }}
                                 header={() => (
                                     <p className="fw-bold mb-0 text-body">Track New Feature</p>
                                 )}
                                 footerTemplate={() => (
                                     <div className="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                                        <ButtonComponent cssClass="flex-grow-1 flex-sm-grow-0 ms-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary flex-grow-1 flex-sm-grow-0" type="button">Save Feature</ButtonComponent>
+                                        <ButtonComponent cssClass="col col-sm-auto ms-0" type="button">Cancel</ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary col col-sm-auto" type="button">Save Feature</ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -169,7 +159,7 @@ export default function Modals7() {
                                         </div>
                                         <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
                                             <label className="d-flex align-items-center gap-1 fw-medium flex-shrink-0" style={{ width: "175px" }}>No Views
-                                                <span className="e-icons e-circle-info text-secondary"></span>
+                                                <span className="e-icons e-circle-info text-body-secondary"></span>
                                             </label>
                                             <DropDownListComponent className="w-100 flex-grow-1" placeholder="Select the number of views" created={() =>onCreated(0, "e-grid-view")}></DropDownListComponent>
                                         </div>
@@ -177,12 +167,12 @@ export default function Modals7() {
                                     <p className="fw-bold px-2 py-1 bg-body-secondary rounded mb-0">Tracking Criteria</p>
                                     <div className="row gap-3 gap-sm-2 gy-sm-1 mt-0">
                                         <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
-                                            <label className="d-flex align-items-center gap-1 fw-medium flex-shrink-0" style={{ width: "175px" }}>Source<span className="e-icons e-circle-info text-secondary"></span></label>
-                                            <div className="e-input-group">
-                                                <span className="d-flex align-items-center border-end px-1">
+                                            <label className="d-flex align-items-center gap-1 fw-medium flex-shrink-0" style={{ width: "175px" }}>Source<span className="e-icons e-circle-info text-body-secondary"></span></label>
+                                            <div className="d-flex border rounded-1 flex-grow-1">
+                                                <span className="d-flex align-items-center border-end px-2">
                                                     <CheckBoxComponent label="Event" labelPosition="Before" checked={true}></CheckBoxComponent>
                                                 </span>
-                                                <input className="e-input" type="text" placeholder="Company attributes" onFocus={focusIn} onBlur={focusOut} />
+                                                <TextBoxComponent className="flex-grow-1" cssClass="border-0" type="text" placeholder="Company attributes"></TextBoxComponent>
                                             </div>
                                         </div>
                                         <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
@@ -202,7 +192,7 @@ export default function Modals7() {
                                     <div className="row gap-3 gap-sm-2 gy-sm-1 mt-0">
                                         <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
                                             <label className="d-flex align-items-center gap-1 fw-medium flex-shrink-0" style={{ width: "175px" }}>Status
-                                                <span className="e-icons e-circle-info text-secondary"></span>
+                                                <span className="e-icons e-circle-info text-body-secondary"></span>
                                             </label>
                                             <DropDownListComponent className="w-100 flex-grow-1" placeholder="Evaluating" created={() => onCreated(2, "e-contrast")}></DropDownListComponent>
                                         </div>

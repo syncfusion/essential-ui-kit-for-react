@@ -1,0 +1,26 @@
+#notification :global(.e-tab .e-tab-header .e-toolbar-item) {
+    width: 100% !important;
+}
+
+#notification :global(.e-tab .e-tab-header .e-toolbar-items) {
+    width: 50% !important;
+    text-align: center;
+}
+
+#notification:global(.e-dialog) {
+    max-height: fit-content !important;
+}
+
+#notification :global(.e-dlg-header-content),
+#notification :global(.e-dlg-content),
+#notification :global(.e-footer-content) {
+    border: 0;
+    border-radius: 0;
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+#notification :global(.e-list-item) {
+    height: auto !important;
+    padding: 0 !important;
+}

@@ -65,8 +65,8 @@ export default function Modals2() {
                                 header={() => <div className="font-semibold leading-normal">Personal Information</div>}
                                 footerTemplate={() => (
                                     <div className="flex flex-row justify-end gap-2 sm:gap-1 mt-1 mb-2">
-                                        <ButtonComponent className="grow sm:grow-0 !ml-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent className="e-primary grow sm:grow-0" type="submit">Submit</ButtonComponent>
+                                        <ButtonComponent className="w-1/2 sm:w-fit !ml-0" type="button">Cancel</ButtonComponent>
+                                        <ButtonComponent className="e-primary w-1/2 sm:w-fit" type="submit">Submit</ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -105,8 +105,8 @@ export default function Modals2() {
                                 header={() => <div className="fw-bold mb-0 text-body">Personal Information</div>}
                                 footerTemplate={() => (
                                     <div className="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                                        <ButtonComponent className="flex-grow-1 flex-sm-grow-0 ms-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent className="e-primary flex-grow-1 flex-sm-grow-0" type="submit">Submit</ButtonComponent>
+                                        <ButtonComponent className="col col-sm-auto ms-0" type="button">Cancel</ButtonComponent>
+                                        <ButtonComponent className="e-primary col col-sm-auto" type="submit">Submit</ButtonComponent>
                                     </div>
                                 )}
                             >

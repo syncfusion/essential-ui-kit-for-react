@@ -14,7 +14,7 @@ export default function List11() {
     const [overflowMode, setOverflowMode] = useState<BreadcrumbOverflowMode>(BreadcrumbOverflowMode.None);
     const listview = useRef<ListViewComponent | null>(null);
 
-    const data: any[] = [
+    const files: any[] = [
         { id: 1, fileName: "Project_Presentation_2024_V1.pptx", data1: "Documents", data2: "Presentations", data3: "Project Presentations", data4: "2024", image: "ppt.png" },
         { id: 2, fileName: "Inventory_Tracking_Sheet_August.xlsx", data1: "Documents", data2: "Finance", data3: "Quarterly Reports", data4: "Q3 2024", image: "excel.png" },
         { id: 3, fileName: "Brainstorming_Session_Notes_2024.txt", data1: "Documents", data2: "Notes", data3: "Brainstorming Sessions", data4: "September", image: "notes.png" },
@@ -90,7 +90,7 @@ export default function List11() {
                     <section className="bg-white dark:bg-gray-900">
                         <div id="my-file-list" className="flex items-center justify-center min-h-screen">
                             <div className="max-w-none lg:max-w-2xl w-full m-auto p-2 md:py-8 lg:px-14">
-                                <ListViewComponent id={styles["my-file-list"]} ref={listview} className="!border-0" cssClass="e-list-template" dataSource={data} actionComplete={actionComplete} template={(data: any) => (
+                                <ListViewComponent id={styles["my-file-list"]} ref={listview} className="!border-0" cssClass="e-list-template" dataSource={files} actionComplete={actionComplete} template={(data: any) => (
                                     <div className="e-list-wrapper e-list-multi-line border-b border-gray-200 dark:border-gray-600 !py-4 !px-1 sm:!px-3">
                                         <div className="flex justify-between">
                                             <div className="flex items-center">
@@ -125,7 +125,7 @@ export default function List11() {
                     <section className="bg-body">
                         <div className="d-flex align-items-center justify-content-center min-vh-100">
                             <div className="container-lg w-100 m-auto p-3 p-md-4" style={width}>
-                                <ListViewComponent ref={listview} className="border-0" cssClass="e-list-template" dataSource={data} actionComplete={actionComplete} template={(data: any) => (
+                                <ListViewComponent ref={listview} className="border-0" cssClass="e-list-template" dataSource={files} actionComplete={actionComplete} template={(data: any) => (
                                     <div className="e-list-wrapper e-list-multi-line py-3 px-1 px-sm-3">
                                         <div className="d-flex justify-content-between">
                                             <div className="d-flex align-items-center">

@@ -96,7 +96,7 @@ export default function Statistics2() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-900">
                         <div className="px-4 sm:px-6 xl:px-11 py-12">
-                            <div className="e-card rounded-lg grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 shadow-none !border-gray-300 dark:!border-gray-600">
+                            <div className="e-card rounded-lg grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 shadow-none">
                                 {metricsData.map((data, index) => {
                                     const { isLastRow, isLastColumn } = isLastRowAndColumn(index, metricsData.length);
                                     return (
@@ -104,18 +104,18 @@ export default function Statistics2() {
                                             <div className="py-6 md:py-5">
                                                 <div className="e-card-stacked">
                                                     <div className="e-card-header !justify-start !pt-0 !pb-2 space-x-1 !px-4 items-center">
-                                                        <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">{data.metricName}</h3>
+                                                        <h3 className="text-sm font-medium text-gray-500 dark:text-gray-300">{data.metricName}</h3>
                                                         {data.contextInfo && (
                                                             <div className="flex items-center">
                                                                 <TooltipComponent opensOn='Hover' content={data.contextInfo} width={210} style={{ height: '16px' }}>
-                                                                    <span className="e-icons e-circle-info e-medium text-gray-500 dark:text-gray-400"></span>
+                                                                    <span className="e-icons e-circle-info e-medium text-gray-500 dark:text-gray-300"></span>
                                                                 </TooltipComponent>
                                                             </div>
                                                         )}
                                                     </div>
                                                     <div className="e-card-content !px-4 !pb-0">
                                                         <p className="text-xl !leading-7 font-semibold text-gray-900 dark:text-white">{data.currentValue}</p>
-                                                        <div className="text-sm text-gray-500 dark:text-gray-400 mt-3">
+                                                        <div className="text-sm text-gray-500 dark:text-gray-300 mt-3">
                                                             {data.currentPercentage} of Total:
                                                             <span className="font-medium text-gray-900 dark:text-white ml-1">{data.total}</span>
                                                         </div>

@@ -139,12 +139,12 @@ export default function Statistics5() {
                         <div className="px-4 sm:px-6 xl:px-11 py-12">
                             <div className="grid sm:grid-cols-2 gap-6 lg:gap-4 xl:grid-cols-4">
                                 {metricsData.map((data, index) => (
-                                    <div key={index} className="e-card e-bigger rounded-lg shadow-none !border-gray-300 dark:!border-gray-600">
+                                    <div key={index} className="e-card e-bigger rounded-lg shadow-none">
                                         <div className="e-card-stacked">
                                             <div className="e-card-header !justify-between !pb-0">
                                                 <div className="flex gap-2 items-center">
-                                                    <span className={`text-base text-gray-500 dark:text-gray-400 ${data.metricName === 'Patients' ? 'sf-icon-users' : data.metricName === 'New This Week' ? 'sf-icon-user-plus-01' : data.metricName === 'Critical Alerts' ? 'sf-icon-notification-bell-02' : 'e-icons e-day'}`}></span>
-                                                    <p className="text-sm font-medium text-gray-800 dark:text-gray-300">{data.metricName}</p>
+                                                    <span className={`text-base text-gray-500 dark:text-gray-300 ${data.metricName === 'Patients' ? 'sf-icon-users' : data.metricName === 'New This Week' ? 'sf-icon-user-plus-01' : data.metricName === 'Critical Alerts' ? 'sf-icon-notification-bell-02' : 'e-icons e-day'}`}></span>
+                                                    <p className="text-sm font-medium text-gray-700 dark:text-gray-200">{data.metricName}</p>
                                                 </div>
                                                 <div>
                                                     <ChartComponent id={data.id} chartArea={{ border: { width: 0 } }} primaryXAxis={{ visible: false, lineStyle: { width: 0 }, majorGridLines: { width: 0 }, minorGridLines: { width: 0 } }} primaryYAxis={setYaxis(data.metricPoints)} width="92" height="30" margin={{ left: 0, right: 0, top: 0, bottom: 0 }}>
@@ -170,7 +170,7 @@ export default function Statistics5() {
                                             <div className="e-card-content flex-col !pb-6">
                                                 <p className="text-xl mb-2 !leading-7 font-semibold text-gray-800 dark:text-gray-300 mt-1">{data.currentValue.toLocaleString()}</p>
                                                 <div className="flex justify-between">
-                                                    <p className="text-sm text-gray-800 dark:text-gray-300">Since last week</p>
+                                                    <p className="text-sm text-gray-700 dark:text-gray-200">Since last week</p>
                                                     <div className={`flex gap-1 items-center font-semibold ${data.trend === 'up' ? 'text-green-700 dark:text-green-500' : 'text-red-600 dark:text-red-400'}`}>
                                                         <p className="text-sm">{data.currentPercentage}&#37;</p>
                                                         <span className={`e-icons ${data.trend === 'up' ? 'e-chevron-up-fill e-medium' : 'e-chevron-down-fill e-medium'}`}></span>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
+import styles from './page.module.css';
 
 export default function List10() {
     /* SB Code - Start */
@@ -92,8 +93,8 @@ export default function List10() {
                     <section className="bg-white dark:bg-gray-900">
                         <div className="flex items-center justify-center min-h-screen">
                             <div className="max-w-none lg:max-w-2xl w-full m-auto p-4 md:py-8 lg:px-24">
-                                <ListViewComponent className="!border-0" cssClass="e-list-template" key={"list-10-tw"} dataSource={data} template={(data: any) => (
-                                    <div className="border border-gray-200 dark:border-gray-600 !py-4 px-4 my-4">
+                                <ListViewComponent id={styles["task-list"]} className="!border-0" cssClass="e-list-template" key={"list-10-tw"} dataSource={data} template={(data: any) => (
+                                    <div className="border border-gray-200 dark:border-gray-600 !py-4 px-4 my-4" style={{ borderRadius: '8px' }}>
                                         <div className="flex justify-between">
                                             <div className="flex w-full">
                                                 <span className="shrink-0">
@@ -127,8 +128,8 @@ export default function List10() {
                     <section className="bg-body">
                         <div className="d-flex align-items-center justify-content-center min-vh-100">
                             <div className="container-xl w-100 m-auto p-3 p-md-4" style={width}>
-                                <ListViewComponent cssClass="e-list-template" key={"list-10-bs"} dataSource={data} template={(data: any) => (
-                                    <div className="e-list-wrapper e-list-multi-line py-3 px-2 px-sm-3">
+                                <ListViewComponent id={styles["task-list"]} cssClass="e-list-template" key={"list-10-bs"} dataSource={data} style={{ borderWidth: '0px' }} template={(data: any) => (
+                                    <div className="e-list-wrapper e-list-multi-line border px-2 px-sm-3 py-3 mt-3" style={{borderRadius: '8px'}}>
                                         <div className="d-flex justify-content-between">
                                             <span className="flex-shrink-0">
                                                 <img className="rounded-2" src={`/react/essential-ui-kit/blocks/assets/images/listview/task-management/${data.logo}`} width={48} height={48} alt="brand logo" />

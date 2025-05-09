@@ -9,7 +9,7 @@ export default function Grid8() {
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
 
-    const data: any[] = [
+    const gridData: any[] = [
         {
             id: 1,
             name: "Lisa Martinez",
@@ -187,7 +187,7 @@ export default function Grid8() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="mx-auto w-full py-10 sm:px-6 px-4">
-                            <GridComponent dataSource={data} key={"grid-8-tw"} rowHeight={44} width="100%" height={440} allowGrouping={true} groupSettings={{ showDropArea: true }}>
+                            <GridComponent dataSource={gridData} key={"grid-8-tw"} rowHeight={44} width="100%" height={440} allowGrouping={true} groupSettings={{ showDropArea: true }}>
                                 <ColumnsDirective>
                                     <ColumnDirective field="name" headerText="Sales Representative" width="156" />
                                     <ColumnDirective field="totalSales" headerText="Total Revenue" width="124" format="C0" textAlign="Right"
@@ -246,7 +246,7 @@ export default function Grid8() {
                 return (
                     <section className="bg-body">
                         <div className="py-4 px-4 px-sm-6 mx-auto">
-                            <GridComponent dataSource={data} key={"grid-8-bs"} rowHeight={44} width="100%" height="440" allowGrouping={true} groupSettings={{ showDropArea: true }}>
+                            <GridComponent dataSource={gridData} key={"grid-8-bs"} rowHeight={44} width="100%" height="440" allowGrouping={true} groupSettings={{ showDropArea: true }}>
                                 <ColumnsDirective>
                                     <ColumnDirective field="name" headerText="Sales Representative" width="165" />
                                     <ColumnDirective field="totalSales" headerText="Total Revenue" width="124" format="C2" textAlign="Right"

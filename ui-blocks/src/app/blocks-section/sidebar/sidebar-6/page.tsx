@@ -12,7 +12,7 @@ export default function Sidebar6() {
     /* SB Code - End */ 
     const sidebar = useRef<SidebarComponent | null>(null);
 
-    const data1: any[] = [
+    const navigationMenu: any[] = [
         {
             id: 1,
             field: 'Dashboard',
@@ -35,7 +35,7 @@ export default function Sidebar6() {
         }
     ];
 
-    const data2: any[] = [
+    const libraryMenu: any[] = [
         {
             id: 1,
             field: 'Library'
@@ -54,7 +54,7 @@ export default function Sidebar6() {
         }
     ];
 
-    const data3: any[] = [
+    const supportMenu: any[] = [
         {
             id: 1,
             field: 'Settings',
@@ -112,7 +112,7 @@ export default function Sidebar6() {
                                             <ButtonComponent cssClass="e-icons e-chevron-down-double e-flat e-large" type="button"></ButtonComponent>
                                         </div>
                                         <div>
-                                            <ListViewComponent className="!border-0" dataSource={data1} template={(data: any) => (
+                                            <ListViewComponent className="!border-0" dataSource={navigationMenu} template={(data: any) => (
                                                 <div className="e-list-wrapper flex items-center px-1">
                                                     <span className={`e-icons ${data.fontIcon} text-base`}></span>
                                                     <span className="text-base font-normal pl-4">{data.field}</span>
@@ -122,7 +122,7 @@ export default function Sidebar6() {
                                         <hr className="my-4 mx-3 border-gray-200 dark:border-gray-700" />
                                         <div>
                                             <p className="text-base px-4 py-3 text-gray-700 dark:text-gray-300">Bergside Projects</p>
-                                            <ListViewComponent className="!border-0" dataSource={data2} template={(data: any) => (
+                                            <ListViewComponent className="!border-0" dataSource={libraryMenu} template={(data: any) => (
                                                 <div className="e-list-wrapper flex items-center px-1">
                                                     <span className={`e-icons e-bullet-3 !text-indigo-600 dark:!text-indigo-400`}></span>
                                                     <span className="text-base font-normal pl-4">
@@ -136,7 +136,7 @@ export default function Sidebar6() {
                                         </div>
                                     </div>
                                     <div className="pb-4">
-                                        <ListViewComponent className="!border-0" dataSource={data3} template={(data: any) => (
+                                        <ListViewComponent className="!border-0" dataSource={supportMenu} template={(data: any) => (
                                             <div className="e-list-wrapper flex items-center px-1">
                                                 <span className={`e-icons ${data.fontIcon}`}></span>
                                                 <span className="text-base font-normal pl-4">{data.field}</span>
@@ -171,7 +171,7 @@ export default function Sidebar6() {
                                             <ButtonComponent cssClass="e-icons e-chevron-down-double e-flat" type="button"></ButtonComponent>
                                         </div>
                                         <div>
-                                            <ListViewComponent className="border-0 e-bigger" dataSource={data1} template={(data: any) => (
+                                            <ListViewComponent className="border-0 e-bigger" dataSource={navigationMenu} template={(data: any) => (
                                                 <div className="e-list-wrapper d-flex align-items-center px-1">
                                                     <span className={`e-icons ${data.fontIcon} fs-6`}></span>
                                                     <span className="fs-6 fw-normal ps-2 ms-1">{data.field}</span>
@@ -180,7 +180,7 @@ export default function Sidebar6() {
                                         </div>
                                         <div>
                                             <p className="text-body-secondary fs-6 m-3">Bergside Projects</p>
-                                            <ListViewComponent className="border-0 e-bigger" dataSource={data2} template={(data: any) => (
+                                            <ListViewComponent className="border-0 e-bigger" dataSource={libraryMenu} template={(data: any) => (
                                                 <div className="e-list-wrapper d-flex align-items-center px-1">
                                                     <span className="e-icons e-bullet-3 e-medium text-primary"></span>
                                                     <span className="fs-6 fw-normal ps-2 ms-1">{data.field === 'Library' || data.field === 'Blocks' ? `Bootstrap ${data.field}` : data.field}</span>
@@ -192,7 +192,7 @@ export default function Sidebar6() {
                                         </div>
                                     </div>
                                     <div className="pb-3">
-                                        <ListViewComponent className="border-0 e-bigger" dataSource={data3} template={(data: any) => (
+                                        <ListViewComponent className="border-0 e-bigger" dataSource={supportMenu} template={(data: any) => (
                                             <div className="e-list-wrapper d-flex align-items-center px-1">
                                                 <span className={`e-icons ${data.fontIcon}`}></span>
                                                 <span className="fs-6 fw-normal ps-2">{data.field}</span>

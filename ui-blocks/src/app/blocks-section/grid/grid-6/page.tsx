@@ -8,7 +8,7 @@ export default function Grid6() {
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
 
-    const data: any[] = [
+    const gridData: any[] = [
         {
             id: 1,
             transactionId: "TRX202401",
@@ -192,7 +192,7 @@ export default function Grid6() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="mx-auto w-full py-12 sm:px-6 px-4">
-                            <GridComponent dataSource={data} key={"grid-6-tw"} width="100%" height={668} allowSorting={true} allowFiltering={true} filterSettings={{ type: "Menu" }}>
+                            <GridComponent dataSource={gridData} key={"grid-6-tw"} width="100%" height={668} allowSorting={true} allowFiltering={true} filterSettings={{ type: "Menu" }}>
                                 <ColumnsDirective>
                                     <ColumnDirective type="checkbox" isPrimaryKey={true} textAlign="Center" width="40" />
                                     <ColumnDirective field="transactionId" headerText="Transaction ID" width="143" />
@@ -246,7 +246,7 @@ export default function Grid6() {
                 return (
                     <section className="bg-body">
                         <div className="w-100 py-5 px-3 px-sm-4 mx-auto">
-                            <GridComponent dataSource={data} key={"grid-6-bs"} width="100%" height={668} allowSorting={true} allowFiltering={true} filterSettings={{ type: "Menu" }}>
+                            <GridComponent dataSource={gridData} key={"grid-6-bs"} width="100%" height={668} allowSorting={true} allowFiltering={true} filterSettings={{ type: "Menu" }}>
                                 <ColumnsDirective>
                                     <ColumnDirective type="checkbox" isPrimaryKey={true} textAlign="Center" width="40" />
                                     <ColumnDirective field="transactionId" headerText="Transaction ID" width="155" />

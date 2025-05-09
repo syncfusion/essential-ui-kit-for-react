@@ -72,7 +72,7 @@ export default function Statistics6() {
                         <div className="px-4 sm:px-6 xl:px-11 py-12">
                             <div className="grid sm:grid-cols-2 gap-6 lg:gap-4 xl:grid-cols-4">
                                 {metricsData.map((data, index) => (
-                                    <div key={index} className="e-card rounded-lg !border-gray-300 dark:!border-gray-600">
+                                    <div key={index} className="e-card rounded-lg">
                                         <div className="e-card-stacked">
                                             <div className="e-card-header !justify-between items-center !py-3 !px-6 bg-gray-50 dark:bg-gray-700">
                                                 <div className="e-card-header-title">
@@ -83,7 +83,7 @@ export default function Statistics6() {
                                             <div className="e-card-content !py-6 !px-6">
                                                 <p className="text-3xl !leading-10 font-semibold mb-4 xl:mb-6 text-gray-900 dark:text-white">{data.currentValue.toLocaleString()}</p>
                                                 <div className="flex justify-between items-center">
-                                                    <span className="text-gray-500 dark:text-gray-400 mt-1 xl:mt-0">{data.previousValue.toLocaleString()} last month</span>
+                                                    <span className="text-gray-500 dark:text-gray-400">{data.previousValue.toLocaleString()} last month</span>
                                                     <div className={`e-badge flex items-center w-fit ${data.trend === 'up' ? 'e-badge-success' : 'e-badge-danger'}`}>
                                                         <span className={`e-icons mr-1 ${data.trend === 'up' ? 'e-arrow-up' : 'e-arrow-down'}`}></span>
                                                         <span>{data.currentPercentage}&#37;</span>
@@ -115,7 +115,7 @@ export default function Statistics6() {
                                                 <div className="e-card-content p-4">
                                                     <p className="fs-3 lh-sm fw-bold text-body">{data.currentValue.toLocaleString()}</p>
                                                     <div className="d-flex justify-content-between w-auto align-items-center">
-                                                        <span className="text-body text-opacity-50 mt-2 mt-xl-0">{data.previousValue.toLocaleString()} last month</span>
+                                                        <span className="text-body text-opacity-50">{data.previousValue.toLocaleString()} last month</span>
                                                         <span className={`e-badge d-flex flex-row align-items-center justify-content-start flex-grow-0 ${data.trend === 'up' ? 'e-badge-success' : 'e-badge-danger'}`} style={{ width: 'fit-content' }}>
                                                             <span className={`e-icons me-1 ${data.trend === 'up' ? 'e-arrow-up' : 'e-arrow-down'}`}></span>
                                                             <span>{data.currentPercentage}&#37;</span>

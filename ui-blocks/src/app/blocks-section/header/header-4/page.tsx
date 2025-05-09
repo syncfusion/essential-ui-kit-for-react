@@ -84,12 +84,12 @@ export default function Header4() {
                                 <div className="flex gap-3">
                                     <ButtonComponent cssClass="block sm:hidden sm:me-6" iconCss="e-icons e-filter" type="button"></ButtonComponent>
                                     <span className="block sm:hidden me-4">
-                                        <DropDownButtonComponent id={styles.dropdown} iconCss="e-icons e-more-vertical-1" beforeOpen={(e) => (e.cancel = true)} type="button"></DropDownButtonComponent>
+                                        <DropDownButtonComponent className="e-caret-hide" iconCss="e-icons e-more-vertical-1" beforeOpen={(e) => (e.cancel = true)} type="button"></DropDownButtonComponent>
                                     </span>
                                 </div>
                             </div>
                             <div className="flex items-center justify-between px-4 sm:px-6">
-                                <div id={styles.tab_tw} className={`${styles.tab} w-full`}>
+                                <div id={styles.tab_tw} className="w-full">
                                     <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode} created={onTabCreated} selected={onTabSelected}>
                                         <TabItemsDirective>
                                             <TabItemDirective headerTemplate={() => (
@@ -158,12 +158,12 @@ export default function Header4() {
                                 <div className="d-flex gap-3">
                                     <ButtonComponent cssClass="e-outline d-block d-sm-none me-sm-4" iconCss="e-icons e-filter" type="button"></ButtonComponent>
                                     <span className="d-block d-sm-none me-3">
-                                        <DropDownButtonComponent id={styles.dropdown} cssClass="e-outline" iconCss="e-icons e-more-vertical-1" beforeOpen={(e) => (e.cancel = true)} type="button"></DropDownButtonComponent>
+                                        <DropDownButtonComponent cssClass="e-outline e-caret-hide" iconCss="e-icons e-more-vertical-1" beforeOpen={(e) => (e.cancel = true)} type="button"></DropDownButtonComponent>
                                     </span>
                                 </div>
                             </div>
                             <div className="d-flex align-items-center justify-content-between px-3 px-sm-4">
-                                <div className={`${styles.tab} w-100`}>
+                                <div className="w-100">
                                     <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode} created={onTabCreated} selected={onTabSelected}>
                                         <TabItemsDirective>
                                             <TabItemDirective headerTemplate={() => (

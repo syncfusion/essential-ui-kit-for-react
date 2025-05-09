@@ -86,7 +86,7 @@ export default function Header11() {
                                     <div id={styles.breadcrumb} className="pt-2 pb-3">
                                         <BreadcrumbComponent ref={breadcrumb} enableNavigation={false} overflowMode={breadcrumbOverflowMode} maxItems={maxItems} items={[{ text: "Documentation" }, { text: "API Reference Builder" }]} separatorTemplate={() => <span className="e-icons e-chevron-right"></span>}></BreadcrumbComponent>
                                     </div>
-                                    <div id={styles.tab} className="w-full">
+                                    <div className="w-full">
                                         <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={tabOverflowMode}>
                                             <TabItemsDirective>
                                                 <TabItemDirective headerTemplate={() => <div>Settings</div>}></TabItemDirective>
@@ -108,10 +108,10 @@ export default function Header11() {
                             <h1 className="fs-5 fw-bold text-body ms-3 ms-sm-4 mb-1">API Reference Builder</h1>
                             <div className="d-flex align-items-center justify-content-between">
                                 <div className="mx-3 mx-sm-4 w-100">
-                                    <div id="breadcrumb" className="pt-2 pb-3">
+                                    <div className="pt-2 pb-3">
                                         <BreadcrumbComponent ref={breadcrumb} enableNavigation={false} overflowMode={breadcrumbOverflowMode} maxItems={maxItems} items={[{ text: "Documentation" }, { text: "API Reference Builder" }]}></BreadcrumbComponent>
                                     </div>
-                                    <div id={styles.tab} className="w-100">
+                                    <div className="w-100">
                                         <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={tabOverflowMode}>
                                             <TabItemsDirective>
                                                 <TabItemDirective headerTemplate={() => <div>Settings</div>}></TabItemDirective>

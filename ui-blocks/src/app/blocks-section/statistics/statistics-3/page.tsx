@@ -67,14 +67,14 @@ export default function Statistics3() {
                         <div className="px-4 sm:px-6 xl:px-11 py-12">
                             <div className="grid sm:grid-cols-2 gap-6 lg:gap-4 xl:grid-cols-4 grow">
                                 {metricsData.map((data, index) => (
-                                    <div key={index} className="e-card pt-6 e-bigger rounded-lg shadow-none !border-gray-300 dark:!border-gray-600">
+                                    <div key={index} className="e-card pt-6 e-bigger rounded-lg shadow-none">
                                         <div className="e-card-stacked">
                                             <div className="e-card-header !py-0 !justify-between mb-1">
                                                 <div className="e-card-header-title">
-                                                    <h3 className="text-sm font-medium text-gray-800 dark:text-gray-300">{data.metricName}</h3>
+                                                    <h3 className="text-sm font-medium text-gray-700 dark:text-gray-200">{data.metricName}</h3>
                                                 </div>
                                                 <span className="e-avatar e-avatar-circle e-avatar-small">
-                                                    <span className={`text-base ${{ "Total Revenue": "sf-icon-dollar", "Total Leads": "sf-icon-users", "High Interest Leads": "sf-icon-users", "Qualified Leads": "sf-icon-user-tick-02" }[data.metricName] || ""}`}></span>
+                                                    <span className={`text-base text-gray-500 dark:text-gray-300 ${{ "Total Revenue": "sf-icon-dollar", "Total Leads": "sf-icon-users", "High Interest Leads": "sf-icon-users", "Qualified Leads": "sf-icon-user-tick-02" }[data.metricName] || ""}`}></span>
                                                 </span>
                                             </div>
                                             <div className="e-card-content !pb-6">
@@ -86,7 +86,7 @@ export default function Statistics3() {
                                                             {data.currentPercentage > 0 ? "+" : ""}{data.currentPercentage}&#37;
                                                         </span>
                                                     </span>
-                                                    <p className="text-sm text-gray-800 dark:text-gray-300 ml-2">compared to last week</p>
+                                                    <p className="text-sm text-gray-700 dark:text-gray-200 ml-2">compared to last week</p>
                                                 </div>
                                             </div>
                                         </div>
