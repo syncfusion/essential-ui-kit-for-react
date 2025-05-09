@@ -5,7 +5,6 @@ import { OverflowMode, TabComponent, TabItemDirective, TabItemsDirective } from 
 import { ChipListComponent, ChipsDirective, ChipDirective } from "@syncfusion/ej2-react-buttons";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
-import styles from "./page.module.css";
 
 export default function Header6() {
     /* SB Code - Start */
@@ -75,7 +74,7 @@ export default function Header6() {
                         <div key={"header-6-tw"} className="pt-2 sm:pt-4" style={{ minHeight: "36rem" }}>
                             <div className="px-4 sm:px-6">
                                 <div className="flex justify-between relative">
-                                    <div id={styles.tab} className="pt-2 w-full">
+                                    <div className="pt-2 w-full">
                                         <TabComponent ref={tab} selectedItem={1} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode}>
                                             <TabItemsDirective>
                                                 <TabItemDirective headerTemplate={() => (
@@ -96,7 +95,7 @@ export default function Header6() {
                                                                 <span className="e-input-group-icon e-icons e-search border-start-0"></span>
                                                             </div>
                                                             <div className="border-l border-gray-200 dark:border-gray-600 h-5 me-2"></div>
-                                                            <DropDownButtonComponent ref={dropdown} id={styles.dropdown} items={[{ text: 'Review Today' }, { text: 'Expired' }, { text: 'Upcoming' }, { text: 'Unassigned' }]} cssClass="e-flat" iconCss="e-icons e-more-vertical-1" type="button"></DropDownButtonComponent>
+                                                            <DropDownButtonComponent ref={dropdown} items={[{ text: 'Review Today' }, { text: 'Expired' }, { text: 'Upcoming' }, { text: 'Unassigned' }]} cssClass="e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" type="button"></DropDownButtonComponent>
                                                         </div>
                                                         <div className="border-b border-gray-200 mt-4 dark:border-gray-600 block sm:hidden"></div>
                                                         <div className="hidden lg:flex py-3 items-center">
@@ -137,7 +136,7 @@ export default function Header6() {
                                             <ButtonComponent iconCss="e-icons e-filter" content="Filter" type="button"></ButtonComponent>
                                             <DropDownButtonComponent iconCss="e-icons e-table" content="Columns" beforeOpen={(e) => (e.cancel = true)} type="button"></DropDownButtonComponent>
                                         </div>
-                                        <div className="hidden sm:flex lg:hidden items-center gap-3 pt-2">
+                                        <div className="hidden md:flex lg:hidden items-center gap-3 pt-2">
                                             <ButtonComponent iconCss="e-icons e-filter" type="button"></ButtonComponent>
                                             <DropDownButtonComponent iconCss="e-icons e-table" beforeOpen={(e) => (e.cancel = true)} type="button"></DropDownButtonComponent>
                                         </div>
@@ -153,7 +152,7 @@ export default function Header6() {
                         <div key={"header-6-bs"} className="pt-3 pt-sm-4" style={{ minHeight: "36rem" }}>
                             <div className="px-3 px-sm-4">
                                 <div className="d-flex justify-content-between position-relative">
-                                    <div id={styles.tab} className="w-100">
+                                    <div className="w-100">
                                         <TabComponent ref={tab} selectedItem={1} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode}>
                                             <TabItemsDirective>
                                                 <TabItemDirective headerTemplate={() => (
@@ -174,7 +173,7 @@ export default function Header6() {
                                                                 <span className="e-input-group-icon e-icons e-search border-start-0"></span>
                                                             </div>
                                                             <div className="border-start me-2" style={{ height: "20px" }}></div>
-                                                            <DropDownButtonComponent ref={dropdown} id={styles.dropdown} items={[{ text: "Review Today" }, { text: "Expired" }, { text: "Upcoming" }, { text: "Unassigned" }]} cssClass="e-flat" iconCss="e-icons e-more-vertical-1" type="button"></DropDownButtonComponent>
+                                                            <DropDownButtonComponent ref={dropdown} items={[{ text: "Review Today" }, { text: "Expired" }, { text: "Upcoming" }, { text: "Unassigned" }]} cssClass="e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" type="button"></DropDownButtonComponent>
                                                         </div>
                                                         <div className="border-bottom mt-4 d-block d-sm-none"></div>
                                                         <div className="d-none d-lg-flex py-3 align-items-center">
@@ -215,7 +214,7 @@ export default function Header6() {
                                             <ButtonComponent className="me-3" cssClass="e-outline" iconCss="e-icons e-filter e-medium" content="Filter" type="button"></ButtonComponent>
                                             <DropDownButtonComponent cssClass="e-outline" iconCss="e-icons e-table" content="Columns" beforeOpen={(e) => e.cancel = true} type="button"></DropDownButtonComponent>
                                         </div>
-                                        <div className="d-flex align-items-center mt-3 d-none d-sm-block d-lg-none">
+                                        <div className="d-flex align-items-center mt-3 d-none d-md-block d-lg-none">
                                             <ButtonComponent className="me-3" cssClass="e-outline" iconCss="e-icons e-filter e-medium" type="button"></ButtonComponent>
                                             <DropDownButtonComponent cssClass="e-outline" iconCss="e-icons e-table" beforeOpen={(e) => e.cancel = true} type="button"></DropDownButtonComponent>
                                         </div>

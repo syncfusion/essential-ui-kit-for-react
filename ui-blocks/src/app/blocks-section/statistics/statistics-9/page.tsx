@@ -63,14 +63,14 @@ export default function Statistics9() {
                         <div className="px-4 sm:px-6 xl:px-11 py-12">
                             <div className="grid sm:grid-cols-2 gap-6 lg:gap-4 xl:grid-cols-4">
                                 {metricsData.map((data, index) => (
-                                    <div key={index} className="e-card pt-6 e-bigger rounded-lg shadow-none !border-gray-300 dark:!border-gray-600">
+                                    <div key={index} className="e-card pt-6 e-bigger rounded-lg shadow-none">
                                         <div className="e-card-stacked">
                                             <div className="e-card-header !py-0 !justify-between items-center">
                                                 <div className="flex items-center">
                                                     <span className={`e-avatar e-avatar-small e-avatar-circle ${data.metricName === "Impressions" ? "bg-orange-100 dark:bg-orange-800 text-orange-700 dark:text-orange-500" : data.metricName === "Active Users" ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-600 dark:text-indigo-300" : data.metricName === "User Engagements" ? "bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-500" : "bg-cyan-100 dark:bg-sky-800 text-cyan-700 dark:text-sky-400"}`}>
                                                         <span className={`text-base ${data.metricName === 'Impressions' ? 'e-critical-path' : ''} ${data.metricName === 'Active Users' ? 'sf-icon-users' : ''} ${data.metricName === 'User Engagements' ? 'e-chart' : ''} ${data.metricName === 'Total Orders' ? 'sf-icon-cart' : ''} ${data.metricName === 'Impressions' || data.metricName === 'User Engagements' ? 'e-icons' : ''}`}></span>
                                                     </span>
-                                                    <h4 className="text-base font-medium text-gray-800 dark:text-gray-100 ml-3">{data.metricName}</h4>
+                                                    <h4 className="text-base font-medium text-gray-700 dark:text-gray-200 ml-3">{data.metricName}</h4>
                                                 </div>
                                                 <span className={`gap-1 flex items-center ${data.currentPercentage > 0 ? "text-green-700 dark:text-green-500" : "text-red-600 dark:text-red-400"}`}>
                                                     <span className={`e-icons e-medium ${data.currentPercentage > 0 ? "e-arrow-up" : "e-arrow-down"}`}></span>{data.currentPercentage > 0 ? "+" : ""}{data.currentPercentage}&#37;
@@ -78,7 +78,7 @@ export default function Statistics9() {
                                             </div>
                                             <div className="e-card-content !pb-6 !pt-4 flex items-center md:items-start lg:items-center md:flex-col lg:flex-row gap-2 md:gap-1 lg:gap-2">
                                                 <span className="text-xl font-semibold text-gray-900 dark:text-white">{data.currentValue}</span>
-                                                <span className="text-gray-500 dark:text-gray-300">vs last 7 days</span>
+                                                <span className="text-gray-500 dark:text-gray-400">vs last 7 days</span>
                                             </div>
                                         </div>
                                     </div>

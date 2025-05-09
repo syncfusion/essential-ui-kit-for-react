@@ -88,7 +88,6 @@ export default function Search3() {
                                     placeholder="Search"
                                     focus={() => search.current?.showPopup()}
                                     created={openPopup}
-                                   
                                     headerTemplate={() => (<div className="mt-4 mx-5 mb-3 text-sm font-medium text-gray-600 dark:text-gray-300">Recent</div>)}
                                     itemTemplate={(data: any) => (
                                         <div className="flex items-center justify-center px-5 py-2">
@@ -126,7 +125,6 @@ export default function Search3() {
                                         placeholder="Search"
                                         focus={() => search.current?.showPopup()}
                                         created={openPopup}
-                                       
                                         headerTemplate={() => (<p className="mt-2 mx-3 mb-2 fw-medium fs-6 lh-1 text-body-secondary">Recent</p>)}
                                         itemTemplate={(data: any) => (
                                             <div className="d-flex align-items-center justify-content-center px-3 py-2" style={{ textIndent: '0' }}>

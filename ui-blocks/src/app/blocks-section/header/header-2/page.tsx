@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { OverflowMode, TabComponent, TabItemDirective, TabItemsDirective } from "@syncfusion/ej2-react-navigations";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
-import styles from "./page.module.css";
 
 export default function Header2() {
     /* SB Code - Start */
@@ -60,7 +59,7 @@ export default function Header2() {
                     <section className="bg-white dark:bg-gray-800">
                         <div key={"header-2-tw"} className="pt-4 sm:pt-6" style={{ minHeight: "36rem" }}>
                             <div className="ms-4 sm:ms-6">
-                                <p className="text-xs font-semibold text-gray-600 dark:text-gray-400">My Workspace</p>
+                                <p className="text-xs font-semibold text-gray-500 dark:text-gray-400">My Workspace</p>
                             </div>
                             <div className="flex justify-between mt-3 mb-3 sm:mb-2">
                                 <div className="flex items-center">
@@ -76,7 +75,7 @@ export default function Header2() {
                                 </div>
                             </div>
                             <div className="flex justify-between items-center px-4 sm:px-6 relative">
-                                <div id={styles.tab} className="w-full">
+                                <div className="w-full">
                                     <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode}>
                                         <TabItemsDirective>
                                             <TabItemDirective headerTemplate={() => <div>All files</div>}></TabItemDirective>
@@ -97,7 +96,7 @@ export default function Header2() {
                     <section className="bg-body">
                         <div key={"header-2-bs"} className="pt-3 pt-sm-4" style={{ minHeight: "36rem" }}>
                             <div className="ms-3 ms-sm-4">
-                                <p className="small fw-bold text-secondary mb-1">My Workspace</p>
+                                <p className="small fw-bold text-body-tertiary text-opacity-50 mb-1">My Workspace</p>
                             </div>
                             <div className="d-flex justify-content-between mt-2 mb-2 mb-sm-2">
                                 <div className="d-flex align-items-center">
@@ -113,7 +112,7 @@ export default function Header2() {
                                 </div>
                             </div>
                             <div className="d-flex justify-content-between align-items-center pt-1 px-3 px-sm-4 position-relative">
-                                <div id={styles.tab} className="w-100">
+                                <div className="w-100">
                                     <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode}>
                                         <TabItemsDirective>
                                             <TabItemDirective headerTemplate={() => <div>All files</div>}></TabItemDirective>

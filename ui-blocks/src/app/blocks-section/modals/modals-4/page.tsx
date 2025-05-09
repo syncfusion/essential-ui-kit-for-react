@@ -75,8 +75,8 @@ export default function Modals4() {
                                     <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 sm:gap-1 py-2">
                                         <p className="text-left text-sm text-gray-500 dark:text-gray-400">Changes will be logged for audit purposes</p>
                                         <div className="flex gap-2 sm:gap-1">
-                                            <ButtonComponent cssClass="grow sm:grow-0 !ml-0" type="button">Cancel</ButtonComponent>
-                                            <ButtonComponent cssClass="e-primary grow sm:grow-0" type="button">Apply Changes</ButtonComponent>
+                                            <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" type="button">Cancel</ButtonComponent>
+                                            <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" type="button">Apply Changes</ButtonComponent>
                                         </div>
                                     </div>
                                 }
@@ -123,8 +123,8 @@ export default function Modals4() {
                                     <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 py-1">
                                         <p className="text-body text-opacity-50 text-start mb-0">Changes will be logged for audit purposes</p>
                                         <div className="d-flex justify-content-end gap-2 gap-sm-1">
-                                            <ButtonComponent cssClass="flex-grow-1 flex-sm-grow-0 ms-0" type="button">Cancel</ButtonComponent>
-                                            <ButtonComponent cssClass="e-primary flex-grow-1 flex-sm-grow-0" type="button">Apply Changes</ButtonComponent>
+                                            <ButtonComponent cssClass="col col-sm-auto ms-0" type="button">Cancel</ButtonComponent>
+                                            <ButtonComponent cssClass="e-primary col col-sm-auto" type="button">Apply Changes</ButtonComponent>
                                         </div>
                                     </div>
                                 }

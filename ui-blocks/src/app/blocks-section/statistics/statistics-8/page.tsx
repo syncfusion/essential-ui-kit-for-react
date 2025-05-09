@@ -67,13 +67,13 @@ export default function Statistics8() {
                         <div className="px-4 sm:px-6 xl:px-11 py-12">
                             <div className="grid sm:grid-cols-2 gap-6 lg:gap-4 lg:grid-cols-4">
                                 {metricsData.map((data, index) => (
-                                    <div key={index} className="e-card pt-6 e-bigger rounded-lg shadow-none !border-gray-300 dark:!border-gray-600">
+                                    <div key={index} className="e-card pt-6 e-bigger rounded-lg shadow-none">
                                         <div className="e-card-stacked">
                                             <div className="e-card-header !py-0 !justify-start !flex-col">
-                                                <span className={`e-avatar e-avatar-large rounded-lg ${data.metricName === "Incoming Calls" ? "bg-red-100 dark:bg-red-800 text-red-600 dark:text-red-400" : data.metricName === "Answered Calls" ? "bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-500" : data.metricName === "Abandoned Calls" ? "bg-orange-100 dark:bg-orange-800 text-orange-700 dark:text-orange-500" : "bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400" }`}>
+                                                <span className={`e-avatar e-avatar-large rounded-lg ${data.metricName === "Incoming Calls" ? "bg-red-100 dark:bg-red-800 text-red-600 dark:text-red-400" : data.metricName === "Answered Calls" ? "bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-500" : data.metricName === "Abandoned Calls" ? "bg-orange-100 dark:bg-orange-800 text-orange-700 dark:text-orange-500" : "bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-300" }`}>
                                                     <span className={`text-2xl ${data.metricName === "Incoming Calls" ? "sf-icon-phone-call-incoming" : data.metricName === "Answered Calls" ? "sf-icon-phone-call-outgoing" : data.metricName === "Abandoned Calls" ? "sf-icon-phone-call-missed" : "sf-icon-phone"}`}></span>
                                                 </span>
-                                                <h4 className="text-base font-medium text-gray-800 dark:text-gray-300 mt-3">{data.metricName}</h4>
+                                                <h4 className="text-base font-medium text-gray-700 dark:text-gray-200 mt-3">{data.metricName}</h4>
                                             </div>
                                             <div className="e-card-content !pb-6 !pt-2 flex">
                                                 <span className="text-xl font-semibold text-gray-900 dark:text-white mr-2">{data.callCount}K</span>

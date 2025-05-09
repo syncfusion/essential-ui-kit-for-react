@@ -10,7 +10,7 @@ export default function List3() {
     /* SB Code - End */
     const [width, setWidth] = useState({});
 
-    const data: any[] = [
+    const messages: any[] = [
         {
             id: '1',
             name: 'Wade Warren',
@@ -93,7 +93,7 @@ export default function List3() {
                     <section className="bg-white dark:bg-gray-900">
                         <div className="flex items-center justify-center min-h-screen">
                             <div className="lg:max-w-2xl w-full m-auto p-2 md:p-6 lg:py-8 lg:px-14">
-                                <ListViewComponent className="!border-0" cssClass="e-list-template" dataSource={data} template={(data: any) => (
+                                <ListViewComponent className="!border-0" cssClass="e-list-template" dataSource={messages} template={(data: any) => (
                                     <div className="e-list-wrapper !px-1 sm:!px-3 border-b border-gray-200 dark:border-gray-600 !py-3 flex items-start">
                                         <span className="e-avatar e-avatar-circle shrink-0">
                                             <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar}`} width={40} height={40} alt="profile picture" />
@@ -123,7 +123,7 @@ export default function List3() {
                     <section className="bg-body">
                         <div className="d-flex align-items-center justify-content-center min-vh-100">
                             <div className="container-lg w-100 m-auto p-2 p-md-4" style={width}>
-                                <ListViewComponent className="border-0" cssClass="e-list-template" dataSource={data} template={(data: any) => (
+                                <ListViewComponent className="border-0" cssClass="e-list-template" dataSource={messages} template={(data: any) => (
                                     <div className="e-list-wrapper px-1 px-sm-3 d-flex align-items-start w-100">
                                         <span className="e-avatar e-avatar-circle flex-shrink-0">
                                             <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar}`} width={40} height={40} alt="profile picture" />

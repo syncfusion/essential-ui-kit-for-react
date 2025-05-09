@@ -1,0 +1,8 @@
+#task-list :global(.e-list-item.e-active),
+#task-list :global(.e-list-item.e-hover) {
+    border-radius: 8px;
+}
+ 
+#task-list :global(.e-list-item) {
+    border-bottom: 0;
+}

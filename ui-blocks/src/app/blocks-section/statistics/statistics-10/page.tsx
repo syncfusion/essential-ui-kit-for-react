@@ -71,14 +71,14 @@ export default function Statistics10() {
                         <div className="px-4 sm:px-6 xl:px-11 py-12">
                             <div className="grid sm:grid-cols-2 gap-6 lg:gap-4 lg:grid-cols-4">
                                 {metricsData.map((data, index) => (
-                                    <div key={index} className="e-card e-bigger rounded-lg shadow-none !border-gray-300 dark:!border-gray-600">
+                                    <div key={index} className="e-card e-bigger rounded-lg shadow-none">
                                         <div className="e-card-stacked">
                                             <div className="e-card-header !flex-col !pb-2 !pt-5">
                                                 <span className={`e-avatar e-avatar-circle shrink-0 mb-6 h-11 w-11 ${data.metricAssets === "total-income.png" ? "bg-green-100 dark:bg-green-800" : ["total-profit.png", "total-revenue.png"].includes(data.metricAssets) ? "bg-orange-100 dark:bg-orange-800" : data.metricAssets === "total-conversion.png" ? "bg-cyan-100 dark:bg-sky-800" : ""}`}>
                                                     <img className="!h-6 !w-6" src={`/react/essential-ui-kit/blocks/assets/images/stats/financial-performance/${data.metricAssets}`} alt="financial logo" />
                                                 </span>
                                                 <div className="e-card-header-title">
-                                                    <h3 className="font-medium text-gray-800 dark:text-gray-300 text-sm">{data.metricName}</h3>
+                                                    <h3 className="font-medium text-gray-700 dark:text-gray-200 text-sm">{data.metricName}</h3>
                                                 </div>
                                             </div>
                                             <div className="e-card-content !pb-5">
@@ -89,7 +89,7 @@ export default function Statistics10() {
                                                         {data.currentPercentage}&#37;
                                                     </span>
                                                 </div>
-                                                <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Compared to last month</p>
+                                                <p className="text-sm text-gray-700 dark:text-gray-200 mt-2">Compared to last month</p>
                                             </div>
                                         </div>
                                     </div>

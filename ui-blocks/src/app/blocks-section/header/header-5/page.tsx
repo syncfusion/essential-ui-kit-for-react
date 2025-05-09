@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { OverflowMode, TabComponent, TabItemDirective, TabItemsDirective } from "@syncfusion/ej2-react-navigations";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
-import styles from "./page.module.css";
 
 export default function Header5() {
     /* SB Code - Start */
@@ -86,7 +85,7 @@ export default function Header5() {
                                     <ButtonComponent cssClass="block sm:hidden" iconCss="e-icons e-more-vertical-1" type="button" ></ButtonComponent>
                                 </div>
                             </div>
-                            <div id={styles.tab} className="mx-4 sm:mx-6 block sm:hidden">
+                            <div className="mx-4 sm:mx-6 block sm:hidden">
                                 <TabComponent ref={responsivetab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode}>
                                     <TabItemsDirective>
                                         <TabItemDirective headerTemplate={() => <div>Messages</div>}></TabItemDirective>
@@ -129,7 +128,7 @@ export default function Header5() {
                                     <ButtonComponent className="d-block d-sm-none" cssClass="e-outline" iconCss="e-icons e-more-vertical-1" type="button"></ButtonComponent>
                                 </div>
                             </div>
-                            <div id={styles.tab} className="px-3 px-sm-4 pt-3 d-block d-sm-none">
+                            <div className="px-3 px-sm-4 pt-3 d-block d-sm-none">
                                 <TabComponent ref={responsivetab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode}>
                                     <TabItemsDirective>
                                         <TabItemDirective headerTemplate={() => <div>Messages</div>}></TabItemDirective>

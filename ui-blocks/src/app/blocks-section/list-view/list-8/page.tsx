@@ -9,7 +9,7 @@ export default function List8() {
     /* SB Code - End */
     const [width, setWidth] = useState({});
 
-    const data: any[] = [
+    const chatMessages: any[] = [
         {
             id: '1',
             time: '12:00 PM',
@@ -115,7 +115,7 @@ export default function List8() {
                                     <span className="e-input-group-icon e-icons e-search !text-base"></span>
                                     <input className="e-input !pl-0" type="text" placeholder="People, chat, keywords" />
                                 </div>
-                                <ListViewComponent className="!border-0 mt-4" cssClass="e-list-template" dataSource={data} template={(data: any) => (
+                                <ListViewComponent className="!border-0 mt-4" cssClass="e-list-template" dataSource={chatMessages} template={(data: any) => (
                                     <div className="e-list-wrapper e-list-multi-line border-b border-gray-200 dark:border-gray-600 !py-4 !px-1 sm:!px-3">
                                         <div className="flex justify-between">
                                             <div className="flex items-center grow">
@@ -150,7 +150,7 @@ export default function List8() {
                                     <span className="e-input-group-icon e-icons e-search border-0 !pr-3"></span>
                                     <input className="e-input ps-0" type="text" placeholder="People, chat, keywords" />
                                 </div>
-                                <ListViewComponent className="border-0 mt-2" cssClass="e-list-template" dataSource={data} template={(data: any) => (
+                                <ListViewComponent className="border-0 mt-2" cssClass="e-list-template" dataSource={chatMessages} template={(data: any) => (
                                     <div className="e-list-wrapper e-list-multi-line py-3 px-1 px-sm-3">
                                         <div className="d-flex justify-content-between">
                                             <div className="d-flex w-100">

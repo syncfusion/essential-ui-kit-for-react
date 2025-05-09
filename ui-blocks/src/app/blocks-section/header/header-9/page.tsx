@@ -101,7 +101,7 @@ export default function Header9() {
                                         </span>
                                         <ButtonComponent cssClass="ml-3 e-flat" iconCss="e-icons e-settings" type="button"></ButtonComponent>
                                     </div>
-                                    <DropDownButtonComponent ref={additionalOptionDropdown} id={styles.additionalOptionDropdown} cssClass="block sm:hidden e-flat" iconCss="e-icons e-more-vertical-1" items={[{ text: 'New Course' }, { text: 'Create Course' }, { text: 'Import Course' }, { text: 'Course Template' }, { text: 'Settings' }]} type="button"></DropDownButtonComponent>
+                                    <DropDownButtonComponent ref={additionalOptionDropdown} cssClass="block sm:hidden e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" items={[{ text: 'New Course' }, { text: 'Create Course' }, { text: 'Import Course' }, { text: 'Course Template' }, { text: 'Settings' }]} type="button"></DropDownButtonComponent>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@ export default function Header9() {
                         <div key={"header-9-bs"} style={{ minHeight: "36rem" }}>
                             <div className="py-2 px-3 px-sm-4 d-flex justify-content-between border-bottom">
                                 <div className="d-flex align-items-center">
-                                    <div id="breadcrumb">
+                                    <div>
                                         <BreadcrumbComponent ref={breadcrumb} className="d-flex align-items-center" overflowMode={overflowMode} maxItems={maxItems} items={[{ text: "Learning Portal" }, { text: "Current Term" }]} separatorTemplate={() => <span className="fs-6 e-icons e-chevron-right px-2"></span>}></BreadcrumbComponent>
                                     </div>
                                     <ButtonComponent className="ms-3" cssClass="e-outline" type="button">
@@ -130,7 +130,7 @@ export default function Header9() {
                                         </span>
                                         <ButtonComponent className="ms-3" cssClass="e-flat" iconCss="e-icons e-settings" type="button"></ButtonComponent>
                                     </div>
-                                    <DropDownButtonComponent ref={additionalOptionDropdown} id={styles.additionalOptionDropdown} className="d-block d-sm-none" cssClass="e-flat" iconCss="e-icons e-more-vertical-1" items={[{ text: "New Course" }, { text: "Create Course" }, { text: "Import Course" }, { text: "Course Template" }, { text: "Settings" }]} type="button"></DropDownButtonComponent>
+                                    <DropDownButtonComponent ref={additionalOptionDropdown} className="d-block d-sm-none" cssClass="e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" items={[{ text: "New Course" }, { text: "Create Course" }, { text: "Import Course" }, { text: "Course Template" }, { text: "Settings" }]} type="button"></DropDownButtonComponent>
                                 </div>
                             </div>
                         </div>

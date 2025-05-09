@@ -105,7 +105,6 @@ export default function Search2() {
                                     popupHeight="530px"
                                     focus={() => search.current?.showPopup()}
                                     created={openPopup}
-                                   
                                     itemTemplate={(data: any) => (
                                         <div slot="itemTemplate" className="text-sm font-medium text-wrap flex justify-between">
                                             <div className="text-gray-900 dark:text-white indent-0 px-4 py-2">{data.text}</div>
@@ -147,7 +146,6 @@ export default function Search2() {
                                         placeholder="Search"
                                         focus={() => search.current?.showPopup()}
                                         created={openPopup}
-                                       
                                         itemTemplate={(data: any) => (
                                             <div className="d-flex justify-content-between text-wrap fs-6 lh-base fw-medium px-3 pt-2 pb-2" style={{ textIndent: 0 }}>
                                                 <div className="text-body lh-base">{data.text}</div>

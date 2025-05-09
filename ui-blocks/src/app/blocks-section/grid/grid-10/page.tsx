@@ -8,7 +8,7 @@ export default function Grid10() {
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
 
-    const data: any[] = [
+    const gridData: any[] = [
         {
             id: 1,
             product: "iPhone 13",
@@ -192,7 +192,7 @@ export default function Grid10() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="mx-auto w-full py-12 sm:px-6 px-4">
-                            <GridComponent dataSource={data} key={"grid-10-tw"} width="100%" height={498} rowHeight={48}>
+                            <GridComponent dataSource={gridData} key={"grid-10-tw"} width="100%" height={498} rowHeight={48}>
                                 <ColumnsDirective>
                                     <ColumnDirective field="product" headerText="Product" width="206"
                                         template={(data: any) => (
@@ -226,7 +226,7 @@ export default function Grid10() {
                 return (
                     <section className="bg-body">
                         <div className="py-5 px-4 px-sm-6 mx-auto">
-                            <GridComponent dataSource={data} key={"grid-10-bs"} width="100%" height={498} rowHeight={48}>
+                            <GridComponent dataSource={gridData} key={"grid-10-bs"} width="100%" height={498} rowHeight={48}>
                                 <ColumnsDirective>
                                     <ColumnDirective field="product" headerText="Product" width="212"
                                         template={(data: any) => (

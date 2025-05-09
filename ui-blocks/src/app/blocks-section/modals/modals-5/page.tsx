@@ -12,20 +12,18 @@ export default function Modals5() {
     /* SB Code - Start */
     const [theme, setTheme] = useState("tailwind");
     /* SB Code - End */
-    const [containerHeight, setContainerHeight] = useState("700px");
     const dialog = useRef<DialogComponent | null>(null);
     const textbox2 = useRef<TextBoxComponent | null>(null);
     const textbox1 = useRef<TextBoxComponent | null>(null);
 
     const checkWindowSize = () => {
         const isMobile = window.innerWidth <= 640;
-        setContainerHeight(isMobile ? "598px" : "700px");
         if (dialog) {
             dialog.current?.show(isMobile);
         }
     };
 
-    const addIcon = (textbox: React.RefObject<TextBoxComponent> , icons: string) => {
+    const addIcon = (textbox: React.RefObject<TextBoxComponent | null> , icons: string) => {
         if (textbox.current) {
             textbox.current?.addIcon("prepend", `e-icons ${icons}`);
         }
@@ -66,12 +64,12 @@ export default function Modals5() {
             case "tailwind":
                 return (
                     <section>
-                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: containerHeight }}>
+                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: "700px" }}>
                             <ButtonComponent className="h-fit my-5" type="button" onClick={() => dialog.current?.show()}>Add Experience</ButtonComponent>
-                            <DialogComponent id={styles["dialog"]} key={'modal-6-tw'} ref={dialog} className="rounded-none sm:rounded-lg sm:m-4" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '598px'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="548px" isModal={true}
+                            <DialogComponent id={styles["dialog"]} key={'modal-6-tw'} ref={dialog} className="rounded-none sm:rounded-lg sm:m-4" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="548px" isModal={true}
                                 header={() => (
                                     <div className="flex gap-3">
-                                        <span className="e-avatar e-avater-large shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                                        <span className="e-avatar shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg">
                                             <i className="e-icons e-flags text-xl text-gray-500 dark:text-gray-300"></i>
                                         </span>
                                         <div>
@@ -82,8 +80,8 @@ export default function Modals5() {
                                 )}
                                 footerTemplate={() => (
                                     <div className="flex justify-end gap-2 sm:gap-1 py-2">
-                                        <ButtonComponent cssClass="grow sm:grow-0 !ml-0" type="button">Discard</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary grow sm:grow-0" type="button">Save</ButtonComponent>
+                                        <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" type="button">Discard</ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" type="button">Save</ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -137,12 +135,12 @@ export default function Modals5() {
             case "bootstrap5":
                 return (
                     <section>
-                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: containerHeight }}>
+                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: "700px" }}>
                             <ButtonComponent className="mx-auto my-3 e-outline" type="button" onClick={() => dialog.current?.show()}>Add Experience</ButtonComponent>
-                            <DialogComponent className="rounded-3 m-sm-2" key={'modal-6-bs'} ref={dialog} target="#dialog-container" isModal={true} showCloseIcon={true} width="548px" open={(event) => (event.preventFocus = true)} beforeOpen={(event) => (event.maxHeight = "598px")}
+                            <DialogComponent className="rounded-3 m-sm-2" key={'modal-6-bs'} ref={dialog} target="#dialog-container" isModal={true} showCloseIcon={true} width="548px" open={(event) => (event.preventFocus = true)} beforeOpen={(event) => (event.maxHeight = "100%")}
                                 header={() =>
                                     <div className="d-flex gap-2">
-                                        <span className="e-avatar e-avatar-large flex-shrink-0 rounded-3 bg-body-secondary">
+                                        <span className="e-avatar flex-shrink-0 rounded-3 bg-body-secondary">
                                             <i className="e-icons e-flags fs-5 text-body-secondary"></i>
                                         </span>
                                         <div className="ms-1">
@@ -153,8 +151,8 @@ export default function Modals5() {
                                 }
                                 footerTemplate={() => 
                                    <div className="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                                        <ButtonComponent cssClass="flex-grow-1 flex-sm-grow-0 ms-0" type="button">Discard</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary flex-grow-1 flex-sm-grow-0" type="button">Save</ButtonComponent>
+                                        <ButtonComponent cssClass="col col-sm-auto ms-0" type="button">Discard</ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary col col-sm-auto" type="button">Save</ButtonComponent>
                                     </div>
                                 }
                             >
@@ -180,7 +178,7 @@ export default function Modals5() {
                                         </div>
                                         <div className="col-12 col-sm-6 d-flex flex-column gap-1">
                                             <label>Employment type <span className="text-danger">*</span></label>
-                                            <DropDownListComponent placeholder="Select the employment type" aria-label="choose an employment type"></DropDownListComponent>
+                                            <DropDownListComponent placeholder="Select the employment type"></DropDownListComponent>
                                         </div>
                                     </div>
                                     <div className="d-flex flex-column gap-1 mt-sm-1">
@@ -190,11 +188,11 @@ export default function Modals5() {
                                     <div className="row gap-3 gap-sm-0 gx-3 mt-sm-1">
                                         <div className="col-12 col-sm-6 d-flex flex-column gap-1">
                                             <label>Start Date</label>
-                                            <DatePickerComponent placeholder="MM/DD/YYYY" aria-label="enter a start date here"></DatePickerComponent>
+                                            <DatePickerComponent placeholder="MM/DD/YYYY"></DatePickerComponent>
                                         </div>
                                         <div className="col-12 col-sm-6 d-flex flex-column gap-1">
                                             <label>End Date</label>
-                                            <DatePickerComponent placeholder="MM/DD/YYYY" aria-label="enter an end date here"></DatePickerComponent>
+                                            <DatePickerComponent placeholder="MM/DD/YYYY"></DatePickerComponent>
                                         </div>
                                     </div>
                                     <CheckBoxComponent cssClass="mt-sm-2" label="I currently work here"></CheckBoxComponent>

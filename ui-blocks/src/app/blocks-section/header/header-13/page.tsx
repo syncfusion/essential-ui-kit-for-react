@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { PagerComponent } from "@syncfusion/ej2-react-grids";
 import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
-import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
+import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 import { DateRangePickerComponent } from "@syncfusion/ej2-react-calendars";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 
@@ -11,23 +11,6 @@ export default function Header13() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const periodDropdown = useRef<DropDownButtonComponent | null>(null);
-    const productDropdown = useRef<DropDownButtonComponent | null>(null);
-    const regionDropdown = useRef<DropDownButtonComponent | null>(null);
-
-    const handleResize = (): void => {
-        [periodDropdown.current, productDropdown.current, regionDropdown.current].forEach((dropdown) => {
-            if (dropdown) {
-                closeDropdown(dropdown);
-            }
-        });
-    };
-    
-    const closeDropdown = (dropDown: DropDownButtonComponent): void => {
-        if (dropDown && dropDown.element.classList.contains('e-active')) {
-            dropDown.toggle();
-        }
-    };
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
@@ -47,15 +30,11 @@ export default function Header13() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
-        /* SB Code - End */
-        window.addEventListener('resize', handleResize);
-
+        
         return () => {
-            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
-            /* SB Code - End */
-            window.removeEventListener('resize', handleResize);
-        };
+        }
+        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -96,12 +75,18 @@ export default function Header13() {
                                 <span className="w-40">
                                     <TextBoxComponent placeholder="Enter email ID"></TextBoxComponent>
                                 </span>
-                                <DropDownButtonComponent ref={periodDropdown} content="Period: Custom" items={[{ text: 'Today' }, { text: 'Yesterday' }, { text: 'Last 7 Days' }, { text: 'Last 30 Days' }, { text: 'This Month' }, { text: 'Last Month' }, { text: 'Custom Range...' }]} type="button" ></DropDownButtonComponent>
+                                <span className="w-44">
+                                    <DropDownListComponent dataSource={['Today', 'Yesterday', 'Last 7 Days', 'Last 30 Days', 'This Month', 'Last Month', 'Custom Range...']} placeholder="Period: Custom"></DropDownListComponent>
+                                </span>
                                 <span className="w-64">
                                     <DateRangePickerComponent placeholder="MM/DD/YYYY - MM/DD/YYYY"></DateRangePickerComponent>
                                 </span>
-                                <DropDownButtonComponent ref={productDropdown} content="Product: All" items={[{ text: 'All Products' }, { text: 'Product A' }, { text: 'Product B' }, { text: 'Product C' }, { text: 'Product D' }, { text: 'Custom Selection...' }]} type="button"></DropDownButtonComponent>
-                                <DropDownButtonComponent ref={regionDropdown} content="Region: All" items={[{ text: 'All Regions' }, { text: 'North America' }, { text: 'Europe' }, { text: 'Asia-Pacific' }, { text: 'South America' }, { text: 'Middle East & Africa' }, { text: 'Custom Region...' }]} type="button"></DropDownButtonComponent>
+                                <span className="w-44">
+                                    <DropDownListComponent dataSource={['All Products', 'Product A', 'Product B', 'Product C', 'Product D', 'Custom Selection...']} placeholder="Product: All"></DropDownListComponent>
+                                </span>
+                                <span className="w-44">
+                                    <DropDownListComponent dataSource={['All Regions', 'North America', 'Europe', 'Asia-Pacific', 'South America', 'Middle East & Africa', 'Custom Region...']} placeholder="Region: All"></DropDownListComponent>
+                                </span>
                                 <div className="h-5 border-l border-gray-200 dark:border-gray-600"></div>
                                 <ButtonComponent content="Reset" type="button"></ButtonComponent>
                             </div>
@@ -128,7 +113,7 @@ export default function Header13() {
                                     <div className="d-flex align-items-center">
                                         <h3 className="fs-5 fw-bold text-body mb-0">Sales Activity</h3>
                                     </div>
-                                    <div className="d-flex gap-4">
+                                    <div className="d-flex gap-3">
                                         <ButtonComponent cssClass="e-outline" type="button">
                                             <div className="d-flex align-items-center gap-1">
                                                 <span className="e-icons e-download fs-5"></span>
@@ -144,12 +129,18 @@ export default function Header13() {
                                 <span style={{ width: "150px" }}>
                                     <TextBoxComponent type="text" placeholder="Enter email ID"></TextBoxComponent>
                                 </span>
-                                <DropDownButtonComponent ref={periodDropdown} cssClass="e-outline" type="button" content="Period: Custom" items={[{ text: "Today" }, { text: "Yesterday" }, { text: "Last 7 Days" }, { text: "Last 30 Days" }, { text: "This Month" }, { text: "Last Month" }, { text: "Custom Range..." }]}></DropDownButtonComponent>
+                                <span style={{ width: "182px" }}>
+                                    <DropDownListComponent dataSource={['Today', 'Yesterday', 'Last 7 Days', 'Last 30 Days', 'This Month', 'Last Month', 'Custom Range...']} placeholder="Period: Custom"></DropDownListComponent>
+                                </span>
                                 <span style={{ width: "242px" }}>
                                     <DateRangePickerComponent placeholder="MM/DD/YYYY - MM/DD/YYYY"></DateRangePickerComponent>
                                 </span>
-                                <DropDownButtonComponent ref={productDropdown} cssClass="e-outline" type="button" content="Product: All" items={[{ text: "All Products" }, { text: "Product A" }, { text: "Product B" }, { text: "Product C" }, { text: "Product D" }, { text: "Custom Selection..." }]}></DropDownButtonComponent>
-                                <DropDownButtonComponent ref={regionDropdown} cssClass="e-outline" type="button" content="Region: All" items={[{ text: "All Regions" }, { text: "North America" }, { text: "Europe" }, { text: "Asia-Pacific" }, { text: "South America" }, { text: "Middle East & Africa" }, { text: "Custom Region..." }]}></DropDownButtonComponent>
+                                <span style={{ width: "182px" }}>
+                                    <DropDownListComponent dataSource={['All Products', 'Product A', 'Product B', 'Product C', 'Product D', 'Custom Selection...']} placeholder="Product: All"></DropDownListComponent>
+                                </span>
+                                <span style={{ width: "182px" }}>
+                                    <DropDownListComponent dataSource={['All Regions', 'North America', 'Europe', 'Asia-Pacific', 'South America', 'Middle East & Africa', 'Custom Region...']} placeholder="Region: All"></DropDownListComponent>
+                                </span>
                                 <div className="border-start border-secondary" style={{ height: "16px" }}></div>
                                 <ButtonComponent cssClass="e-outline" content="Reset" type="button"></ButtonComponent>
                             </div>

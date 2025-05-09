@@ -98,7 +98,7 @@ export default function Header8() {
                     <section className="bg-body">
                         <div key={"header-8-bs"} style={{ minHeight: "36rem" }}>
                             <div className="py-3 px-3 px-sm-4 d-flex justify-content-between">
-                                <div id="breadcrumb" className="d-flex align-items-center">
+                                <div className="d-flex align-items-center">
                                     <BreadcrumbComponent ref={breadcrumb} enableNavigation={false} overflowMode={overflowMode} maxItems={maxItems} items={[{ text: "Workflows" }, { text: "Row Event: Created Employee" }]} separatorTemplate={() => <span className="e-icons e-chevron-right"></span>}></BreadcrumbComponent>
                                 </div>
                             </div>

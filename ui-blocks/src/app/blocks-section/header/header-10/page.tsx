@@ -98,13 +98,13 @@ export default function Header10() {
                                             </div>
                                         </ButtonComponent>
                                     </div>
-                                    <DropDownButtonComponent ref={dropdown} id={styles.dropdown} className="block sm:hidden e-flat" iconCss="e-icons e-more-vertical-1" items={[{ text: 'API Documentation' }, { text: 'Feedback' }]} type="button" ></DropDownButtonComponent>
+                                    <DropDownButtonComponent ref={dropdown} className="block sm:hidden e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" items={[{ text: 'API Documentation' }, { text: 'Feedback' }]} type="button" ></DropDownButtonComponent>
                                 </div>
                             </div>
                             <div className="flex justify-between gap-3 px-4 sm:px-6 py-4 sm:py-3">
                                 <div className="flex items-center">
                                     <h1 className="text-lg font-semibold text-gray-900 dark:text-white">Performance Monitor:
-                                        <span className="text-gray-600 dark:text-gray-400"> User_engagement</span>
+                                        <span className="text-gray-700 dark:text-gray-300"> User_engagement</span>
                                     </h1>
                                 </div>
                                 <div className="flex gap-3 items-center">
@@ -120,7 +120,7 @@ export default function Header10() {
                     <section className="bg-body">
                         <div key={"header-10-bs"} style={{ minHeight: "36rem" }}>
                             <div className="py-2 px-3 px-sm-4 d-flex justify-content-between border-bottom">
-                                <div id="breadcrumb" className="d-flex align-items-center">
+                                <div className="d-flex align-items-center">
                                     <BreadcrumbComponent ref={breadcrumb} enableNavigation={false} overflowMode={overflowMode} maxItems={maxItems} items={[{ text: "Analytics Hub" }, { text: "Metrics" }, { text: "Performance Monitor" }]}></BreadcrumbComponent>
                                 </div>
                                 <div>
@@ -138,13 +138,13 @@ export default function Header10() {
                                             </div>
                                         </ButtonComponent>
                                     </div>
-                                    <DropDownButtonComponent ref={dropdown} id={styles.dropdown} className="d-block d-sm-none" cssClass="e-flat" iconCss="e-icons e-more-vertical-1" items={[{ text: "API Documentation" }, { text: "Feedback" }]} type="button"></DropDownButtonComponent>
+                                    <DropDownButtonComponent ref={dropdown} className="d-block d-sm-none" cssClass="e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" items={[{ text: "API Documentation" }, { text: "Feedback" }]} type="button"></DropDownButtonComponent>
                                 </div>
                             </div>
                             <div className="d-flex justify-content-between gap-3 px-3 px-sm-4 py-3">
                                 <div className="d-flex align-items-center">
                                     <h1 className="fs-6 fw-bold text-body mb-0">Performance Monitor:
-                                        <span className="text-secondary">{" "}User_engagement</span>
+                                        <span className="text-body-tertiary text-opacity-50">{" "}User_engagement</span>
                                     </h1>
                                 </div>
                                 <div className="d-flex gap-3 align-items-center">

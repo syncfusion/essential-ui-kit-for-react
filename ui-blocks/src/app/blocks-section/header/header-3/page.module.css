@@ -7,8 +7,3 @@
 :global(.dark) #tab_tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-badge) {
     color: #22d3ee !important;
 }
-
-.tab :global(.e-tab-wrap) {
-    display: flex;
-    align-items: center;
-}

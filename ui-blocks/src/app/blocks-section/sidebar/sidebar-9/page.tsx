@@ -12,7 +12,7 @@ export default function Sidebar9() {
     /* SB Code - End */ 
     const sidebar = useRef<SidebarComponent | null>(null);
 
-    const data1: any[] = [
+    const navigationMenu: any[] = [
         {
             id: 1,
             fontIcon: 'e-home'
@@ -35,7 +35,7 @@ export default function Sidebar9() {
         }
     ];
     
-    const data2: any[] = [
+    const inboxMenu: any[] = [
         {
             id: 1,
             field: 'My Inbox',
@@ -68,7 +68,7 @@ export default function Sidebar9() {
         }
     ];
     
-    const data3: any[] = [
+    const supportMenu: any[] = [
         {
             id: 1,
             field: "Docs"
@@ -116,7 +116,7 @@ export default function Sidebar9() {
                                         <div className="flex justify-center items-center px-3 mb-2">
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         </div>
-                                        <ListViewComponent className="border-0 e-bigger" dataSource={data1} template={(data: any) => (
+                                        <ListViewComponent className="border-0 e-bigger" dataSource={navigationMenu} template={(data: any) => (
                                             <div className="e-list-wrapper flex justify-center items-center">
                                                 <span className={`e-icons e-large ${data.fontIcon}`}></span>
                                             </div>)}
@@ -125,7 +125,7 @@ export default function Sidebar9() {
                                     <div className="pt-4 border-l h-screen border-gray-200 dark:border-gray-700 flex flex-col justify-between" style={{ width: '256px' }}>
                                         <div>
                                             <p className="text-base text-gray-700 dark:text-gray-300 pb-2 px-4">Overview</p>
-                                            <ListViewComponent className="border-0" dataSource={data2} template={(data: any) => (
+                                            <ListViewComponent className="border-0" dataSource={inboxMenu} template={(data: any) => (
                                                 <div className="e-list-wrapper flex items-center justify-between ml-1.5 pr-1.5">
                                                     <span className="flex items-center">
                                                         <span className={`e-icons ${data.fontIcon} text-base`}></span>
@@ -141,7 +141,7 @@ export default function Sidebar9() {
                                             ></ListViewComponent>
                                             <hr className="border-gray-200 dark:border-gray-700 m-4" />
                                             <div>
-                                                <ListViewComponent className="!border-0" dataSource={data3} template={(data: any) => (
+                                                <ListViewComponent className="!border-0" dataSource={supportMenu} template={(data: any) => (
                                                     <div className="e-list-wrapper ml-1.5">
                                                         <span className="text-base font-normal">{data.field}</span>
                                                     </div>
@@ -171,7 +171,7 @@ export default function Sidebar9() {
                                         <div className="d-flex justify-content-center align-items-center px-3 mb-2">
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                         </div>
-                                        <ListViewComponent className="border-0 e-bigger" dataSource={data1} template={(data: any) => (
+                                        <ListViewComponent className="border-0 e-bigger" dataSource={navigationMenu} template={(data: any) => (
                                             <div className="e-list-wrapper d-flex justify-content-center align-items-center">
                                                 <span className={`e-icons e-large ${data.fontIcon}`}></span>
                                             </div>)}
@@ -180,7 +180,7 @@ export default function Sidebar9() {
                                     <div className="pt-4 vh-100 border-start border-light-subtle opacity-100 d-flex flex-column justify-content-between" style={{ width: '256px' }}>
                                         <div>
                                             <p className="text-body-secondary pb-2 px-3 mb-0 fs-6 mt-2">Overview</p>
-                                            <ListViewComponent className="border-0 e-bigger" dataSource={data2} template={(data: any) => (
+                                            <ListViewComponent className="border-0 e-bigger" dataSource={inboxMenu} template={(data: any) => (
                                                 <div className="e-list-wrapper d-flex align-items-center justify-content-between ps-1 pe-2">
                                                     <span className="d-flex align-items-center">
                                                         <span className={`e-icons ${data.fontIcon} fs-6`}></span>
@@ -196,7 +196,7 @@ export default function Sidebar9() {
                                             ></ListViewComponent>
                                             <p className="m-3 fs-6 text-body-secondary">Others</p>
                                             <div>
-                                                <ListViewComponent className="border-0 e-bigger" dataSource={data3} template={(data: any) => (
+                                                <ListViewComponent className="border-0 e-bigger" dataSource={supportMenu} template={(data: any) => (
                                                     <div className="e-list-wrapper px-1">
                                                         <span className="fs-6 fw-normal">{data.field}</span>
                                                     </div>

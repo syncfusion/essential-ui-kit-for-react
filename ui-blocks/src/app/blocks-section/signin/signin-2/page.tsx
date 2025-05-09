@@ -39,7 +39,7 @@ export default function Signin2() {
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="flex flex-col lg:flex-row" style={{ minHeight: '770px' }}>
                             <div className="w-full lg:w-7/12 p-0">
-                                <img className="w-full h-full object-cover" src="/react/essential-ui-kit/blocks/assets/images/authentication/split-screen/split-screen.png" alt="image" width={32} height={32} sizes="100vw" />
+                                <div className="w-full h-60 lg:h-full" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/split-screen/split-screen.png')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center" }}></div>
                             </div>
                             <div className="w-full lg:w-5/12 p-0">
                                 <div className="bg-gray-50 dark:bg-gray-950">
@@ -54,11 +54,11 @@ export default function Signin2() {
                                             <form action="#" className="mt-6 mb-6" onSubmit={(event) => event.preventDefault()}>
                                                 <div className="mb-4">
                                                     <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-                                                    <TextBoxComponent cssClass="e-bigger" className="py-2" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
+                                                    <TextBoxComponent cssClass="e-bigger" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
                                                 </div>
                                                 <div className="mb-5 relative">
                                                     <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
-                                                    <TextBoxComponent cssClass="e-bigger" className="py-2" type="password" placeholder="Password" floatLabelType="Never"></TextBoxComponent>
+                                                    <TextBoxComponent cssClass="e-bigger" type="password" placeholder="Password" floatLabelType="Never"></TextBoxComponent>
                                                 </div>
                                                 <div className="flex items-center justify-between mb-6">
                                                     <CheckBoxComponent cssClass="e-bigger" label="Remember me"></CheckBoxComponent>
@@ -100,7 +100,7 @@ export default function Signin2() {
                     <section>
                         <div className="d-flex flex-column flex-lg-row h-100" style={{ minHeight: '770px' }}>
                             <div className="col-12 col-lg-7 p-0">
-                                <img className="img-fluid w-100 h-100 object-fit-cover" src="/react/essential-ui-kit/blocks/assets/images/authentication/split-screen/split-screen.png" alt="image" width={32} height={32} sizes="100vw" />
+                                <div className="w-100 h-100" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/split-screen/split-screen.png')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", minHeight: "240px" }}></div>
                             </div>
                             <div className="col-12 col-lg-5 p-0">
                                 <div className="d-flex justify-content-center align-items-center bg-body">
@@ -116,11 +116,11 @@ export default function Signin2() {
                                         <form action="#" onSubmit={(event) => event.preventDefault()}>
                                             <div className="mb-3">
                                                 <label className="form-label mb-1 fw-medium text-dark-emphasis small">Email</label>
-                                                <TextBoxComponent cssClass="e-bigger" className="py-2" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
+                                                <TextBoxComponent cssClass="e-bigger" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
                                             </div>
                                             <div className="mb-3">
                                                 <label className="form-label mb-1 fw-medium text-dark-emphasis small">Password</label>
-                                                <TextBoxComponent cssClass="e-bigger" className="py-2" type="password" placeholder="Password" floatLabelType="Never"></TextBoxComponent>
+                                                <TextBoxComponent cssClass="e-bigger" type="password" placeholder="Password" floatLabelType="Never"></TextBoxComponent>
                                             </div>
                                             <div className="d-flex align-items-center justify-content-between">
                                                 <CheckBoxComponent cssClass="e-bigger" label="Remember me"></CheckBoxComponent>

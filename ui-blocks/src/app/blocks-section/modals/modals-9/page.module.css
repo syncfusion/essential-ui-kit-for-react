@@ -1,0 +1,26 @@
+#upload-template :global(.e-file-select-wrap) {
+    display: none;
+}
+
+#upload-template :global(.e-upload) {
+    float: none;
+    border: none;
+}
+
+#upload-template :global(.e-upload .e-upload-files .e-upload-file-list) {
+    border-bottom: 0;
+}
+
+#rte :global(.e-rte-character-count) {
+    margin-right: 6px;
+}
+
+#rte :global(.e-content ol) {
+    list-style: auto;
+    margin-left: 24px;
+}
+
+#rte :global(.e-content ul) {
+    list-style: disc;
+    margin-left: 24px;
+}

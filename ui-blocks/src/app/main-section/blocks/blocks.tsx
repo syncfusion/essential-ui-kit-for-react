@@ -34,6 +34,7 @@ export default function Blocks({ blockName }) {
         <div key={list.title}>
             <div className={styles['sample-title']}>
                 {list.title}
+                {list.isNew && <span className={styles['newStatus']}>New</span>}
                 {renderFigmaButton()}
             </div>
             <div className={styles['sample-description-container']}>

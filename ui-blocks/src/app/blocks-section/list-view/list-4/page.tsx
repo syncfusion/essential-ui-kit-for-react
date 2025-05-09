@@ -11,7 +11,7 @@ export default function List4() {
     /* SB Code - End */
     const [width, setWidth] = useState({});
 
-    const data: any[] = [
+    const shoes: any[] = [
         {
             id: '1',
             header: 'Nike Air Max 270',
@@ -109,7 +109,7 @@ export default function List4() {
                     <section className="bg-white dark:bg-gray-900">
                         <div className="flex items-center justify-center min-h-screen">
                             <div className="lg:max-w-2xl w-full m-auto p-4 md:p-6 lg:py-8 lg:px-14">
-                                <ListViewComponent className="!border-0" cssClass="e-list-template" dataSource={data} template={(data: any) => (
+                                <ListViewComponent className="!border-0" cssClass="e-list-template" dataSource={shoes} template={(data: any) => (
                                     <div className="e-list-wrapper !px-1 sm:!px-3 border-b border-gray-200 dark:border-gray-600 !py-4 flex flex-col">
                                         <span className="flex">
                                             <img className="rounded-lg" src={`/react/essential-ui-kit/blocks/assets/images/listview/carts/${data.pic}`} width={80} height={80} alt="product image" />
@@ -161,7 +161,7 @@ export default function List4() {
                     <section className="bg-body">
                         <div className="d-flex align-items-center justify-content-center min-vh-100">
                             <div className="container-lg w-100 m-auto p-3 p-md-4" style={width}>
-                                <ListViewComponent className="border-0" cssClass="e-list-template" dataSource={data} template={(data: any)=> (
+                                <ListViewComponent className="border-0" cssClass="e-list-template" dataSource={shoes} template={(data: any)=> (
                                     <div className="e-list-wrapper px-1 px-sm-3 py-3 d-flex flex-column">
                                         <span className="d-flex">
                                             <img className="rounded" src={`/react/essential-ui-kit/blocks/assets/images/listview/carts/${data.pic}`} width={80} height={80} alt="product image" />

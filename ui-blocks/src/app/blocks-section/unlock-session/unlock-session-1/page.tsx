@@ -77,7 +77,7 @@ export default function Unlocksession1() {
                             <form action="#" className="mt-4 mb-4" onSubmit={(event) => event.preventDefault()}>
                                 <div className="mb-3">
                                     <label className="form-label mb-1 fw-medium text-dark-emphasis small">Email</label>
-                                    <TextBoxComponent cssClass="e-bigger" className="py-2" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
+                                    <TextBoxComponent cssClass="e-bigger" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
                                 </div>
                             </form>
                             <div className="e-bigger">

@@ -80,7 +80,7 @@ export default function FilterPanel3() {
                                                 <DropDownListComponent dataSource={priority} placeholder="Select priority levels"></DropDownListComponent>
                                             </div>
                                         </div>
-                                        <hr className="w-full border-gray-300 dark:border-gray-600 mt-4 mb-3" />
+                                        <hr className="w-full border-gray-200 dark:border-gray-600 mt-4 mb-3" />
                                         <div className="grid grid-cols-1 gap-4">
                                             <div>
                                                 <h6 className="font-medium text-sm text-gray-500 dark:text-gray-400 mb-2">Assignment</h6>
@@ -92,7 +92,7 @@ export default function FilterPanel3() {
                                                 <DropDownListComponent dataSource={requester} placeholder="Select requester"></DropDownListComponent>
                                             </div>
                                         </div>
-                                        <hr className="w-full border-gray-300 dark:border-gray-600 mt-4 mb-3" />
+                                        <hr className="w-full border-gray-200 dark:border-gray-600 mt-4 mb-3" />
                                         <div className="grid grid-cols-1 gap-4">
                                             <div>
                                                 <h6 className="font-medium text-sm text-gray-500 dark:text-gray-400 mb-2">Status and Timeline</h6>

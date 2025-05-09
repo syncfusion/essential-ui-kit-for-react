@@ -13,13 +13,11 @@ export default function Modals8() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const [containerHeight, setContainerHeight] = useState("750px");
     const dialog = useRef<DialogComponent>(null);
     const uploaders = useRef<UploaderComponent>(null);
 
     const checkWindowSize = () => {
         const isMobile = window.innerWidth <= 640;
-        setContainerHeight(isMobile ? "635px" : "790px");
         dialog.current?.show(isMobile);
     };
 
@@ -65,16 +63,16 @@ export default function Modals8() {
             case 'tailwind':
                 return (
                     <section>
-                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: containerHeight }}>
+                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: "750px" }}>
                             <ButtonComponent className="h-fit my-5" type="button" onClick={() => dialog.current?.show()}>My Settings</ButtonComponent>
-                            <DialogComponent id={styles["dialog"]} ref={dialog} className="rounded-none sm:rounded-lg sm:m-4" target="#dialog-container" height="100%" beforeOpen={(event) => { event.maxHeight = '645px'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="644px" isModal={true}
+                            <DialogComponent id={styles["dialog"]} ref={dialog} className="rounded-none sm:rounded-lg sm:m-4" target="#dialog-container" height="645px" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="644px" isModal={true}
                                 header={() => (
                                     <p className="font-semibold leading-normal">My Settings</p>
                                 )}
                                 footerTemplate={() =>
                                     <div className="flex justify-end gap-2 sm:gap-1 py-2">
-                                        <ButtonComponent cssClass="grow sm:grow-0 !ml-0" type="button">Discard</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary grow sm:grow-0" type="button">Save Changes</ButtonComponent>
+                                        <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" type="button">Discard</ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" type="button">Save Changes</ButtonComponent>
                                     </div>
                                 }
                             >
@@ -207,7 +205,7 @@ export default function Modals8() {
                                                         </div>
                                                         <div className="e-card-content !px-1 !pb-1 !pt-0">
                                                             <p className="text-xs text-gray-700 dark:text-gray-300 mb-3">Your main email address for receiving forwarded message</p>
-                                                            <TextBoxComponent type="email" value="james@123.com"></TextBoxComponent>
+                                                            <TextBoxComponent type="email" value="james@company.com"></TextBoxComponent>
                                                         </div>
                                                     </div>
                                                     <div className="e-card p-3 shadow-none">
@@ -223,11 +221,11 @@ export default function Modals8() {
                                                             </div>
                                                             <div className="border-t border-gray-200 dark:border-gray-600 mt-4 md:mt-3 pt-4 md:pt-3">
                                                                 <div className="flex gap-3 items-center py-1.5">
-                                                                    <div className="text-gray-900 dark:text-white grow">john.wick&#64;123.com</div>
+                                                                    <div className="text-gray-900 dark:text-white grow">john.wick&#64;company.com</div>
                                                                     <ButtonComponent cssClass="e-danger e-flat e-small" iconCss="e-icons e-trash" type="button"></ButtonComponent>
                                                                 </div>
                                                                 <div className="flex gap-3 items-center py-1.5">
-                                                                    <div className="text-gray-900 dark:text-white grow">charles.kri&#64;123.com</div>
+                                                                    <div className="text-gray-900 dark:text-white grow">charles.kri&#64;company.com</div>
                                                                     <ButtonComponent cssClass="e-danger e-flat e-small" iconCss="e-icons e-trash" type="button"></ButtonComponent>
                                                                 </div>
                                                             </div>
@@ -322,16 +320,16 @@ export default function Modals8() {
             case 'bootstrap5':
                 return (
                     <section>
-                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: containerHeight }}>
+                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: "750px" }}>
                             <ButtonComponent className="mx-auto my-3 e-outline" type="button" onClick={() => dialog.current?.show()}>My Settings</ButtonComponent>
-                            <DialogComponent id={styles["dialog"]} ref={dialog} className="rounded-3 m-sm-2" target="#dialog-container" height="100%" beforeOpen={(event) => { event.maxHeight = '670px'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="644px" isModal={true}
+                            <DialogComponent id={styles["dialog"]} ref={dialog} className="rounded-3 m-sm-2" target="#dialog-container" height="650px" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="644px" isModal={true}
                                 header={() => (
                                     <p className="fw-bold text-body mb-0 lh-sm">My Settings</p>
                                 )}
                                 footerTemplate={() =>
                                     <div className="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                                        <ButtonComponent className="flex-grow-1 flex-sm-grow-0 ms-0" type="button">Discard</ButtonComponent>
-                                        <ButtonComponent className="flex-grow-1 flex-sm-grow-0 e-primary" type="button">Save Changes</ButtonComponent>
+                                        <ButtonComponent className="col col-sm-auto ms-0" type="button">Discard</ButtonComponent>
+                                        <ButtonComponent className="col col-sm-auto e-primary" type="button">Save Changes</ButtonComponent>
                                     </div>
                                 }
                             >
@@ -464,7 +462,7 @@ export default function Modals8() {
                                                         </div>
                                                         <div className="e-card-content p-1">
                                                             <p className="small text-secondary mb-2 pb-1">Your main email address for receiving forwarded message</p>
-                                                            <TextBoxComponent type="email" value="james@123.com"></TextBoxComponent>
+                                                            <TextBoxComponent type="email" value="james@company.com"></TextBoxComponent>
                                                         </div>
                                                     </div>
                                                     <div className="e-card rounded-2 p-3">
@@ -480,11 +478,11 @@ export default function Modals8() {
                                                             </div>
                                                             <div className="border-top mt-3 pt-3">
                                                                 <div className="d-flex gap-3 align-items-center py-1">
-                                                                    <div className="text-body fw-medium flex-grow-1">john.wick&#64;123.com</div>
+                                                                    <div className="text-body fw-medium flex-grow-1">john.wick&#64;company.com</div>
                                                                     <ButtonComponent cssClass="e-danger e-flat e-small" iconCss="e-icons e-trash" type="button"></ButtonComponent>
                                                                 </div>
                                                                 <div className="d-flex gap-3 align-items-center py-1">
-                                                                    <div className="text-body fw-medium flex-grow-1">charles.kri&#64;123.com</div>
+                                                                    <div className="text-body fw-medium flex-grow-1">charles.kri&#64;company.com</div>
                                                                     <ButtonComponent cssClass="e-danger e-flat e-small" iconCss="e-icons e-trash" type="button"></ButtonComponent>
                                                                 </div>
                                                             </div>

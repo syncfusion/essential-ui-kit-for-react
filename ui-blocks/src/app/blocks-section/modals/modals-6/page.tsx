@@ -11,7 +11,6 @@ export default function Modals6() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const [containerHeight, setContainerHeight] = useState("750px");
     const dialog = useRef<DialogComponent>(null);
 
     const data: any[] = [
@@ -85,7 +84,6 @@ export default function Modals6() {
 
     const checkWindowSize = () => {
         const isMobile = window.innerWidth <= 640;
-        setContainerHeight(isMobile ? "630px" : "750px");
         dialog.current?.show(isMobile);
     };
 
@@ -131,9 +129,9 @@ export default function Modals6() {
             case 'tailwind':
                 return (
                     <section>
-                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: containerHeight }}>
+                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: "764px" }}>
                             <ButtonComponent className="h-fit my-5" type="button" onClick={() => dialog.current?.show()}>Transaction Details</ButtonComponent>
-                            <DialogComponent id={styles["dialogs"]} ref={dialog} key={"modal-7-tw"} className="rounded-none sm:rounded-lg sm:m-4 overflow-hidden" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '630px'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="835px" isModal={true}
+                            <DialogComponent id={styles["dialogs"]} ref={dialog} key={"modal-7-tw"} className="rounded-none sm:rounded-lg sm:m-4 overflow-hidden" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="835px" isModal={true}
                                 header={() => (
                                     <p className="font-semibold leading-normal">Transaction Details</p>
                                 )}
@@ -142,8 +140,8 @@ export default function Modals6() {
                                     <div className="flex flex-col sm:flex-row justify-between gap-4 sm:items-center mb-5 sm:mb-6">
                                         <CheckBoxComponent label="Export time fields in minutes formats"></CheckBoxComponent>
                                         <div className="flex flex-row justify-end gap-3">
-                                            <ButtonComponent cssClass="grow sm:grow-0 e-outline" iconCss="e-icons e-export" type="button">Export</ButtonComponent>
-                                            <DropDownButtonComponent cssClass="grow sm:grow-0 e-outline" iconCss="e-icons e-user" beforeOpen={(e) => e.cancel = true} type="button">Contact</DropDownButtonComponent>
+                                            <ButtonComponent cssClass="w-1/2 sm:w-fit e-outline" iconCss="e-icons e-export" type="button">Export</ButtonComponent>
+                                            <DropDownButtonComponent cssClass="w-1/2 sm:w-fit e-outline" iconCss="e-icons e-user" beforeOpen={(e) => e.cancel = true} type="button">Contact</DropDownButtonComponent>
                                         </div>
                                     </div>
                                     <GridComponent cssClass="e-bigger mb-1.5" dataSource={data} width="100%" allowSorting={true} allowFiltering={true} filterSettings={{ type: 'Menu' }} gridLines="None" rowHeight={44}>
@@ -179,9 +177,9 @@ export default function Modals6() {
             case 'bootstrap5':
                 return (
                     <section>
-                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: containerHeight }}>
+                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: "764px" }}>
                             <ButtonComponent className="mx-auto my-3 e-outline" type="button" onClick={() => dialog.current?.show()}>Transaction Details</ButtonComponent>
-                            <DialogComponent id={styles["dialogs"]} key={"modal-7-bs"} ref={dialog} className="rounded-3 m-sm-2 overflow-hidden" target="#dialog-container" beforeOpen={(e) => { e.maxHeight = '638px' }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="865px" isModal={true}
+                            <DialogComponent id={styles["dialogs"]} key={"modal-7-bs"} ref={dialog} className="rounded-3 m-sm-2 overflow-hidden" target="#dialog-container" beforeOpen={(e) => { e.maxHeight = '100%' }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="865px" isModal={true}
                                 header={() => (
                                     <p className="fw-bold text-body mb-0 lh-sm">Transaction Details</p>
                                 )}
@@ -190,8 +188,8 @@ export default function Modals6() {
                                     <div className="d-flex flex-column flex-sm-row justify-content-between gap-3 align-items-sm-center mb-4 mb-sm-3">
                                         <CheckBoxComponent label="Export time fields in minutes formats"></CheckBoxComponent>
                                         <div className="d-flex flex-row justify-content-end gap-3 gap-sm-2">
-                                            <ButtonComponent className="flex-grow-1 flex-sm-grow-0 e-outline" iconCss="e-icons e-export" type="button">Export</ButtonComponent>
-                                            <DropDownButtonComponent className="flex-grow-1 flex-sm-grow-0 e-outline ms-sm-1" iconCss="e-icons e-user" beforeOpen={(e) => e.cancel = true} type="button">Contact</DropDownButtonComponent>
+                                            <ButtonComponent className="col col-sm-auto e-outline" iconCss="e-icons e-export" type="button">Export</ButtonComponent>
+                                            <DropDownButtonComponent className="col col-sm-auto e-outline ms-sm-1" iconCss="e-icons e-user" beforeOpen={(e) => e.cancel = true} type="button">Contact</DropDownButtonComponent>
                                         </div>
                                     </div>
                                     <GridComponent cssClass="e-bigger mb-1" dataSource={data} width="100%" allowSorting={true} allowFiltering={true} filterSettings={{ type: 'Menu' }} gridLines="None" rowHeight={44}>

@@ -11,7 +11,7 @@ export default function Checkout3() {
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
 
-    const data: any[] = [
+    const products: any[] = [
         {
             image: "apple-magsafe.png",
             description: "Apple MagSafe Charger (for iPhone, AirPods Pro, AirPods with Wireless Charging Case)",
@@ -84,7 +84,7 @@ export default function Checkout3() {
                         <div className="grid grid-cols-1 gap-6 px-4 md:px-6 lg:px-6 xl:px-11 pb-10 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
                             <div className="order-1 lg:order-2 bg-gray-50 dark:bg-gray-950 md:border rounded-lg md:border-gray-200 md:dark:border-gray-600">
                                 <h6 className="px-0 md:p-6 pb-0 text-lg font-semibold text-gray-900 dark:text-white">Product summary</h6>
-                                <GridComponent className="pt-4 sm:pt-0" dataSource={data} rowHeight={68} gridLines="None" width="100%" style={{ maxWidth: "1280px", border: "none" }}>
+                                <GridComponent className="pt-4 sm:pt-0" dataSource={products} rowHeight={68} gridLines="None" width="100%" style={{ maxWidth: "1280px", border: "none" }}>
                                     <ColumnsDirective>
                                         <ColumnDirective field="Items" width="56" textAlign="Center" template={({ image })=> (
                                             <div className="flex items-center justify-center">
@@ -225,7 +225,7 @@ export default function Checkout3() {
                             <div className="d-lg-flex mx-0 gap-4 mb-sm-4 pe-lg-4">
                                 <div className="col-md-12 col-lg-6 order-lg-2 bg-body border border-light-subtle rounded px-0">
                                     <h6 className="fs-5 fw-medium text-body pb-2 p-4 mb-0">Product summary</h6>
-                                    <GridComponent className="border-0 pt-3" dataSource={data} rowHeight={68} gridLines="None" width="100%" style={{ maxWidth: "1280px", border: "none" }}>
+                                    <GridComponent className="border-0 pt-3" dataSource={products} rowHeight={68} gridLines="None" width="100%" style={{ maxWidth: "1280px", border: "none" }}>
                                         <ColumnsDirective>
                                             <ColumnDirective field="Items" width="56" textAlign="Center" template={({ image })=> (
                                                 <div className="d-flex align-items-center justify-content-center">

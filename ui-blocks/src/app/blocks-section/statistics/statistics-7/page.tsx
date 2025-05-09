@@ -63,15 +63,15 @@ export default function Statistics7() {
                         <div className="px-4 sm:px-6 xl:px-11 py-12">
                             <div className="grid sm:grid-cols-2 gap-6 lg:gap-4 lg:grid-cols-4">
                                 {metricsData.map((data, index) => (
-                                    <div key={index} className="e-card pt-6 e-bigger rounded-lg shadow-none !border-gray-300 dark:!border-gray-600">
+                                    <div key={index} className="e-card pt-6 e-bigger rounded-lg shadow-none">
                                         <div className="e-card-stacked">
                                             <div className="e-card-header !py-0 !justify-between items-center">
-                                                <h4 className="text-base text-gray-800 dark:text-gray-100 font-medium">{data.metricName}</h4>
+                                                <h4 className="text-base text-gray-700 dark:text-gray-200 font-medium">{data.metricName}</h4>
                                                 <span className={`text-2xl leading-none ${data.metricName === 'Total Revenue' ? 'text-green-700 dark:text-green-500 sf-icon-arrow-missed-right' : ''} ${data.metricName === 'Market Breadth' ? 'text-orange-700 dark:text-orange-500 sf-icon-pie-chart' : ''} ${data.metricName === 'Trending Volume' ? 'text-indigo-600 dark:text-indigo-400 e-chart' : ''} ${data.metricName === 'VIX' ? 'text-gray-500 dark:text-gray-300 e-critical-path' : ''} ${['Trending Volume', 'VIX'].includes(data.metricName) ? 'e-icons' : ''}`}></span>
                                             </div>
                                             <div className="e-card-content !pb-6">
                                                 <p className="mt-2 text-xl !leading-7 font-semibold text-gray-900 dark:text-white">{new Intl.NumberFormat().format(data.currentValue)}</p>
-                                                <p className={`mt-1 font-medium ${data.metricName === "Total Revenue" ? "text-green-700 dark:text-green-500" : data.metricName === "VIX" ? "text-red-600 dark:text-red-400" : "text-gray-800 dark:text-gray-100"}`}>{data.valueDescription}</p>
+                                                <p className={`mt-1 font-medium ${data.metricName === "Total Revenue" ? "text-green-700 dark:text-green-500" : data.metricName === "VIX" ? "text-red-600 dark:text-red-400" : "text-gray-700 dark:text-gray-200"}`}>{data.valueDescription}</p>
                                             </div>
                                         </div>
                                     </div>

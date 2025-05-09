@@ -12,7 +12,7 @@ export default function List2() {
     const [width, setWidth] = useState({});
     const [selectedItem, setSelectedItem] = useState<string[]>([]);
 
-    const data: any[] = [
+    const notifications: any[] = [
         {
             id: '1',
             name: 'Esther Howard',
@@ -120,7 +120,7 @@ export default function List2() {
                     <section className="bg-white dark:bg-gray-900">
                         <div id={styles["inbox-list"]} className="flex items-center justify-center min-h-screen">
                             <div className="lg:max-w-2xl w-full m-auto p-4 md:p-6 lg:py-8 lg:px-14">
-                                <ListViewComponent className="!border-0" cssClass="e-list-template" dataSource={data} template={(data: any) => (
+                                <ListViewComponent className="!border-0" cssClass="e-list-template" dataSource={notifications} template={(data: any) => (
                                     <div className="e-list-wrapper flex items-start !px-1 sm:!px-3">
                                         <span className="flex items-center gap-4">
                                             <CheckBoxComponent cssClass="e-bigger hidden sm:block"></CheckBoxComponent>
@@ -150,7 +150,7 @@ export default function List2() {
                     <section className="bg-body">
                         <div id={styles["inbox-list"]} className="d-flex align-items-center justify-content-center min-vh-100">
                             <div className="container-lg w-100 m-auto p-3 p-md-4" style={width}>
-                                <ListViewComponent className="border-0" cssClass="e-list-template" dataSource={data} template={(data: any) => (
+                                <ListViewComponent className="border-0" cssClass="e-list-template" dataSource={notifications} template={(data: any) => (
                                     <div className="e-list-wrapper d-flex align-items-start px-1 px-sm-3 py-2 w-100">
                                         <span className="d-flex align-items-center gap-3">
                                             <CheckBoxComponent cssClass="e-bigger d-none d-sm-inline-block"></CheckBoxComponent>
