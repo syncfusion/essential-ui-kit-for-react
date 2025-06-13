@@ -1,0 +1,5 @@
+#compact-prompt :global(.textarea.e-input),
+#compact-prompt :global(.e-input-group textarea),
+#compact-prompt :global(.e-input-group textarea.e-input) {
+    margin-right: 40px !important;
+}

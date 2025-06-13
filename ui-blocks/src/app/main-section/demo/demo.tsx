@@ -337,6 +337,10 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
     const toggleLightDarkModes = () => {
         onHandleOverlayVisibility('show');
         setIsDarkMode(!isDarkMode);
+        const message = JSON.stringify({
+            mode: isDarkMode ? 'light' : 'dark',
+        });
+        iframeRef.current?.contentWindow?.postMessage(message, '*');
         addStylesheetsToIframe(theme, !isDarkMode);
     };
 

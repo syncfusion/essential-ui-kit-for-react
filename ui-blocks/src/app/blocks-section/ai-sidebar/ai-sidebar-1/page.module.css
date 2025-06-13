@@ -1,0 +1,13 @@
+#sidebar-navigation :global(.e-list-item) {
+    border-bottom: none !important;
+}
+
+#nav-list :global(.e-list-item.e-active .e-badge) {
+    background-color: #CFE2FF;
+    color: #0D6EFD;
+}
+
+#support-list :global(.e-list-item.e-active .e-avatar) {
+    background-color: #ffff !important;
+    color: #0D6EFD !important;
+}
