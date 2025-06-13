@@ -1,0 +1,5 @@
+#search_list :global(.e-input-group .e-icons.e-search) {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}

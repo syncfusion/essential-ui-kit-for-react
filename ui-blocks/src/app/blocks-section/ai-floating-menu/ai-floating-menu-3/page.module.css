@@ -1,0 +1,21 @@
+#setting-panel :global(.e-dlg-header-content) {
+    border-bottom-width: 0;
+}
+
+#setting-panel :global(.e-footer-content) {
+    border-top: inherit;
+    border-top-width: 1px;
+}
+
+#setting-panel :global(.e-file-select-wrap) {
+    display: none;
+}
+
+#setting-panel :global(.e-upload) {
+    float: none;
+    border: none;
+}
+
+#setting-panel :global(.e-upload .e-upload-files .e-upload-file-list) {
+    border-bottom: 0;
+}

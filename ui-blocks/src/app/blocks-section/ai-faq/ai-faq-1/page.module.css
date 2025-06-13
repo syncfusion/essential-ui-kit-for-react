@@ -1,0 +1,7 @@
+#FAQ :global(.e-accordion .e-acrdn-item .e-acrdn-panel .e-acrdn-content) {
+    padding: 0px !important;
+}
+
+#FAQ :global(.e-accordion .e-acrdn-item .e-acrdn-header) {
+    white-space: wrap !important;
+}

@@ -1,0 +1,19 @@
+#interactive-sidebar :global(.e-list-item) {
+    border-bottom: none !important;
+    border-radius: 8px;
+}
+
+#interactive-sidebar :global(.e-listview .e-list-group-item:first-child) {
+    display: none;
+}
+
+#interactive-sidebar :global(.e-listview .e-list-group-item) {
+    background-color: inherit;
+    border-bottom: 0px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+#interactive-sidebar :global(.hover-group:hover .context-menu) {
+    display: block !important;
+}

@@ -1,0 +1,4 @@
+#navigation-list :global(.e-list-item) {
+    border-radius: 8px;
+    border-bottom: 0;
+}

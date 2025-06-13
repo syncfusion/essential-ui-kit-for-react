@@ -1,0 +1,5 @@
+#enhanced-prompt :global(.textarea.e-input),
+#enhanced-prompt :global(.e-input-group textarea),
+#enhanced-prompt :global(.e-input-group textarea.e-input) {
+    margin-right: 40px !important;
+}

@@ -1,0 +1,22 @@
+#floating-contact :global(.e-dlg-header-content),
+#floating-contact :global(.e-dlg-content),
+#floating-contact :global(.e-footer-content) {
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+#floating-contact :global(.e-upload) {
+    border: none;
+}
+
+#floating-contact :global(.e-upload .e-file-select-wrap) {
+    padding: 0;
+}
+
+#floating-contact:global(.e-popup.e-popup-open.e-dialog) {
+    max-height: 580px !important;
+}
+
+#floating-contact :global(.e-file-drop) {
+    display: none !important;
+}
