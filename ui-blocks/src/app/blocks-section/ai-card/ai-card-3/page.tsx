@@ -9,7 +9,7 @@ export default function AICard3() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-card-3' && blockData.theme) {
@@ -85,7 +85,7 @@ export default function AICard3() {
                         <div className="mx-auto px-3 px-sm-4 py-5" style={{ minHeight: '36rem', maxWidth: '70rem' }}>
                             <div className="row g-4 mx-lg-2">
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card border-0 shadow-lg px-1" style={{ height: '298px' }}>
+                                    <div className="e-card border-0 shadow px-1" style={{ height: '298px' }}>
                                         <div className="e-card-content">
                                             <div className="d-flex flex-column align-items-center">
                                                 <span className="e-avatar e-avatar-circle e-icons e-paste fs-3 bg-info-subtle text-info" style={{ width: '76px', height: '76px' }}></span>
@@ -96,7 +96,7 @@ export default function AICard3() {
                                     </div>
                                 </div>
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card border-0 shadow-lg px-1" style={{ height: '298px' }}>
+                                    <div className="e-card border-0 shadow px-1" style={{ height: '298px' }}>
                                         <div className="e-card-content">
                                             <div className="d-flex flex-column align-items-center">
                                                 <span className="e-avatar e-avatar-circle e-icons e-clock fs-3 bg-warning-subtle text-warning" style={{ width: '76px', height: '76px' }}></span>
@@ -107,7 +107,7 @@ export default function AICard3() {
                                     </div>
                                 </div>
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card border-0 shadow-lg px-1" style={{ height: '298px' }}>
+                                    <div className="e-card border-0 shadow px-1" style={{ height: '298px' }}>
                                         <div className="e-card-content">
                                             <div className="d-flex flex-column align-items-center">
                                                 <span className="e-avatar e-avatar-circle e-icons e-agenda-date-range fs-3 bg-success-subtle text-success" style={{ width: '76px', height: '76px' }}></span>
@@ -118,7 +118,7 @@ export default function AICard3() {
                                     </div>
                                 </div>
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card border-0 shadow-lg px-1" style={{ height: '298px' }}>
+                                    <div className="e-card border-0 shadow px-1" style={{ height: '298px' }}>
                                         <div className="e-card-content">
                                             <div className="d-flex flex-column align-items-center">
                                                 <span className="e-avatar e-avatar-circle e-icons e-border-shadow-2 fs-3 bg-danger-subtle text-danger" style={{ width: '76px', height: '76px' }}></span>

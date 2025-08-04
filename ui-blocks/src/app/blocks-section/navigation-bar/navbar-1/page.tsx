@@ -9,7 +9,7 @@ export default function Navbar1() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'navbar-1' && blockData.theme) {
@@ -53,10 +53,10 @@ export default function Navbar1() {
                                             </div>
                                         </div>
                                         <div className="flex items-center">
-                                            <ButtonComponent className="mr-2.5 hidden sm:block" cssClass="e-primary" iconCss="e-icons e-plus" iconPosition="Left" type="button">New Widget</ButtonComponent>
-                                            <ButtonComponent className="e-icons e-search hidden sm:block lg:hidden mr-2.5" cssClass="e-flat" type="button"></ButtonComponent>
-                                            <ButtonComponent className="sf-icon-notification-bell-02 leading-3 text-base mr-2.5" cssClass="e-flat" type="button"></ButtonComponent>
-                                            <ButtonComponent className="e-icons e-grid-view hidden sm:block mr-2.5" cssClass="e-flat" type="button"></ButtonComponent>
+                                            <ButtonComponent className="mr-2.5 hidden sm:block" cssClass="e-primary" iconCss="e-icons e-plus" iconPosition="Left" content="New Widget" type="button"></ButtonComponent>
+                                            <ButtonComponent className="hidden sm:block lg:hidden mr-2.5" cssClass="e-flat" iconCss="e-icons e-search !text-base" type="button"></ButtonComponent>
+                                            <ButtonComponent className="leading-3 mr-2.5" cssClass="e-flat" iconCss="sf-icon-notification-bell-02 !text-base" type="button"></ButtonComponent>
+                                            <ButtonComponent className="hidden sm:block mr-2.5" cssClass="e-flat" iconCss="e-icons e-grid-view !text-base" type="button"></ButtonComponent>
                                             <div className="e-avatar e-avatar-small e-avatar-circle">
                                                 <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                             </div>
@@ -85,10 +85,10 @@ export default function Navbar1() {
                                         </div>
                                     </div>
                                     <div className="d-flex align-items-center">
-                                        <ButtonComponent className="me-3 d-none d-sm-block" cssClass="e-primary" iconCss="e-icons e-plus" iconPosition="Left" type="button">New Widget</ButtonComponent>
-                                        <ButtonComponent className="e-icons e-search d-none d-sm-block d-lg-none me-3 e-medium" cssClass="e-flat" type="button"></ButtonComponent>
-                                        <ButtonComponent className="sf-icon-notification-bell-01 fs-6 me-3" cssClass="e-flat" type="button"></ButtonComponent>
-                                        <ButtonComponent className="e-icons e-grid-view d-none d-sm-block me-3 e-medium" cssClass="e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent className="me-3 d-none d-sm-block" cssClass="e-primary" iconCss="e-icons e-plus" iconPosition="Left" content="New Widget" type="button"></ButtonComponent>
+                                        <ButtonComponent className="d-none d-sm-block d-lg-none me-3 e-medium" cssClass="e-flat" iconCss="e-icons e-search" type="button"></ButtonComponent>
+                                        <ButtonComponent className="fs-6 me-3" cssClass="e-flat" iconCss="sf-icon-notification-bell-01" type="button"></ButtonComponent>
+                                        <ButtonComponent className="d-none d-sm-block me-3 e-medium" cssClass="e-flat" iconCss="e-icons e-grid-view" type="button"></ButtonComponent>
                                         <span className="e-avatar e-avatar-small e-avatar-circle">
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                         </span>

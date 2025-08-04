@@ -28,7 +28,7 @@ export default function FilterPanel8() {
     }
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'filter-panel-8' && blockData.theme) {
@@ -91,8 +91,8 @@ export default function FilterPanel8() {
                                                             <RadioButtonComponent label="Understanding the dashboard" name="guidelines" value="understanding-dashboard"></RadioButtonComponent>
                                                             <RadioButtonComponent label="Basic configuration steps" name="guidelines" value="basic-configuration"></RadioButtonComponent>
                                                         </div>
-                                                    )}>
-                                                </AccordionItemDirective>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                         <AccordionComponent ref={billingAccordion} className="bg-transparent my-3 rounded-sm" expandMode="Single">
@@ -117,8 +117,8 @@ export default function FilterPanel8() {
                                                             <RadioButtonComponent label="Understanding your invoice" name="billing" value="understanding-invoice"></RadioButtonComponent>
                                                             <RadioButtonComponent label="Usage calculations" name="billing" value="usage-calculations"></RadioButtonComponent>
                                                         </div>
-                                                    )}>
-                                                </AccordionItemDirective>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                         <AccordionComponent ref={supportAccordion} className="bg-transparent my-3 rounded-sm" expandMode="Single">
@@ -143,8 +143,8 @@ export default function FilterPanel8() {
                                                             <RadioButtonComponent label="Integration guide" name="support" value="integration-guide"></RadioButtonComponent>
                                                             <RadioButtonComponent label="Security best practices" name="support" value="security-practices"></RadioButtonComponent>
                                                         </div>
-                                                    )}>
-                                                </AccordionItemDirective>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                     </div>
@@ -153,7 +153,7 @@ export default function FilterPanel8() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-round" iconCss="e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -183,15 +183,15 @@ export default function FilterPanel8() {
                                                             <CheckBoxComponent label="Best practices"></CheckBoxComponent>
                                                             <div className="d-flex align-items-center justify-content-between py-2">
                                                                 <h6 className="mb-0 fw-medium text-body">Recently updated only</h6>
-                                                                <SwitchComponent className="me-2" checked={true} />
+                                                                <SwitchComponent className="me-2" checked={true}></SwitchComponent>
                                                             </div>
                                                             <RadioButtonComponent label="Welcome guide" name="guidelines" value="welcome-guide" checked={true}></RadioButtonComponent>
                                                             <RadioButtonComponent label="Creating your first project" name="guidelines" value="creating-project"></RadioButtonComponent>
                                                             <RadioButtonComponent label="Understanding the dashboard" name="guidelines" value="understanding-dashboard"></RadioButtonComponent>
                                                             <RadioButtonComponent label="Basic configuration steps" name="guidelines" value="basic-configuration"></RadioButtonComponent>
                                                         </div>
-                                                    )}>
-                                                </AccordionItemDirective>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                         <AccordionComponent ref={billingAccordion} className="bg-transparent my-3 rounded-1" expandMode="Single">
@@ -209,15 +209,15 @@ export default function FilterPanel8() {
                                                             <CheckBoxComponent label="Usage plans"></CheckBoxComponent>
                                                             <div className="d-flex align-items-center justify-content-between py-2">
                                                                 <h6 className="mb-0 fw-medium text-body">Recently updated only</h6>
-                                                                <SwitchComponent className="me-2" checked={true} />
+                                                                <SwitchComponent className="me-2" checked={true}></SwitchComponent>
                                                             </div>
                                                             <RadioButtonComponent label="Subscription overview" name="billing" value="subscription-overview" checked={true}></RadioButtonComponent>
                                                             <RadioButtonComponent label="Managing payment method" name="billing" value="managing-payment"></RadioButtonComponent>
                                                             <RadioButtonComponent label="Understanding your invoice" name="billing" value="understanding-invoice"></RadioButtonComponent>
                                                             <RadioButtonComponent label="Usage calculations" name="billing" value="usage-calculations"></RadioButtonComponent>
                                                         </div>
-                                                    )}>
-                                                </AccordionItemDirective>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                         <AccordionComponent ref={supportAccordion} className="bg-transparent my-3 rounded-1" expandMode="Single">
@@ -242,8 +242,8 @@ export default function FilterPanel8() {
                                                             <RadioButtonComponent label="Integration guide" name="support" value="integration-guide"></RadioButtonComponent>
                                                             <RadioButtonComponent label="Security best practices" name="support" value="security-practices"></RadioButtonComponent>
                                                         </div>
-                                                    )}>
-                                                </AccordionItemDirective>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                     </div>
@@ -252,7 +252,7 @@ export default function FilterPanel8() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent className="btn btn-lg rounded-circle" iconCss="e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent className="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

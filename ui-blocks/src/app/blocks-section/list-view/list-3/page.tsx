@@ -12,39 +12,39 @@ export default function List3() {
 
     const messages: any[] = [
         {
-            id: '1',
-            name: 'Wade Warren',
-            content: 'Hey team, I’ve updated the project timeline. Please review the new deadlines and provide feedback by tomorrow.',
-            avatar: 'avatar-3.jpg',
-            time: '5 min ago'
+            id: 1,
+            name: "Wade Warren",
+            content: "Hey team, I've updated the project timeline. Please review the new deadlines and provide feedback by tomorrow.",
+            avatar: "avatar-3.jpg",
+            time: "5 min ago"
         },
         {
-            id: '2',
-            name: 'Albert Flores',
-            content: 'The client has approved the initial design draft. Let’s move forward with the next phase of development.',
-            avatar: 'avatar-4.jpg',
-            time: '32 min ago'
+            id: 2,
+            name: "Albert Flores",
+            content: "The client has approved the initial design draft. Let's move forward with the next phase of development.",
+            avatar: "avatar-4.jpg",
+            time: "32 min ago"
         },
         {
-            id: '3',
-            name: 'Ralph Edwards',
-            content: 'Reminder: Our weekly project sync is scheduled for 10 AM tomorrow. Please come prepared with your progress updates.',
-            avatar: 'avatar-5.jpg',
-            time: '45 min ago'
+            id: 3,
+            name: "Ralph Edwards",
+            content: "Reminder: Our weekly project sync is scheduled for 10 AM tomorrow. Please come prepared with your progress updates.",
+            avatar: "avatar-5.jpg",
+            time: "45 min ago"
         },
         {
-            id: '4',
-            name: 'Annette Black',
-            content: 'We’ve encountered an issue with the current build. I’ll need everyone’s input to troubleshoot and find a quick solution.',
-            avatar: 'avatar-14.jpg',
-            time: '48 min ago'
+            id: 4,
+            name: "Annette Black",
+            content: "We've encountered an issue with the current build. I'll need everyone's input to troubleshoot and find a quick solution.",
+            avatar: "avatar-14.jpg",
+            time: "48 min ago"
         },
         {
-            id: '5',
-            name: 'Kristin Watson',
-            content: 'Great news! We’ve hit the project milestone ahead of schedule. Let’s keep this momentum going for the final phase.',
-            avatar: 'avatar-13.jpg',
-            time: '1 hr ago'
+            id: 5,
+            name: "Kristin Watson",
+            content: "Great news! We've hit the project milestone ahead of schedule. Let's keep this momentum going for the final phase.",
+            avatar: "avatar-13.jpg",
+            time: "1 hr ago"
         }
     ];
 
@@ -58,7 +58,7 @@ export default function List3() {
     
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'list-3' && blockData.theme) {
@@ -110,7 +110,7 @@ export default function List3() {
                                             </span>
                                         </span>
                                         <span className="ml-auto">
-                                            <ButtonComponent cssClass="e-icons e-medium e-more-horizontal-1 e-flat !px-2" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-flat !px-2" iconCss="e-icons e-medium e-more-horizontal-1" type="button"></ButtonComponent>
                                         </span>
                                     </div>)}
                                 ></ListViewComponent>
@@ -139,7 +139,7 @@ export default function List3() {
                                                 <ButtonComponent cssClass="e-flat e-lib e-inherit" iconCss="e-icons e-eye e-medium" type="button" content="Mark as read"></ButtonComponent>
                                             </span>
                                         </div>
-                                        <ButtonComponent cssClass="e-icons e-medium e-more-horizontal-1 e-flat px-2" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat px-2" iconCss="e-icons e-medium e-more-horizontal-1" type="button"></ButtonComponent>
                                     </div>)}
                                 ></ListViewComponent>
                             </div>

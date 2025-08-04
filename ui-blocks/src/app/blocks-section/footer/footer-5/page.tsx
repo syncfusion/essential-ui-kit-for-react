@@ -7,7 +7,7 @@ export default function Footer5() {
     const [theme, setTheme] = useState('tailwind');
     
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'footer-5' && blockData.theme) {
@@ -39,8 +39,8 @@ export default function Footer5() {
                             <div className="flex flex-col justify-between gap-8 pb-4 xl:flex-row">
                                 <div className="space-y-2 text-sm text-gray-900 dark:text-gray-50 xl:w-72">
                                     <div className="flex items-center gap-2.5 py-2">
-                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/shopnezt.png" width={28} height={28} alt="company logo" />
-                                        <h2 className="font-semibold text-xl">ShopNezt</h2>
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={28} height={28} alt="company logo" />
+                                        <h2 className="font-semibold text-xl">Company Name</h2>
                                     </div>
                                     <p className="text-gray-700 dark:text-gray-300">Our fashion portal offers styles that make you look good and feel great.</p>
                                 </div>
@@ -92,15 +92,15 @@ export default function Footer5() {
                                     <h3 className="font-semibold text-gray-900 dark:text-gray-50">Get in Touch</h3>
                                     <ul className="space-y-4 sm:space-y-6">
                                         <li className="flex items-center space-x-2">
-                                            <i className="e-icons e-location text-gray-500 dark:text-gray-400 text-base"></i>
+                                            <span className="e-icons e-location text-gray-500 dark:text-gray-400 text-base"></span>
                                             <span>1 E 2nd St, New York, NY 10003, USA</span>
                                         </li>
                                         <li className="flex items-center space-x-2">
-                                            <i className="sf-icon-mail-02 text-gray-500 dark:text-gray-400 text-base"></i>
-                                            <a href="#">contact&#64;shopnezt.com</a>
+                                            <span className="sf-icon-mail-02 text-gray-500 dark:text-gray-400 text-base"></span>
+                                            <a href="#">contact&#64;company.com</a>
                                         </li>
                                         <li className="flex items-center space-x-2">
-                                            <i className="sf-icon-phone-01 text-gray-500 dark:text-gray-400 text-base"></i>
+                                            <span className="sf-icon-phone-01 text-gray-500 dark:text-gray-400 text-base"></span>
                                             <a href="#">(123) 456-7890</a>
                                         </li>
                                     </ul>
@@ -110,7 +110,7 @@ export default function Footer5() {
                                 </div>
                             </div>
                             <div className="border-t py-4 flex flex-col-reverse md:flex-row justify-between items-center text-gray-500 gap-4 dark:border-gray-600 md:space-y-0">
-                                <p className="text-gray-500 dark:text-gray-400">© 2024 ShopNezt. All rights reserved.</p>
+                                <p className="text-gray-500 dark:text-gray-400 text-sm">© 2024 Company Name. All rights reserved.</p>
                                 <div className="flex gap-4">
                                     <a href="#" className="sf-icon-twitter text-2xl text-gray-500 dark:text-gray-400"></a>
                                     <a href="#" className="sf-icon-facebook text-2xl text-gray-500 dark:text-gray-400"></a>
@@ -127,8 +127,8 @@ export default function Footer5() {
                             <div className="d-flex flex-column flex-xl-row justify-content-between pb-3 gap-4">
                                 <div className="text-body col col-xl-3 pe-xl-4">
                                     <div className="d-flex align-items-center gap-2 mb-2">
-                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/png/shopnezt.png" width={30} height={30} alt="company logo" />
-                                        <h5 className="fw-medium mb-0">ShopNezt</h5>
+                                        <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={30} height={30} alt="company logo" />
+                                        <h5 className="fw-medium mb-0">Company Name</h5>
                                     </div>
                                     <p className="small mb-2">Our fashion portal offers styles that make you look good and feel great.</p>
                                 </div>
@@ -180,15 +180,15 @@ export default function Footer5() {
                                     <p className="small fw-bold text-body">Get in Touch</p>
                                     <ul className="d-flex flex-column mb-0 gap-3 list-unstyled small fw-medium text-body-secondary gap-sm-4">
                                         <li className="d-flex align-items-center gap-2">
-                                            <i className="e-icons e-location fs-6"></i>
+                                            <span className="e-icons e-location fs-6"></span>
                                             <span>1 E 2nd St, New York, NY 10003, USA</span>
                                         </li>
                                         <li className="d-flex align-items-center gap-2">
-                                            <i className="sf-icon-mail-02 fs-6"></i>
-                                            <a className="text-decoration-none text-body-secondary" href="#">contact&#64;shopnezt.com</a>
+                                            <span className="sf-icon-mail-02 fs-6"></span>
+                                            <a className="text-decoration-none text-body-secondary" href="#">contact&#64;company.com</a>
                                         </li>
                                         <li className="d-flex align-items-center gap-2">
-                                            <i className="sf-icon-phone-01 fs-6"></i>
+                                            <span className="sf-icon-phone-01 fs-6"></span>
                                             <a className="text-decoration-none text-body-secondary" href="#">(123) 456-7890</a>
                                         </li>
                                     </ul>
@@ -198,7 +198,7 @@ export default function Footer5() {
                                 </div>
                             </div>
                             <div className="border-top border-light-subtle py-3 d-flex flex-column-reverse gap-3 flex-md-row justify-content-between align-items-center mt-4">
-                                <p className="mb-0 text-body-secondary">© 2024 ShopNezt. All rights reserved.</p>
+                                <p className="mb-0 text-body-secondary">© 2024 Company Name. All rights reserved.</p>
                                 <div className="d-flex gap-3">
                                     <a href="#" className="sf-icon-twitter text-body-secondary fs-4 text-decoration-none"></a>
                                     <a href="#" className="sf-icon-facebook text-body-secondary fs-4 text-decoration-none"></a>

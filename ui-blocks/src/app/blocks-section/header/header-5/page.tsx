@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
-import { OverflowMode, TabComponent, TabItemDirective, TabItemsDirective } from "@syncfusion/ej2-react-navigations";
+import { TabComponent, TabItemDirective, TabItemsDirective, OverflowMode } from "@syncfusion/ej2-react-navigations";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 
@@ -9,10 +9,10 @@ export default function Header5() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
+    const [overflowMode, setOverflowMode] = useState<OverflowMode>('Popup');
     const tab = useRef<TabComponent | null>(null);
     const responsivetab = useRef<TabComponent | null>(null);
-    const [overflowMode, setOverflowMode] = useState<OverflowMode>('Popup');
-
+    
     const updateTabItems = (): void => {
         if (window.innerWidth < 640) {
             setOverflowMode('Popup');
@@ -25,7 +25,7 @@ export default function Header5() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'header-5' && blockData.theme) {
@@ -45,14 +45,17 @@ export default function Header5() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
-        window.addEventListener('resize',updateTabItems);
         tab.current?.refresh();
+        tab.current?.refreshActiveTabBorder();
+        /* SB Code - End */
+        window.addEventListener('resize',updateTabItems);
         
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
             window.removeEventListener('resize', updateTabItems);
         }
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -82,7 +85,7 @@ export default function Header5() {
                                     <div className="border-l border-gray-200 dark:border-gray-600 h-5 self-center"></div>
                                     <ButtonComponent cssClass="e-outline hidden sm:block" iconCss="sf-icon-share-arrow-02" type="button"></ButtonComponent>
                                     <ButtonComponent cssClass="e-outline hidden sm:block" iconCss="sf-icon-table-layout" type="button"></ButtonComponent>
-                                    <ButtonComponent cssClass="block sm:hidden" iconCss="e-icons e-more-vertical-1" type="button" ></ButtonComponent>
+                                    <ButtonComponent cssClass="block sm:hidden" iconCss="e-icons e-more-vertical-1" type="button"></ButtonComponent>
                                 </div>
                             </div>
                             <div className="mx-4 sm:mx-6 block sm:hidden">

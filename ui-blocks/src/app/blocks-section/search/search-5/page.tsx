@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
 import { ChipListComponent, ChipsDirective, ChipDirective } from '@syncfusion/ej2-react-buttons';
+import styles from './page.module.css';
 
 export default function Search5() {
     /* SB Code - Start */
@@ -63,7 +64,6 @@ export default function Search5() {
                 const inputContainer = search.current['inputWrapper'].container;
                 const searchIcon = document.createElement('span');
                 searchIcon.className = 'e-icons e-search';
-                searchIcon.style.cssText = 'display: flex; align-items: center; margin-left: 10px;';
                 inputContainer?.insertAdjacentElement('afterbegin', searchIcon);
             }
         }, 250);
@@ -71,7 +71,7 @@ export default function Search5() {
 
     const handleResize = (): void => {
         setWidth(window.innerWidth > 767 ? { maxWidth: "480px" } : { width: "100%" })
-        search.current?.refresh();
+        search.current?.hidePopup();
         const searchInterval = setInterval(() => {
             search.current?.showPopup();
         }, 250);
@@ -80,7 +80,7 @@ export default function Search5() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'search-5' && blockData.theme) {
@@ -113,11 +113,11 @@ export default function Search5() {
                 return (
                     <section className="bg-white dark:bg-gray-900 h-full">
                         <div className="w-full pt-5 pb-4" style={{ height: '750px' }}>
-                            <div className="px-4 mx-auto lg:px-0" style={width}>
+                            <div id={styles["search-list"]} className="px-4 mx-auto lg:px-0" style={width}>
                                 <AutoCompleteComponent
                                     key={"search-5-tw"}
-                                    cssClass="e-bigger"
                                     ref={search}
+                                    cssClass="e-bigger"
                                     dataSource={data}
                                     fields={{ value: 'ticket' }}
                                     popupHeight="650px"
@@ -127,7 +127,7 @@ export default function Search5() {
                                     headerTemplate={() => (
                                         <div>
                                             <div className="p-5 border-b border-gray-200 dark:border-gray-600 mb-2">
-                                                <ChipListComponent id="chip-filter" cssClass="!border-gray-200 !dark:border-gray-600">
+                                                <ChipListComponent id={styles["chip-filter"]} cssClass="!border-gray-200 !dark:border-gray-600" selection="Multiple">
                                                     <ChipsDirective>
                                                         <ChipDirective cssClass="e-outline !text-sm !font-medium !px-3 !py-1 !rounded-2xl !h-8 !ml-0" text="Ticket ID"></ChipDirective>
                                                         <ChipDirective cssClass="e-outline !text-sm !font-medium !px-3 !py-1 !rounded-2xl !h-8 !ml-0" text="Status"></ChipDirective>
@@ -163,10 +163,10 @@ export default function Search5() {
                 return (
                     <section className="bg-body h-100">
                         <div className="w-100 pt-4 pb-3" style={{ height: '800px' }}>
-                            <div className="px-3 px-lg-0 mx-auto" style={width}>
+                            <div id={styles["search-list"]} className="px-3 px-lg-0 mx-auto" style={width}>
                                 <AutoCompleteComponent
-                                    cssClass="e-bigger"
                                     ref={search}
+                                    cssClass="e-bigger"
                                     dataSource={data}
                                     fields={{ value: 'ticket' }}
                                     popupHeight="730px"
@@ -176,7 +176,7 @@ export default function Search5() {
                                     headerTemplate={() => (
                                         <div>
                                             <div className="p-3 border-bottom border-light-subtle mb-2">
-                                                <ChipListComponent id="chip-filter" cssClass="p-3">
+                                                <ChipListComponent id={styles["chip-filter"]} cssClass="p-3" selection="Multiple">
                                                     <ChipsDirective>
                                                         <ChipDirective cssClass="fs-6 lh-base fw-medium px-3 py-1 e-outline border border-light-subtle" text="Ticket ID"></ChipDirective>
                                                         <ChipDirective cssClass="fs-6 lh-base fw-medium px-3 py-1 e-outline border border-light-subtle" text="Status"></ChipDirective>

@@ -12,10 +12,10 @@ export default function Notification3() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
+    const [isToggleState, setIsToggleState] = useState(false);
     const dialogRef = useRef<DialogComponent>(null);
     const buttonRef = useRef<ButtonComponent>(null);
     const dropdownRef = useRef<DropDownButtonComponent | null>(null);
-    const [toggleState, setToggleState] = useState(false);
 
     const chatData = [
         {
@@ -60,7 +60,7 @@ export default function Notification3() {
         }
     ];
 
-    const setDialogPosition = (event: any) => {
+    const setDialogPosition = (event: any): void => {
         if (!buttonRef.current || !dialogRef.current) return;
 
         const position = buttonRef.current.element.getBoundingClientRect();
@@ -77,18 +77,18 @@ export default function Notification3() {
 
     const toggleDialog = (): void => {
         if (dialogRef.current) {
-            if (toggleState) {
+            if (isToggleState) {
                 dialogRef.current.hide();
             } else {
                 dialogRef.current.show();
             }
-            setToggleState(!toggleState);
+            setIsToggleState(!isToggleState);
         }
     };
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'notification-3' && blockData.theme) {
@@ -121,12 +121,12 @@ export default function Notification3() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="relative h-screen mx-auto" style={{ maxWidth: '480px' }}>
-                            <div key={'notification-3-tw'} className="w-full flex justify-end p-4" style={{ minHeight: '730px' }}>
+                            <div key={"notification-3-tw"} className="w-full flex justify-end p-4" style={{ minHeight: '730px' }}>
                                 <div className="relative w-8 h-8">
                                     <ButtonComponent ref={buttonRef} cssClass="e-outline e-round" iconCss="sf-icon-notification-bell-02" type="button" onClick={toggleDialog}></ButtonComponent>
                                     <span className="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 mr-2">4</span>
                                 </div>
-                                <DialogComponent ref={dialogRef} id={styles.notification} cssClass="!bg-white dark:!bg-gray-800 rounded-lg overflow-hidden !border" width="443px" open={setDialogPosition}>
+                                <DialogComponent ref={dialogRef} id={styles["notification"]} cssClass="!bg-white dark:!bg-gray-800 rounded-lg overflow-hidden !border" width="443px" open={setDialogPosition}>
                                     <div className="flex justify-between items-center p-4 md:py-2.5">
                                         <div className="flex items-center gap-2 h-6">
                                             <span className="e-icons e-arrow-left !text-2xl !text-gray-500 dark:!text-gray-300"></span>
@@ -156,7 +156,7 @@ export default function Notification3() {
                                                             template={(data: any) => (
                                                                 <div className="flex gap-2 py-3 px-4 sm:px-3 border-b border-gray-200 dark:border-gray-600">
                                                                     <div className="shrink-0">
-                                                                        <span className={`e-avatar e-avatar-circle ${data.colorTheme === 'Red' ? '!bg-red-100 !text-red-700 dark:!text-red-400' : data.colorTheme === 'Green' ? '!bg-green-100 !text-green-700 dark:!text-green-500' : data.colorTheme === 'Blue' ? '!bg-cyan-100 !text-cyan-700 dark:!text-cyan-600' : data.colorTheme === 'Orange' ? '!bg-orange-100 !text-orange-700 dark:!text-orange-500' : ''}`}>{data.initial}</span>
+                                                                        <span className={`e-avatar e-avatar-circle ${data.colorTheme === 'Red' ? '!bg-red-100 dark:!bg-red-800 !text-red-700 dark:!text-red-400' : data.colorTheme === 'Green' ? '!bg-green-100 dark:!bg-green-800 !text-green-700 dark:!text-green-500' : data.colorTheme === 'Blue' ? '!bg-cyan-100 dark:!bg-cyan-800 !text-cyan-700 dark:!text-cyan-600' : data.colorTheme === 'Orange' ? '!bg-orange-100 dark:!bg-orange-800 !text-orange-700 dark:!text-orange-500' : ''}`}>{data.initial}</span>
                                                                     </div>
                                                                     <div className="w-full flex justify-between">
                                                                         <div className="flex flex-col gap-0.5 text-sm text-gray-900 dark:text-white">
@@ -168,8 +168,7 @@ export default function Notification3() {
                                                                     </div>
                                                                 </div>
                                                             )}
-                                                        >
-                                                        </ListViewComponent>
+                                                        ></ListViewComponent>
                                                     </div>
                                                 )}
                                             ></TabItemDirective>
@@ -185,12 +184,12 @@ export default function Notification3() {
                 return (
                     <section className="bg-body">
                         <div className="position-relative vh-100 mx-auto" style={{ maxWidth: '480px' }}>
-                            <div key={'notification-3-bs'} className="w-100 d-flex justify-content-end p-3" style={{ minHeight: '830px' }}>
+                            <div key={"notification-3-bs"} className="w-100 d-flex justify-content-end p-3" style={{ minHeight: '830px' }}>
                                 <div className="position-relative" style={{width: '32px',height: '32px'}}>
                                     <ButtonComponent ref={buttonRef} cssClass="e-outline e-round" iconCss="sf-icon-notification-bell-02" type="button" onClick={toggleDialog}></ButtonComponent>
                                     <span className="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 me-2">4</span>
                                 </div>
-                                <DialogComponent ref={dialogRef} id={styles.notification} cssClass="bg-body rounded overflow-hidden border" width="443px" open={setDialogPosition}>
+                                <DialogComponent ref={dialogRef} id={styles["notification"]} cssClass="bg-body rounded overflow-hidden border" width="443px" open={setDialogPosition}>
                                     <div className="d-flex justify-content-between align-items-center p-3">
                                         <div className="d-flex align-items-center gap-2">
                                             <span className="e-icons e-arrow-left fs-5 text-body-secondary"></span>
@@ -232,8 +231,7 @@ export default function Notification3() {
                                                                     </div>
                                                                 </div>
                                                             )}
-                                                        >
-                                                        </ListViewComponent>
+                                                        ></ListViewComponent>
                                                     </div>
                                                 )}
                                             ></TabItemDirective>

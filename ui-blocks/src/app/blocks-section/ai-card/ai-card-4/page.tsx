@@ -10,7 +10,7 @@ export default function AICard4() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-card-4' && blockData.theme) {
@@ -61,7 +61,7 @@ export default function AICard4() {
                                                 </div>
                                                 <p className="text-xs font-medium text-gray-700 dark:text-gray-300">Edited 24 hrs ago</p>
                                             </div>
-                                            <ButtonComponent cssClass="e-flat e-round" iconCss="e-icons e-bookmark" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-flat e-round" iconCss="e-icons e-bookmark !text-base" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@ export default function AICard4() {
                                                 </div>
                                                 <p className="text-xs font-medium text-gray-700 dark:text-gray-300">Edited 24 hrs ago</p>
                                             </div>
-                                            <ButtonComponent cssClass="e-flat e-round" iconCss="e-icons e-bookmark" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-flat e-round" iconCss="e-icons e-bookmark !text-base" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@ export default function AICard4() {
                                                 </div>
                                                 <p className="text-xs font-medium text-gray-700 dark:text-gray-300">Edited 24 hrs ago</p>
                                             </div>
-                                            <ButtonComponent cssClass="e-flat e-round" iconCss="e-icons e-bookmark" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-flat e-round" iconCss="e-icons e-bookmark !text-base" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@ export default function AICard4() {
                                                 </div>
                                                 <p className="text-xs font-medium text-gray-700 dark:text-gray-300">Edited 24 hrs ago</p>
                                             </div>
-                                            <ButtonComponent cssClass="e-flat e-round" iconCss="e-icons e-bookmark" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-flat e-round" iconCss="e-icons e-bookmark !text-base" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@ export default function AICard4() {
                         <div className="mx-auto px-3 px-sm-4 py-5" style={{ minHeight: '36rem', maxWidth: '70rem' }}>
                             <div className="row g-4 mx-lg-2">
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card shadow-lg rounded-3 py-3 d-flex justify-content-start flex-column">
+                                    <div className="e-card shadow rounded-3 py-3 d-flex justify-content-start flex-column">
                                         <div className="e-card-image px-3 overflow-hidden min-vh-0">
                                             <img className="w-100 object-fit-cover rounded-3" style={{ height: '130px' }} src="/react/essential-ui-kit/blocks/assets/images/ai/card/information-display-card/3d-animation.jpg" alt="3D animation guidelines" />
                                         </div>
@@ -179,7 +179,7 @@ export default function AICard4() {
                                     </div>
                                 </div>
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card shadow-lg rounded-3 py-3 d-flex justify-content-start flex-column">
+                                    <div className="e-card shadow rounded-3 py-3 d-flex justify-content-start flex-column">
                                         <div className="e-card-image px-3 overflow-hidden min-vh-0">
                                             <img className="w-100 object-fit-cover rounded-3" style={{ height: '130px' }} src="/react/essential-ui-kit/blocks/assets/images/ai/card/information-display-card/brand-guidelines.jpg" alt="brand guidelines" />
                                         </div>
@@ -208,7 +208,7 @@ export default function AICard4() {
                                     </div>
                                 </div>
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card shadow-lg rounded-3 py-3 d-flex justify-content-start flex-column">
+                                    <div className="e-card shadow rounded-3 py-3 d-flex justify-content-start flex-column">
                                         <div className="e-card-image px-3 overflow-hidden min-vh-0">
                                             <img className="w-100 object-fit-cover rounded-3" style={{ height: '130px' }} src="/react/essential-ui-kit/blocks/assets/images/ai/card/information-display-card/designers-hiring.jpg" alt="designers hiring" />
                                         </div>
@@ -237,7 +237,7 @@ export default function AICard4() {
                                     </div>
                                 </div>
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card shadow-lg rounded-3 py-3 d-flex justify-content-start flex-column">
+                                    <div className="e-card shadow rounded-3 py-3 d-flex justify-content-start flex-column">
                                         <div className="e-card-image px-3 overflow-hidden min-vh-0">
                                             <img className="w-100 object-fit-cover rounded-3" style={{ height: '130px' }} src="/react/essential-ui-kit/blocks/assets/images/ai/card/information-display-card/motion-design.jpg" alt="motion design guidelines" />
                                         </div>

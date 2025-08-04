@@ -10,7 +10,7 @@ export default function AICard1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-card-1' && blockData.theme) {
@@ -87,7 +87,7 @@ export default function AICard1() {
                     <section className="bg-body-tertiary">
                         <div className="w-100 mx-auto px-3 px-sm-5 py-5" style={{ maxWidth: '50rem', minHeight: '36rem' }}>
                             <div className="d-flex flex-column flex-sm-row gap-4">
-                                <div className="e-card shadow-lg rounded-3 border-0">
+                                <div className="e-card shadow rounded-3 border-0">
                                     <div className="e-card-header px-4 pt-4">
                                         <div className="d-flex align-items-center">
                                             <span className="e-avatar e-avatar-circle" style={{ backgroundImage: 'url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-5.jpg)' }}></span>
@@ -103,10 +103,10 @@ export default function AICard1() {
                                         <span className="e-badge e-badge-success">Free</span>
                                     </div>
                                     <div className="e-card-actions px-4 py-4">
-                                        <ButtonComponent className="w-100" cssClass="e-outline" type="button" content="Upgrade to Pro"></ButtonComponent>
+                                        <ButtonComponent className="w-100" cssClass="e-outline" content="Upgrade to Pro" type="button"></ButtonComponent>
                                     </div>
                                 </div>
-                                <div className="e-card shadow-lg rounded-3 border-0">
+                                <div className="e-card shadow rounded-3 border-0">
                                     <div className="e-card-header px-4 pt-4">
                                         <div className="d-flex align-items-center">
                                             <span className="e-avatar e-avatar-circle" style={{ backgroundImage: 'url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-5.jpg)' }}></span>
@@ -122,7 +122,7 @@ export default function AICard1() {
                                         <span className="e-badge e-badge-primary">Starter</span>
                                     </div>
                                     <div className="e-card-actions px-4 py-4">
-                                        <ButtonComponent className="w-100" cssClass="e-outline" type="button" content="Upgrade to Pro"></ButtonComponent>
+                                        <ButtonComponent className="w-100" cssClass="e-outline" content="Upgrade to Pro" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </div>

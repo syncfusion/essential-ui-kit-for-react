@@ -10,6 +10,7 @@ export default function Sidebar9() {
     /* SB Code - Start */ 
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */ 
+    const [backDrop, setBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const navigationMenu: any[] = [
@@ -79,9 +80,13 @@ export default function Sidebar9() {
         }
     ];
 
+    const handleResize = (): void => {
+        setBackDrop(window.innerWidth <= 640);
+    };
+
     /* SB Code - Start */ 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'sidebar-9' && blockData.theme) {
@@ -97,12 +102,17 @@ export default function Sidebar9() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
+        /* SB Code - End */
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
+            window.removeEventListener('resize', handleResize);
         };
-        /* SB Code - End */
-    }, []); 
+    }, []);
 
     const getContent = () => {
         switch (theme) {
@@ -110,7 +120,7 @@ export default function Sidebar9() {
                 return (
                     <section className="bg-white dark:bg-gray-950">
                         <div id={styles["nested-sidebar"]} style={{ height: '580px' }}>
-                            <SidebarComponent key={"sidebar-9-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="328px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-9-tw"} ref={sidebar} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="328px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="flex h-screen">
                                     <div className="py-4" style={{ width: '72px' }}>
                                         <div className="flex justify-center items-center px-3 mb-2">
@@ -149,14 +159,14 @@ export default function Sidebar9() {
                                                 ></ListViewComponent>
                                             </div>
                                         </div>
-                                        <ButtonComponent cssClass="e-icons e-chevron-left e-large e-flat ml-auto m-4" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-large e-flat ml-auto m-4 e-icons e-chevron-left" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -165,7 +175,7 @@ export default function Sidebar9() {
                 return (
                     <section className="bg-body">
                         <div id={styles["nested-sidebar"]} style={{ height: '600px' }}>
-                            <SidebarComponent key={"sidebar-9-bs"} width="328px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-9-bs"} ref={sidebar} width="328px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="d-flex vh-100">
                                     <div className="py-4 d-flex flex-column align-items-center" style={{ width: '72px' }}>
                                         <div className="d-flex justify-content-center align-items-center px-3 mb-2">
@@ -194,24 +204,23 @@ export default function Sidebar9() {
                                                     )}
                                                 </div>)}
                                             ></ListViewComponent>
-                                            <p className="m-3 fs-6 text-body-secondary">Others</p>
+                                            <hr className="mx-3 border-light-subtle opacity-100" />
                                             <div>
                                                 <ListViewComponent className="border-0 e-bigger" dataSource={supportMenu} template={(data: any) => (
                                                     <div className="e-list-wrapper px-1">
                                                         <span className="fs-6 fw-normal">{data.field}</span>
-                                                    </div>
-                                                )}
+                                                    </div>)}
                                                 ></ListViewComponent>
                                             </div>
                                         </div>
-                                        <ButtonComponent cssClass="e-icons e-chevron-left e-large e-flat ms-auto m-3" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-large e-flat ms-auto m-3 e-icons e-chevron-left" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="py-3 px-1 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

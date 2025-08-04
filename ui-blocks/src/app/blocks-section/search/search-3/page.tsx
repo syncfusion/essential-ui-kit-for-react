@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
+import styles from './page.module.css';
 
 export default function Search3() {
     /* SB Code - Start */
@@ -18,7 +19,6 @@ export default function Search3() {
         { id: 5, name: "Mark Johnson", initial: "MJ", emailId: "markjohnson@example.com" },
         { id: 6, name: "Tom Harris", initial: "TH", emailId: "tomharris@example.com" }
     ];
-    const fields = { value: "name" };
 
     const openPopup = (): void => {
         setTimeout(() => {
@@ -27,7 +27,6 @@ export default function Search3() {
                 const inputContainer = search.current['inputWrapper'].container;
                 const searchIcon = document.createElement('span');
                 searchIcon.className = 'e-icons e-search';
-                searchIcon.style.cssText = 'display: flex; align-items: center; margin-left: 10px;';
                 inputContainer?.insertAdjacentElement('afterbegin', searchIcon);
             }
         }, 250);
@@ -35,7 +34,7 @@ export default function Search3() {
 
     const handleResize = (): void => {
         setWidth(window.innerWidth > 767 ? { maxWidth: "480px" } : { width: "100%" })
-        search.current?.refresh();
+        search.current?.hidePopup();
         const searchInterval = setInterval(() => {
             search.current?.showPopup();
         }, 250);
@@ -44,7 +43,7 @@ export default function Search3() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'search-3' && blockData.theme) {
@@ -77,13 +76,13 @@ export default function Search3() {
                 return (
                     <section className="bg-white dark:bg-gray-900 h-full">
                         <div className="w-full pt-5 pb-4 h-screen">
-                            <div className="px-4 mx-auto lg:px-0" style={width}>
+                            <div id={styles["search-list"]} className="px-4 mx-auto lg:px-0" style={width}>
                                 <AutoCompleteComponent
-                                    cssClass="e-bigger"
                                     ref={search}
+                                    cssClass="e-bigger"
                                     key={"search-3-tw"}
                                     dataSource={data}
-                                    fields={fields}
+                                    fields={{ value: "name" }}
                                     popupHeight="750px"
                                     placeholder="Search"
                                     focus={() => search.current?.showPopup()}
@@ -115,12 +114,12 @@ export default function Search3() {
                     <section className="bg-body h-100">
                         <div className="container-fluid pt-4 pb-3">
                             <div className="row justify-content-center">
-                                <div className="px-3 px-lg-0 mx-auto" style={width}>
+                                <div id={styles["search-list"]} className="px-3 px-lg-0 mx-auto" style={width}>
                                     <AutoCompleteComponent
-                                        cssClass="e-bigger"
                                         ref={search}
+                                        cssClass="e-bigger"
                                         dataSource={data}
-                                        fields={fields}
+                                        fields={{ value: "name" }}
                                         popupHeight="750px"
                                         placeholder="Search"
                                         focus={() => search.current?.showPopup()}

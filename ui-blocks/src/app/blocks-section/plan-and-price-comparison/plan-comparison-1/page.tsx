@@ -1,13 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import styles from './page.module.css';
 
 export default function PlanComparison1() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'plan-comparison-1' && blockData.theme) {
@@ -35,13 +36,13 @@ export default function PlanComparison1() {
             case 'tailwind':
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
-                        <div className="container overflow-x-auto m-auto" style={{ minHeight: '36rem' }}>
-                            <div className="m-6 flex justify-center" style={{ minWidth: '700px' }}>
+                        <div id={styles["plan-comparison"]} className="container overflow-x-auto m-auto" style={{ minHeight: '36rem' }}>
+                            <div className="m-4 sm:m-6 flex justify-center" style={{ minWidth: '700px' }}>
                                 <table className="table w-full text-gray-900 dark:text-white table-bordered">
                                     <thead>
                                         <tr>
                                             <th className="w-1/4 py-2 text-left text-xl font-medium">
-                                                <h2>Compare Plans</h2>
+                                                <h2 className="pl-2">Compare Plans</h2>
                                             </th>
                                             <th className="py-2 px-4 w-1/4"></th>
                                             <th className="py-2 px-4 w-1/4"></th>
@@ -51,52 +52,52 @@ export default function PlanComparison1() {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <h2 className="my-4 font-semibold">Features</h2>
+                                                <h2 className="my-4 font-semibold pl-2">Features</h2>
                                             </td>
                                         </tr>
                                         <tr className="border-b border-gray-200 dark:border-gray-600">
-                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2">Only 1 User</td>
+                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">Only 1 User</td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                         </tr>
                                         <tr className="border-b border-gray-200 dark:border-gray-600">
-                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2">10 Projects</td>
+                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">10 Projects</td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                         </tr>
                                         <tr className="border-b border-gray-200 dark:border-gray-600">
-                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2">Agents Count</td>
+                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">Agents Count</td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3 font-normal text-sm">24</td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3 font-normal text-sm">32</td>
                                             <td className="text-center py-3 font-normal text-sm">100</td>
                                         </tr>
                                         <tr className="border-b border-gray-200 dark:border-gray-600">
-                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2">Unlimited Bandwidth</td>
+                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">Unlimited Bandwidth</td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                         </tr>
                                         <tr className="border-b border-gray-200 dark:border-gray-600">
-                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2">Unlimited Data</td>
+                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">Unlimited Data</td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                         </tr>
                                         <tr className="border-none">
                                             <td>
-                                                <h2 className="my-4 font-semibold">Storage & Security</h2>
+                                                <h2 className="my-4 font-semibold pl-2">Storage & Security</h2>
                                             </td>
                                         </tr>
                                         <tr className="border-b border-gray-200 dark:border-gray-600">
-                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2">5 GB Storage</td>
+                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">5 GB Storage</td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                         </tr>
                                         <tr className="border-b border-gray-200 dark:border-gray-600">
-                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2">Fully Security Suite</td>
+                                            <td className="border-r border-gray-200 dark:border-gray-600 py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">Fully Security Suite</td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
                                             <td className="text-center py-3"><span className="e-icons e-circle-check text-gray-700 dark:text-white w-6 h-6 mx-auto"></span></td>
@@ -110,12 +111,12 @@ export default function PlanComparison1() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div className="table-responsive">
-                            <div className="d-flex justify-content-center m-auto px-5 py-4" style={{ minWidth: "760px" }}>
+                        <div id={styles["plan-comparison"]} className="table-responsive">
+                            <div className="d-flex justify-content-center m-auto px-3 px-sm-5 py-4" style={{ minWidth: "760px" }}>
                                 <table className="table">
                                     <thead>
                                         <tr className="border-0">
-                                            <th className="border-0 p-0 fs-4 fw-medium w-25 pb-3 font-semibold text-nowrap text-left text-body">
+                                            <th className="border-0 p-0 fs-4 fw-medium w-25 pb-3 ps-2 font-semibold text-nowrap text-left text-body">
                                                 Compare Plans
                                             </th>
                                             <th className="border-0 py-2 px-4 w-25"></th>

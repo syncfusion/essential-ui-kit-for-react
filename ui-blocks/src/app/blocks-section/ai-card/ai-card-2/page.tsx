@@ -10,7 +10,7 @@ export default function AICard2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-card-2' && blockData.theme) {
@@ -130,7 +130,7 @@ export default function AICard2() {
                         <div className="mx-auto px-3 px-sm-4 py-5" style={{ minHeight: '36rem', maxWidth: '70rem' }}>
                             <div className="row g-4 mx-lg-2">
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card border-0 rounded-4 shadow-lg d-flex flex-column gap-3">
+                                    <div className="e-card border-0 rounded-4 shadow d-flex flex-column gap-3">
                                         <div className="e-card-image">
                                             <img className="w-100 rounded-4" src="/react/essential-ui-kit/blocks/assets/images/ai/card/visual-profile-card/michigan-avenue.jpg" alt="michigan avenue" style={{ height: '14rem', objectFit: 'cover' }} />
                                         </div>
@@ -152,7 +152,7 @@ export default function AICard2() {
                                     </div>
                                 </div>
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card border-0 rounded-4 shadow-lg d-flex flex-column gap-3">
+                                    <div className="e-card border-0 rounded-4 shadow d-flex flex-column gap-3">
                                         <div className="e-card-image">
                                             <img className="w-100 rounded-4" src="/react/essential-ui-kit/blocks/assets/images/ai/card/visual-profile-card/burj-khalifa.jpg" alt="burj khalifa" style={{ height: '14rem', objectFit: 'cover' }} />
                                         </div>
@@ -174,7 +174,7 @@ export default function AICard2() {
                                     </div>
                                 </div>
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card border-0 rounded-4 shadow-lg d-flex flex-column gap-3">
+                                    <div className="e-card border-0 rounded-4 shadow d-flex flex-column gap-3">
                                         <div className="e-card-image">
                                             <img className="w-100 rounded-4" src="/react/essential-ui-kit/blocks/assets/images/ai/card/visual-profile-card/gooderham.jpg" alt="gooderham" style={{ height: '14rem', objectFit: 'cover' }} />
                                         </div>
@@ -196,7 +196,7 @@ export default function AICard2() {
                                     </div>
                                 </div>
                                 <div className="col-12 col-sm-6 col-xl-3">
-                                    <div className="e-card border-0 rounded-4 shadow-lg d-flex flex-column gap-3">
+                                    <div className="e-card border-0 rounded-4 shadow d-flex flex-column gap-3">
                                         <div className="e-card-image">
                                             <img className="w-100 rounded-4" src="/react/essential-ui-kit/blocks/assets/images/ai/card/visual-profile-card/dubai-marina.jpg" alt="dubai marina" style={{ height: '14rem', objectFit: 'cover' }} />
                                         </div>

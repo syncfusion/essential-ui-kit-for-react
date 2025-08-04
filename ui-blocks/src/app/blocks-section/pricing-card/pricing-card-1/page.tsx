@@ -8,7 +8,7 @@ export default function PricingCard1() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'pricing-card-1' && blockData.theme) {
@@ -39,15 +39,15 @@ export default function PricingCard1() {
                         <div className="py-20">
                             <div className="text-center">
                                 <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Pricing Plans</h1>
-                                <p className="mt-4 px-4 text-lg font-normal mb-8 sm:max-w-xl lg:max-w-full w-full mx-auto text-center text-gray-700 dark:text-gray-200">Get started in complete confidence. Our 30-day money-back guarantee means it’s risk-free.</p>
+                                <p className="mt-4 px-4 text-lg font-normal mb-8 sm:max-w-xl lg:max-w-full w-full mx-auto text-center text-gray-700 dark:text-gray-200">Get started in complete confidence. Our 30-day money-back guarantee means it's risk-free.</p>
                                 <div className="flex items-center justify-center gap-3 mb-12 text-base font-medium text-gray-700 dark:text-gray-200">
                                     <p>Monthly</p>
-                                    <SwitchComponent cssClass="e-bigger" checked={true} style={{ width: "44px !important" }}></SwitchComponent>
+                                    <SwitchComponent cssClass="e-bigger" checked={true}></SwitchComponent>
                                     <p>Yearly</p>
                                 </div>
                             </div>
                             <div className="flex justify-center px-4">
-                                <div className="border text-gray-900 dark:text-white mx-4 md:mx-6 rounded-3xl overflow-hidden shadow-none bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-600 hover:border-primary-600 dark:hover:border-primary-400">
+                                <div className="border text-gray-900 dark:text-white md:mx-6 rounded-3xl overflow-hidden shadow-none bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-600 hover:border-primary-600 dark:hover:border-primary-400">
                                     <div className="flex flex-col sm:flex-row">
                                         <div className="sm:w-4/5 pt-8 px-6 mb-12 md:mb-0">
                                             <h2 className="text-2xl font-medium mb-2">Lifetime Membership</h2>
@@ -79,10 +79,10 @@ export default function PricingCard1() {
                         <div className="mx-auto py-5">
                             <div className="text-center mb-5 px-3">
                                 <h1 className="fw-bold mb-3 text-body">Pricing Plans</h1>
-                                <p className="mb-4 mx-3 px-1 px-md-5 px-lg-0 text-light-emphasis">Get started in complete confidence. Our 30-day money-back guarantee means it’s risk-free.</p>
+                                <p className="mb-4 mx-3 px-1 px-md-5 px-lg-0 text-light-emphasis">Get started in complete confidence. Our 30-day money-back guarantee means it's risk-free.</p>
                                 <div className="d-flex justify-content-center align-items-center gap-2 mb-5 pt-2">
                                     <p className="m-0 small text-light-emphasis">Monthly</p>
-                                    <SwitchComponent cssClass="e-bigger" checked={true} style={{ width: "37px" }}></SwitchComponent>
+                                    <SwitchComponent cssClass="e-bigger" checked={true}></SwitchComponent>
                                     <p className="m-0 small text-light-emphasis">Yearly</p>
                                 </div>
                             </div>

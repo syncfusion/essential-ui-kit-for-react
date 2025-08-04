@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
+import styles from "./page.module.css";
 
 export default function Card3() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'cards-3' && blockData.theme) {
@@ -36,48 +37,50 @@ export default function Card3() {
             case 'tailwind':
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
-                        <div className="px-4 sm:px-6 py-20">
-                            <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10">
-                                <div className="e-card gap-2 rounded-lg e-bigger">
-                                    <div className="e-card-header">
-                                        <div className="e-card-image overflow-hidden rounded-lg h-56">
-                                            <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/adventure-trails.jpg" alt="adventure trails" />
+                        <div className="h-screen sm:h-full">
+                            <div id={styles["card-icon"]} className="px-4 sm:px-6 py-10">
+                                <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10">
+                                    <div className="e-card gap-2 rounded-lg e-bigger">
+                                        <div className="e-card-header">
+                                            <div className="e-card-image overflow-hidden rounded-lg h-56">
+                                                <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/adventure-trails.jpg" alt="adventure trails" />
+                                            </div>
+                                        </div>
+                                        <div className="e-card-content flex-1">
+                                            <h2 className="text-xl mb-2 font-semibold text-gray-900 dark:text-white line-clamp-2">Adventure Trails</h2>
+                                            <p className="text-base dark:text-gray-200">Explore scenic trails and hidden paths perfect for nature enthusiasts. Enjoy breathtaking views, fresh air, and the thrill of discovery along every step of the way.</p>
+                                        </div>
+                                        <div className="e-card-actions leading-9">
+                                            <ButtonComponent className="e-block" iconCss="e-icons e-chevron-right" iconPosition="Right" content="Get Started" type="button"></ButtonComponent>
                                         </div>
                                     </div>
-                                    <div className="e-card-content flex-1">
-                                        <h2 className="text-xl mb-2 font-semibold text-gray-900 dark:text-white line-clamp-2">Adventure Trails</h2>
-                                        <p className="text-base dark:text-gray-200">Explore scenic trails and hidden paths perfect for nature enthusiasts. Enjoy breathtaking views, fresh air, and the thrill of discovery along every step of the way.</p>
-                                    </div>
-                                    <div className="e-card-actions leading-9">
-                                        <ButtonComponent className="e-block" iconCss="e-icons e-chevron-right" iconPosition="Right" content="Get Started" type="button"></ButtonComponent>
-                                    </div>
-                                </div>
-                                <div className="e-card gap-2 rounded-lg e-bigger">
-                                    <div className="e-card-header">
-                                        <div className="e-card-image overflow-hidden rounded-lg h-56">
-                                            <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/historic-landmarks.jpg" alt="historic landmarks" />
+                                    <div className="e-card gap-2 rounded-lg e-bigger">
+                                        <div className="e-card-header">
+                                            <div className="e-card-image overflow-hidden rounded-lg h-56">
+                                                <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/historic-landmarks.jpg" alt="historic landmarks" />
+                                            </div>
+                                        </div>
+                                        <div className="e-card-content flex-1">
+                                            <h2 className="text-xl mb-2 font-semibold text-gray-900 dark:text-white line-clamp-2">Historic Landmarks</h2>
+                                            <p className="text-base dark:text-gray-200">Visit iconic landmarks that tell the tales of past eras. These structures offer a glimpse into history, showcasing architectural beauty and timeless stories.</p>
+                                        </div>
+                                        <div className="e-card-actions leading-9">
+                                            <ButtonComponent className="e-block" iconCss="e-icons e-chevron-right" iconPosition="Right" content="Get Started" type="button"></ButtonComponent>
                                         </div>
                                     </div>
-                                    <div className="e-card-content flex-1">
-                                        <h2 className="text-xl mb-2 font-semibold text-gray-900 dark:text-white line-clamp-2">Historic Landmarks</h2>
-                                        <p className="text-base dark:text-gray-200">Visit iconic landmarks that tell the tales of past eras. These structures offer a glimpse into history, showcasing architectural beauty and timeless stories.</p>
-                                    </div>
-                                    <div className="e-card-actions leading-9">
-                                        <ButtonComponent className="e-block" iconCss="e-icons e-chevron-right" iconPosition="Right" content="Get Started" type="button"></ButtonComponent>
-                                    </div>
-                                </div>
-                                <div className="e-card gap-2 rounded-lg e-bigger">
-                                    <div className="e-card-header">
-                                        <div className="e-card-image overflow-hidden rounded-lg h-56">
-                                            <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/vibrant-street-markets.jpg" alt="vibrant street markets" />
+                                    <div className="e-card gap-2 rounded-lg e-bigger">
+                                        <div className="e-card-header">
+                                            <div className="e-card-image overflow-hidden rounded-lg h-56">
+                                                <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card-button/vibrant-street-markets.jpg" alt="vibrant street markets" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="e-card-content flex-1">
-                                        <h2 className="text-xl mb-2 font-semibold text-gray-900 dark:text-white line-clamp-2">Vibrant Street Markets</h2>
-                                        <p className="text-base dark:text-gray-200">Stroll through lively markets filled with unique finds, delicious treats, and local crafts. Experience the vibrant atmosphere and immerse yourself in the local culture.</p>
-                                    </div>
-                                    <div className="e-card-actions leading-9">
-                                        <ButtonComponent className="e-block" iconCss="e-icons e-chevron-right" iconPosition="Right" content="Get Started" type="button"></ButtonComponent>
+                                        <div className="e-card-content flex-1">
+                                            <h2 className="text-xl mb-2 font-semibold text-gray-900 dark:text-white line-clamp-2">Vibrant Street Markets</h2>
+                                            <p className="text-base dark:text-gray-200">Stroll through lively markets filled with unique finds, delicious treats, and local crafts. Experience the vibrant atmosphere and immerse yourself in the local culture.</p>
+                                        </div>
+                                        <div className="e-card-actions leading-9">
+                                            <ButtonComponent className="e-block" iconCss="e-icons e-chevron-right" iconPosition="Right" content="Get Started" type="button"></ButtonComponent>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +90,7 @@ export default function Card3() {
             case 'bootstrap5':
                 return (
                     <section className="bg-dark-subtle">
-                        <div className="py-5 px-3 px-md-4">
+                        <div id={styles["card-icon"]} className="py-5 px-3 px-md-4">
                             <div className="row g-xl-5 g-4">
                                 <div className="col-sm-6 col-lg-4 d-flex">
                                     <div className="e-card e-bigger rounded-3 p-2">

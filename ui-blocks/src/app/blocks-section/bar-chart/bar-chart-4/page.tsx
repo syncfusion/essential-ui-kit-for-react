@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
-import { Category, ChartComponent, ColumnSeries, Inject, Legend, SeriesCollectionDirective, SeriesDirective, Tooltip } from "@syncfusion/ej2-react-charts";
+import { Inject, ChartComponent, SeriesCollectionDirective, SeriesDirective, ColumnSeries, Legend, Category, Tooltip } from "@syncfusion/ej2-react-charts";
 
 export default function BarChart4() {
     /* SB Code - Start */
@@ -19,13 +19,13 @@ export default function BarChart4() {
     const chartRef = useRef<ChartComponent | null>(null);
 
     const chartData: any[] = [
-        { day: "01", x: 270, y: 150 },
-        { day: "02", x: 200, y: 90 },
-        { day: "03", x: 310, y: 170 },
-        { day: "04", x: 130, y: 80 },
-        { day: "05", x: 180, y: 120 },
-        { day: "06", x: 80, y: 50 },
-        { day: "07", x: 190, y: 190 }
+        { day: "01", xAxis: 270, yAxis: 150 },
+        { day: "02", xAxis: 200, yAxis: 90 },
+        { day: "03", xAxis: 310, yAxis: 170 },
+        { day: "04", xAxis: 130, yAxis: 80 },
+        { day: "05", xAxis: 180, yAxis: 120 },
+        { day: "06", xAxis: 80, yAxis: 50 },
+        { day: "07", xAxis: 190, yAxis: 190 }
     ];
 
     const primaryXAxis: object = {
@@ -58,7 +58,7 @@ export default function BarChart4() {
 
     const tooltipRender = (args: any): void => {
         const index = (args.data as any).pointIndex;
-        args.text = `Income : $${chartData[index].x}<br>Expense : $${chartData[index].y}`;
+        args.text = `Income : $${chartData[index].xAxis}<br>Expense : $${chartData[index].yAxis}`;
     };
 
     const chartLoad = (args: any, lightTheme: string, darkTheme: string): void => {
@@ -72,7 +72,7 @@ export default function BarChart4() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'bar-chart-4' && blockData.theme) {
@@ -110,7 +110,7 @@ export default function BarChart4() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-950">
-                        <div key={'barchart-4-tw'} className="h-screen flex justify-center p-4 sm:p-6">
+                        <div key={"barchart-4-tw"} className="h-screen flex justify-center p-4 sm:p-6">
                             <div className="w-full" style={{ maxWidth: '640px' }}>
                                 <div className="flex justify-between items-start">
                                     <div>
@@ -124,8 +124,8 @@ export default function BarChart4() {
                                     <h1 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">$1,278.45</h1>
                                     <div className="flex items-center justify-between text-xs">
                                         <div className="flex items-center gap-2">
-                                            <p className="text-green-700 dark:text-green-500">
-                                                <span className="e-icons e-arrow-up mr-1"></span>2.1%
+                                            <p className="text-green-700 dark:text-green-500 flex items-center">
+                                                <span className="e-icons e-arrow-up mr-1 text-sm"></span>2.1%
                                             </p>
                                             <p className="text-gray-500 dark:text-gray-400">vs last week</p>
                                         </div>
@@ -135,8 +135,8 @@ export default function BarChart4() {
                                     <ChartComponent ref={chartRef} chartArea={{ border: { width: 0 } }} width="100%" height="300px" primaryXAxis={primaryXAxis} primaryYAxis={primaryYAxis} legendSettings={legendSettings} tooltip={tooltip} tooltipRender={tooltipRender} load={(args) => chartLoad(args, 'Tailwind3', 'Tailwind3Dark')}>
                                         <Inject services={[ColumnSeries, Category, Tooltip, Legend]} />
                                         <SeriesCollectionDirective>
-                                            <SeriesDirective dataSource={chartData} xName="day" yName="x" type="Column" fill="#267DDA" name="Income" width={2} legendShape="Circle" columnWidth={1} columnSpacing={0.2}></SeriesDirective>
-                                            <SeriesDirective dataSource={chartData} xName="day" yName="y" type="Column" fill="#01A8B5" name="Expense" width={2} legendShape="Circle" columnWidth={1} columnSpacing={0.2}></SeriesDirective>
+                                            <SeriesDirective dataSource={chartData} xName="day" yName="xAxis" type="Column" fill="#267DDA" name="Income" width={2} legendShape="Circle" columnWidth={1} columnSpacing={0.2}></SeriesDirective>
+                                            <SeriesDirective dataSource={chartData} xName="day" yName="yAxis" type="Column" fill="#01A8B5" name="Expense" width={2} legendShape="Circle" columnWidth={1} columnSpacing={0.2}></SeriesDirective>
                                         </SeriesCollectionDirective>
                                     </ChartComponent>
                                 </div>
@@ -147,7 +147,7 @@ export default function BarChart4() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div key={'barchart-4-bs'} className="vh-100 d-flex justify-content-center p-3 p-sm-4">
+                        <div key={"barchart-4-bs"} className="vh-100 d-flex justify-content-center p-3 p-sm-4">
                             <div className="w-100" style={{ maxWidth: '640px' }}>
                                 <div className="d-flex justify-content-between align-items-start">
                                     <div>
@@ -172,8 +172,8 @@ export default function BarChart4() {
                                     <ChartComponent ref={chartRef} chartArea={{ border: { width: 0 } }} width="100%" height="300px" primaryXAxis={primaryXAxis} primaryYAxis={primaryYAxis} legendSettings={legendSettings} tooltip={tooltip} tooltipRender={tooltipRender} load={(args) => chartLoad(args, 'Bootstrap5', 'Bootstrap5Dark')}>
                                         <Inject services={[ColumnSeries, Category, Tooltip, Legend]} />
                                         <SeriesCollectionDirective>
-                                            <SeriesDirective dataSource={chartData} xName="day" yName="x" type="Column" fill="#006EEF" name="Income" width={2} legendShape="Circle" columnWidth={1} columnSpacing={0.2}></SeriesDirective>
-                                            <SeriesDirective dataSource={chartData} xName="day" yName="y" type="Column" fill="#EF6400" name="Expense" width={2} legendShape="Circle" columnWidth={1} columnSpacing={0.2}></SeriesDirective>
+                                            <SeriesDirective dataSource={chartData} xName="day" yName="xAxis" type="Column" fill="#006EEF" name="Income" width={2} legendShape="Circle" columnWidth={1} columnSpacing={0.2}></SeriesDirective>
+                                            <SeriesDirective dataSource={chartData} xName="day" yName="yAxis" type="Column" fill="#EF6400" name="Expense" width={2} legendShape="Circle" columnWidth={1} columnSpacing={0.2}></SeriesDirective>
                                         </SeriesCollectionDirective>
                                     </ChartComponent>
                                 </div>

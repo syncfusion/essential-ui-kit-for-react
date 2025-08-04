@@ -13,7 +13,7 @@ export default function List4() {
 
     const shoes: any[] = [
         {
-            id: '1',
+            id: 1,
             header: 'Nike Air Max 270',
             size: '8',
             color: 'White',
@@ -23,7 +23,7 @@ export default function List4() {
             pic: 'nike-white.png'
         },
         {
-            id: '2',
+            id: 2,
             header: 'Adidas Ultraboost 22',
             size: '8',
             color: 'Red',
@@ -33,7 +33,7 @@ export default function List4() {
             pic: 'adidas-red.png'
         },
         {
-            id: '3',
+            id: 3,
             header: 'Puma RS-X3 Super',
             size: '8',
             color: 'Mixed',
@@ -43,7 +43,7 @@ export default function List4() {
             pic: 'puma-mixed.png'
         },
         {
-            id: '4',
+            id: 4,
             header: 'New Balance 574 Classic',
             size: '8',
             color: 'Black',
@@ -53,7 +53,7 @@ export default function List4() {
             pic: 'puma-black.png'
         },
         {
-            id: '5',
+            id: 5,
             header: 'Reebok Zig Kinetica II',
             size: '8',
             color: 'Green',
@@ -74,7 +74,7 @@ export default function List4() {
     
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'list-4' && blockData.theme) {
@@ -112,7 +112,9 @@ export default function List4() {
                                 <ListViewComponent className="!border-0" cssClass="e-list-template" dataSource={shoes} template={(data: any) => (
                                     <div className="e-list-wrapper !px-1 sm:!px-3 border-b border-gray-200 dark:border-gray-600 !py-4 flex flex-col">
                                         <span className="flex">
-                                            <img className="rounded-lg" src={`/react/essential-ui-kit/blocks/assets/images/listview/carts/${data.pic}`} width={80} height={80} alt="product image" />
+                                            <div className="shrink-0 bg-gray-50 dark:bg-gray-700 rounded">
+                                                <img className="rounded-lg" src={`/react/essential-ui-kit/blocks/assets/images/listview/carts/${data.pic}`} width={80} height={80} alt="product image" />
+                                            </div>
                                             <span className="ml-4 flex flex-col">
                                                 <span className="e-list-item-header text-sm font-medium text-gray-900 dark:text-white !text-wrap !line-clamp-1 w-full truncate">{data.header}</span>
                                                 <p className="flex space-x-3 mt-1">
@@ -133,7 +135,7 @@ export default function List4() {
                                                 <span className="e-small">
                                                     <ButtonComponent className="e-round mr-2" iconCss="e-icons e-plus !text-sm" type="button"></ButtonComponent>
                                                 </span>
-                                                <TextBoxComponent cssClass="e-small" className="text-center !pl-0" width="50px" value='1'></TextBoxComponent>
+                                                <TextBoxComponent className="text-center !pl-0" cssClass="e-small" width="50px" value='1'></TextBoxComponent>
                                                 <span className="e-small">
                                                     <ButtonComponent className="e-round ml-2" iconCss="e-icons e-intermediate-state !text-sm" type="button"></ButtonComponent>
                                                 </span>
@@ -164,7 +166,9 @@ export default function List4() {
                                 <ListViewComponent className="border-0" cssClass="e-list-template" dataSource={shoes} template={(data: any)=> (
                                     <div className="e-list-wrapper px-1 px-sm-3 py-3 d-flex flex-column">
                                         <span className="d-flex">
-                                            <img className="rounded" src={`/react/essential-ui-kit/blocks/assets/images/listview/carts/${data.pic}`} width={80} height={80} alt="product image" />
+                                            <div className="flex-shrink-0 bg-body-tertiary rounded-1">
+                                                <img className="rounded" src={`/react/essential-ui-kit/blocks/assets/images/listview/carts/${data.pic}`} width={80} height={80} alt="product image" />
+                                            </div>
                                             <span className="ms-2 ps-1 d-flex flex-column">
                                                 <p className="e-list-item-header fw-medium mb-0 w-100 text-wrap overflow-hidden" style={{ display: "-webkit-box", WebkitLineClamp: 1, WebkitBoxOrient: "vertical" }}>{data.header}</p>
                                                 <p className="mt-1 mb-0">

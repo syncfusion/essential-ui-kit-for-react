@@ -12,7 +12,7 @@ export default function Rating3() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'rating-3' && blockData.theme) {
@@ -54,7 +54,7 @@ export default function Rating3() {
                                     </div>
                                     <ChipListComponent key={"rating-3-tw"}>
                                         <ChipsDirective>
-                                            <ChipDirective text="Best for small teams" cssClass='e-info !rounded-xl !text-[10px]'></ChipDirective>
+                                            <ChipDirective text="Best for small teams" cssClass='e-info !rounded-xl !text-xs'></ChipDirective>
                                         </ChipsDirective>
                                     </ChipListComponent>
                                 </div>
@@ -78,8 +78,8 @@ export default function Rating3() {
                                     <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-sm">Read more</a>
                                     <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mt-4">19 people found this helpful</p>
                                     <div className="flex gap-4 items-center mt-4">
-                                        <ButtonComponent cssClass="e-outline" type="button">Helpful</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary e-flat" type="button">Report</ButtonComponent>
+                                        <ButtonComponent cssClass="e-outline" content="Helpful" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary e-flat" content="Report" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </div>
@@ -96,14 +96,14 @@ export default function Rating3() {
                                     <span className="e-avatar e-avatar-circle flex-shrink-0">
                                         <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
                                     </span>
-                                    <div className="text-start">
+                                    <div className="text-start fs-6">
                                         <div className="fw-medium fs-6 text-body">Frank Moore</div>
                                         <div className="text-body-secondary small">Joined on October 2001</div>
                                     </div>
                                 </div>
                                 <ChipListComponent key={"rating-3-bs"}>
                                     <ChipsDirective>
-                                        <ChipDirective cssClass="e-info rounded-pill" text="Best for small teams"></ChipDirective>
+                                        <ChipDirective cssClass="e-primary e-small rounded-pill" text="Best for small teams"></ChipDirective>
                                     </ChipsDirective>
                                 </ChipListComponent>
                             </div>
@@ -127,8 +127,8 @@ export default function Rating3() {
                                 <a href="#" className="text-primary fw-medium small text-decoration-none mt-2">Read more</a>
                                 <p className="text-body-secondary small mt-3">19 people found this helpful</p>
                                 <div className="d-flex align-items-center gap-3 mt-3">
-                                    <ButtonComponent cssClass="e-outline" type="button">Helpful</ButtonComponent>
-                                    <ButtonComponent cssClass="e-primary e-flat" type="button">Report</ButtonComponent>
+                                    <ButtonComponent cssClass="e-outline" content='Helpful' type="button"></ButtonComponent>
+                                    <ButtonComponent cssClass="e-primary e-flat" content='Report' type="button"></ButtonComponent>
                                 </div>
                             </div>
                         </div>

@@ -12,8 +12,8 @@ export default function AISidebar3() {
     /* SB Code - End */
     const [width, setWidth] = useState('304px');
     const [dockWidth, setDockWidth] = useState('48px');
-    const [backDrop, setBackDrop] = useState(false);
-    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [isBackDrop, setIsBackDrop] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const chatHistory: any[] = [
@@ -36,14 +36,14 @@ export default function AISidebar3() {
     ];
 
     const handleResize = (): void => {
-        setBackDrop(window.innerWidth <= 660);
+        setIsBackDrop(window.innerWidth <= 660);
         setWidth(window.innerWidth <= 768 ? '312px' : '304px');
         setDockWidth(window.innerWidth <= 768 ? '56px' : '48px');
     };
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-sidebar-3' && blockData.theme) {
@@ -77,7 +77,7 @@ export default function AISidebar3() {
                 return (
                     <section className="bg-white dark:bg-gray-800">
                         <div id={styles["chat-sidebar"]} style={{ height: '766px' }}>
-                            <SidebarComponent ref={sidebar} className="bg-gray-50 dark:bg-gray-700" width={width} type="Push" showBackdrop={backDrop} enableDock={true} closeOnDocumentClick={false} isOpen={sidebarOpen} open={() => setSidebarOpen(true)} close={() => setSidebarOpen(false)} style={{ display: 'block' }}>
+                            <SidebarComponent ref={sidebar} className="bg-gray-50 dark:bg-gray-700" width={width} type="Push" showBackdrop={isBackDrop} enableDock={true} closeOnDocumentClick={false} isOpen={isSidebarOpen} open={() => setIsSidebarOpen(true)} close={() => setIsSidebarOpen(false)} style={{ display: 'block' }}>
                                 <div className="flex h-full">
                                     <div className="px-2 py-6 flex flex-col items-center h-full border-r border-gray-200 dark:border-gray-600" style={{ width: dockWidth }}>
                                         <img src="/react/essential-ui-kit/blocks/assets/images/ai/sidebar/two-columns-sidebar/logo.svg" alt="logo" />
@@ -89,7 +89,7 @@ export default function AISidebar3() {
                                             <ButtonComponent className="e-icons e-settings e-medium e-flat px-2" type="button" onClick={() => { sidebar.current?.hide() }}></ButtonComponent>
                                         </div>
                                     </div>
-                                    {sidebarOpen && (
+                                    {isSidebarOpen && (
                                         <div className="flex flex-col w-64 pt-8 h-full">
                                             <div className="flex items-center px-5 gap-3">
                                                 <h4 className="text-base lg:text-sm font-semibold text-gray-900 dark:text-white">Chats</h4>
@@ -114,7 +114,7 @@ export default function AISidebar3() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -123,7 +123,7 @@ export default function AISidebar3() {
                 return (
                     <section className="bg-body">
                         <div id={styles["chat-sidebar"]} style={{ height: '766px' }}>
-                            <SidebarComponent ref={sidebar} className="bg-body border-light-subtle" width={width} type="Push" showBackdrop={backDrop} enableDock={true} closeOnDocumentClick={false} isOpen={sidebarOpen} open={() => setSidebarOpen(true)} close={() => setSidebarOpen(false)} style={{ display: 'block' }}>
+                            <SidebarComponent ref={sidebar} className="bg-body border-light-subtle" width={width} type="Push" showBackdrop={isBackDrop} enableDock={true} closeOnDocumentClick={false} isOpen={isSidebarOpen} open={() => setIsSidebarOpen(true)} close={() => setIsSidebarOpen(false)} style={{ display: 'block' }}>
                                 <div className="d-flex h-100">
                                     <div className="px-2 py-4 d-flex flex-column align-items-center" style={{ width: dockWidth }}>
                                         <img src="/react/essential-ui-kit/blocks/assets/images/ai/sidebar/two-columns-sidebar/logo.svg" alt="logo" />
@@ -135,7 +135,7 @@ export default function AISidebar3() {
                                             <ButtonComponent className="e-icons e-settings e-medium e-flat" type="button" onClick={() => { sidebar.current?.hide() }}></ButtonComponent>
                                         </div>
                                     </div>
-                                    {sidebarOpen && (
+                                    {isSidebarOpen && (
                                         <div className="d-flex flex-column pt-4 border-start border-light-subtle" style={{ width: '256px' }}>
                                             <div className="d-flex align-items-center px-3 gap-2 my-1">
                                                 <h4 className="fs-5 mb-0 fw-medium text-body">Chats</h4>
@@ -160,7 +160,7 @@ export default function AISidebar3() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

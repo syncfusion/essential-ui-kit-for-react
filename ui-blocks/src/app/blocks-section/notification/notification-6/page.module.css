@@ -4,7 +4,7 @@
     padding: 0 !important;
 }
 
-#notification #tab_container :global(.e-tab .e-tab-header .e-toolbar-items .e-tab-wrap) {
+#notification #tab-container :global(.e-tab .e-tab-header .e-toolbar-items .e-tab-wrap) {
     padding: 0 12px !important;
 }
 

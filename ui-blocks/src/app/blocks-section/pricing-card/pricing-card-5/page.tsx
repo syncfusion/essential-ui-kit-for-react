@@ -8,7 +8,7 @@ export default function PricingCard5() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'pricing-card-5' && blockData.theme) {
@@ -39,10 +39,10 @@ export default function PricingCard5() {
                         <div className="max-w-screen-xl mx-auto py-20">
                             <div className="text-center">
                                 <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Pricing Plans</h1>
-                                <p className="mt-4 px-4 text-lg font-normal mb-8 sm:max-w-xl lg:max-w-full w-full mx-auto text-center text-gray-700 dark:text-gray-200">Get started in complete confidence. Our 30-day money-back guarantee means it’s risk-free.</p>
+                                <p className="mt-4 px-4 text-lg font-normal mb-8 sm:max-w-xl lg:max-w-full w-full mx-auto text-center text-gray-700 dark:text-gray-200">Get started in complete confidence. Our 30-day money-back guarantee means it's risk-free.</p>
                                 <div className="flex items-center justify-center gap-3 mb-12">
                                     <p className="text-gray-700 dark:text-gray-200 text-base font-medium">Monthly</p>
-                                    <SwitchComponent cssClass="e-bigger" checked={true} style={{ width: "44px !important" }}></SwitchComponent>
+                                    <SwitchComponent cssClass="e-bigger" checked={true}></SwitchComponent>
                                     <p className="text-gray-700 dark:text-gray-200 text-base font-medium">Yearly</p>
                                 </div>
                             </div>
@@ -124,10 +124,10 @@ export default function PricingCard5() {
                         <div className="container-xl m-xl-auto px-3 px-md-4 py-5">
                             <div className="text-center">
                                 <h1 className="fw-bold fs-1 mb-3 text-body">Pricing Plans</h1>
-                                <p className="mb-4 mx-3 px-1 px-md-5 px-lg-0 text-light-emphasis">Get started in complete confidence. Our 30-day money-back guarantee means it’s risk-free.</p>
+                                <p className="mb-4 mx-3 px-1 px-md-5 px-lg-0 text-light-emphasis">Get started in complete confidence. Our 30-day money-back guarantee means it's risk-free.</p>
                                 <div className="d-flex justify-content-center align-items-center gap-2 mb-5 pt-2">
                                     <p className="m-0 small text-light-emphasis">Monthly</p>
-                                    <SwitchComponent cssClass="e-bigger" checked={true} style={{ width: "37px" }} ></SwitchComponent>
+                                    <SwitchComponent cssClass="e-bigger" checked={true}></SwitchComponent>
                                     <p className="m-0 small text-light-emphasis">Yearly</p>
                                 </div>
                             </div>

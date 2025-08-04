@@ -19,7 +19,7 @@ export default function Email1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'email-1' && blockData.theme) {
@@ -58,9 +58,9 @@ export default function Email1() {
         switch (theme) {
             case 'tailwind':
                 return (
-                    <section className="bg-gray-50 dark:bg-gray-900">
+                    <section className="bg-white dark:bg-gray-900">
                         <div className="lg:flex lg:justify-center lg:items-center">
-                            <div className="py-10 px-3 md:px-6 md:py-14 xl:px-11 xl:py-6 w-full">
+                            <div className="py-10 px-4 md:px-6 md:py-14 xl:px-11 xl:py-6 w-full">
                                 <form action="#" onSubmit={(event) => event.preventDefault()}>
                                     <div className="mb-3 flex items-center ml-4">
                                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-3">From:</label>
@@ -68,7 +68,7 @@ export default function Email1() {
                                     </div>
                                     <div className="mb-3 flex items-center ml-8 relative">
                                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-3">To:</label>
-                                        <MultiSelectComponent cssClass='e-bigger w-full pl-1' dataSource={[{ text: 'Thomas' }, { text: 'Henry' }]} fields={{ text: "text" }} value={["Thomas"]} placeholder="Select recipients" mode="Box"></MultiSelectComponent>
+                                        <MultiSelectComponent cssClass="e-bigger w-full pl-1" dataSource={[{ text: 'Thomas' }, { text: 'Henry' }]} fields={{ text: "text" }} value={["Thomas"]} placeholder="Select recipients" mode="Box"></MultiSelectComponent>
                                         <div className="absolute right-12" style={{ bottom:'8px' }}>
                                             <a href="#" className="mr-4 text-sm font-medium text-gray-700 dark:text-white">Cc</a>
                                             <a href="#" className="text-sm font-medium text-gray-700 dark:text-white">Bcc</a>
@@ -76,10 +76,10 @@ export default function Email1() {
                                     </div>
                                     <div className="mb-4 flex items-center">
                                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-3">Subject:</label>
-                                        <TextBoxComponent cssClass='e-bigger w-full' type="text" value='Issue with Online Banking App - Transactions Not Completing' placeholder="Enter the subject" floatLabelType="Never"></TextBoxComponent>
+                                        <TextBoxComponent cssClass="e-bigger w-full" type="text" value='Issue with Online Banking App - Transactions Not Completing' placeholder="Enter the subject" floatLabelType="Never"></TextBoxComponent>
                                     </div>
                                     <div className="mb-4">
-                                        <RichTextEditorComponent id={styles["rte-list"]} key={"RTE-1-tw"} toolbarSettings={{
+                                        <RichTextEditorComponent key={"RTE-1-tw"} id={styles["rte-list"]} toolbarSettings={{
                                             items: ['Bold', 'Italic', 'Underline', 'StrikeThrough', '|', 'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|', 'Alignments', 'OrderedList', 'UnorderedList', 'Blockquote', '|', 'CreateLink', 'Image', 'CreateTable'], type: 'MultiRow' as ToolbarType }} style={{ maxHeight: "540px", overflowY: 'auto' }}>
                                             <p>Dear Support Team,</p>
                                             <p className="!mb-0">I am having trouble completing transactions in the Online Banking App. The app freezes at the confirmation screen every time I attempt to transfer money.</p>
@@ -99,8 +99,8 @@ export default function Email1() {
                                         <UploaderComponent id='fileUpload' type='file' multiple={true} asyncSettings={path}></UploaderComponent>
                                     </div>
                                     <div className="flex justify-end space-x-4">
-                                        <ButtonComponent cssClass="e-outline" type="button" content="Discard"></ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary" type="submit" content="Send"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-outline" content="Discard" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary" content="Send" type="submit"></ButtonComponent>
                                     </div>
                                 </form>
                             </div>
@@ -150,8 +150,8 @@ export default function Email1() {
                                         <UploaderComponent id='fileUpload' type='file' multiple={true} asyncSettings={path}></UploaderComponent>
                                     </div>
                                     <div className="d-flex justify-content-end gap-3">
-                                        <ButtonComponent cssClass="e-outline" type="button" content="Discard"></ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary" type="submit" content="Send"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-outline" content="Discard" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary" content="Send" type="submit"></ButtonComponent>
                                     </div>
                                 </form>
                             </div>

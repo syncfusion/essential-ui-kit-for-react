@@ -56,7 +56,7 @@ export default function TileView5() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'tile-view-5' && blockData.theme) {
@@ -85,7 +85,7 @@ export default function TileView5() {
                 return (
                     <section className="bg-white dark:bg-gray-900">
                         <div id={styles["job-details"]}>
-                            <AppBarComponent className="shadow-none px-0 h-auto">
+                            <AppBarComponent className="shadow-none px-0 py-3 h-auto" style={{ minHeight: "78px" }}>
                                 <div className="flex flex-wrap gap-x-4 gap-y-3 px-6 xl:px-10">
                                     <DropDownButtonComponent cssClass="e-primary" content="All jobs" type="button" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
                                     <DropDownButtonComponent content="Any time" type="button" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
@@ -109,7 +109,7 @@ export default function TileView5() {
                                     </div>
                                     <ListViewComponent className="!border-0 mb-2" cssClass="e-list-template" dataSource={jobDetails} template={(data: any) => (
                                         <div className="e-card flex-col gap-4 p-4 rounded-2xl sm:pr-5 sm:p-6 sm:flex-row">
-                                            <span className="e-avatar e-avatar-xlarge e-avatar-circle shrink-0">
+                                            <span className="e-avatar e-avatar-xlarge e-avatar-circle shrink-0 bg-transparent">
                                                 <img src={"/react/essential-ui-kit/blocks/assets/images/tile-view/job-site/" + data.logo} width={56} height={56} alt="company logo" />
                                             </span>
                                             <div className="e-card-stacked grow space-y-3 px-1">
@@ -126,11 +126,11 @@ export default function TileView5() {
                                                     </div>
                                                 </div>
                                                 <div className="e-card-content flex flex-wrap gap-3 !px-0 !pb-1 text-gray-700 dark:text-gray-200">
-                                                    <span className="flex items-center gap-1"><i className="sf-icon-laptop text-sm mx-2 text-gray-500 dark:text-gray-300"></i>{data.experience}</span>
+                                                    <span className="flex items-center gap-1"><span className="sf-icon-laptop text-sm mx-2 text-gray-500 dark:text-gray-300"></span>{data.experience}</span>
                                                     <div className="border-e dark:border-gray-600 my-1"></div>
-                                                    <span className="flex items-center gap-1"><i className="sf-icon-dollar text-base mx-2 text-gray-500 dark:text-gray-300"></i>{data.salary}</span>
+                                                    <span className="flex items-center gap-1"><span className="sf-icon-dollar text-base mx-2 text-gray-500 dark:text-gray-300"></span>{data.salary}</span>
                                                     <div className="border-e dark:border-gray-600 my-1"></div>
-                                                    <span className="flex items-center gap-1"><i className="e-icons e-location mx-2 text-gray-500 dark:text-gray-300"></i>{data.location}</span>
+                                                    <span className="flex items-center gap-1"><span className="e-icons e-location mx-2 text-gray-500 dark:text-gray-300"></span>{data.location}</span>
                                                 </div>
                                                 <div className="e-card-actions !px-0 !pb-1 !flex flex-col gap-6 sm:flex-row">
                                                     <div className="flex items-center flex-wrap gap-x-3 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
@@ -138,13 +138,13 @@ export default function TileView5() {
                                                         <p className="border-e pr-2 dark:border-gray-600">Openings: 1</p>
                                                         <p>Applicants: {data.applicants}</p>
                                                     </div>
-                                                    <ButtonComponent className="e-primary ml-auto w-full sm:w-fit" type="button">Apply</ButtonComponent>
+                                                    <ButtonComponent className="e-primary ml-auto w-full sm:w-fit" content="Apply" type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                             <ButtonComponent className="e-flat e-round absolute top-6 right-4 sm:right-6" iconCss="e-icons e-bookmark" type="button"></ButtonComponent>
                                         </div>)}
                                     ></ListViewComponent>
-                                    <ButtonComponent className="mx-auto !px-11" type="button">Load More Jobs</ButtonComponent>
+                                    <ButtonComponent className="mx-auto !px-11" content="Load More Jobs" type="button"></ButtonComponent>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@ export default function TileView5() {
                 return (
                     <section className="bg-body-tertiary">
                         <div id={styles["job-details"]}>
-                            <AppBarComponent className="px-0 h-auto">
+                            <AppBarComponent className="px-0 py-3 h-auto" style={{ minHeight: "78px" }}>
                                 <div className="d-flex flex-wrap gap-3 px-3 px-sm-4 px-xl-5">
                                     <DropDownButtonComponent cssClass="e-primary" content="All jobs" type="button" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
                                     <DropDownButtonComponent cssClass="e-outline" content="Any time" type="button" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
@@ -178,7 +178,7 @@ export default function TileView5() {
                                     </div>
                                     <ListViewComponent className="border-0 mb-1" cssClass="e-list-template" dataSource={jobDetails} template={(data: any) => (
                                         <div className="e-card d-flex flex-column gap-3 flex-md-row rounded-4 p-3 ps-4">
-                                            <span className="e-avatar e-avatar-xlarge e-avatar-circle flex-shrink-0">
+                                            <span className="e-avatar e-avatar-xlarge e-avatar-circle flex-shrink-0 bg-transparent">
                                                 <img src={"/react/essential-ui-kit/blocks/assets/images/tile-view/job-site/" + data.logo} width={56} height={56} alt="company logo" />
                                             </span>
                                             <div className="e-card-stacked flex-grow-1 pe-1 py-1">
@@ -195,11 +195,11 @@ export default function TileView5() {
                                                     </div>
                                                 </div>
                                                 <div className="e-card-content p-0 d-flex flex-wrap gap-2 mb-3 text-body-secondary">
-                                                    <span className="d-flex align-items-center gap-1"><i className="sf-icon-laptop fs-6 mx-1"></i>{data.experience}</span>
+                                                    <span className="d-flex align-items-center gap-1"><span className="sf-icon-laptop fs-6 mx-1"></span>{data.experience}</span>
                                                     <div className="border-end border-light-subtle m-1"></div>
-                                                    <span className="d-flex align-items-center gap-1"><i className="sf-icon-dollar fs-6 mx-1"></i>{data.salary}</span>
+                                                    <span className="d-flex align-items-center gap-1"><span className="sf-icon-dollar fs-6 mx-1"></span>{data.salary}</span>
                                                     <div className="border-end border-light-subtle m-1"></div>
-                                                    <span className="d-flex align-items-center gap-1"><i className="e-icons e-location mx-1"></i>{data.location}</span>
+                                                    <span className="d-flex align-items-center gap-1"><span className="e-icons e-location mx-1"></span>{data.location}</span>
                                                 </div>
                                                 <div className="e-card-actions d-flex flex-column gap-3 justify-content-between flex-sm-row lh-sm p-1 ps-0 text-body-secondary">
                                                     <div className="d-flex align-items-center flex-wrap gap-2 lh-base">
@@ -207,13 +207,13 @@ export default function TileView5() {
                                                         <p className="border-end pe-2 mb-0">Openings: {data.openings}</p>
                                                         <p className="mb-0">Applicants: {data.applicants}</p>
                                                     </div>
-                                                    <ButtonComponent className="e-primary col-12 col-sm-auto" type="button">Apply</ButtonComponent>
+                                                    <ButtonComponent className="e-primary col-12 col-sm-auto" content="Apply" type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                             <ButtonComponent className="e-flat e-round position-absolute" iconCss="e-icons e-bookmark" type="button" style={{ right: "24px", top: "24px" }}></ButtonComponent>
                                         </div>)}
                                     ></ListViewComponent>
-                                    <ButtonComponent className="e-outline mx-auto px-5" type="button">Load More Jobs</ButtonComponent>
+                                    <ButtonComponent className="e-outline mx-auto px-5" content="Load More Jobs" type="button"></ButtonComponent>
                                 </div>
                             </div>
                         </div>

@@ -11,7 +11,7 @@ export default function Checkout1() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'checkout-1' && blockData.theme) {
@@ -38,18 +38,18 @@ export default function Checkout1() {
         switch (theme) {
             case 'tailwind':
                 return (
-                    <section className="bg-white dark:bg-gray-900">
-                        <div className="flex" key={"checkout-1-tw"}>
+                    <section className="bg-gray-50 dark:bg-gray-900">
+                        <div key={"checkout-1-tw"} className="flex">
                             <div className="w-full m-auto text-gray-700 dark:text-gray-300">
                                 <div className="lg:flex container-lg">
-                                    <div className="lg:w-8/12 px-4 pt-8 pb-6 md:px-6 lg:pb-8 xl:pl-11 xl:pt-8 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800">
+                                    <div className="lg:w-8/12 px-4 pt-8 pb-6 md:px-6 lg:pb-8 xl:pl-11 xl:pt-8 bg-gray-50 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800">
                                         <div>
                                             <div>
                                                 <StepperComponent activeStep={1}>
                                                     <StepsDirective>
-                                                        <StepDirective label="Cart" iconCss="e-icons e-circle-check" />
-                                                        <StepDirective label="Checkout" iconCss="e-icons e-circle-check" />
-                                                        <StepDirective label="Order summary" iconCss="e-icons e-circle-check" />
+                                                        <StepDirective label="Cart" iconCss="e-icons e-circle-check"></StepDirective>
+                                                        <StepDirective label="Checkout" iconCss="e-icons e-circle-check"></StepDirective>
+                                                        <StepDirective label="Order summary" iconCss="e-icons e-circle-check"></StepDirective>
                                                     </StepsDirective>
                                                 </StepperComponent>
                                             </div>
@@ -106,13 +106,13 @@ export default function Checkout1() {
                                                 </div>
                                             </div>
                                             <div className="mt-5">
-                                                <ButtonComponent cssClass="e-flat" type="button" content="Add new address" iconCss="e-icons e-plus"></ButtonComponent>
+                                                <ButtonComponent cssClass="e-flat" iconCss="e-icons e-plus" content="Add new address" type="button"></ButtonComponent>
                                             </div>
                                         </form>
                                         <div>
                                             <h2 className="mb-4 font-semibold text-lg text-gray-900 dark:text-white">Payments</h2>
                                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 xl:gap-4">
-                                                <div className="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+                                                <div className="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
                                                     <div className="e-card-content">
                                                         <div className="e-bigger">
                                                             <RadioButtonComponent label="Credit card" name="payment"></RadioButtonComponent>
@@ -120,11 +120,11 @@ export default function Checkout1() {
                                                         <div className="mt-1 ml-7 text-gray-500 dark:text-gray-400">Pay with your credit card</div>
                                                     </div>
                                                     <div className="e-card-actions">
-                                                        <ButtonComponent cssClass="e-flat mr-3" type="button" iconCss="e-icons e-trash e-medium" content="Delete"></ButtonComponent>
-                                                        <ButtonComponent cssClass="e-flat" type="button" iconCss="e-icons e-edit e-medium" content="Edit"></ButtonComponent>
+                                                        <ButtonComponent cssClass="e-flat mr-3" iconCss="e-icons e-trash e-medium" content="Delete" type="button"></ButtonComponent>
+                                                        <ButtonComponent cssClass="e-flat" iconCss="e-icons e-edit e-medium" content="Edit" type="button"></ButtonComponent>
                                                     </div>
                                                 </div>
-                                                <div className="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+                                                <div className="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
                                                     <div className="e-card-content">
                                                         <div className="e-bigger">
                                                             <RadioButtonComponent label="Payment on delivery" name="payment" checked={true}></RadioButtonComponent>
@@ -132,11 +132,11 @@ export default function Checkout1() {
                                                         <div className="mt-1 ml-7 text-gray-500 dark:text-gray-400">+ $12 payment processing fee</div>
                                                     </div>
                                                     <div className="e-card-actions">
-                                                        <ButtonComponent cssClass="e-flat mr-3" type="button" iconCss="e-icons e-trash e-medium" content="Delete"></ButtonComponent>
-                                                        <ButtonComponent cssClass="e-flat" type="button" iconCss="e-icons e-edit e-medium" content="Edit"></ButtonComponent>
+                                                        <ButtonComponent cssClass="e-flat mr-3" iconCss="e-icons e-trash e-medium" content="Delete" type="button"></ButtonComponent>
+                                                        <ButtonComponent cssClass="e-flat" iconCss="e-icons e-edit e-medium" content="Edit" type="button"></ButtonComponent>
                                                     </div>
                                                 </div>
-                                                <div className="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+                                                <div className="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
                                                     <div className="e-card-content">
                                                         <div className="e-bigger">
                                                             <RadioButtonComponent label="PayPal account" name="payment"></RadioButtonComponent>
@@ -144,8 +144,8 @@ export default function Checkout1() {
                                                         <div className="mt-1 ml-7 text-gray-500 dark:text-gray-400">Connect to your account</div>
                                                     </div>
                                                     <div className="e-card-actions">
-                                                        <ButtonComponent cssClass="e-flat mr-3" type="button" iconCss="e-icons e-trash e-medium" content="Delete"></ButtonComponent>
-                                                        <ButtonComponent cssClass="e-flat" type="button" iconCss="e-icons e-edit e-medium" content="Edit"></ButtonComponent>
+                                                        <ButtonComponent cssClass="e-flat mr-3" iconCss="e-icons e-trash e-medium" content="Delete" type="button"></ButtonComponent>
+                                                        <ButtonComponent cssClass="e-flat" iconCss="e-icons e-edit e-medium" content="Edit" type="button"></ButtonComponent>
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,7 +153,7 @@ export default function Checkout1() {
                                         <div className="mt-6 mb-5 xl:mb-8">
                                             <h2 className="mb-4 font-semibold text-lg text-gray-900 dark:text-white">Delivery methods</h2>
                                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 xl:gap-4">
-                                                <div className="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+                                                <div className="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
                                                     <div className="e-card-content">
                                                         <div className="e-bigger">
                                                             <RadioButtonComponent label="$15 - DHL fast delivery" name="delivery"></RadioButtonComponent>
@@ -161,7 +161,7 @@ export default function Checkout1() {
                                                         <div className="mt-1 ml-7 text-gray-500 dark:text-gray-400">Pay with your credit card</div>
                                                     </div>
                                                 </div>
-                                                <div className="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+                                                <div className="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
                                                     <div className="e-card-content">
                                                         <div className="e-bigger">
                                                             <RadioButtonComponent label="Free delivery - FedEx" name="delivery" checked={true}></RadioButtonComponent>
@@ -169,7 +169,7 @@ export default function Checkout1() {
                                                         <div className="mt-1 ml-7 text-gray-500 dark:text-gray-400">+ $12 payment processing fee</div>
                                                     </div>
                                                 </div>
-                                                <div className="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+                                                <div className="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
                                                     <div className="e-card-content">
                                                         <div className="e-bigger">
                                                             <RadioButtonComponent label="Express delivery" name="delivery"></RadioButtonComponent>
@@ -183,10 +183,10 @@ export default function Checkout1() {
                                             <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Enter a gift card, voucher or promotional code</label>
                                             <div className="grid md:flex gap-4 md:gap-6 w-full">
                                                 <div className="lg:w-full sm:w-full md:w-11/12">
-                                                    <TextBoxComponent cssClass="e-bigger" type="text" placeholder="Promo Code" floatLabelType="Never" />
+                                                    <TextBoxComponent cssClass="e-bigger" type="text" placeholder="Promo Code" floatLabelType="Never"></TextBoxComponent>
                                                 </div>
                                                 <div className="e-bigger">
-                                                    <ButtonComponent cssClass="w-full md:w-max e-outline" content=" Apply" type="button"></ButtonComponent>
+                                                    <ButtonComponent cssClass="w-full md:w-max e-outline" content="Apply" type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                         </div>
@@ -221,11 +221,11 @@ export default function Checkout1() {
                                                 </div>
                                             </div>
                                             <div className="mt-6">
-                                                <ButtonComponent cssClass="w-full e-primary" type="sublit">Proceed to payment</ButtonComponent>
+                                                <ButtonComponent cssClass="w-full e-primary" content="Proceed to payment" type="sublit"></ButtonComponent>
                                             </div>
                                             <p className="text-center text-sm mt-3 text-gray-500 dark:text-gray-400">
                                                 One or more items in your cart require an account{" "}
-                                                <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-base p-0 underline">Sign in or Create an account now</a>
+                                                <a href="#" className="text-primary-600 dark:text-primary-400 font-normal text-sm p-0 underline">Sign in or Create an account now</a>
                                             </p>
                                         </div>
                                     </div>
@@ -244,9 +244,9 @@ export default function Checkout1() {
                                         <div>
                                             <StepperComponent activeStep={1}>
                                                 <StepsDirective>
-                                                    <StepDirective label="Cart" iconCss="e-icons e-circle-check" />
-                                                    <StepDirective label="Checkout" iconCss="e-icons e-circle-check" />
-                                                    <StepDirective label="Order summary" iconCss="e-icons e-circle-check" />
+                                                    <StepDirective label="Cart" iconCss="e-icons e-circle-check"></StepDirective>
+                                                    <StepDirective label="Checkout" iconCss="e-icons e-circle-check"></StepDirective>
+                                                    <StepDirective label="Order summary" iconCss="e-icons e-circle-check"></StepDirective>
                                                 </StepsDirective>
                                             </StepperComponent>
                                         </div>
@@ -300,14 +300,14 @@ export default function Checkout1() {
                                                 </div>
                                             </div>
                                             <div className="mt-3">
-                                                <ButtonComponent cssClass="e-flat" content="Add new address" iconCss="e-icons e-plus" type="button"></ButtonComponent>
+                                                <ButtonComponent cssClass="e-flat" iconCss="e-icons e-plus" content="Add new address" type="button"></ButtonComponent>
                                             </div>
                                         </form>
                                         <div>
                                             <h2 className="fw-medium fs-5 text-body mb-3">Payments</h2>
                                             <div className="row g-3">
                                                 <div className="col-md-6 col-xl-4">
-                                                    <div className="e-card h-100">
+                                                    <div className="e-card h-100 bg-body-tertiary">
                                                         <div className="e-card-content pb-2">
                                                             <div className="e-bigger">
                                                                 <RadioButtonComponent label="Credit card" name="payment"></RadioButtonComponent>
@@ -315,13 +315,13 @@ export default function Checkout1() {
                                                             <div className="text-dark-emphasis mt-1 ps-1 ms-4">Pay with your credit card</div>
                                                         </div>
                                                         <div className="e-card-actions">
-                                                            <ButtonComponent cssClass="e-flat me-3" iconCss="e-icons e-trash" type="button" content="Delete"></ButtonComponent>
-                                                            <ButtonComponent cssClass="e-flat" iconCss="e-icons e-edit" type="button" content="Edit"></ButtonComponent>
+                                                            <ButtonComponent cssClass="e-flat me-3" iconCss="e-icons e-trash" content="Delete" type="button"></ButtonComponent>
+                                                            <ButtonComponent cssClass="e-flat" iconCss="e-icons e-edit" content="Edit" type="button"></ButtonComponent>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 col-xl-4">
-                                                    <div className="e-card h-100">
+                                                    <div className="e-card h-100 bg-body-tertiary">
                                                         <div className="e-card-content pb-2">
                                                             <div className="e-bigger">
                                                                 <RadioButtonComponent label="Payment on delivery" name="payment" checked={true}></RadioButtonComponent>
@@ -329,13 +329,13 @@ export default function Checkout1() {
                                                             <div className="text-dark-emphasis mt-1 ms-4 ps-1">+ $12 payment processing fee</div>
                                                         </div>
                                                         <div className="e-card-actions">
-                                                            <ButtonComponent cssClass="e-flat me-3" iconCss="e-icons e-trash" type="button" content="Delete"></ButtonComponent>
-                                                            <ButtonComponent cssClass="e-flat" iconCss="e-icons e-edit" type="button" content="Edit"></ButtonComponent>
+                                                            <ButtonComponent cssClass="e-flat me-3" iconCss="e-icons e-trash" content="Delete" type="button"></ButtonComponent>
+                                                            <ButtonComponent cssClass="e-flat" iconCss="e-icons e-edit" content="Edit" type="button"></ButtonComponent>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 col-xl-4">
-                                                    <div className="e-card h-100">
+                                                    <div className="e-card h-100 bg-body-tertiary">
                                                         <div className="e-card-content pb-2">
                                                             <div className="e-bigger">
                                                                 <RadioButtonComponent label="PayPal account" name="payment"></RadioButtonComponent>
@@ -343,8 +343,8 @@ export default function Checkout1() {
                                                             <div className="text-dark-emphasis mt-1 ms-4 ps-1">Connect to your account</div>
                                                         </div>
                                                         <div className="e-card-actions">
-                                                            <ButtonComponent cssClass="e-flat me-3" iconCss="e-icons e-trash" type="button" content="Delete"></ButtonComponent>
-                                                            <ButtonComponent cssClass="e-flat" iconCss="e-icons e-edit" type="button" content="Edit"></ButtonComponent>
+                                                            <ButtonComponent cssClass="e-flat me-3" iconCss="e-icons e-trash" content="Delete" type="button"></ButtonComponent>
+                                                            <ButtonComponent cssClass="e-flat" iconCss="e-icons e-edit" content="Edit" type="button"></ButtonComponent>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -354,7 +354,7 @@ export default function Checkout1() {
                                             <h2 className="fw-medium fs-5 text-body mb-3">Delivery methods</h2>
                                             <div className="row g-3">
                                                 <div className="col-md-6 col-xl-4">
-                                                    <div className="e-card h-100">
+                                                    <div className="e-card h-100 bg-body-tertiary">
                                                         <div className="e-card-content">
                                                             <div className="e-bigger">
                                                                 <RadioButtonComponent label="$15 - DHL fast delivery" name="delivery"></RadioButtonComponent>
@@ -364,7 +364,7 @@ export default function Checkout1() {
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 col-xl-4">
-                                                    <div className="e-card h-100">
+                                                    <div className="e-card h-100 bg-body-tertiary">
                                                         <div className="e-card-content">
                                                             <div className="e-bigger">
                                                                 <RadioButtonComponent label="Free delivery - FedEx" name="delivery" checked={true}></RadioButtonComponent>
@@ -374,7 +374,7 @@ export default function Checkout1() {
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 col-xl-4">
-                                                    <div className="e-card h-100">
+                                                    <div className="e-card h-100 bg-body-tertiary">
                                                         <div className="e-card-content">
                                                             <div className="e-bigger">
                                                                 <RadioButtonComponent label="$49 - Express delivery" name="delivery"></RadioButtonComponent>
@@ -392,7 +392,7 @@ export default function Checkout1() {
                                                     <TextBoxComponent cssClass="e-bigger" type="text" placeholder="Promo Code" floatLabelType="Never"></TextBoxComponent>
                                                 </div>
                                                 <div className="col-md-auto e-bigger">
-                                                    <ButtonComponent cssClass="e-secondary e-block px-4" type="button">Apply</ButtonComponent>
+                                                    <ButtonComponent cssClass="e-secondary e-block px-4" content="Apply" type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                         </div>
@@ -427,7 +427,7 @@ export default function Checkout1() {
                                                 </div>
                                             </div>
                                             <div className="mt-3">
-                                                <ButtonComponent cssClass="e-block e-primary" type="submit">Proceed to payment</ButtonComponent>
+                                                <ButtonComponent cssClass="e-block e-primary" content="Proceed to payment" type="submit"></ButtonComponent>
                                             </div>
                                             <p className="text-center text-sm text-dark-emphasis mt-3">
                                                 One or more items in your cart require an account{" "}

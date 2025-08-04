@@ -11,7 +11,7 @@ export default function Rating5() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'rating-5' && blockData.theme) {
@@ -46,43 +46,45 @@ export default function Rating5() {
                                     <div className="text-lg font-semibold text-gray-900 dark:text-white">How was your experience?</div>
                                 </div>
                                     <p className="text-sm mt-4 text-gray-700 dark:text-gray-100">Let us know how our platform is working for you.Your feedback helps us enhance features, improve performance and provide a better experience!</p>
-                                    <div className="flex justify-center mt-2" style={{minHeight:'58px'}}>
+                                    <div className="flex justify-center mt-2" style={{ minHeight: '58px' }}>
                                         <RatingComponent enableAnimation={false} showTooltip={true}
-                                            emptyTemplate={(props: { index: any; }) => (
-                                                <div className="mx-2">
-                                                {(() => {
-                                                    const index = props.index;
-                                                    switch (index) {
+                                            emptyTemplate={(props: { index: number }) => {
+                                                let avatar : any = null;
+                                                switch (props.index) {
                                                     case 0:
-                                                        return (
-                                                        <span className="e-avatar e-avatar-circle text-sm bg-red-100 text-gray-800 dark:bg-red-800 dark:text-white">1</span>
+                                                        avatar = (
+                                                            <span className="e-avatar e-avatar-circle text-sm bg-red-100 text-gray-800 dark:bg-red-800 dark:text-white">1</span>
                                                         );
+                                                        break;
                                                     case 1:
-                                                        return (
-                                                        <span className="e-avatar e-avatar-circle text-sm bg-red-50 text-gray-800 dark:bg-red-900 dark:text-white">2</span>
+                                                        avatar = (
+                                                            <span className="e-avatar e-avatar-circle text-sm bg-red-50 text-gray-800 dark:bg-red-900 dark:text-white">2</span>
                                                         );
+                                                        break;
                                                     case 2:
-                                                        return (
-                                                        <span className="e-avatar e-avatar-circle text-sm bg-orange-100 text-gray-800 dark:bg-orange-800 dark:text-white">3</span>
+                                                        avatar = (
+                                                            <span className="e-avatar e-avatar-circle text-sm bg-orange-100 text-gray-800 dark:bg-orange-800 dark:text-white">3</span>
                                                         );
+                                                        break;
                                                     case 3:
-                                                        return (
-                                                        <span className="e-avatar e-avatar-circle text-sm bg-green-100 text-gray-800 dark:bg-green-800 dark:text-white">4</span>
+                                                        avatar = (
+                                                            <span className="e-avatar e-avatar-circle text-sm bg-green-100 text-gray-800 dark:bg-green-800 dark:text-white">4</span>
                                                         );
+                                                        break;
                                                     case 4:
-                                                        return (
-                                                        <span className="e-avatar e-avatar-circle text-sm bg-green-300 text-gray-800 dark:bg-green-700 dark:text-white">5</span>
+                                                        avatar = (
+                                                            <span className="e-avatar e-avatar-circle text-sm bg-green-300 text-gray-800 dark:bg-green-700 dark:text-white">5</span>
                                                         );
+                                                        break;
                                                     default:
-                                                        return;
-                                                    }
-                                                })()}
-                                                </div>
-                                            )}
+                                                        avatar = null;
+                                                }
+                                                return <div className="mx-2">{avatar}</div>;
+                                            }}
                                         ></RatingComponent>
                                     </div>
                                     <div className="mt-4">
-                                        <ButtonComponent cssClass="e-primary e-block" type="submit">Submit</ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary e-block" content='Submit' type="submit"></ButtonComponent>
                                     </div>
                             </div>
                         </div>
@@ -100,43 +102,31 @@ export default function Rating5() {
                                     <div className="fs-5 fw-semibold text-body ms-3">How was your experience?</div>
                                 </div>
                                 <p className="small text-body-secondary mt-3 mb-1">Let us know how our platform is working for you. Your feedback helps us enhance features, improve performance and provide a better experience!</p>
-                                <div className="d-flex justify-content-center mt-2" style={{minHeight:'58px'}}>
+                                <div className="d-flex justify-content-center mt-2" style={{ minHeight: '58px' }}>
                                     <RatingComponent enableAnimation={false} showTooltip={true}
-                                        emptyTemplate={(props: { index: any }) => (
-                                            <div className="mx-2">
-                                                {(() => {
-                                                    const index = props.index;
-                                                    switch (index) {
-                                                    case 0:
-                                                        return (
-                                                        <span className="e-avatar e-avatar-circle bg-danger-subtle text-danger-emphasis">1</span>
-                                                        );
-                                                    case 1:
-                                                        return (
-                                                        <span className="e-avatar e-avatar-circle bg-danger-subtle text-danger-emphasis">2</span>
-                                                        );
-                                                    case 2:
-                                                        return (
-                                                        <span className="e-avatar e-avatar-circle bg-warning-subtle text-warning-emphasis">3</span>
-                                                        );
-                                                    case 3:
-                                                        return (
-                                                        <span className="e-avatar e-avatar-circle bg-success-subtle text-success-emphasis">4</span>
-                                                        );
-                                                    case 4:
-                                                        return (
-                                                        <span className="e-avatar e-avatar-circle bg-success-subtle text-success-emphasis">5</span>
-                                                        );
-                                                    default:
-                                                        return null;
-                                                    }
-                                                })()}
-                                            </div>
-                                        )}
+                                        emptyTemplate={(props: { index: number }) => {
+                                            const renderAvatar = (index: number) => {
+                                                if (index === 0) {
+                                                    return <span className="e-avatar e-avatar-circle bg-danger-subtle text-danger-emphasis">1</span>;
+                                                } else if (index === 1) {
+                                                    return <span className="e-avatar e-avatar-circle bg-danger-subtle text-danger-emphasis">2</span>;
+                                                } else if (index === 2) {
+                                                    return <span className="e-avatar e-avatar-circle bg-warning-subtle text-warning-emphasis">3</span>;
+                                                } else if (index === 3) {
+                                                    return <span className="e-avatar e-avatar-circle bg-success-subtle text-success-emphasis">4</span>;
+                                                } else if (index === 4) {
+                                                    return <span className="e-avatar e-avatar-circle bg-success-subtle text-success-emphasis">5</span>;
+                                                } else {
+                                                    return null;
+                                                }
+                                            };
+
+                                            return <div className="mx-2">{renderAvatar(props.index)}</div>;
+                                        }}
                                     ></RatingComponent>
                                 </div>
                                 <div className="mt-3">
-                                    <ButtonComponent cssClass="e-primary e-block" type="submit">Submit</ButtonComponent>
+                                    <ButtonComponent cssClass="e-primary e-block" content='Submit' type="submit"></ButtonComponent>
                                 </div>
                             </div>
                         </div>

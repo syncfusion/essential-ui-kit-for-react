@@ -9,7 +9,7 @@ export default function ForgetPassword2() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'forgot-password-2' && blockData.theme) {
@@ -52,7 +52,7 @@ export default function ForgetPassword2() {
                                                 </div>
                                             </div>
                                             <h2 className="text-2xl font-semibold text-center mb-2 text-gray-900 dark:text-white">Forgot password?</h2>
-                                            <p className="text-md text-center text-gray-700 dark:text-gray-300">Enter your email address and we’ll send a link to reset your password</p>
+                                            <p className="text-md text-center text-gray-700 dark:text-gray-300">Enter your email address and we'll send a link to reset your password</p>
                                             <form action="#" className="mt-6 mb-6" onSubmit={(event) => event.preventDefault()}>
                                                 <div className="mb-4">
                                                     <label className="block text-sm mb-1 font-medium text-gray-700 dark:text-gray-300">Email</label>
@@ -60,7 +60,7 @@ export default function ForgetPassword2() {
                                                 </div>
                                             </form>
                                             <div className="e-bigger">
-                                                <ButtonComponent className="w-full e-primary" type="submit">Send Reset Link</ButtonComponent>
+                                                <ButtonComponent className="w-full e-primary" content="Send Reset Link" type="submit"></ButtonComponent>
                                             </div>
                                             <span className="flex items-center justify-center gap-2 mt-6">
                                                 <p className="text-center text-gray-900 dark:text-white">Return to</p>
@@ -90,7 +90,7 @@ export default function ForgetPassword2() {
                                             </div>
                                         </div>
                                         <h2 className="text-center fs-4 fw-bold mb-2 text-body">Forgot password?</h2>
-                                        <p className="text-center text-light-emphasis m-0">Enter your email address and we’ll send a link to reset your password</p>
+                                        <p className="text-center text-light-emphasis m-0">Enter your email address and we'll send a link to reset your password</p>
                                         <form action="#" className="mt-4 mb-4" onSubmit={(event) => event.preventDefault()}>
                                             <div className="mb-3">
                                                 <label className="form-label mb-1 fw-medium text-dark-emphasis small">Email</label>
@@ -98,7 +98,7 @@ export default function ForgetPassword2() {
                                             </div>
                                         </form>
                                         <div className="e-bigger">
-                                            <ButtonComponent className="e-block e-primary" type="submit">Send Reset Link</ButtonComponent>
+                                            <ButtonComponent className="e-block e-primary" content="Send Reset Link" type="submit"></ButtonComponent>
                                         </div>
                                         <div className="d-flex align-items-center justify-content-center gap-1 mt-4">
                                             <p className="text-center text-body mb-0">Return to</p>

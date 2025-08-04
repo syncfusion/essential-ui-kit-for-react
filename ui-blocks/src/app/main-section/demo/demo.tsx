@@ -288,24 +288,24 @@ export default function Demo({ blockName, componentUrl }: DemoProps) {
 
         const stylesheets: { [key: string]: { [key: string]: string } } = {
             tailwindlight: {
-                'syncfusion-style': 'https://cdn.syncfusion.com/ej2/29.1.38/tailwind.css',
+                'syncfusion-style': 'https://cdn.syncfusion.com/ej2/29.2.11/tailwind.css',
                 'font-icon-style': '/react/essential-ui-kit/blocks/assets/font-icons/tailwind/tailwind-icons.css',
                 'framework-style': '/react/essential-ui-kit/blocks/assets/themes/tailwind/tailwind_v2.css',
                 'framework-support-style': '/react/essential-ui-kit/blocks/assets/themes/tailwind/indigo.css',
             },
             tailwinddark: {
-                'syncfusion-style': 'https://cdn.syncfusion.com/ej2/29.1.38/tailwind-dark.css',
+                'syncfusion-style': 'https://cdn.syncfusion.com/ej2/29.2.11/tailwind-dark.css',
                 'font-icon-style': '/react/essential-ui-kit/blocks/assets/font-icons/tailwind/tailwind-icons.css',
                 'framework-style': '/react/essential-ui-kit/blocks/assets/themes/tailwind/tailwind_v2.css',
                 'framework-support-style': '/react/essential-ui-kit/blocks/assets/themes/tailwind/cyan.css',
             },
             bootstrap5light: {
-                'syncfusion-style': 'https://cdn.syncfusion.com/ej2/29.1.38/bootstrap5.3.css',
+                'syncfusion-style': 'https://cdn.syncfusion.com/ej2/29.2.11/bootstrap5.3.css',
                 'font-icon-style': '/react/essential-ui-kit/blocks/assets/font-icons/bootstrap5_3/bootstrap5_3-icons.css',
                 'framework-style': 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
             },
             bootstrap5dark: {
-                'syncfusion-style': 'https://cdn.syncfusion.com/ej2/29.1.38/bootstrap5.3-dark.css',
+                'syncfusion-style': 'https://cdn.syncfusion.com/ej2/29.2.11/bootstrap5.3-dark.css',
                 'font-icon-style': '/react/essential-ui-kit/blocks/assets/font-icons/bootstrap5_3/bootstrap5_3-icons.css',
                 'framework-style': 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
             },

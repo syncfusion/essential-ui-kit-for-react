@@ -1,15 +1,15 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
-import { OverflowMode, TabComponent, TabItemDirective, TabItemsDirective } from "@syncfusion/ej2-react-navigations";
+import { TabComponent, TabItemDirective, TabItemsDirective, OverflowMode } from "@syncfusion/ej2-react-navigations";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 
 export default function Header2() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const tab = useRef<TabComponent | null>(null);
     const [overflowMode, setOverflowMode] = useState<OverflowMode>('Popup');
+    const tab = useRef<TabComponent | null>(null);
 
     const updateTabItems = (): void => {
         if (window.innerWidth < 640) {
@@ -22,7 +22,7 @@ export default function Header2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'header-2' && blockData.theme) {
@@ -41,15 +41,17 @@ export default function Header2() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
-        window.addEventListener('resize',updateTabItems);
         tab.current?.refresh();
         tab.current?.refreshActiveTabBorder();
+        /* SB Code - End */
+        window.addEventListener('resize',updateTabItems);
         
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
             window.removeEventListener('resize', updateTabItems);
         }
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -122,9 +124,7 @@ export default function Header2() {
                                     </TabComponent>
                                 </div>
                                 <div className="position-relative">
-                                    <span className="e-badge e-bigger d-none d-sm-flex align-items-center justify-content-center position-absolute top-0 end-0 translate-middle-y" style={{ width: "95px" }}>
-                                        85 documents
-                                    </span>
+                                    <span className="e-badge e-bigger d-none d-sm-flex align-items-center justify-content-center position-absolute top-0 end-0 translate-middle-y" style={{ width: "95px" }}>85 documents</span>
                                 </div>
                             </div>
                         </div>

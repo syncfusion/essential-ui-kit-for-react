@@ -10,6 +10,7 @@ export default function Sidebar6() {
     /* SB Code - Start */ 
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */ 
+    const [backDrop, setBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const navigationMenu: any[] = [
@@ -66,10 +67,14 @@ export default function Sidebar6() {
             fontIcon: 'e-circle-info'
         }
     ];
+
+    const handleResize = (): void => {
+        setBackDrop(window.innerWidth <= 640);
+    };
     
     /* SB Code - Start */ 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'sidebar-6' && blockData.theme) {
@@ -85,11 +90,16 @@ export default function Sidebar6() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
+        /* SB Code - End */
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
+            window.removeEventListener('resize', handleResize);
         };
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -98,7 +108,7 @@ export default function Sidebar6() {
                 return (
                     <section className="bg-white dark:bg-gray-950">
                         <div id={styles["project-sidebar"]} style={{ height: '715px' }}>
-                            <SidebarComponent key={"sidebar-6-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-6-tw"} ref={sidebar} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="flex flex-col justify-between h-screen">
                                     <div>
                                         <div className="flex items-center justify-between py-4 px-3">
@@ -106,10 +116,10 @@ export default function Sidebar6() {
                                                 <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                                 <div className="ml-3">
                                                     <div className="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
-                                                    <p className="mb-0 text-gray-900 dark:text-white">johnwick&#64;123.com</p>
+                                                    <a className="text-gray-900 dark:text-white" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                                 </div>
                                             </div>
-                                            <ButtonComponent cssClass="e-icons e-chevron-down-double e-flat e-large" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-icons e-chevron-down-double e-flat e-large px-1" type="button"></ButtonComponent>
                                         </div>
                                         <div>
                                             <ListViewComponent className="!border-0" dataSource={navigationMenu} template={(data: any) => (
@@ -132,7 +142,7 @@ export default function Sidebar6() {
                                             ></ListViewComponent>
                                         </div>
                                         <div className="py-4 px-3">
-                                            <ButtonComponent iconCss="e-icons e-plus e-medium" className="e-outline w-full" type="button" content="Add Collection"></ButtonComponent>
+                                            <ButtonComponent className="e-outline w-full" iconCss="e-icons e-plus e-medium" type="button" content="Add Collection"></ButtonComponent>
                                         </div>
                                     </div>
                                     <div className="pb-4">
@@ -148,7 +158,7 @@ export default function Sidebar6() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -157,7 +167,7 @@ export default function Sidebar6() {
                 return (
                     <section className="bg-body">
                         <div id={styles["project-sidebar"]} style={{ height: '715px' }}>
-                            <SidebarComponent key={"sidebar-6-bs"} width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-6-bs"} ref={sidebar} width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="d-flex flex-column justify-content-between vh-100">
                                     <div>
                                         <div className="d-flex align-items-center justify-content-between p-3">
@@ -165,7 +175,7 @@ export default function Sidebar6() {
                                                 <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                                 <div className="ms-2">
                                                     <div className="fs-6 fw-medium text-body">John Wick</div>
-                                                    <p className="mb-0 text-body-secondary">johnwick&#64;123.com</p>
+                                                    <a className="text-body-secondary text-decoration-none" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                                 </div>
                                             </div>
                                             <ButtonComponent cssClass="e-icons e-chevron-down-double e-flat" type="button"></ButtonComponent>
@@ -178,6 +188,7 @@ export default function Sidebar6() {
                                                 </div>)}
                                             ></ListViewComponent>
                                         </div>
+                                        <hr className="mx-3 border-light-subtle opacity-100" />
                                         <div>
                                             <p className="text-body-secondary fs-6 m-3">Bergside Projects</p>
                                             <ListViewComponent className="border-0 e-bigger" dataSource={libraryMenu} template={(data: any) => (
@@ -204,7 +215,7 @@ export default function Sidebar6() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="py-3 px-1 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

@@ -12,35 +12,35 @@ export default function List10() {
 
     const data: any[] = [
         {
-            id: "1",
+            id: 1,
             date: new Date("2024-10-05"),
             content: "Refactor primary components to align with system version 1.4.",
             image: "avatar-12.jpg",
             logo: "figma.png"
         },
         {
-            id: "2",
+            id: 2,
             date: new Date("2024-10-18"),
             content: "Design and schedule the monthly newsletter in MailChimp to keep subscribers informed.",
             image: "avatar-14.jpg",
             logo: "mailchimp.png"
         },
         {
-            id: "3",
+            id: 3,
             date: new Date("2024-10-25"),
             content: "Organize a team meeting in Microsoft Teams",
             image: "avatar-7.jpg",
             logo: "microsoft.png"
         },
         {
-            id: "4",
+            id: 4,
             date: new Date("2024-11-08"),
             content: "Design a visually appealing promotional poster for an upcoming event or product launch using Adobe InDesign.",
             image: "avatar-4.jpg",
             logo: "adobe.png"
         },
         {
-            id: "5",
+            id: 5,
             date: new Date("2024-12-15"),
             content: "Create and structure a collaborative document for your team to brainstorm ideas for an upcoming project",
             image: "avatar-13.jpg",
@@ -58,7 +58,7 @@ export default function List10() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'list-10' && blockData.theme) {
@@ -93,7 +93,7 @@ export default function List10() {
                     <section className="bg-white dark:bg-gray-900">
                         <div className="flex items-center justify-center min-h-screen">
                             <div className="max-w-none lg:max-w-2xl w-full m-auto p-4 md:py-8 lg:px-24">
-                                <ListViewComponent id={styles["task-list"]} className="!border-0" cssClass="e-list-template" key={"list-10-tw"} dataSource={data} template={(data: any) => (
+                                <ListViewComponent key={"list-10-tw"} id={styles["task-list"]} className="!border-0" cssClass="e-list-template" dataSource={data} template={(data: any) => (
                                     <div className="border border-gray-200 dark:border-gray-600 !py-4 px-4 my-4" style={{ borderRadius: '8px' }}>
                                         <div className="flex justify-between">
                                             <div className="flex w-full">
@@ -104,7 +104,7 @@ export default function List10() {
                                                     <div className="flex justify-between">
                                                         <div>
                                                             <span className="e-list-item-header flex items-center !text-sm !font-medium !text-wrap !line-clamp-2 sm:!line-clamp-3 w-full truncate !text-gray-900 dark:!text-gray-200">{data.content}</span>
-                                                            <span className="flex items-center space-x-2 text-gray-700 dark:text-gray-200 w-44 mt-3 sm:mt-2 text-nowrap">
+                                                            <span className="flex items-center space-x-3 text-gray-700 dark:text-gray-200 w-44 mt-3 sm:mt-2 text-nowrap">
                                                                 <span className="text-sm font-normal">Due Date</span>
                                                                 <span className="text-sm font-normal e-icons e-day text-xl text-gray-700 dark:text-gray-200"></span>
                                                                 <span className="text-sm font-normal pt-0.5 sm:pt-0">{new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(new Date(data.date))}</span>
@@ -128,7 +128,7 @@ export default function List10() {
                     <section className="bg-body">
                         <div className="d-flex align-items-center justify-content-center min-vh-100">
                             <div className="container-xl w-100 m-auto p-3 p-md-4" style={width}>
-                                <ListViewComponent id={styles["task-list"]} cssClass="e-list-template" key={"list-10-bs"} dataSource={data} style={{ borderWidth: '0px' }} template={(data: any) => (
+                                <ListViewComponent key={"list-10-bs"} id={styles["task-list"]} cssClass="e-list-template" dataSource={data} style={{ borderWidth: '0px' }} template={(data: any) => (
                                     <div className="e-list-wrapper e-list-multi-line border px-2 px-sm-3 py-3 mt-3" style={{borderRadius: '8px'}}>
                                         <div className="d-flex justify-content-between">
                                             <span className="flex-shrink-0">

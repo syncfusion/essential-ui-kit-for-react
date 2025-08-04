@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from 'react';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -18,7 +18,7 @@ export default function Modals3() {
     const dialog = useRef<DialogComponent>(null);
     const accordions = useRef<AccordionComponent>(null);
 
-    const checkWindowSize = () => {
+    const checkWindowSize = (): void => {
         if (!stepper.current) return;
         const isVertical = window.innerWidth <= 640;
         stepper.current.orientation = isVertical ? 'vertical' : 'horizontal';
@@ -32,7 +32,7 @@ export default function Modals3() {
 
    /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'modals-3' && blockData.theme) {
@@ -65,9 +65,8 @@ export default function Modals3() {
             case 'tailwind':
                 return (
                     <section>
-                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: "600px" }}>
-                            <ButtonComponent className="h-fit my-5" type="button" onClick={() => dialog.current?.show()}>Add Team Member</ButtonComponent>
-                            <DialogComponent id={styles["dialogs"]} className="rounded-none sm:rounded-lg sm:m-4" width="545px" ref={dialog} isModal={true} target="#dialog-container" showCloseIcon={true} open={(e) => { e.preventFocus = true; }}
+                        <div id="dialog-container" className="relative" style={{ minHeight: "600px" }}>
+                            <DialogComponent ref={dialog} id={styles["dialogs"]} className="rounded-none sm:rounded-lg sm:m-4 overflow-hidden" width="545px" isModal={true} target="#dialog-container" showCloseIcon={true} open={(e) => { e.preventFocus = true; }}
                                 header={() => (
                                     <div>
                                         <p className="mb-0.5 font-semibold leading-normal">Add Team Member</p>
@@ -76,14 +75,14 @@ export default function Modals3() {
                                 )}
                                 footerTemplate={() =>
                                     <div className="flex justify-end gap-2 sm:gap-1 py-2">
-                                        <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" type="button">Add Member</ButtonComponent>
+                                        <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" content="Cancel" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" content="Add Member" type="button"></ButtonComponent>
                                     </div>
                                 }
                             >
                                 <div className="space-y-5 sm:space-y-4">
                                     <div className="py-2" style={stepperStyle}>
-                                        <StepperComponent cssClass="e-small" ref={stepper} stepChanged={(e) => setActiveStep(e.activeStep)} labelPosition="bottom">
+                                        <StepperComponent ref={stepper} cssClass="e-small" stepChanged={(e) => setActiveStep(e.activeStep)} labelPosition="bottom">
                                             <StepsDirective>
                                                 <StepDirective iconCss="e-icons" label="User Information"></StepDirective>
                                                 <StepDirective iconCss="e-icons" label="Workspace Access"></StepDirective>
@@ -93,7 +92,7 @@ export default function Modals3() {
                                         </StepperComponent>
                                     </div>
                                     <div className="sm:overflow-y-scroll" style={{ height: "298px", scrollbarWidth: "none" }}>
-                                        <AccordionComponent expandMode="Single" className="border-0" ref={accordions} expanding={(e) => {if (stepper?.current) {stepper.current.activeStep = e.index;}}}>
+                                        <AccordionComponent ref={accordions} expandMode="Single" className="border-0" expanding={(e) => {if (stepper?.current) {stepper.current.activeStep = e.index;}}}>
                                             <AccordionItemsDirective>
                                                 <AccordionItemDirective cssClass="mb-3 !border !rounded-lg" expanded={activeStep === 0}
                                                     header={() =>
@@ -256,14 +255,18 @@ export default function Modals3() {
                                 </div>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="top-0 left-0 absolute w-full flex">
+                            <ButtonComponent className="my-5 mx-auto" content="Add Team Member" type="button" onClick={() => dialog.current?.show()}></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 );
             case 'bootstrap5':
                 return (
                     <section>
-                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: "600px" }}>
-                            <ButtonComponent className="mx-auto my-3 e-outline" type="button" onClick={() => dialog.current?.show()}>Add Team Member</ButtonComponent>
-                            <DialogComponent id={styles["dialogs"]} className="rounded-3 m-sm-2" ref={dialog} isModal={true} showCloseIcon={true} width="545px" target="#dialog-container" open={(e) => { e.preventFocus = true; }}
+                        <div id="dialog-container" className="position-relative" style={{ minHeight: "600px" }}>
+                            <DialogComponent ref={dialog} id={styles["dialogs"]} className="rounded-3 m-sm-2" isModal={true} showCloseIcon={true} width="545px" target="#dialog-container" open={(e) => { e.preventFocus = true; }}
                                 header={() => (
                                     <div>
                                         <p className="fw-bold text-body mb-0">Add Team Member</p>
@@ -272,14 +275,14 @@ export default function Modals3() {
                                 )}
                                 footerTemplate={() => (
                                     <div className="d-flex justify-content-end gap-2 py-1">
-                                        <ButtonComponent className="col col-sm-auto ms-0 e-outline" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary col col-sm-auto" type="button">Add Member</ButtonComponent>
+                                        <ButtonComponent className="col col-sm-auto ms-0" content="Cancel" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary col col-sm-auto" content="Add Member" type="button"></ButtonComponent>
                                     </div>
                                 )}
                             >
                                 <div className="d-flex flex-column gap-4 mt-2">
                                     <div className="mt-sm-1 mb-2 mb-sm-0 mb-md-3" style={stepperStyle}>
-                                        <StepperComponent cssClass="e-small" ref={stepper} stepChanged={(e) => setActiveStep(e.activeStep)} labelPosition="bottom">
+                                        <StepperComponent ref={stepper} cssClass="e-small" stepChanged={(e) => setActiveStep(e.activeStep)} labelPosition="bottom">
                                             <StepsDirective>
                                                 <StepDirective iconCss="e-icons" label="User Information"></StepDirective>
                                                 <StepDirective iconCss="e-icons" label="Workspace Access"></StepDirective>
@@ -289,7 +292,7 @@ export default function Modals3() {
                                         </StepperComponent>
                                     </div>
                                     <div className="overflow-auto" style={{ height: "298px", scrollbarWidth: "none" }}>
-                                        <AccordionComponent className="border-0" expandMode="Single" expanding={(e) => {if (stepper?.current) {stepper.current.activeStep = e.index;}}}>
+                                        <AccordionComponent ref={accordions} className="border-0" expandMode="Single" expanding={(e) => {if (stepper?.current) {stepper.current.activeStep = e.index;}}}>
                                             <AccordionItemsDirective>
                                                 <AccordionItemDirective cssClass="mb-3 border rounded-3 overflow-hidden" expanded={activeStep === 0} 
                                                     header={() =>
@@ -446,6 +449,11 @@ export default function Modals3() {
                                 </div>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="position-absolute top-0 start-0 d-flex w-100">
+                            <ButtonComponent className="mx-auto my-3 e-outline" content="Add Team Member" type="button" onClick={() => dialog.current?.show()}></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 );
         };

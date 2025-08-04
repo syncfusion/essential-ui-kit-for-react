@@ -9,7 +9,7 @@ export default function Signin1() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'signin-1' && blockData.theme) {
@@ -59,7 +59,7 @@ export default function Signin1() {
                                         <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-base" style={{ paddingRight: 0 }}>Forgot password?</a>
                                     </div>
                                     <div className="e-bigger mt-6">
-                                        <ButtonComponent className="w-full e-primary" type="submit" onClick={(event) => event.preventDefault()}>Sign in</ButtonComponent>
+                                        <ButtonComponent className="w-full e-primary" content="Sign in" type="submit" onClick={(event) => event.preventDefault()}></ButtonComponent>
                                     </div>
                                 </form>
                                 <div>
@@ -112,7 +112,7 @@ export default function Signin1() {
                                     <a href="#" className="text-primary fs-6 fw-medium text-decoration-none" style={{ paddingRight: 0, paddingTop: '4px' }}>Forgot password?</a>
                                 </div>
                                 <div className="mt-4 e-bigger">
-                                    <ButtonComponent className="e-block e-primary" type="submit">Sign in</ButtonComponent>
+                                    <ButtonComponent className="e-block e-primary" content="Sign in" type="submit" onClick={(event) => event.preventDefault()}></ButtonComponent>
                                 </div>
                             </form>
                             <div className="d-flex flex-wrap align-items-center justify-content-center mt-3 gap-1">

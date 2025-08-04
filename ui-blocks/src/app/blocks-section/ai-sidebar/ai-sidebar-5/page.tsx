@@ -10,7 +10,7 @@ export default function AISidebar5() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const [backDrop, setBackDrop] = useState(false);
+    const [isBackDrop, setIsBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const searchItems: any[] = [
@@ -33,12 +33,12 @@ export default function AISidebar5() {
     ]
 
     const handleResize = (): void => {
-        setBackDrop(window.innerWidth <= 660);
+        setIsBackDrop(window.innerWidth <= 660);
     };
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-sidebar-5' && blockData.theme) {
@@ -72,7 +72,7 @@ export default function AISidebar5() {
                 return (
                     <section className="bg-white dark:bg-gray-800">
                         <div id={styles["search-history"]} style={{ height: '766px' }}>
-                            <SidebarComponent ref={sidebar} className="bg-gray-50 dark:bg-gray-700" width="256px" isOpen={true} type="Push" closeOnDocumentClick={false} position="Right" showBackdrop={backDrop} style={{ display: 'block' }}>
+                            <SidebarComponent ref={sidebar} className="bg-gray-50 dark:bg-gray-700" width="256px" isOpen={true} type="Push" closeOnDocumentClick={false} position="Right" showBackdrop={isBackDrop} style={{ display: 'block' }}>
                                 <div className="px-4 py-3">
                                     <div className="flex justify-between items-center">
                                         <span className="font-medium text-sm text-gray-900 dark:text-white">Search history</span>
@@ -96,7 +96,7 @@ export default function AISidebar5() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -105,11 +105,11 @@ export default function AISidebar5() {
                 return (
                     <section className="bg-body">
                         <div id={styles["search-history"]} style={{ height: '766px' }}>
-                            <SidebarComponent ref={sidebar} className="bg-body border-light-subtle" width="256px" position="Right" isOpen={true} type="Push" closeOnDocumentClick={false} showBackdrop={backDrop} style={{ display: 'block' }}>
+                            <SidebarComponent ref={sidebar} className="bg-body border-light-subtle" width="256px" position="Right" isOpen={true} type="Push" closeOnDocumentClick={false} showBackdrop={isBackDrop} style={{ display: 'block' }}>
                                 <div className="p-3">
                                     <div className="d-flex justify-content-between align-items-center fs-6">
                                         <span className="small fw-medium text-body">Search history</span>
-                                        <ButtonComponent cssClass="e-danger e-flat" type="button" content="Delete"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-danger e-flat" content="Delete" type="button"></ButtonComponent>
                                     </div>
                                     <div>
                                         <ListViewComponent cssClass="e-list-template border-0" dataSource={searchItems} template={(data: any) => (
@@ -130,7 +130,7 @@ export default function AISidebar5() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

@@ -10,7 +10,7 @@ export default function Navbar2() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'navbar-2' && blockData.theme) {
@@ -43,28 +43,26 @@ export default function Navbar2() {
                                 <div className="flex items-center justify-between ms-6 me-2 lg:me-6 py-2">
                                     <div className="flex items-center">
                                         <img className="mr-3 h-7" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={28} height={28} alt="company logo" />
-                                        <span className="text-lg font-semibold text-gray-900 dark:text-white">
-                                            Company Name
-                                        </span>
+                                        <span className="text-lg font-semibold text-gray-900 dark:text-white">Company Name</span>
                                     </div>
                                     <div className="flex hidden lg:block px-4">
-                                        <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" type="button">Home</ButtonComponent>
-                                        <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" type="button">Clients</ButtonComponent>
-                                        <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" type="button">Marketing</ButtonComponent>
-                                        <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" type="button">Contacts</ButtonComponent>
+                                        <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" content="Home" type="button"></ButtonComponent>
+                                        <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" content="Clients" type="button"></ButtonComponent>
+                                        <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" content="Marketing" type="button"></ButtonComponent>
+                                        <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" content="Contacts" type="button"></ButtonComponent>
                                     </div>
                                     <div className="flex items-center">
-                                        <ButtonComponent className="mr-2 hidden sm:block" cssClass="e-primary" iconCss="e-icons e-plus" iconPosition="Left" type="button">Upgrade</ButtonComponent>
+                                        <ButtonComponent className="mr-2 hidden sm:block" cssClass="e-primary" iconCss="e-icons e-plus" iconPosition="Left" content="Upgrade" type="button"></ButtonComponent>
                                         <div className="border border-gray-200 dark:border-gray-600 h-7 hidden sm:block mx-2"></div>
-                                        <ButtonComponent className="sf-icon-notification-bell-02 leading-3 text-base hidden sm:block" cssClass="e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent className="leading-3 hidden sm:block" cssClass="e-flat" iconCss="sf-icon-notification-bell-02" type="button"></ButtonComponent>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 h-7 hidden sm:block mx-2"></div>
-                                        <ButtonComponent className="e-icons e-grid-view hidden sm:block mr-2" cssClass="e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent className="hidden sm:block mr-2" cssClass="e-flat" iconCss="e-icons e-grid-view" type="button"></ButtonComponent>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 h-7 hidden sm:block mr-2"></div>
                                         <span className="e-avatar e-avatar-small e-avatar-circle ml-1.5 mr-1.5 lg:mr-0">
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 h-7 block lg:hidden ml-2"></div>
-                                        <span id={styles.menu} className="block lg:hidden">
+                                        <span id={styles["menu"]} className="block lg:hidden">
                                             <MenuComponent items={[{ text: 'Home' }, { text: 'Clients' }, { text: 'Marketing' }, { text: 'Contacts' }, { text: 'Others', items: [{ text: 'Demos' }, { text: 'Features' }, { text: 'Video Tutorials' }, { text: 'Support Center' }, { text: 'Forum' }] }]} hamburgerMode={true} title="" showItemOnClick={true}></MenuComponent>
                                         </span>
                                     </div>
@@ -92,23 +90,23 @@ export default function Navbar2() {
                                     <h5 className="fw-bold text-body fs-5 mb-0">Company Name</h5>
                                 </div>
                                 <div className="d-none d-lg-flex px-3">
-                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" type="button">Home</ButtonComponent>
-                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" type="button">Clients</ButtonComponent>
-                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" type="button">Marketing</ButtonComponent>
-                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" type="button">Contacts</ButtonComponent>
+                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" content="Home" type="button"></ButtonComponent>
+                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" content="Clients" type="button"></ButtonComponent>
+                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" content="Marketing" type="button"></ButtonComponent>
+                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" content="Contacts" type="button"></ButtonComponent>
                                 </div>
                                 <div className="d-flex align-items-center">
-                                    <ButtonComponent className="me-3 d-none d-sm-block" cssClass="e-primary" iconCss="e-icons e-plus" iconPosition="Left" type="button">Upgrade</ButtonComponent>
+                                    <ButtonComponent className="me-3 d-none d-sm-block" cssClass="e-primary" iconCss="e-icons e-plus" iconPosition="Left" content="Upgrade" type="button"></ButtonComponent>
                                     <div className="border-end border-secondary-subtle d-none d-sm-block me-3" style={{ height: '24px' }}></div>
-                                    <ButtonComponent className="sf-icon-notification-bell-01 fs-6 d-none d-sm-block me-3" cssClass="e-flat" type="button"></ButtonComponent>
+                                    <ButtonComponent className="d-none d-sm-block me-3" cssClass="e-flat" iconCss="sf-icon-notification-bell-01 fs-6" type="button"></ButtonComponent>
                                     <div className="border-end border-secondary-subtle d-none d-sm-block me-3" style={{ height: '24px' }}></div>
-                                    <ButtonComponent className="e-icons e-grid-view d-none d-sm-block me-3 e-medium" cssClass="e-flat" type="button"></ButtonComponent>
+                                    <ButtonComponent className="d-none d-sm-block me-3 e-medium" cssClass="e-flat" iconCss="e-icons e-grid-view" type="button"></ButtonComponent>
                                     <div className="border-end border-secondary-subtle d-none d-sm-block me-3" style={{ height: '24px' }}></div>
                                     <span className="e-avatar e-avatar-small e-avatar-circle">
                                         <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                     </span>
                                     <div className="border-end border-secondary-subtle d-block d-lg-none ms-3" style={{ height: '24px' }}></div>
-                                    <span id={styles.menu} className="d-lg-none">
+                                    <span id={styles["menu"]} className="d-lg-none">
                                         <MenuComponent className="bg-body-tertiary" items={[{ text: 'Home' }, { text: 'Clients' }, { text: 'Marketing' }, { text: 'Contacts' }, { text: 'Others', items: [{ text: 'Demos' }, { text: 'Features' }, { text: 'Video Tutorials' }, { text: 'Support Center' }, { text: 'Forum' }] }]} hamburgerMode={true} title="" showItemOnClick={true}></MenuComponent>
                                     </span>
                                 </div>

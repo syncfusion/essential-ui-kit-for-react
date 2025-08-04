@@ -40,7 +40,7 @@ export default function AISearch1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-search-1' && blockData.theme) {
@@ -73,11 +73,11 @@ export default function AISearch1() {
                 return (
                     <section className="bg-white dark:bg-gray-900 h-full">
                         <div className="w-full pt-5 pb-4 h-screen">
-                            <div id={styles.search_list} className="px-4 mx-auto lg:px-0" style={width}>
+                            <div id={styles["search-list"]} className="px-4 mx-auto lg:px-0" style={width}>
                                 <AutoCompleteComponent
                                     key={"search-1-tw"}
-                                    cssClass="e-bigger"
                                     ref={search}
+                                    cssClass="e-bigger"
                                     placeholder="Search"
                                     popupHeight="530px"
                                     focus={() => search.current?.showPopup()}
@@ -91,10 +91,10 @@ export default function AISearch1() {
                                             <div>
                                                 <div className="mb-4">
                                                     <div className="mb-1 text-sm font-medium text-gray-900 dark:text-white">No search results found</div>
-                                                    <div className="text-sm text-gray-900 dark:text-white">“{searchKeyword.current}” did not match any chat history. Please try again or <a href="#" className="font-normal underline p-0" role="link">create a new chat</a>.</div>
+                                                    <div className="text-sm text-gray-900 dark:text-white">"{searchKeyword.current}" did not match any chat history. Please try again or <a href="#" className="font-normal underline p-0">create a new chat</a>.</div>
                                                 </div>
                                                 <div>
-                                                    <ButtonComponent className="e-outline px-4 !text-base" content="Clear Search" type="button"></ButtonComponent>
+                                                    <ButtonComponent className="e-outline px-4 !text-base" content="Clear search" type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                         </div>
@@ -108,7 +108,7 @@ export default function AISearch1() {
                 return (
                     <section className="bg-body h-100">
                         <div className="w-100 pt-3 pb-3 h-100">
-                            <div id={styles.search_list} className="px-3 mx-auto px-lg-0" style={width}>
+                            <div id={styles["search-list"]} className="px-3 mx-auto px-lg-0" style={width}>
                                 <AutoCompleteComponent
                                     key={"search-1-bs"}
                                     ref={search}
@@ -126,10 +126,10 @@ export default function AISearch1() {
                                             <div>
                                                 <div className="mb-4">
                                                     <div className="mb-1 fs-6 fw-medium text-body">No search results found</div>
-                                                    <div className="small text-body">“{searchKeyword.current}” did not match any chat history. Please try again or <a href="#" className="font-normal underline p-0" role="link">create a new chat</a>.</div>
+                                                    <div className="small text-body">"{searchKeyword.current}" did not match any chat history. Please try again or <a href="#" className="font-normal underline p-0">create a new chat</a>.</div>
                                                 </div>
                                                 <div>
-                                                    <ButtonComponent className="e-outline px-4 !text-base" content="Clear Search" type="button"></ButtonComponent>
+                                                    <ButtonComponent className="e-outline px-4 !text-base" content="Clear search" type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                         </div>

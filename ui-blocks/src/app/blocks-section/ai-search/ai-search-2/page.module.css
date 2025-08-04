@@ -1,8 +1,8 @@
-#search_tab :global(.e-tab .e-tab-header .e-toolbar-items .e-tab-wrap) {
+#search-tab :global(.e-tab .e-tab-header .e-toolbar-items .e-tab-wrap) {
     padding: 0 12px !important;
 }
 
-#search_list :global(.e-input-group .e-icons.e-search) {
+#search-list :global(.e-input-group .e-icons.e-search) {
     display: flex;
     align-items: center;
     margin-left: 10px;

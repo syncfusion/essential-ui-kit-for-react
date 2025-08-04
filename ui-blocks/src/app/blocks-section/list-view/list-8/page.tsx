@@ -11,57 +11,57 @@ export default function List8() {
 
     const chatMessages: any[] = [
         {
-            id: '1',
-            time: '12:00 PM',
-            name: 'Robert Darlen',
-            message: 'It was worth watching. I had the most fun out today.',
-            image: 'avatar-1.jpg',
-            badge: '7',
+            id: 1,
+            time: "12:00 PM",
+            name: "Robert Darlen",
+            message: "It was worth watching. I had the most fun out today.",
+            image: "avatar-1.jpg",
+            badge: "7",
             status: { isViewed: false }
         },
         {
-            id: '2',
-            time: '10:56 AM',
-            name: 'Arlene McCoy',
-            message: 'How many NPCs are there?',
-            image: 'avatar-8.jpg',
-            badge: '',
+            id: 2,
+            time: "10:56 AM",
+            name: "Arlene McCoy",
+            message: "How many NPCs are there?",
+            image: "avatar-8.jpg",
+            badge: "",
             status: { isViewed: true, isUnRead: true }
         },
         {
-            id: '3',
-            time: 'Yesterday',
-            name: 'Theresa Webb',
-            message: 'Same here! Work has been a whirlwind. I just got back from a project in Seattle. The coffee there is amazing!',
-            image: 'avatar-9.jpg',
-            badge: '',
+            id: 3,
+            time: "Yesterday",
+            name: "Theresa Webb",
+            message: "Same here! Work has been a whirlwind. I just got back from a project in Seattle. The coffee there is amazing!",
+            image: "avatar-9.jpg",
+            badge: "",
             status: { isViewed: false, isUnRead: true }
         },
         {
-            id: '4',
-            time: '24 Sep',
-            name: 'Kristina Watson',
-            message: 'Actually, I started taking a pottery class! It’s so much fun. What about you?',
-            image: 'avatar-10.jpg',
-            badge: '',
+            id: 4,
+            time: "24 Sep",
+            name: "Kristina Watson",
+            message: "Actually, I started taking a pottery class! It's so much fun. What about you?",
+            image: "avatar-10.jpg",
+            badge: "",
             status: { isViewed: false }
         },
         {
-            id: '5',
-            time: '22 Sep',
-            name: 'Floyd Miles',
-            message: 'Hey, Jamie! It’s been ages! How have you been?',
-            image: 'avatar-4.jpg',
-            badge: '',
+            id: 5,
+            time: "22 Sep",
+            name: "Floyd Miles",
+            message: "Hey, Jamie! It's been ages! How have you been?",
+            image: "avatar-4.jpg",
+            badge: "",
             status: { isViewed: false, isUnRead: true }
         },
         {
-            id: '6',
-            time: '20 Sep',
-            name: 'Jane Cooper',
-            message: 'That sounds awesome! I’ve been getting into hiking. There’s a great trail near my place.',
-            image: 'avatar-11.jpg',
-            badge: '',
+            id: 6,
+            time: "20 Sep",
+            name: "Jane Cooper",
+            message: "That sounds awesome! I've been getting into hiking. There's a great trail near my place.",
+            image: "avatar-11.jpg",
+            badge: "",
             status: { isViewed: true, isUnRead: true }
         }
     ];
@@ -76,7 +76,7 @@ export default function List8() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'list-8' && blockData.theme) {

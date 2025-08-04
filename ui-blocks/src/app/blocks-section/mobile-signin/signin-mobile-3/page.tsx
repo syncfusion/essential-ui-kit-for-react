@@ -10,7 +10,7 @@ export default function SigninMobile3() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'signin-mobile-3' && blockData.theme) {
@@ -39,7 +39,7 @@ export default function SigninMobile3() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="flex flex-col lg:flex-row mx-auto p-0" style={{ minHeight: "580px" }}>
-                            <div className="w-full lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                            <div className="w-full order-2 lg:order-1 lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                                 <div className="flex flex-wrap mx-0 w-full sm:p-6 xl:p-0 md:p-8 lg:px-6">
                                     <div className="hidden xl:block xl:w-1/6"></div>
                                     <div className="w-full xl:w-2/3">
@@ -70,7 +70,7 @@ export default function SigninMobile3() {
                                     <div className="hidden xl:block xl:w-1/6"></div>
                                 </div>
                             </div>
-                            <div className="w-full lg:w-5/12">
+                            <div className="w-full order-1 lg:order-2 lg:w-5/12">
                                 <div className="flex justify-center">
                                     <div className="w-full max-w-md rounded-lg p-4 py-12">
                                         <div className="flex justify-center mb-6">
@@ -81,17 +81,17 @@ export default function SigninMobile3() {
                                         <p className="text-md text-center text-gray-700 px-5 dark:text-gray-300">Please confirm your country code and enter your mobile number</p>
                                         <form action="#" className="mt-6" onSubmit={(event) => event.preventDefault()}>
                                             <div className="flex space-x-4">
-                                                <div className="w-1/3">
+                                                <div className="w-1/3 sm:w-1/4">
                                                     <label className="block text-sm mb-1 font-medium text-gray-700 dark:text-gray-300">Country code</label>
                                                     <DropDownListComponent cssClass="e-bigger" placeholder="+1" beforeOpen={(event) => (event.cancel = true)}></DropDownListComponent>
                                                 </div>
-                                                <div className="w-2/3">
+                                                <div className="w-2/3 sm:w-3/4">
                                                     <label className="block text-sm mb-1 font-medium text-gray-700 dark:text-gray-300">Mobile number</label>
                                                     <MaskedTextBoxComponent cssClass="e-bigger" mask="9999999999" promptChar=" " placeholder="432 432 4321"></MaskedTextBoxComponent>
                                                 </div>
                                             </div>
                                             <div className="e-bigger mt-6">
-                                                <ButtonComponent className="w-full text-lg e-primary" type="submit">Continue</ButtonComponent>
+                                                <ButtonComponent className="w-full text-lg e-primary" content="Continue" type="submit"></ButtonComponent>
                                             </div>
                                         </form>
                                     </div>
@@ -103,8 +103,8 @@ export default function SigninMobile3() {
 
             case 'bootstrap5':
                 return (
-                    <section className="container-fluid d-md-flex d-block flex-wrap mx-auto p-0" style={{ minHeight: "580px" }}>
-                        <div className="col-12 col-lg-7 d-flex align-items-center bg-success p-4 p-lg-4" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                    <section className="container-fluid row d-flex flex-wrap mx-auto p-0" style={{ minHeight: "580px" }}>
+                        <div className="col-12 col-lg-7 order-2 order-lg-1 d-flex align-items-center bg-success p-4 p-lg-4" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                             <div className="row mx-0 w-100 py-5">
                                 <div className="col-xl-2 d-lg-block"></div>
                                 <div className="col-xl-8">
@@ -135,8 +135,7 @@ export default function SigninMobile3() {
                                 <div className="col-xl-2 d-lg-block"></div>
                             </div>
                         </div>
-
-                        <div className="col-12 col-lg-5 p-0">
+                        <div className="col-12 col-lg-5 order-1 order-lg-2 p-0">
                             <div className="d-flex justify-content-center bg-body">
                                 <div className="w-100 max-w-md bg-body rounded-lg p-4 py-5" style={{ maxWidth: "450px" }}>
                                     <div>
@@ -151,17 +150,17 @@ export default function SigninMobile3() {
                                     </div>
                                     <form action="#" className="mt-4" onSubmit={(event) => event.preventDefault()}>
                                         <div className="d-flex justify-content-center gap-3 row p-0">
-                                            <div className="col-4 col-lg-3 p-0">
+                                            <div className="col-4 col-md-3 p-0">
                                                 <label className="form-label mb-1 fw-medium text-dark-emphasis small">Country code</label>
                                                 <DropDownListComponent cssClass="e-bigger" placeholder="+1" beforeOpen={(event) => (event.cancel = true)}></DropDownListComponent>
                                             </div>
-                                            <div className="col-7 col-lg-8 m-0">
+                                            <div className="col-7 col-md-8 m-0 p-0">
                                                 <label className="form-label mb-1 fw-medium text-dark-emphasis small">Mobile number</label>
                                                 <MaskedTextBoxComponent cssClass="e-bigger" mask="9999999999" promptChar=" " placeholder="432 432 4321"></MaskedTextBoxComponent>
                                             </div>
                                         </div>
                                         <div className="mt-4 e-bigger">
-                                            <ButtonComponent className="e-block e-primary" type="submit">Continue</ButtonComponent>
+                                            <ButtonComponent className="e-block e-primary" content="Continue" type="submit"></ButtonComponent>
                                         </div>
                                     </form>
                                 </div>

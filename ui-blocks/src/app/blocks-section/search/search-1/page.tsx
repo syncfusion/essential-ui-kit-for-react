@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
+import styles from './page.module.css';
 
 export default function Search1() {
     /* SB Code - Start */
@@ -57,7 +58,6 @@ export default function Search1() {
             tag: 'Integration'
         }
     ];
-    const fields = { groupBy: 'category', value: 'title' };
 
     const openPopup = (): void => {
         setTimeout(() => {
@@ -66,36 +66,35 @@ export default function Search1() {
                 const inputContainer = search.current['inputWrapper'].container;
                 const searchIcon = document.createElement('span');
                 searchIcon.className = 'e-icons e-search';
-                searchIcon.style.cssText = 'display: flex; align-items: center; margin-left: 10px;';
-                inputContainer?.insertAdjacentElement('afterbegin', searchIcon);
+                inputContainer?.insertAdjacentElement('beforeend', searchIcon);
             }
         }, 250);
     };
 
     const handleResize = (): void => {
         setWidth(window.innerWidth > 767 ? { maxWidth: "520px" } : { width: "100%" })
-        search.current?.refresh();
+        search.current?.hidePopup();
         const searchInterval = setInterval(() => {
             search.current?.showPopup();
-        }, 250);
+        }, 350);
         setTimeout(() => clearInterval(searchInterval), 1000);
     }
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'search-1' && blockData.theme) {
                     setTheme(blockData.theme);
+                    setTimeout(() => {
+                        search.current?.showPopup();
+                    },310)
                 }
             } catch (error) {
                 console.log('Error parsing message data: ', error);
             }
         }
-        setTimeout(() => {
-            search.current?.showPopup();
-        },210)
     };
     /* SB Code - End */
 
@@ -119,12 +118,12 @@ export default function Search1() {
                 return (
                     <section className="bg-white dark:bg-gray-900 h-full">
                         <div className="w-full pt-5 pb-4" style={{ height: "600px" }}>
-                            <div className="px-4 mx-auto lg:px-0" style={width}>
-                                <AutoCompleteComponent
-                                    cssClass="e-bigger"
+                            <div id={styles["search-list"]} className="px-4 mx-auto lg:px-0" style={width}>
+                                <AutoCompleteComponent 
                                     ref={search}
+                                    cssClass="e-bigger"
                                     dataSource={data}
-                                    fields={fields}
+                                    fields={{ groupBy: 'category', value: 'title' }}
                                     popupHeight="530px"
                                     placeholder="Search"
                                     focus={() => search.current?.showPopup()}
@@ -152,7 +151,7 @@ export default function Search1() {
                                                     <div className="flex h-full items-center relative">
                                                         {data.avatar.map((img: string, index: number) => (
                                                             <span key={index} className="absolute e-avatar e-avatar-circle overflow-hidden" style={{ width: "32px", height: "32px", right: `${index * 22}px`, }}>
-                                                                <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${img}`} className="w-100 h-100 object-cover" alt="logo" />
+                                                                <img className="w-100 h-100 object-cover" src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${img}`} alt="logo" />
                                                             </span>
                                                         ))}
                                                     </div>
@@ -169,12 +168,12 @@ export default function Search1() {
                 return (
                     <section className="bg-body h-100">
                         <div className="w-100 pt-4 pb-3" style={{ height: '600px' }}>
-                            <div className="px-3 px-lg-0 mx-auto" style={width}>
+                            <div id={styles["search-list"]} className="px-3 px-lg-0 mx-auto" style={width}>
                                 <AutoCompleteComponent
-                                    cssClass="e-bigger"
                                     ref={search}
+                                    cssClass="e-bigger"
                                     dataSource={data}
-                                    fields={fields}
+                                    fields={{ groupBy: 'category', value: 'title' }}
                                     popupHeight="510px"
                                     placeholder="Search"
                                     focus={() => search.current?.showPopup()}
@@ -202,7 +201,7 @@ export default function Search1() {
                                                     <div className="d-flex position-relative align-items-center h-100">
                                                         {data.avatar.map((img: string, index: number) => (
                                                             <span key={index} className="position-absolute e-avatar e-avatar-circle overflow-hidden" style={{ width: '32px', height: '32px', right: `${index * 22}px` }}>
-                                                                <img src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${img}`} className="w-100 h-100 object-cover" alt="avatar" />
+                                                                <img className="w-100 h-100 object-cover" src={`/react/essential-ui-kit/blocks/assets/images/common/avatar/${img}`} alt="avatar" />
                                                             </span>
                                                         ))}
                                                     </div>

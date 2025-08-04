@@ -12,7 +12,7 @@ export default function List7() {
 
     const notifications: any[] = [
         {
-            id: "1",
+            id: 1,
             name: "Kristina",
             date: "02:25 PM on 29, July 2024",
             type: "sent you a photo",
@@ -21,7 +21,7 @@ export default function List7() {
             tag: ""
         },
         {
-            id: "2",
+            id: 2,
             name: "Report created successfully",
             date: "02:25 PM on 29, July 2024",
             letter: "PM",
@@ -30,7 +30,7 @@ export default function List7() {
             image: ""
         },
         {
-            id: "3",
+            id: 3,
             name: "Alex Johnson",
             date: "02:25 PM on 29, July 2024",
             type: "sent you a photo",
@@ -39,7 +39,7 @@ export default function List7() {
             tag: ""
         },
         {
-            id: "4",
+            id: 4,
             name: "Reminder: Employee Welfare Meeting today!",
             date: "02:25 PM on 29, July 2024",
             letter: "HR",
@@ -48,7 +48,7 @@ export default function List7() {
             image: ""
         },
         {
-            id: "5",
+            id: 5,
             name: "Floyd Miles",
             date: "02:25 PM on 29, July 2024",
             type: "sent you a photo",
@@ -68,7 +68,7 @@ export default function List7() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'list-7' && blockData.theme) {
@@ -123,7 +123,7 @@ export default function List7() {
                                                 </span>
                                             </div>
                                             <div className="flex items-center">
-                                                <ButtonComponent cssClass="e-icons e-more-horizontal-1 e-outline w-8 h-8 !flex items-center" type="button"></ButtonComponent>
+                                                <ButtonComponent cssClass="e-outline !py-1.5" iconCss="e-icons e-more-horizontal-1" type="button"></ButtonComponent>
                                             </div>
                                         </div>
                                     </div>)}
@@ -157,7 +157,7 @@ export default function List7() {
                                                 </span>
                                             </div>
                                             <div className="d-flex align-items-center">
-                                                <ButtonComponent cssClass="e-icons e-more-horizontal-1 e-outline d-flex align-items-center py-2" type="button"></ButtonComponent>
+                                                <ButtonComponent cssClass="e-outline" iconCss="e-icons e-more-horizontal-1" type="button"></ButtonComponent>
                                             </div>
                                         </div>
                                     </div>)}

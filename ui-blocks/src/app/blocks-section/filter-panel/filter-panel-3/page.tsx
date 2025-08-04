@@ -5,7 +5,6 @@ import { SidebarComponent } from "@syncfusion/ej2-react-navigations";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
-import styles from "./page.module.css";
 
 export default function FilterPanel3() {
     /* SB Code - Start */
@@ -25,7 +24,7 @@ export default function FilterPanel3() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'filter-panel-3' && blockData.theme) {
@@ -56,8 +55,8 @@ export default function FilterPanel3() {
         switch (theme) {
             case 'tailwind':
                 return (
-                    <section className="bg-white dark:bg-gray-800" key={"filter-3-tw"}>
-                        <div id={styles["filter-3"]} style={{ height: "800px", width: width, float: "right" }}>
+                    <section className="bg-white dark:bg-gray-800">
+                        <div key={"filter-3-tw"} style={{ height: "800px", width: width, float: "right" }}>
                             <SidebarComponent ref={sidebar} className="flex flex-col bg-white dark:bg-gray-800" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: "block" }}>
                                 <div>
                                     <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-600">
@@ -114,7 +113,7 @@ export default function FilterPanel3() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-round" iconCss="e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -123,11 +122,11 @@ export default function FilterPanel3() {
                 return (
                     <section className="bg-body">
                         <div style={{ height: "824px", width: width, float: "right" }}>
-                            <SidebarComponent ref={sidebar} className="d-flex flex-column bg-body" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true}>
+                            <SidebarComponent ref={sidebar} className="d-flex flex-column bg-body" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: "block" }}>
                                 <div>
                                     <div className="d-flex justify-content-between align-items-center p-3 border-bottom">
                                         <h2 className="h6 mb-0 fw-bold text-body">Apply Filter</h2>
-                                        <ButtonComponent cssClass="e-flat e-danger" content="Discard"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat e-danger" content="Discard" type="button"></ButtonComponent>
                                     </div>
                                     <div className="flex-grow-1 overflow-auto p-3" style={{ minHeight: "666px" }}>
                                         <div className="row g-3">
@@ -171,15 +170,15 @@ export default function FilterPanel3() {
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-end gap-3 w-100 p-3 border-top">
-                                        <ButtonComponent cssClass="e-flat" content="Save as"></ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary" content="Apply"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat" content="Save as" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary" content="Apply" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-round" iconCss="e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

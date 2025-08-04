@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
-import { Category, ChartComponent, Crosshair, Inject, RangeColumnSeries, SeriesCollectionDirective, SeriesDirective } from "@syncfusion/ej2-react-charts";
+import { Inject, ChartComponent, RangeColumnSeries, SeriesCollectionDirective, SeriesDirective, Crosshair, Category } from "@syncfusion/ej2-react-charts";
 
 export default function BarChart3() {
     /* SB Code - Start */
@@ -35,6 +35,7 @@ export default function BarChart3() {
         majorGridLines: { width: 0 },
         minorTickLines: { width: 0 },
         labelStyle: { fontWeight: '500' },
+        labelIntersectAction: 'None',
         labelRotation: labelRotation,
         interval: 1
     };
@@ -59,6 +60,7 @@ export default function BarChart3() {
 
     const chartLoad = (args: any, lightTheme: string, darkTheme: string): void => {
         args.chart.theme = isDarkMode ? darkTheme : lightTheme;
+        handleResize();
     };
 
     const handleResize = (): void => {
@@ -74,7 +76,7 @@ export default function BarChart3() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'bar-chart-3' && blockData.theme) {
@@ -112,7 +114,7 @@ export default function BarChart3() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-950">
-                        <div key={'barchart-3-tw'} className="h-screen flex justify-center items-center p-4 sm:p-6">
+                        <div key={"barchart-3-tw"} className="h-screen flex justify-center items-center p-4 sm:p-6">
                             <div className="w-full" style={{ maxWidth: '730px' }}>
                                 <div className="flex justify-between items-start">
                                     <div>
@@ -134,15 +136,15 @@ export default function BarChart3() {
                                         </div>
                                         <div className="flex items-center justify-between gap-3">
                                             <div className="e-btn-group hidden sm:block">
-                                                <input type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
+                                                <input type="radio" id="day" name="align" value="D" />
                                                 <label className="e-btn" htmlFor="day">D</label>
-                                                <input type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
+                                                <input type="radio" id="week" name="align" value="W" />
                                                 <label className="e-btn" htmlFor="week">W</label>
-                                                <input type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
+                                                <input type="radio" id="month" name="align" value="M" />
                                                 <label className="e-btn" htmlFor="month">M</label>
-                                                <input type="radio" id="year" name="align" value="Y" defaultChecked aria-label="year" role="button" />
+                                                <input type="radio" id="year" name="align" value="Y" defaultChecked />
                                                 <label className="e-btn" htmlFor="year">Y</label>
-                                                <input type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
+                                                <input type="radio" id="custom" name="align" value="Custom" />
                                                 <label className="e-btn" htmlFor="custom">Custom</label>
                                             </div>
                                             <DropDownButtonComponent ref={rangeDropdownRef} className="e-outline sm:hidden" content="Year" items={[{ text: 'Day' }, { text: 'Week' }, { text: 'Month' }, { text: 'Year' }, { text: 'Custom' }]} type="button"></DropDownButtonComponent>
@@ -150,14 +152,20 @@ export default function BarChart3() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex gap-2 flex-col sm:flex-row justify-start sm:items-center text-gray-500 dark:text-gray-400 mt-5">
-                                    <p className="text-xs">Record temps:</p>
-                                    <div className="flex items-center gap-2 sm:gap-3">
-                                        <p className="text-xs font-medium">26° / -13°C</p>
-                                        <div className="border-l h-4 border-gray-500 dark:border-gray-400"></div>
-                                        <p className="text-xs">Avg rainfall: <span className="font-medium">9.9 cm</span></p>
-                                        <div className="border-l h-4 border-gray-500 dark:border-gray-400"></div>
-                                        <p className="text-xs">Snow: <span className="font-medium">2 days</span></p>
+                                <div className="flex flex-wrap items-center gap-3 text-gray-500 text-xs mb-4 dark:text-white">
+                                    <div className="flex flex-col sm:flex-row sm:items-center sm:gap-1">
+                                        <p>Record temps:</p>
+                                        <p className="font-medium dark:text-white sm:ml-1">26° / -13°C</p>
+                                    </div>
+                                    <div className="border-l h-6 border-gray-200 dark:border-gray-600"></div>
+                                    <div className="flex flex-col sm:flex-row sm:items-center sm:gap-1">
+                                        <p>Avg rainfall:</p>
+                                        <p className="font-medium dark:text-white sm:ml-1">9.9 cm</p>
+                                    </div>
+                                    <div className="border-l h-6 border-gray-200 dark:border-gray-600"></div>
+                                    <div className="flex flex-col sm:flex-row sm:items-center sm:gap-1">
+                                        <p>Snow:</p>
+                                        <p className="font-medium dark:text-white sm:ml-1">2 days</p>
                                     </div>
                                 </div>
                                 <div className="mt-5">
@@ -175,7 +183,7 @@ export default function BarChart3() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div key={'barchart-3-bs'} className="vh-100 d-flex justify-content-center align-items-center p-3 p-sm-4">
+                        <div key={"barchart-3-bs"} className="vh-100 d-flex justify-content-center align-items-center p-3 p-sm-4">
                             <div className="w-100" style={{ maxWidth: '730px' }}>
                                 <div className="d-flex justify-content-between align-items-start">
                                     <div>
@@ -197,15 +205,15 @@ export default function BarChart3() {
                                         </div>
                                         <div className="d-flex align-items-center justify-content-between align-items-center gap-2">
                                             <div className="e-btn-group d-none d-sm-block">
-                                                <input type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
+                                                <input type="radio" id="day" name="align" value="D" />
                                                 <label className="e-btn" htmlFor="day">D</label>
-                                                <input type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
+                                                <input type="radio" id="week" name="align" value="W" />
                                                 <label className="e-btn" htmlFor="week">W</label>
-                                                <input type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
+                                                <input type="radio" id="month" name="align" value="M" />
                                                 <label className="e-btn" htmlFor="month">M</label>
-                                                <input type="radio" id="year" name="align" value="Y" defaultChecked aria-label="year" role="button" />
+                                                <input type="radio" id="year" name="align" value="Y" defaultChecked />
                                                 <label className="e-btn" htmlFor="year">Y</label>
-                                                <input type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
+                                                <input type="radio" id="custom" name="align" value="Custom" />
                                                 <label className="e-btn" htmlFor="custom">Custom</label>
                                             </div>
                                             <DropDownButtonComponent ref={rangeDropdownRef} className="e-outline d-sm-none" content="Year" items={[{ text: 'Day' }, { text: 'Week' }, { text: 'Month' }, { text: 'Year' }, { text: 'Custom' }]} type="button"></DropDownButtonComponent>
@@ -213,14 +221,20 @@ export default function BarChart3() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="d-flex gap-2 flex-column flex-sm-row justify-content-start align-items-sm-center small text-body-secondary mt-4">
-                                    <p className="mb-0">Record temps:</p>
-                                    <div className="d-flex align-items-center gap-2 gap-sm-3">
-                                        <p className="fw-medium mb-0">26° / -13°C</p>
-                                        <div className="border-start border-1 border-dark-subtle" style={{ height: '16px' }}></div>
-                                        <p className="mb-0">Avg rainfall: <span className="fw-medium">9.9 cm</span></p>
-                                        <div className="border-start border-1 border-dark-subtle" style={{ height: '16px' }}></div>
-                                        <p className="mb-0">Snow: <span className="fw-medium">2 days</span></p>
+                                <div className="d-flex flex-wrap align-items-center gap-3 text-secondary small mb-4">
+                                    <div className="d-flex flex-column flex-sm-row">
+                                        <span>Record temps:</span>
+                                        <span className="fw-medium ms-sm-1">26° / -13°C</span>
+                                    </div>
+                                    <div className="border-start border-2 border-secondary" style={{ height: '24px' }}></div>
+                                    <div className="d-flex flex-column flex-sm-row">
+                                        <span>Avg rainfall:</span>
+                                        <span className="fw-medium ms-sm-1">9.9 cm</span>
+                                    </div>
+                                    <div className="border-start border-2 border-secondary" style={{ height: '24px' }}></div>
+                                    <div className="d-flex flex-column flex-sm-row">
+                                        <span>Snow:</span>
+                                        <span className="fw-medium ms-sm-1">2 days</span>
                                     </div>
                                 </div>
                                 <div className="mt-4">

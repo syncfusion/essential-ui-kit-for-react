@@ -9,7 +9,7 @@ export default function ForgetPassword3() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'forgot-password-3' && blockData.theme) {
@@ -38,7 +38,7 @@ export default function ForgetPassword3() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="flex flex-col lg:flex-row mx-auto p-0" style={{ minHeight: '580px' }}>
-                            <div className="w-full lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                            <div className="w-full order-2 lg:order-1 lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                                 <div className="flex flex-wrap mx-0 w-full sm:p-6 xl:p-0 md:p-8 lg:px-6">
                                     <div className="hidden xl:block xl:w-1/6"></div>
                                     <div className="w-full xl:w-2/3">
@@ -69,7 +69,7 @@ export default function ForgetPassword3() {
                                     <div className="hidden xl:block xl:w-1/6"></div>
                                 </div>
                             </div>
-                            <div className="w-full lg:w-5/12">
+                            <div className="w-full order-1 lg:order-2 lg:w-5/12">
                                 <div className="bg-gray-50 dark:bg-gray-950 flex justify-center">
                                     <div className="w-full max-w-md rounded-lg p-4 py-12">
                                         <div className="flex justify-center mb-6">
@@ -79,7 +79,7 @@ export default function ForgetPassword3() {
                                             </div>
                                         </div>
                                         <h2 className="text-2xl font-semibold text-center mb-2 text-gray-900 dark:text-white">Forgot password?</h2>
-                                        <p className="text-md text-center text-gray-700 dark:text-gray-300">Enter your email address and we’ll send a link to reset your password</p>
+                                        <p className="text-md text-center text-gray-700 dark:text-gray-300">Enter your email address and we'll send a link to reset your password</p>
                                         <form action="#" className="mt-6 mb-6" onSubmit={(event) => event.preventDefault()}>
                                             <div className="mb-4">
                                                 <label className="block text-sm mb-1 font-medium text-gray-700 dark:text-gray-300">Email</label>
@@ -87,7 +87,7 @@ export default function ForgetPassword3() {
                                             </div>
                                         </form>
                                         <div className="e-bigger">
-                                            <ButtonComponent className="w-full e-primary" type="submit">Send Reset Link</ButtonComponent>
+                                            <ButtonComponent className="w-full e-primary" content="Send Reset Link" type="submit"></ButtonComponent>
                                         </div>
                                         <span className="flex items-center justify-center gap-2 mt-6">
                                             <p className="text-center text-gray-900 dark:text-white">Return to</p>
@@ -101,8 +101,8 @@ export default function ForgetPassword3() {
                 );
             case 'bootstrap5':
                 return (
-                    <section className="container-fluid d-md-flex d-block flex-wrap mx-auto p-0" style={{ minHeight: '580px' }}>
-                        <div className="col-12 col-lg-7 d-flex align-items-center bg-success p-4 p-lg-4" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                    <section className="container-fluid row d-flex flex-wrap mx-auto p-0" style={{ minHeight: '580px' }}>
+                        <div className="col-12 col-lg-7 order-2 order-lg-1 d-flex align-items-center bg-success p-4 p-lg-4" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                             <div className="row mx-0 w-100 py-5">
                                 <div className="col-xl-2 d-lg-block"></div>
                                 <div className="col-xl-8">
@@ -133,7 +133,7 @@ export default function ForgetPassword3() {
                                 <div className="col-xl-2 d-lg-block"></div>
                             </div>
                         </div>
-                        <div className="col-12 col-lg-5 p-0">
+                        <div className="col-12 col-lg-5 order-1 order-lg-2 p-0">
                             <div className="d-flex justify-content-center bg-body">
                                 <div className="max-w-md bg-body rounded-lg p-4 py-5 w-100" style={{ maxWidth: '450px' }}>
                                     <div className="d-flex justify-content-center mb-4">
@@ -143,7 +143,7 @@ export default function ForgetPassword3() {
                                         </div>
                                     </div>
                                     <h2 className="text-center fs-4 fw-bold mb-2 text-body">Forgot password?</h2>
-                                    <p className="text-center text-light-emphasis m-0">Enter your email address and we’ll send a link to reset your password</p>
+                                    <p className="text-center text-light-emphasis m-0">Enter your email address and we'll send a link to reset your password</p>
                                     <form action="#" className="mt-4 mb-4" onSubmit={(event) => event.preventDefault()}>
                                         <div className="mb-3">
                                             <label className="form-label mb-1 fw-medium text-dark-emphasis small">Email</label>
@@ -151,7 +151,7 @@ export default function ForgetPassword3() {
                                         </div>
                                     </form>
                                     <div className="e-bigger">
-                                        <ButtonComponent className="e-block e-primary" type="submit">Send Reset Link</ButtonComponent>
+                                        <ButtonComponent className="e-block e-primary" content="Send Reset Link" type="submit"></ButtonComponent>
                                     </div>
                                     <div className="d-flex align-items-center justify-content-center gap-1 mt-4">
                                         <p className="text-center text-body mb-0">Return to</p>

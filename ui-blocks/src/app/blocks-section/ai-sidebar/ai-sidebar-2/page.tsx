@@ -57,7 +57,7 @@ export default function AISidebar2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-sidebar-2' && blockData.theme) {
@@ -109,7 +109,7 @@ export default function AISidebar2() {
                                             </div>
                                         </div>
                                         <div className="px-4">
-                                            <ButtonComponent className="w-full" iconCss="e-icons e-plus" type="button" content="New chat"></ButtonComponent>
+                                            <ButtonComponent className="w-full" iconCss="e-icons e-plus" content="New chat" type="button"></ButtonComponent>
                                         </div>
                                         <div className="mt-6">
                                             <ListViewComponent cssClass="e-list-template border-0" dataSource={chatHistory} fields={{ groupBy: 'category', text: 'message' }} template={(data: any) => (
@@ -133,7 +133,7 @@ export default function AISidebar2() {
                                                     <p className="mt-6">7-day trial. Cancel anytime.</p>
                                                 </div>
                                                 <div className="e-card-actions !pb-1 !px-1 !pt-2">
-                                                    <ButtonComponent className="w-full" iconCss="e-icons e-plus" type="button" content="Invite people"></ButtonComponent>
+                                                    <ButtonComponent className="w-full" iconCss="e-icons e-plus" content="Invite people" type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                         </div>
@@ -149,7 +149,7 @@ export default function AISidebar2() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -176,7 +176,7 @@ export default function AISidebar2() {
                                             </div>
                                         </div>
                                         <div className="px-3">
-                                            <ButtonComponent className="w-100 e-outline" iconCss="e-icons e-plus" type="button" content="New chat"></ButtonComponent>
+                                            <ButtonComponent className="w-100 e-outline" iconCss="e-icons e-plus" content="New chat" type="button"></ButtonComponent>
                                         </div>
                                         <div className="mt-4">
                                             <ListViewComponent cssClass="e-list-template border-0 rounded-0" dataSource={chatHistory} fields={{ groupBy: 'category', text: 'message' }} template={(data: any) => (
@@ -201,7 +201,7 @@ export default function AISidebar2() {
                                                     <p className="mt-3 mb-2 text-body-secondary small">7-day trial. Cancel anytime.</p>
                                                 </div>
                                                 <div className="e-card-actions p-0">
-                                                    <ButtonComponent className="w-100" iconCss="e-icons e-plus" type="button" content="Invite people"></ButtonComponent>
+                                                    <ButtonComponent className="w-100" iconCss="e-icons e-plus" content="Invite people" type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                         </div>
@@ -217,7 +217,7 @@ export default function AISidebar2() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

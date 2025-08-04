@@ -9,7 +9,8 @@ import styles from './page.module.css';
 export default function Sidebar11() {
     /* SB Code - Start */ 
     const [theme, setTheme] = useState('tailwind');
-    /* SB Code - End */ 
+    /* SB Code - End */
+    const [backDrop, setBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const data: any[] = [
@@ -50,9 +51,13 @@ export default function Sidebar11() {
         }
     ];
 
+    const handleResize = (): void => {
+        setBackDrop(window.innerWidth <= 640);
+    };
+
     /* SB Code - Start */ 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'sidebar-11' && blockData.theme) {
@@ -68,11 +73,16 @@ export default function Sidebar11() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
+        /* SB Code - End */
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
+            window.removeEventListener('resize', handleResize);
         };
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -80,15 +90,15 @@ export default function Sidebar11() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-950">
-                        <div id={styles["contact-sidebar"]} className="float-right" style={{ height: '600px' }}>
-                            <SidebarComponent key={"sidebar-11-tw"} className="bg-gray-50 dark:bg-gray-900 !border-l !border-gray-200 dark:!border-gray-700" width="256px" ref={sidebar} isOpen={true} position="Right" showBackdrop={true} style={{ display: 'block' }}>
+                        <div id={styles["contact-sidebar"]} style={{ height: '600px' }}>
+                            <SidebarComponent key={"sidebar-11-tw"} ref={sidebar} className="bg-gray-50 dark:bg-gray-900 !border-l !border-gray-200 dark:!border-gray-700" width="256px" isOpen={true} position="Right" showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="py-6 h-screen">
                                     <div className="flex justify-between mb-2 px-3">
                                         <span className="text-base text-gray-900 dark:text-white">Contacts</span>
                                         <span className="flex justify-end">
-                                            <ButtonComponent cssClass="e-medium e-icons e-view-side e-flat mr-2" type="button"></ButtonComponent>
-                                            <ButtonComponent cssClass="e-medium e-icons e-search e-flat mr-2" type="button"></ButtonComponent>
-                                            <ButtonComponent cssClass="e-medium e-icons e-more-horizontal-1 e-flat" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-medium e-flat mr-2" iconCss="e-icons e-view-side" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-medium e-flat mr-2" iconCss="e-icons e-search" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-medium e-flat" iconCss="e-icons e-more-horizontal-1" type="button"></ButtonComponent>
                                         </span>
                                     </div>
                                     <ListViewComponent className="border-0" dataSource={data} template={(data: any) => (
@@ -104,14 +114,14 @@ export default function Sidebar11() {
                                     <hr className="border-gray-200 dark:border-gray-700 my-4 mx-3" />
                                     <div className="flex justify-between items-center px-3 mt-3">
                                         <span className="text-base text-gray-700 dark:text-gray-300">Group Conversations</span>
-                                        <ButtonComponent cssClass="e-medium e-icons e-plus e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-medium e-flat" iconCss="e-icons e-plus" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -119,15 +129,15 @@ export default function Sidebar11() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div id={styles["contact-sidebar"]} className="float-end" style={{ height: '600px' }}>
-                            <SidebarComponent key={"sidebar-11-bs"} width="256px" ref={sidebar} position="Right" showBackdrop={true} isOpen={true} style={{ display: 'block' }}>
+                        <div id={styles["contact-sidebar"]} style={{ height: '600px' }}>
+                            <SidebarComponent key={"sidebar-11-bs"} ref={sidebar} width="256px" position="Right" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="py-4 vh-100">
                                     <div className="d-flex justify-content-between mb-2 px-2 ms-1">
                                         <span className="fs-6 text-body-secondary">Contacts</span>
                                         <span className="d-flex justify-content-end">
-                                            <ButtonComponent className="e-medium e-icons e-view-side e-flat" type="button"></ButtonComponent>
-                                            <ButtonComponent className="e-medium e-icons e-search e-flat ms-2" type="button"></ButtonComponent>
-                                            <ButtonComponent className="e-medium e-icons e-more-horizontal-1 e-flat ms-2" type="button"></ButtonComponent>
+                                            <ButtonComponent className="e-medium e-flat" iconCss="e-icons e-view-side" type="button"></ButtonComponent>
+                                            <ButtonComponent className="e-medium e-flat ms-2" iconCss="e-icons e-search" type="button"></ButtonComponent>
+                                            <ButtonComponent className="e-medium e-flat ms-2" iconCss="e-icons e-more-horizontal-1" type="button"></ButtonComponent>
                                         </span>
                                     </div>
                                     <ListViewComponent className="border-0 e-bigger" dataSource={data} template={(data: any) => (
@@ -140,16 +150,17 @@ export default function Sidebar11() {
                                             </span>
                                         </div>)}
                                     ></ListViewComponent>
+                                    <hr className="mx-3 border-light-subtle opacity-100" />
                                     <div className="d-flex justify-content-between align-items-center mt-3 px-2 ms-1">
                                         <span className="fs-6 text-body-secondary">Group Conversations</span>
-                                        <ButtonComponent className="e-medium e-icons e-plus e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-medium e-flat" iconCss="e-icons e-plus" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="py-3 px-1 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

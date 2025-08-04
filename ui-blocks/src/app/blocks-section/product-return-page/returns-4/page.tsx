@@ -35,7 +35,7 @@ export default function ReturnBlock4() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'returns-4' && blockData.theme) {
@@ -73,11 +73,11 @@ export default function ReturnBlock4() {
                             <div className="sm:mb-8 mb-5" style={stepperStyle}>
                                 <StepperComponent ref={stepper} labelPosition="bottom" activeStep={3}>
                                     <StepsDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"My Products"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Return Reason"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Pickup Option"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Refund Choice"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Confirmation"}></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="My Products"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Return Reason"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Pickup Option"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Refund Choice"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Confirmation"></StepDirective>
                                     </StepsDirective>
                                 </StepperComponent>
                             </div>
@@ -103,8 +103,8 @@ export default function ReturnBlock4() {
                                 </div>
                             </div>
                             <div className="flex justify-end gap-4 lg:gap-3">
-                                <ButtonComponent className="grow sm:grow-0" type="button">Previous</ButtonComponent>
-                                <ButtonComponent isPrimary={true} className="grow sm:grow-0" type="button">Submit to Return</ButtonComponent>
+                                <ButtonComponent className="grow sm:grow-0" content="Previous" type="button"></ButtonComponent>
+                                <ButtonComponent isPrimary={true} className="grow sm:grow-0" content="Submit to Return" type="button"></ButtonComponent>
                             </div>
                         </div>
                     </section>
@@ -117,11 +117,11 @@ export default function ReturnBlock4() {
                             <div className="mb-4" style={stepperStyle}>
                                 <StepperComponent ref={stepper} labelPosition="bottom" activeStep={3}>
                                     <StepsDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"My Products"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Return Reason"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Pickup Option"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Refund Choice"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Confirmation"}></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="My Products"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Return Reason"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Pickup Option"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Refund Choice"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Confirmation"></StepDirective>
                                     </StepsDirective>
                                 </StepperComponent>
                             </div>
@@ -147,8 +147,8 @@ export default function ReturnBlock4() {
                                 </div>
                             </div>
                             <div className="d-flex justify-content-end gap-1">
-                                <ButtonComponent className="e-outline flex-grow-1 flex-sm-grow-0 me-2" type="button">Previous</ButtonComponent>
-                                <ButtonComponent isPrimary={true} className="flex-grow-1 flex-sm-grow-0" type="button">Submit to Return</ButtonComponent>
+                                <ButtonComponent className="e-outline flex-grow-1 flex-sm-grow-0 me-2" content="Previous" type="button"></ButtonComponent>
+                                <ButtonComponent isPrimary={true} className="flex-grow-1 flex-sm-grow-0" content="Submit to Return" type="button"></ButtonComponent>
                             </div>
                         </div>
                     </section>

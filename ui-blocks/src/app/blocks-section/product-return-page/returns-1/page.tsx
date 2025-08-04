@@ -87,7 +87,7 @@ export default function ReturnBlock1() {
     
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'returns-1' && blockData.theme) {
@@ -125,18 +125,18 @@ export default function ReturnBlock1() {
                             <div className="sm:mb-8 mb-5" style={stepperStyle}>
                                 <StepperComponent ref={stepper} labelPosition="bottom">
                                     <StepsDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"My Products"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Return Reason"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Pickup Option"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Refund Choice"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Confirmation"}></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="My Products"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Return Reason"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Pickup Option"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Refund Choice"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Confirmation"></StepDirective>
                                     </StepsDirective>
                                 </StepperComponent>
                             </div>
                             <div>
                                 <p className="mb-4 text-gray-900 font-medium dark:text-white">Select the product you want to return:</p>
                                 <div className="mb-6">
-                                    <GridComponent dataSource={data} key={"grid-1-tw"} width="100%" rowHeight={60} gridLines="None" className="e-bigger" allowTextWrap={true} textWrapSettings={{ wrapMode: "Content" }}>
+                                    <GridComponent key={"grid-1-tw"} dataSource={data} width="100%" rowHeight={60} gridLines="None" className="e-bigger" allowTextWrap={true} textWrapSettings={{ wrapMode: "Content" }}>
                                         <ColumnsDirective>
                                             <ColumnDirective type="checkbox" width="40"></ColumnDirective>
                                             <ColumnDirective field="product" headerText="Product" width="488" template={(data: any) => (
@@ -153,8 +153,8 @@ export default function ReturnBlock1() {
                                     </GridComponent>
                                 </div>
                                 <div className="flex justify-end lg:gap-3 gap-4">
-                                    <ButtonComponent className="grow sm:grow-0" type="button">Cancel</ButtonComponent>
-                                    <ButtonComponent isPrimary={true} className="grow sm:grow-0" type="button">Next</ButtonComponent>
+                                    <ButtonComponent className="grow sm:grow-0" content="Cancel" type="button"></ButtonComponent>
+                                    <ButtonComponent isPrimary={true} className="grow sm:grow-0" content="Next" type="button"></ButtonComponent>
                                 </div>
                             </div>
                         </div>
@@ -168,18 +168,18 @@ export default function ReturnBlock1() {
                             <div className="mb-4" style={stepperStyle}>
                                 <StepperComponent ref={stepper} labelPosition="bottom">
                                     <StepsDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"My Products"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Return Reason"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Pickup Option"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Refund Choice"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Confirmation"}></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="My Products"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Return Reason"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Pickup Option"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Refund Choice"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Confirmation"></StepDirective>
                                     </StepsDirective>
                                 </StepperComponent>
                             </div>
                             <div>
                                 <p className="h6 mb-4 fw-bold text-body">Select the product you want to return:</p>
                                 <div className="mb-4">
-                                    <GridComponent dataSource={data} key={"grid-1-bs"} width="100%" rowHeight={60} gridLines="None" className="e-bigger" allowTextWrap={true} textWrapSettings={{ wrapMode: "Content" }}>
+                                    <GridComponent key={"grid-1-bs"} dataSource={data} width="100%" rowHeight={60} gridLines="None" className="e-bigger" allowTextWrap={true} textWrapSettings={{ wrapMode: "Content" }}>
                                         <ColumnsDirective>
                                             <ColumnDirective type="checkbox" width="40"></ColumnDirective>
                                             <ColumnDirective field="product" headerText="Product" width="438" template={(data: any) => (
@@ -196,8 +196,8 @@ export default function ReturnBlock1() {
                                     </GridComponent>
                                 </div>
                                 <div className="d-flex justify-content-end gap-1">
-                                    <ButtonComponent className="e-outline flex-grow-1 flex-sm-grow-0 me-2" type="button">Cancel</ButtonComponent>
-                                    <ButtonComponent isPrimary={true} className="flex-grow-1 flex-sm-grow-0" type="button">Next</ButtonComponent>
+                                    <ButtonComponent className="e-outline flex-grow-1 flex-sm-grow-0 me-2" content="Cancel" type="button"></ButtonComponent>
+                                    <ButtonComponent isPrimary={true} className="flex-grow-1 flex-sm-grow-0" content="Next" type="button"></ButtonComponent>
                                 </div>
                             </div>
                         </div>

@@ -28,7 +28,7 @@ export default function Navbar3() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'navbar-3' && blockData.theme) {
@@ -68,11 +68,11 @@ export default function Navbar3() {
                                         <span className="text-lg font-semibold text-gray-900 dark:text-white">Company Name</span>
                                     </div>
                                     <div className="flex items-center">
-                                        <ButtonComponent className="sf-icon-notification-bell-02 leading-3 text-base mr-1 sm:mr-2" cssClass="e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent className="leading-3 mr-1 sm:mr-2" cssClass="e-flat" iconCss="sf-icon-notification-bell-02" type="button"></ButtonComponent>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 h-7 hidden sm:block mr-2"></div>
-                                        <ButtonComponent className="e-icons e-grid-view hidden sm:block" cssClass="e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent className="hidden sm:block" cssClass="e-flat" iconCss="e-icons e-grid-view" type="button"></ButtonComponent>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 h-7 hidden sm:block mx-2"></div>
-                                        <ButtonComponent className="e-icons e-people hidden sm:block" cssClass="e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent className="hidden sm:block" cssClass="e-flat" iconCss="e-icons e-people" type="button"></ButtonComponent>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 h-7 hidden lg:block mx-2"></div>
                                         <span className="hidden lg:block py-2">
                                             <DropDownButtonComponent ref={stateDropdown} cssClass="e-flat" items={[{ text: 'New York', iconCss: 'e-icons e-folder' }, { text: 'N. Virginia', iconCss: 'e-icons e-folder' }, { text: 'Washington DC', iconCss: 'e-icons e-folder' }]} type="button">N.Virginia</DropDownButtonComponent>
@@ -82,7 +82,7 @@ export default function Navbar3() {
                                             <DropDownButtonComponent ref={addressDropdown} cssClass="e-flat" items={[{ text: 'Michael Gough @ 1234-567-935' }, { text: 'Roberta Cases @ 1234-567-292' }]} type="button">Bonnie Green @ 1234-567-890</DropDownButtonComponent>
                                         </span>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 h-7 block lg:hidden ms-2"></div>
-                                        <span id={styles.menu} className="block lg:hidden">
+                                        <span id={styles["menu"]} className="block lg:hidden">
                                             <MenuComponent hamburgerMode={true} title="" items={[{ text: 'Home' }, { text: 'Demo' }, { text: 'Features' }, { text: 'Shop' }, { text: 'Pages' }, { text: 'Blogs' }]}></MenuComponent>
                                         </span>
                                     </div>
@@ -104,11 +104,11 @@ export default function Navbar3() {
                                     <h5 className="fw-bold text-body fs-5 mb-0">Company Name</h5>
                                 </div>
                                 <div className="d-flex align-items-center">
-                                    <ButtonComponent className="sf-icon-notification-bell-01 fs-6 me-0 me-sm-3" cssClass="e-flat" type="button"></ButtonComponent>
+                                    <ButtonComponent className="fs-6 me-0 me-sm-3" cssClass="e-flat" iconCss="sf-icon-notification-bell-01" type="button"></ButtonComponent>
                                     <div className="border-end border-secondary-subtle d-none d-sm-block me-3" style={{ height: "24px" }}></div>
-                                    <ButtonComponent className="e-icons e-grid-view d-none d-sm-block e-medium" cssClass="e-flat" type="button"></ButtonComponent>
+                                    <ButtonComponent className="d-none d-sm-block e-medium" cssClass="e-flat" iconCss="e-icons e-grid-view" type="button"></ButtonComponent>
                                     <div className="border-end border-secondary-subtle d-none d-md-block mx-3" style={{ height: "24px" }}></div>
-                                    <ButtonComponent className="e-icons e-people d-none d-md-block e-medium" cssClass="e-flat" type="button"></ButtonComponent>
+                                    <ButtonComponent className="d-none d-md-block e-medium" cssClass="e-flat" iconCss="e-icons e-people" type="button"></ButtonComponent>
                                     <div className="border-end border-secondary-subtle d-none d-lg-block mx-3" style={{ height: "24px" }}></div>
                                     <span className="d-none d-lg-block py-2">
                                         <DropDownButtonComponent ref={stateDropdown} cssClass="e-flat" items={[{ text: "New York", iconCss: "e-icons e-folder" }, { text: "N. Virginia", iconCss: "e-icons e-folder" }, { text: "Washington DC", iconCss: "e-icons e-folder" }]} type="button">N.Virginia</DropDownButtonComponent>
@@ -117,8 +117,8 @@ export default function Navbar3() {
                                     <span className="d-none d-lg-block ms-2">
                                         <DropDownButtonComponent ref={addressDropdown} cssClass="e-flat" items={[{ text: "Michael Gough @ 1234-567-935" }, { text: "Roberta Cases @ 1234-567-292" }]} type="button">Bonnie Green @ 1234-567-890</DropDownButtonComponent>
                                     </span>
-                                    <span id={styles.menu} className="block d-lg-none">
-                                        <MenuComponent items={[{ text: "Home" }, { text: "Demo" }, { text: "Features" }, { text: "Shop" }, { text: "Pages" }, { text: "Blogs" }]} hamburgerMode={true} title=""></MenuComponent>
+                                    <span id={styles["menu"]} className="block d-lg-none">
+                                        <MenuComponent className="bg-body-tertiary" items={[{ text: "Home" }, { text: "Demo" }, { text: "Features" }, { text: "Shop" }, { text: "Pages" }, { text: "Blogs" }]} hamburgerMode={true} title=""></MenuComponent>
                                     </span>
                                 </div>
                             </div>

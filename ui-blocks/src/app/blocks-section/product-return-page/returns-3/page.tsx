@@ -36,7 +36,7 @@ export default function ReturnBlock3() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'returns-3' && blockData.theme) {
@@ -74,11 +74,11 @@ export default function ReturnBlock3() {
                             <div className="sm:mb-8 mb-5" style={stepperStyle}>
                                 <StepperComponent ref={stepper} labelPosition="bottom" activeStep={2}>
                                     <StepsDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"My Products"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Return Reason"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Pickup Option"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Refund Choice"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Confirmation"}></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="My Products"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Return Reason"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Pickup Option"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Refund Choice"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Confirmation"></StepDirective>
                                     </StepsDirective>
                                 </StepperComponent>
                             </div>
@@ -105,8 +105,8 @@ export default function ReturnBlock3() {
                             </div>
                             <MessageComponent className="mb-6 items-center" showIcon={false} showCloseIcon={true} content="If you opt for FedEx automated pickup, follow the instructions for a seamless return process."></MessageComponent>
                             <div className="flex justify-end lg:gap-3 gap-4">
-                                <ButtonComponent className="grow sm:grow-0" type="button">Previous</ButtonComponent>
-                                <ButtonComponent isPrimary={true} className="grow sm:grow-0" type="button">Next</ButtonComponent>
+                                <ButtonComponent className="grow sm:grow-0" content="Previous" type="button"></ButtonComponent>
+                                <ButtonComponent isPrimary={true} className="grow sm:grow-0" content="Next" type="button"></ButtonComponent>
                             </div>
                         </div>
                     </section>
@@ -119,11 +119,11 @@ export default function ReturnBlock3() {
                             <div className="mb-4" style={stepperStyle}>
                                 <StepperComponent ref={stepper} labelPosition="bottom" activeStep={2}>
                                     <StepsDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"My Products"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Return Reason"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Pickup Option"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Refund Choice"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Confirmation"}></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="My Products"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Return Reason"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Pickup Option"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Refund Choice"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Confirmation"></StepDirective>
                                     </StepsDirective>
                                 </StepperComponent>
                             </div>
@@ -150,8 +150,8 @@ export default function ReturnBlock3() {
                             </div>
                             <MessageComponent className="mb-4 align-items-center" showIcon={false} showCloseIcon={true} content="If you opt for FedEx automated pickup, follow the instructions for a seamless return process."></MessageComponent>
                             <div className="d-flex justify-content-end gap-1">
-                                <ButtonComponent className="e-outline flex-grow-1 flex-sm-grow-0 me-2" type="button">Previous</ButtonComponent>
-                                <ButtonComponent isPrimary={true} className="flex-grow-1 flex-sm-grow-0" type="button">Next</ButtonComponent>
+                                <ButtonComponent className="e-outline flex-grow-1 flex-sm-grow-0 me-2" content="Previous" type="button"></ButtonComponent>
+                                <ButtonComponent isPrimary={true} className="flex-grow-1 flex-sm-grow-0" content="Next" type="button"></ButtonComponent>
                             </div>
                         </div>
                     </section>

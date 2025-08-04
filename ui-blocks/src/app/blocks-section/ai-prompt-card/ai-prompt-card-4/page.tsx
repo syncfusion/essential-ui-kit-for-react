@@ -9,7 +9,7 @@ export default function AIPromptCard4() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-prompt-card-4' && blockData.theme) {
@@ -43,7 +43,7 @@ export default function AIPromptCard4() {
                                     <div>
                                         <img className="rounded-lg" src="/react/essential-ui-kit/blocks/assets/images/ai/prompt-card/visual-prompt-card/mid-journey.jpg" alt="mid journey" />
                                     </div>
-                                    <div className="e-card rounded-lg justify-center w-10/12" style={{ bottom: "10%"}}>
+                                    <div className="e-card rounded-lg border-none justify-center w-10/12" style={{ bottom: "10%" }}>
                                         <div className="e-card-header !w-full !px-4 !pb-2 !pt-4">
                                             <h2 className="text-sm font-medium text-gray-900 dark:text-white">Midjourney</h2>
                                         </div>
@@ -56,7 +56,7 @@ export default function AIPromptCard4() {
                                     <div >
                                         <img className="rounded-lg" src="/react/essential-ui-kit/blocks/assets/images/ai/prompt-card/visual-prompt-card/alien-fish.jpg" alt="alien fish" />
                                     </div>
-                                    <div className="e-card rounded-lg justify-center w-10/12" style={{ bottom: "10%"}}>
+                                    <div className="e-card rounded-lg border-none justify-center w-10/12" style={{ bottom: "10%" }}>
                                         <div className="e-card-header !w-full !px-4 !pb-2 !pt-4">
                                             <h2 className="text-sm font-medium text-gray-900 dark:text-white">DALL-E</h2>
                                         </div>

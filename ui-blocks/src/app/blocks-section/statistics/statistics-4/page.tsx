@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
+import styles from './page.module.css';
 
 export default function Statistics4() {
     /* SB Code - Start */
@@ -45,7 +46,7 @@ export default function Statistics4() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'statistics-4' && blockData.theme) {
@@ -73,7 +74,7 @@ export default function Statistics4() {
             case 'tailwind':
                 return (
                     <section className="bg-gray-50 dark:bg-gray-900">
-                        <div className="px-4 sm:px-6 xl:px-11 py-12">
+                        <div id={styles["wellness-metrics"]} className="px-4 sm:px-6 xl:px-11 py-12">
                             <div className="grid sm:grid-cols-2 gap-6 lg:gap-4 lg:grid-cols-4">
                                 {metricsData.map((data, index) => (
                                     <div key={index} className="e-card pt-6 rounded-lg shadow-none">
@@ -96,7 +97,7 @@ export default function Statistics4() {
                                             </div>
                                             <div className="e-card-separator"></div>
                                             <div className="e-card-actions !px-4 !py-2">
-                                                <ButtonComponent cssClass="e-flat e-primary" iconCss="e-icons e-chevron-right" iconPosition="Right" type="button" content="View Details"></ButtonComponent>
+                                                <ButtonComponent cssClass="e-flat e-primary" iconCss="e-icons e-chevron-right" iconPosition="Right" content="View Details" type="button"></ButtonComponent>
                                             </div>
                                         </div>
                                     </div>
@@ -108,7 +109,7 @@ export default function Statistics4() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body-tertiary">
-                        <div className="px-3 px-sm-4 px-xl-5 py-5">
+                        <div id={styles["wellness-metrics"]} className="px-3 px-sm-4 px-xl-5 py-5">
                             <div className="row g-4 g-lg-3">
                                 {metricsData.map((data, index) => (
                                     <div key={index} className="col-12 col-sm-6 col-lg-3">

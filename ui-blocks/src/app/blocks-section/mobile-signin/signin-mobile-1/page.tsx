@@ -10,7 +10,7 @@ export default function SigninMobile1() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'signin-mobile-1' && blockData.theme) {
@@ -48,17 +48,17 @@ export default function SigninMobile1() {
                                 <p className="text-md text-center text-gray-700 px-5 dark:text-gray-300">Please confirm your country code and enter your mobile number</p>
                                 <form action="#" className="mt-6" onSubmit={(event) => event.preventDefault()}>
                                     <div className="flex space-x-4">
-                                        <div className="w-1/3">
+                                        <div className="w-1/3 sm:w-1/4">
                                             <label className="block text-sm mb-1 font-medium text-gray-700 dark:text-gray-300">Country code</label>
                                             <DropDownListComponent cssClass="e-bigger" placeholder="+1" beforeOpen={(event) => (event.cancel = true)}></DropDownListComponent>
                                         </div>
-                                        <div className="w-2/3">
+                                        <div className="w-2/3 sm:w-3/4">
                                             <label className="block text-sm mb-1 font-medium text-gray-700 dark:text-gray-300"> Mobile number</label>
                                             <MaskedTextBoxComponent cssClass="e-bigger" mask="9999999999" promptChar=" " placeholder="432 432 4321"></MaskedTextBoxComponent>
                                         </div>
                                     </div>
                                     <div className="e-bigger mt-6">
-                                        <ButtonComponent className="w-full text-lg e-primary" type="submit">Continue</ButtonComponent>
+                                        <ButtonComponent className="w-full text-lg e-primary" content="Continue" type="submit"></ButtonComponent>
                                     </div>
                                 </form>
                             </div>
@@ -81,17 +81,17 @@ export default function SigninMobile1() {
                             </div>
                             <form action="#" className="mt-4" onSubmit={(event) => event.preventDefault()}>
                                 <div className="d-flex justify-content-center gap-3 row p-0">
-                                    <div className="col-4 col-lg-3 p-0">
+                                    <div className="col-4 col-md-3 p-0">
                                         <label className="form-label fw-medium text-dark-emphasis small" htmlFor="country-code">Country code</label>
                                         <DropDownListComponent cssClass="e-bigger" placeholder="+1" beforeOpen={(event) => (event.cancel = true)}></DropDownListComponent>
                                     </div>
-                                    <div className="col-7 col-lg-8 m-0">
+                                    <div className="col-7 col-md-8 m-0 p-0">
                                         <label className="form-label fw-medium text-dark-emphasis small" htmlFor="mobile-number">Mobile number</label>
                                         <MaskedTextBoxComponent cssClass="e-bigger" mask="9999999999" promptChar=" " placeholder="432 432 4321"></MaskedTextBoxComponent>
                                     </div>
                                 </div>
                                 <div className="mt-4 e-bigger">
-                                    <ButtonComponent cssClass="e-block e-primary" type="submit">Continue</ButtonComponent>
+                                    <ButtonComponent cssClass="e-block e-primary" content="Continue" type="submit"></ButtonComponent>
                                 </div>
                             </form>
                         </div>

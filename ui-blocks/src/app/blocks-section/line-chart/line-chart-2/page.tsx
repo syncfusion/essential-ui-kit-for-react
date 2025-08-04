@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
-import { Category, ChartComponent, DateTime, Inject, MultiColoredLineSeries, SeriesCollectionDirective, SeriesDirective, Tooltip } from "@syncfusion/ej2-react-charts";
+import { Inject, ChartComponent, SeriesCollectionDirective, SeriesDirective, MultiColoredLineSeries, Category, DateTime, Tooltip } from "@syncfusion/ej2-react-charts";
 
 export default function LineChart2() {
     /* SB Code - Start */
@@ -47,6 +47,7 @@ export default function LineChart2() {
         labelFormat: 'y',
         intervalType: 'Years',
         edgeLabelPlacement: 'Shift',
+        labelIntersectAction: 'None',
         majorGridLines: { width: 0 },
         labelStyle: { fontWeight: '500' },
         labelRotation: labelRotation,
@@ -72,6 +73,7 @@ export default function LineChart2() {
 
     const chartLoad = (args: any, lightTheme: string, darkTheme: string): void => {
         args.chart.theme = isDarkMode ? darkTheme : lightTheme;
+        handleResize();
     };
 
     const handleResize = (): void => {
@@ -84,7 +86,7 @@ export default function LineChart2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'line-chart-2' && blockData.theme) {
@@ -109,8 +111,8 @@ export default function LineChart2() {
             chartRef.current.refresh();
         }
         const newChartData = rainFallData.map((value: number, index: number) => ({
-            x: new Date(2024, -index, 1),
-            y: parseFloat((value * 3).toFixed(1)),
+            xAxis: new Date(2024, -index, 1),
+            yAxis: parseFloat((value * 3).toFixed(1)),
             color: palettes[Math.floor(index / 11)]
         }));
         setChartData(newChartData);
@@ -128,7 +130,7 @@ export default function LineChart2() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-950">
-                        <div key={'linechart-2-tw'} className="h-screen flex justify-center p-4 sm:p-6">
+                        <div key={"linechart-2-tw"} className="h-screen flex justify-center p-4 sm:p-6">
                             <div className="w-full" style={{ maxWidth: '640px' }}>
                                 <div className="flex justify-between items-start">
                                     <div>
@@ -146,7 +148,7 @@ export default function LineChart2() {
                                     <ChartComponent ref={chartRef} chartArea={{ border: { width: 0 } }} width="100%" height="250px" primaryXAxis={primaryXAxis} primaryYAxis={primaryYAxis} tooltip={tooltip} load={(args) => chartLoad(args, 'Tailwind3', 'Tailwind3Dark')}>
                                         <Inject services={[MultiColoredLineSeries, DateTime, Tooltip, Category]} />
                                         <SeriesCollectionDirective>
-                                            <SeriesDirective dataSource={chartData} xName="x" yName="y" type="MultiColoredLine" width={1} pointColorMapping="color"></SeriesDirective>
+                                            <SeriesDirective dataSource={chartData} xName="xAxis" yName="yAxis" type="MultiColoredLine" width={1} pointColorMapping="color"></SeriesDirective>
                                         </SeriesCollectionDirective>
                                     </ChartComponent>
                                 </div>
@@ -157,7 +159,7 @@ export default function LineChart2() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div key={'linechart-2-bs'} className="vh-100 d-flex justify-content-center p-3 p-sm-4">
+                        <div key={"linechart-2-bs"} className="vh-100 d-flex justify-content-center p-3 p-sm-4">
                             <div className="w-100" style={{ maxWidth: '640px' }}>
                                 <div className="d-flex justify-content-between align-items-start">
                                     <div>
@@ -175,7 +177,7 @@ export default function LineChart2() {
                                     <ChartComponent ref={chartRef} chartArea={{ border: { width: 0 } }} width="100%" height="250px" primaryXAxis={primaryXAxis} primaryYAxis={primaryYAxis} tooltip={tooltip} load={(args) => chartLoad(args, 'Bootstrap5', 'Bootstrap5Dark')}>
                                         <Inject services={[MultiColoredLineSeries, DateTime, Tooltip, Category]} />
                                         <SeriesCollectionDirective>
-                                            <SeriesDirective dataSource={chartData} xName="x" yName="y" type="MultiColoredLine" width={1} pointColorMapping="color"></SeriesDirective>
+                                            <SeriesDirective dataSource={chartData} xName="xAxis" yName="yAxis" type="MultiColoredLine" width={1} pointColorMapping="color"></SeriesDirective>
                                         </SeriesCollectionDirective>
                                     </ChartComponent>
                                 </div>

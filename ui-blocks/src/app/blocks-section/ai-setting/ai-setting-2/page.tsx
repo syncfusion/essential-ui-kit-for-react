@@ -15,7 +15,7 @@ export default function AISetting2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-setting-2' && blockData.theme) {
@@ -60,7 +60,7 @@ export default function AISetting2() {
                                                 <span className="e-avatar e-avatar-large e-avatar-circle">
                                                     <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
                                                 </span>
-                                                <span className="e-badge e-badge-circle absolute bottom-0 right-0 bg-gray-100 dark:bg-gray-700"><i className="e-icons e-edit text-gray-500 dark:text-gray-200"></i></span>
+                                                <span className="e-badge e-badge-circle absolute bottom-0 right-0 bg-gray-100 dark:bg-gray-700"><span className="e-icons e-edit text-gray-500 dark:text-gray-200"></span></span>
                                             </div>
                                         </div>
                                         <div className="flex flex-col gap-6 sm:gap-4 text-sm font-medium text-gray-900 dark:text-white">
@@ -106,8 +106,8 @@ export default function AISetting2() {
                                             <SwitchComponent checked={true}></SwitchComponent>
                                         </div>
                                         <div className="flex gap-3 self-end">
-                                            <ButtonComponent type="button" disabled={true}>Cancel</ButtonComponent>
-                                            <ButtonComponent cssClass="e-primary" type="button">Save changes</ButtonComponent>
+                                            <ButtonComponent content="Cancel" type="button" disabled={true}></ButtonComponent>
+                                            <ButtonComponent cssClass="e-primary" content="Save changes" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +135,7 @@ export default function AISetting2() {
                                                 <span className="e-avatar e-avatar-large e-avatar-circle">
                                                     <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
                                                 </span>
-                                                <span className="e-badge e-badge-circle position-absolute bottom-0 end-0 bg-body-secondary"><i className="e-icons e-edit small text-body-secondary"></i></span>
+                                                <span className="e-badge e-badge-circle position-absolute bottom-0 end-0 bg-body-secondary"><span className="e-icons e-edit small text-body-secondary"></span></span>
                                             </div>
                                         </div>
                                         <div className="d-flex flex-column gap-3 fs-6 fw-medium text-body mt-2">
@@ -181,8 +181,8 @@ export default function AISetting2() {
                                             <SwitchComponent cssClass="e-small" checked={true}></SwitchComponent>
                                         </div>
                                         <div className="d-flex gap-3 align-self-end">
-                                            <ButtonComponent cssClass="e-outline" type="button" disabled={true}>Cancel</ButtonComponent>
-                                            <ButtonComponent cssClass="e-primary" type="button">Save changes</ButtonComponent>
+                                            <ButtonComponent cssClass="e-outline" content="Cancel" type="button" disabled={true}></ButtonComponent>
+                                            <ButtonComponent cssClass="e-primary" content="Save changes" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>

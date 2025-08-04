@@ -10,6 +10,7 @@ export default function Sidebar1() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */ 
+    const [backDrop, setBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
     const accordion = useRef<AccordionComponent | null>(null);
 
@@ -31,9 +32,13 @@ export default function Sidebar1() {
         }
     ];
     
+    const handleResize = (): void => {
+        setBackDrop(window.innerWidth <= 640);
+    };
+    
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'sidebar-1' && blockData.theme) {
@@ -52,11 +57,16 @@ export default function Sidebar1() {
         setTimeout(() => {
             accordion.current?.refresh();
         }, 500);
+        /* SB Code - End */
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
+            window.removeEventListener('resize', handleResize);
         };
-        /* SB Code - End */
     }, []);
     
     const getContent = () => {
@@ -65,7 +75,7 @@ export default function Sidebar1() {
                 return (
                     <section className="bg-white dark:bg-gray-950">
                         <div id={styles["simple-sidebar"]} style={{ height: '710px' }}>
-                            <SidebarComponent key={"sidebar-1-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-1-tw"} ref={sidebar} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="h-screen">
                                     <div className="flex items-center py-4 px-3">
                                         <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
@@ -83,7 +93,7 @@ export default function Sidebar1() {
                                         ></ListViewComponent>
                                     </div>
                                     <hr className="border-gray-200 dark:border-gray-700 m-4" />
-                                    <AccordionComponent className="bg-transparent !border-0" ref={accordion} expandMode="Single">
+                                    <AccordionComponent ref={accordion} className="bg-transparent !border-0" expandMode="Single">
                                         <AccordionItemsDirective>
                                             <AccordionItemDirective iconCss="e-icons e-notes e-medium" cssClass="!border-0" header={() => <div className="text-base font-normal pl-2">News</div>}></AccordionItemDirective>
                                             <AccordionItemDirective iconCss="e-icons sf-icon-announcement-01 text-base" cssClass="!border-0" header={() => <div className="text-base font-normal pl-2">Events</div>}></AccordionItemDirective>
@@ -106,7 +116,7 @@ export default function Sidebar1() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -115,7 +125,7 @@ export default function Sidebar1() {
                 return (
                     <section className="bg-body">
                         <div id={styles["simple-sidebar"]} style={{ height: '710px' }}>
-                            <SidebarComponent key={"sidebar-1-bs"} width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-1-bs"} ref={sidebar} width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="min-vh-100">
                                     <div className="d-flex align-items-center p-3">
                                         <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
@@ -134,8 +144,8 @@ export default function Sidebar1() {
                                             </div>)}
                                         ></ListViewComponent>
                                     </div>
-                                    <p className="m-3 fs-6 text-body-secondary">Others</p>
-                                    <AccordionComponent className="bg-transparent border-0" ref={accordion} expandMode="Single">
+                                    <hr className="mx-3 border-light-subtle opacity-100" />
+                                    <AccordionComponent ref={accordion} className="bg-transparent border-0" expandMode="Single">
                                         <AccordionItemsDirective>
                                             <AccordionItemDirective iconCss="e-icons e-notes e-medium" cssClass="border-0" header={() => <div className="fs-6 fw-normal ps-1">News</div>}></AccordionItemDirective>
                                             <AccordionItemDirective iconCss="e-icons sf-icon-announcement-01 fs-6" cssClass="border-0" header={() => <div className="fs-6 fw-normal ps-1">Events</div>}></AccordionItemDirective>
@@ -158,7 +168,7 @@ export default function Sidebar1() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="py-3 px-1 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

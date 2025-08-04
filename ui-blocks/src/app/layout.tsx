@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: "Essential UI Kit for React | Syncfusion",
-  description: "Build your web apps with 230+ responsive UI Blocks for React, compatible with Tailwind and Bootstrap 5.3."
+  description: "Build your web apps with 260+ responsive UI Blocks for React, compatible with Tailwind and Bootstrap 5.3."
 };
 
 export default function RootLayout({

@@ -1,3 +1,8 @@
 #dialog :global(.e-dlg-content) {
     padding: 0;
 }
+
+#dialog :global(.e-dlg-header-content),
+#dialog :global(.e-footer-content) {
+    border: 0;
+}

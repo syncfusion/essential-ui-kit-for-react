@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
-import { Category, ChartComponent, Inject, SeriesCollectionDirective, SeriesDirective, SplineSeries, Tooltip } from "@syncfusion/ej2-react-charts";
+import { Inject, ChartComponent, SeriesCollectionDirective, SeriesDirective, SplineSeries, Category, Tooltip } from "@syncfusion/ej2-react-charts";
 
 export default function LineChart1() {
     /* SB Code - Start */
@@ -15,24 +15,25 @@ export default function LineChart1() {
     const rangeDropdownRef = useRef<DropDownButtonComponent | null>(null);
 
     const chartData: any[] = [
-        { x: 'Jan', y: 400 },
-        { x: 'Feb', y: 5000 },
-        { x: 'Mar', y: 6000 },
-        { x: 'Apr', y: 20000 },
-        { x: 'May', y: 10000 },
-        { x: 'Jun', y: 800 },
-        { x: 'Jul', y: 8500 },
-        { x: 'Aug', y: 10000 },
-        { x: 'Sep', y: 8500 },
-        { x: 'Oct', y: 10000 },
-        { x: 'Nov', y: 500 },
-        { x: 'Dec', y: 15000 }
+        { xAxis: 'Jan', yAxis: 400 },
+        { xAxis: 'Feb', yAxis: 5000 },
+        { xAxis: 'Mar', yAxis: 6000 },
+        { xAxis: 'Apr', yAxis: 20000 },
+        { xAxis: 'May', yAxis: 10000 },
+        { xAxis: 'Jun', yAxis: 800 },
+        { xAxis: 'Jul', yAxis: 8500 },
+        { xAxis: 'Aug', yAxis: 10000 },
+        { xAxis: 'Sep', yAxis: 8500 },
+        { xAxis: 'Oct', yAxis: 10000 },
+        { xAxis: 'Nov', yAxis: 500 },
+        { xAxis: 'Dec', yAxis: 15000 }
     ];
 
     const primaryXAxis: object = {
         valueType: 'Category',
         edgeLabelPlacement: 'Shift',
         labelStyle: { fontWeight: '500' },
+        labelIntersectAction: 'None',
         labelRotation: labelRotation,
         interval: 1
     };
@@ -54,6 +55,7 @@ export default function LineChart1() {
 
     const chartLoad = (args: any, lightTheme: string, darkTheme: string): void => {
         args.chart.theme = isDarkMode ? darkTheme : lightTheme;
+        handleResize();
     };
 
     const handleResize = (): void => {
@@ -66,7 +68,7 @@ export default function LineChart1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'line-chart-1' && blockData.theme) {
@@ -104,7 +106,7 @@ export default function LineChart1() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-950">
-                        <div key={'linechart-1-tw'} className="h-screen flex justify-center p-4 sm:p-6">
+                        <div key={"linechart-1-tw"} className="h-screen flex justify-center p-4 sm:p-6">
                             <div className="w-full" style={{ maxWidth: '1080px' }}>
                                 <div className="flex justify-between flex-col sm:flex-row sm:items-start gap-4">
                                     <div>
@@ -121,7 +123,7 @@ export default function LineChart1() {
                                     <ChartComponent ref={chartRef} chartArea={{ border: { width: 0 } }} width="100%" height="360px" primaryXAxis={primaryXAxis} primaryYAxis={primaryYAxis} tooltip={tooltip} useGroupingSeparator={true} load={(args) => chartLoad(args, 'Tailwind3', 'Tailwind3Dark')}>
                                         <Inject services={[SplineSeries, Tooltip, Category]} />
                                         <SeriesCollectionDirective>
-                                            <SeriesDirective dataSource={chartData} xName="x" yName="y" type="Spline" width={3} fill="#267DDA" marker={{ visible: true, width: 8, height: 8, isFilled: true, border: { color: '#FFFFFF' } }}></SeriesDirective>
+                                            <SeriesDirective dataSource={chartData} xName="xAxis" yName="yAxis" type="Spline" width={3} fill="#267DDA" marker={{ visible: true, width: 8, height: 8, isFilled: true, border: { color: isDarkMode?'#1F2937':'#FFFFFF' } }}></SeriesDirective>
                                         </SeriesCollectionDirective>
                                     </ChartComponent>
                                 </div>
@@ -132,7 +134,7 @@ export default function LineChart1() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div key={'linechart-1-bs'} className="vh-100 d-flex justify-content-center p-4 p-sm-5">
+                        <div key={"linechart-1-bs"} className="vh-100 d-flex justify-content-center p-4 p-sm-5">
                             <div className="w-100" style={{ maxWidth: '1080px' }}>
                                 <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-start">
                                     <div>
@@ -149,7 +151,7 @@ export default function LineChart1() {
                                     <ChartComponent ref={chartRef} chartArea={{ border: { width: 0 } }} width="100%" height="360px" primaryXAxis={primaryXAxis} primaryYAxis={primaryYAxis} tooltip={tooltip} useGroupingSeparator={true} load={(args) => chartLoad(args, 'Bootstrap5', 'Bootstrap5Dark')}>
                                         <Inject services={[SplineSeries, Tooltip, Category]} />
                                         <SeriesCollectionDirective>
-                                            <SeriesDirective dataSource={chartData} xName="x" yName="y" type="Spline" width={3} fill="#006EEF" marker={{ visible: true, width: 8, height: 8, isFilled: true, border: { color: '#FFFFFF' } }}></SeriesDirective>
+                                            <SeriesDirective dataSource={chartData} xName="xAxis" yName="yAxis" type="Spline" width={3} fill="#006EEF" marker={{ visible: true, width: 8, height: 8, isFilled: true, border: { color: isDarkMode?'#212529':'#FFFFFF' } }}></SeriesDirective>
                                         </SeriesCollectionDirective>
                                     </ChartComponent>
                                 </div>

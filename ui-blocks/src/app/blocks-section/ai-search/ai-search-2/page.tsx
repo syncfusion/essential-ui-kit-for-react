@@ -9,11 +9,11 @@ export default function AISearch2() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    let overflowMode: OverflowMode = 'Popup';
     const [width, setWidth] = useState<{ maxWidth: string } | { width: string }>({ maxWidth: '520px'});
     const search = useRef<AutoCompleteComponent | null>(null);
     const tab = useRef<TabComponent | null>(null);
     const isTabSwitch = useRef(false);
+    let overflowMode: OverflowMode = 'Popup';
 
     const data: any[] = [
        {
@@ -120,7 +120,7 @@ export default function AISearch2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-search-2' && blockData.theme) {
@@ -153,7 +153,7 @@ export default function AISearch2() {
                 return (
                     <section className="bg-white dark:bg-gray-900 h-full">
                         <div className="w-full pt-5 pb-4" style={{ height: "750px" }}>
-                            <div id={styles.search_list} className="px-4 mx-auto sm:px-0" style={width}>
+                            <div id={styles["search-list"]} className="px-4 mx-auto sm:px-0" style={width}>
                                 <AutoCompleteComponent
                                     key={"search-2-tw"}
                                     ref={search}
@@ -166,7 +166,7 @@ export default function AISearch2() {
                                     focus={updatePopup}
                                     created={openPopup}
                                     headerTemplate={() => (
-                                        <div id={styles.search_tab}>
+                                        <div id={styles["search-tab"]}>
                                             <TabComponent ref={tab} selecting={select} overflowMode={overflowMode}>
                                                 <TabItemsDirective>
                                                     <TabItemDirective
@@ -229,11 +229,10 @@ export default function AISearch2() {
                 return (
                     <section className="bg-body h-100">
                         <div className="w-100 pt-3 pb-3 h-100" style={{ height: "750px" }}>
-                            <div id={styles.search_list} className="px-3 mx-auto" style={width}>
+                            <div id={styles["search-list"]} className="px-3 mx-auto" style={width}>
                                 <AutoCompleteComponent
                                     key={"search-2-bs"}
-                                    id={styles.notification}
-                                    cssClass="e-bigger"
+                                    cssClass="e-bigger mt-2"
                                     ref={search}
                                     dataSource={data}
                                     fields={{ value: "name" }}
@@ -243,8 +242,8 @@ export default function AISearch2() {
                                     focus={updatePopup}
                                     created={openPopup}
                                     headerTemplate={() => (
-                                        <div id={styles.search_tab}>
-                                            <TabComponent ref={tab} selecting={select} overflowMode={overflowMode}>
+                                        <div id={styles["search-tab"]}>
+                                            <TabComponent ref={tab} cssClass="mt-2" selecting={select} overflowMode={overflowMode}>
                                                 <TabItemsDirective>
                                                     <TabItemDirective
                                                         headerTemplate={() => (

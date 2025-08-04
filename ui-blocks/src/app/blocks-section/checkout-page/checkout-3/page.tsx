@@ -20,7 +20,7 @@ export default function Checkout3() {
         },
         {
             image: "apple-iPad.png",
-            description: "Apple iPad (10th Generation): With A14 Bionic Chip, 27.69 cm (10.9″) Liquid Retina Display, 64GB, Wi-Fi 6, 12MP Front/12MP Back Camera, Touch ID, All-Day Battery Life – Blue",
+            description: "Apple iPad (10th Generation): With A14 Bionic Chip, 27.69 cm (10.9″) Liquid Retina Display, 64GB, Wi-Fi 6, 12MP Front/12MP Back Camera, Touch ID, All-Day Battery Life - Blue",
             quantity: 1,
             amount: "$2,000"
         },
@@ -32,7 +32,7 @@ export default function Checkout3() {
         },
         {
             image: "apple-magic-keyboard.png",
-            description: "Apple Magic Keyboard - US English – Silver (For Mac with macOS 11.3 or later, iPad running iPadOS 14.5 or later)",
+            description: "Apple Magic Keyboard - US English - Silver (For Mac with macOS 11.3 or later, iPad running iPadOS 14.5 or later)",
             quantity: 1,
             amount: "$1,000"
         },
@@ -48,11 +48,11 @@ export default function Checkout3() {
             quantity: 1,
             amount: "$1,900"
         }
-      ];
+    ];
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'checkout-3' && blockData.theme) {
@@ -206,10 +206,10 @@ export default function Checkout3() {
                                     </div>
                                     <div className="flex flex-col md:flex-row items-center justify-center pt-8 gap-4 sm:gap-4 md:gap-0 lg:gap-0 xl:gap-0">
                                         <div className="w-full md:w-1/2 md:pr-3">
-                                            <ButtonComponent className="w-full text-base e-primary" type="submit">Proceed to payment</ButtonComponent>
+                                            <ButtonComponent className="w-full text-base e-primary" content="Proceed to payment" type="submit"></ButtonComponent>
                                         </div>
                                         <div className="w-full md:w-1/2 md:pl-3">
-                                            <ButtonComponent className="w-full text-base e-outline" type="submit">Return to shopping</ButtonComponent>
+                                            <ButtonComponent className="w-full text-base e-outline" content="Return to shopping" type="submit"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -259,7 +259,7 @@ export default function Checkout3() {
                                                 <div className="col-md-6 ps-lg-2">
                                                     <label className="fs-6 fw-medium text-dark-emphasis mb-1">Last name</label>
                                                     <TextBoxComponent cssClass="e-bigger" type="text" name="lastName" placeholder="Last name" floatLabelType="Never"></TextBoxComponent>
-                                            </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="mb-3">
@@ -341,8 +341,8 @@ export default function Checkout3() {
                                         <div className="fs-6 fw-medium text-body">$9,599.00</div>
                                     </div>
                                     <div className="d-flex flex-column flex-md-row align-items-center justify-content-between pt-4">
-                                        <ButtonComponent className="e-primary e-block mb-3 mb-md-0 me-md-3" type="submit">Proceed to payment</ButtonComponent>
-                                        <ButtonComponent className="e-secondary e-block" type="submit">Return to shopping</ButtonComponent>
+                                        <ButtonComponent className="e-primary e-block mb-3 mb-md-0 me-md-3" content="Proceed to payment" type="submit"></ButtonComponent>
+                                        <ButtonComponent className="e-secondary e-block" content="Return to shopping" type="submit"></ButtonComponent>
                                     </div>
                                 </div>
                             </div>

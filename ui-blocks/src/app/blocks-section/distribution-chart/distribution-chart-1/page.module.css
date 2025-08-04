@@ -1,0 +1,8 @@
+#expenseList :global(.e-listview .e-list-item) {
+    border: none !important;
+}
+
+#expenseList :global(.e-listview .e-list-item.e-active),
+#expenseList :global(.e-listview .e-list-item:hover) {
+    background-color: transparent !important;
+}

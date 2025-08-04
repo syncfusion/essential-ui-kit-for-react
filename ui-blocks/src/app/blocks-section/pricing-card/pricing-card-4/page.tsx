@@ -8,7 +8,7 @@ export default function PricingCard4() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'pricing-card-4' && blockData.theme) {
@@ -36,121 +36,123 @@ export default function PricingCard4() {
             case 'tailwind':
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
-                        <div className="max-w-screen-xl mx-auto py-20">
-                            <div className="text-center">
-                                <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Pricing Plans</h1>
-                                <p className="mt-4 px-4 text-lg font-normal mb-8 sm:max-w-xl lg:max-w-full w-full mx-auto text-center text-gray-700 dark:text-gray-200">Get started in complete confidence. Our 30-day money-back guarantee means it’s risk-free.</p>
-                                <div className="flex items-center justify-center gap-3 mb-12 text-base font-medium text-gray-700 dark:text-gray-200">
-                                    <p>Monthly</p>
-                                    <SwitchComponent cssClass="e-bigger" checked={true} style={{ width: "44px !important" }}></SwitchComponent>
-                                    <p>Yearly</p>
+                        <div className="h-screen sm:h-full">
+                            <div className="max-w-screen-xl mx-auto py-20">
+                                <div className="text-center">
+                                    <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Pricing Plans</h1>
+                                    <p className="mt-4 px-4 text-lg font-normal mb-8 sm:max-w-xl lg:max-w-full w-full mx-auto text-center text-gray-700 dark:text-gray-200">Get started in complete confidence. Our 30-day money-back guarantee means it's risk-free.</p>
+                                    <div className="flex items-center justify-center gap-3 mb-12 text-base font-medium text-gray-700 dark:text-gray-200">
+                                        <p>Monthly</p>
+                                        <SwitchComponent cssClass="e-bigger" checked={true}></SwitchComponent>
+                                        <p>Yearly</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="grid sm:grid-cols-2 gap-6 px-4 md:px-6 w-full lg:w-9/12 xl:w-7/12 max-w-screen-2xl mx-auto box-border">
-                                <div className="e-card e-bigger py-8 rounded-3xl shadow-none hover:border-primary-600 dark:hover:border-primary-400">
-                                    <div className="e-card-content">
-                                        <div>
+                                <div className="grid sm:grid-cols-2 gap-6 px-4 md:px-6 w-full lg:w-9/12 xl:w-7/12 max-w-screen-2xl mx-auto box-border">
+                                    <div className="e-card e-bigger py-8 rounded-3xl shadow-none hover:border-primary-600 dark:hover:border-primary-400">
+                                        <div className="e-card-content">
                                             <div>
-                                                <span className="e-avatar-xlarge e-avatar e-icons e-group-icon e-avatar-circle mb-5 text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900"></span>
+                                                <div>
+                                                    <span className="e-avatar-xlarge e-avatar e-icons e-group-icon e-avatar-circle mb-5 text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900"></span>
+                                                </div>
+                                                <h1 className="text-2xl font-medium text-gray-900 dark:text-white">Single</h1>
+                                                <p className="mt-2 text-gray-700 dark:text-gray-300 text-base font-normal">A great solution for beginners</p>
                                             </div>
-                                            <h1 className="text-2xl font-medium text-gray-900 dark:text-white">Single</h1>
-                                            <p className="mt-2 text-gray-700 dark:text-gray-300 text-base font-normal">A great solution for beginners</p>
-                                        </div>
-                                        <div className="my-5 text-gray-900 dark:text-white">
-                                            <div className="flex items-center gap-2 mb-1">
-                                                <h2 className="text-5xl font-bold leading-tight">$69</h2>
-                                                <span className="line-through text-gray-500 dark:text-gray-300 font-normal text-3xl">$199</span>
+                                            <div className="my-5 text-gray-900 dark:text-white">
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <h2 className="text-5xl font-bold leading-tight">$69</h2>
+                                                    <span className="line-through text-gray-500 dark:text-gray-300 font-normal text-3xl">$199</span>
+                                                </div>
+                                                <p className="text-base text-gray-700 dark:text-gray-200">per month $828 billed yearly</p>
                                             </div>
-                                            <p className="text-base text-gray-700 dark:text-gray-200">per month $828 billed yearly</p>
+                                            <p className="mb-2 text-base text-gray-700 dark:text-gray-200">Create one end product for a client, transfer that end product to your client, charge them for your services.</p>
                                         </div>
-                                        <p className="mb-2 text-base text-gray-700 dark:text-gray-200">Create one end product for a client, transfer that end product to your client, charge them for your services.</p>
+                                        <div className="e-card-actions leading-9">
+                                            <ButtonComponent className="w-full text-lg" cssClass="e-outline e-primary" content="Choose a plan" type="button"></ButtonComponent>
+                                        </div>
+                                        <ul className="flex flex-col gap-4 px-6 text-gray-700 dark:text-gray-200 text-base">
+                                            <li className="flex items-center gap-3">
+                                                <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                                                <span>1 Website</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                                                <span>~10000 visits monthly</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                                                <span>50 GB SSD storage</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                                                <span>200,000 files and directories</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                                                <span>Free pre-built templates</span>
+                                            </li>
+                                            <li className="flex items-center gap-3 text-gray-500 dark:text-gray-300 text-base">
+                                                <span className="e-icons e-circle-remove e-large text-gray-400"></span>
+                                                <span>Free domain ($79.00 value)</span>
+                                            </li>
+                                            <li className="flex items-center gap-3 text-gray-500 dark:text-gray-300 text-base">
+                                                <span className="e-icons e-circle-remove e-large text-gray-400"></span>
+                                                <span>Free CDN</span>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div className="e-card-actions leading-9">
-                                        <ButtonComponent className="w-full text-lg" content="Choose a plan" cssClass="e-outline e-primary" type="button"></ButtonComponent>
-                                    </div>
-                                    <ul className="flex flex-col gap-4 px-6 text-gray-700 dark:text-gray-200 text-base">
-                                        <li className="flex items-center gap-3">
-                                            <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
-                                            <span>1 Website</span>
-                                        </li>
-                                        <li className="flex items-center gap-3">
-                                            <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
-                                            <span>~10000 visits monthly</span>
-                                        </li>
-                                        <li className="flex items-center gap-3">
-                                            <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
-                                            <span>50 GB SSD storage</span>
-                                        </li>
-                                        <li className="flex items-center gap-3">
-                                            <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
-                                            <span>200,000 files and directories</span>
-                                        </li>
-                                        <li className="flex items-center gap-3">
-                                            <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
-                                            <span>Free pre-built templates</span>
-                                        </li>
-                                        <li className="flex items-center gap-3 text-gray-500 dark:text-gray-300 text-base">
-                                            <span className="e-icons e-circle-remove e-large text-gray-400"></span>
-                                            <span>Free domain ($79.00 value)</span>
-                                        </li>
-                                        <li className="flex items-center gap-3 text-gray-500 dark:text-gray-300 text-base">
-                                            <span className="e-icons e-circle-remove e-large text-gray-400"></span>
-                                            <span>Free CDN</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="e-card e-bigger py-8 rounded-3xl shadow-none hover:border-primary-600 dark:hover:border-primary-400">
-                                    <div className="e-card-content">
-                                        <div>
-                                            <div className="flex flex-wrap justify-between">
-                                                <span className="e-avatar-xlarge e-avatar e-icons e-group-icon e-avatar-circle mb-5 text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900"></span>
-                                                <span className="e-badge e-badge-pill e-bigger bg-orange-100 dark:bg-orange-100 text-orange-700 dark:text-orange-600">Most popular</span>
+                                    <div className="e-card e-bigger py-8 rounded-3xl shadow-none hover:border-primary-600 dark:hover:border-primary-400">
+                                        <div className="e-card-content">
+                                            <div>
+                                                <div className="flex flex-wrap justify-between">
+                                                    <span className="e-avatar-xlarge e-avatar e-icons e-group-icon e-avatar-circle mb-5 text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900"></span>
+                                                    <span className="e-badge e-badge-pill e-bigger bg-orange-100 dark:bg-orange-100 text-orange-700 dark:text-orange-600">Most popular</span>
+                                                </div>
+                                                <h1 className="text-2xl font-medium text-gray-900 dark:text-white">Premium</h1>
+                                                <p className="mt-2 text-gray-700 dark:text-gray-300 text-base font-normal">All you need to create your website</p>
                                             </div>
-                                            <h1 className="text-2xl font-medium text-gray-900 dark:text-white">Premium</h1>
-                                            <p className="mt-2 text-gray-700 dark:text-gray-300 text-base font-normal">All you need to create your website</p>
-                                        </div>
-                                        <div className="my-5 text-gray-900 dark:text-white">
-                                            <div className="flex items-center gap-2 mb-1">
-                                                <h2 className="text-5xl font-bold leading-tight">$149</h2>
-                                                <span className="line-through text-gray-500 dark:text-gray-300 font-normal text-3xl">$599</span>
+                                            <div className="my-5 text-gray-900 dark:text-white">
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <h2 className="text-5xl font-bold leading-tight">$149</h2>
+                                                    <span className="line-through text-gray-500 dark:text-gray-300 font-normal text-3xl">$599</span>
+                                                </div>
+                                                <p className="text-base text-gray-700 dark:text-gray-200">per month $1,788 billed yearly</p>
                                             </div>
-                                            <p className="text-base text-gray-700 dark:text-gray-200">per month $1,788 billed yearly</p>
+                                            <p className="mb-2 text-base text-gray-700 dark:text-gray-200">Create one end product for a client, transfer that end product to your client, charge them for your services.</p>
                                         </div>
-                                        <p className="mb-2 text-base text-gray-700 dark:text-gray-200">Create one end product for a client, transfer that end product to your client, charge them for your services.</p>
+                                        <div className="e-card-actions leading-9">
+                                            <ButtonComponent className="w-full text-lg" cssClass="e-primary" content="Choose a plan" type="button"></ButtonComponent>
+                                        </div>
+                                        <ul className="flex flex-col gap-4 px-6 text-gray-700 dark:text-gray-200 text-base">
+                                            <li className="flex items-center gap-3">
+                                                <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                                                <span>1 Website</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                                                <span>~10000 visits monthly</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                                                <span>50 GB SSD storage</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                                                <span>200,000 files and directories</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                                                <span>Free pre-built templates</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                                                <span>Free domain ($79.00 value)</span>
+                                            </li>
+                                            <li className="flex items-center gap-3 text-gray-500 dark:text-gray-300 text-base">
+                                                <span className="e-icons e-circle-remove e-large text-gray-400"></span>
+                                                <span>Free CDN</span>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div className="e-card-actions leading-9">
-                                        <ButtonComponent className="w-full text-lg" content="Choose a plan" cssClass="e-primary" type="button"></ButtonComponent>
-                                    </div>
-                                    <ul className="flex flex-col gap-4 px-6 text-gray-700 dark:text-gray-200 text-base">
-                                        <li className="flex items-center gap-3">
-                                            <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
-                                            <span>1 Website</span>
-                                        </li>
-                                        <li className="flex items-center gap-3">
-                                            <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
-                                            <span>~10000 visits monthly</span>
-                                        </li>
-                                        <li className="flex items-center gap-3">
-                                            <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
-                                            <span>50 GB SSD storage</span>
-                                        </li>
-                                        <li className="flex items-center gap-3">
-                                            <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
-                                            <span>200,000 files and directories</span>
-                                        </li>
-                                        <li className="flex items-center gap-3">
-                                            <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
-                                            <span>Free pre-built templates</span>
-                                        </li>
-                                        <li className="flex items-center gap-3">
-                                            <span className="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
-                                            <span>Free domain ($79.00 value)</span>
-                                        </li>
-                                        <li className="flex items-center gap-3 text-gray-500 dark:text-gray-300 text-base">
-                                            <span className="e-icons e-circle-remove e-large text-gray-400"></span>
-                                            <span>Free CDN</span>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -162,10 +164,10 @@ export default function PricingCard4() {
                         <div className="container px-3 py-5">
                             <div className="text-center">
                                 <h1 className="fw-bold fs-1 mb-3 text-body">Pricing Plans</h1>
-                                <p className="mb-4 mx-3 px-1 px-md-5 px-lg-0 text-light-emphasis">Get started in complete confidence. Our 30-day money-back guarantee means it’s risk-free.</p>
+                                <p className="mb-4 mx-3 px-1 px-md-5 px-lg-0 text-light-emphasis">Get started in complete confidence. Our 30-day money-back guarantee means it's risk-free.</p>
                                 <div className="d-flex justify-content-center align-items-center gap-2 mb-5 pt-2">
                                     <p className="m-0 small text-light-emphasis">Monthly</p>
-                                    <SwitchComponent cssClass="e-bigger" checked={true} style={{ width: "37px" }}></SwitchComponent>
+                                    <SwitchComponent cssClass="e-bigger" checked={true}></SwitchComponent>
                                     <p className="m-0 small text-light-emphasis">Yearly</p>
                                 </div>
                             </div>

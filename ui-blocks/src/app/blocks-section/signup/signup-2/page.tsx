@@ -9,7 +9,7 @@ export default function SignUp2() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'signup-2' && blockData.theme) {
@@ -72,7 +72,7 @@ export default function SignUp2() {
                                                     </span>
                                                 </div>
                                                 <div className="e-bigger">
-                                                    <ButtonComponent cssClass="w-full text-base e-primary" type="submit">Sign up</ButtonComponent>
+                                                    <ButtonComponent cssClass="w-full text-base e-primary" content="Sign up" type="submit"></ButtonComponent>
                                                 </div>
                                             </form>
                                         </div>
@@ -127,15 +127,15 @@ export default function SignUp2() {
                                         <form action="#" className="mt-4 mb-4" onSubmit={(event) => event.preventDefault()}>
                                             <div className="mb-3">
                                                 <label className="form-label mb-1 fw-medium text-dark-emphasis small">Name</label>
-                                                <TextBoxComponent cssClass="e-bigger" type="text" placeholder="Name"></TextBoxComponent>
+                                                <TextBoxComponent cssClass="e-bigger" type="text" placeholder="Name" floatLabelType="Never"></TextBoxComponent>
                                             </div>
                                             <div className="mb-3">
                                                 <label className="form-label mb-1 fw-medium text-dark-emphasis small">Email</label>
-                                                <TextBoxComponent cssClass="e-bigger" type="email" placeholder="Email"></TextBoxComponent>
+                                                <TextBoxComponent cssClass="e-bigger" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
                                             </div>
                                             <div className="mb-3">
                                                 <label className="form-label mb-1 fw-medium text-dark-emphasis small">Password</label>
-                                                <TextBoxComponent cssClass="e-bigger" type="password" placeholder="Password"></TextBoxComponent>
+                                                <TextBoxComponent cssClass="e-bigger" type="password" placeholder="Password" floatLabelType="Never"></TextBoxComponent>
                                             </div>
                                             <div className="mb-4">
                                                 <CheckBoxComponent cssClass="e-bigger"></CheckBoxComponent>
@@ -145,7 +145,7 @@ export default function SignUp2() {
                                                 </span>
                                             </div>
                                             <div className="e-bigger">
-                                                <ButtonComponent className="w-100" cssClass="e-primary" type="submit">Sign up</ButtonComponent>
+                                                <ButtonComponent className="w-100" cssClass="e-primary" content="Sign up" type="submit"></ButtonComponent>
                                             </div>
                                         </form>
                                         <div className="d-flex justify-content-center align-items-center position-relative mt-4">

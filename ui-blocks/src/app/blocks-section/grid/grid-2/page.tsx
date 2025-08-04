@@ -243,7 +243,7 @@ export default function Grid2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'grid-2' && blockData.theme) {
@@ -383,7 +383,7 @@ export default function Grid2() {
                                                     {data.assignee.avatar ? (
                                                         <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.assignee.avatar}')` }}></span>
                                                     ) : (
-                                                        <span className={`e-avatar e-avatar-circle e-avatar-small ${data.assignee.colorTheme === "Red" ? "bg-danger-subtle text-danger" : data.assignee.colorTheme === "Green" ? "bg-success-subtle text-success" : data.assignee.colorTheme === "Blue" ? "bg-info-subtle text-info" : data.assignee.colorTheme === "Orange" ? "bg-warning-subtle text-warning" : ""}`}>{data.assignee.initial}</span>
+                                                        <span className={`e-avatar e-avatar-circle e-avatar-small ${data.assignee.colorTheme === "Red" ? "bg-danger-subtle text-danger-emphasis" : data.assignee.colorTheme === "Green" ? "bg-success-subtle text-success-emphasis" : data.assignee.colorTheme === "Blue" ? "bg-info-subtle text-info-emphasis" : data.assignee.colorTheme === "Orange" ? "bg-warning-subtle text-warning-emphasis" : ""}`}>{data.assignee.initial}</span>
                                                     )}
                                                 </div>
                                                 <div className="d-flex flex-column">
@@ -400,7 +400,7 @@ export default function Grid2() {
                                                     {data.createdBy.avatar ? (
                                                         <span className="e-avatar e-avatar-circle e-avatar-small" style={{ backgroundImage: `url('/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.createdBy.avatar}')` }}></span>
                                                     ) : (
-                                                        <span className={`e-avatar e-avatar-circle e-avatar-small ${data.createdBy.colorTheme === "Red" ? "bg-danger-subtle text-danger" : data.createdBy.colorTheme === "Green" ? "bg-success-subtle text-success" : data.createdBy.colorTheme === "Blue" ? "bg-info-subtle text-info" : data.createdBy.colorTheme === "Orange" ? "bg-warning-subtle text-warning" : ""}`}>{data.createdBy.initial}</span>
+                                                        <span className={`e-avatar e-avatar-circle e-avatar-small ${data.createdBy.colorTheme === "Red" ? "bg-danger-subtle text-danger-emphasis" : data.createdBy.colorTheme === "Green" ? "bg-success-subtle text-success-emphasis" : data.createdBy.colorTheme === "Blue" ? "bg-info-subtle text-info-emphasis" : data.createdBy.colorTheme === "Orange" ? "bg-warning-subtle text-warning-emphasis" : ""}`}>{data.createdBy.initial}</span>
                                                     )}
                                                 </div>
                                                 <div className="text-body">{data.createdBy.name}</div>

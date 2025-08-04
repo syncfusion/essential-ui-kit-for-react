@@ -1,6 +1,6 @@
-#dialogs :global(.e-dlg-header-content+.e-dlg-content) {
+#dialogs :global(.e-dlg-header-content) {
     border: inherit;
     border-inline: none;
-    border-bottom: none;
+    border-top: none;
     border-radius: 0;
 }

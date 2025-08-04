@@ -10,7 +10,7 @@ export default function AISidebar4() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const [backDrop, setBackDrop] = useState(false);
+    const [isBackDrop, setIsBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
     const contextMenu = useRef<ContextMenuComponent | null>(null);
 
@@ -83,12 +83,12 @@ export default function AISidebar4() {
     };
 
     const handleResize = (): void => {
-        setBackDrop(window.innerWidth <= 660);
+        setIsBackDrop(window.innerWidth <= 660);
     };
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-sidebar-4' && blockData.theme) {
@@ -122,7 +122,7 @@ export default function AISidebar4() {
                 return (
                     <section className="bg-white dark:bg-gray-800">
                         <div id={styles["interactive-sidebar"]} style={{ height: '861px' }}>
-                            <SidebarComponent ref={sidebar} className="bg-gray-50 dark:bg-gray-700" width="256px" isOpen={true} type="Push" closeOnDocumentClick={false} showBackdrop={backDrop} style={{ display: 'block' }}>
+                            <SidebarComponent ref={sidebar} className="bg-gray-50 dark:bg-gray-700" width="256px" isOpen={true} type="Push" closeOnDocumentClick={false} showBackdrop={isBackDrop} style={{ display: 'block' }}>
                                 <div className="flex flex-col justify-between h-full">
                                     <div>
                                         <div className="flex items-center px-4 py-3">
@@ -165,14 +165,14 @@ export default function AISidebar4() {
                                         </div>
                                     </div>
                                     <div className="pb-4 px-3">
-                                        <ButtonComponent className="e-primary w-full" iconCss="e-icons e-plus e-medium" type="button" content="Start new chat"></ButtonComponent>
+                                        <ButtonComponent className="e-primary w-full" iconCss="e-icons e-plus e-medium" content="Start new chat" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -181,7 +181,7 @@ export default function AISidebar4() {
                 return (
                     <section className="bg-body">
                         <div id={styles["interactive-sidebar"]} style={{ height: '861px' }}>
-                            <SidebarComponent ref={sidebar} className="bg-body border-light-subtle" width="256px" isOpen={true} type="Push" closeOnDocumentClick={false} showBackdrop={backDrop} style={{ display: 'block' }}>
+                            <SidebarComponent ref={sidebar} className="bg-body border-light-subtle" width="256px" isOpen={true} type="Push" closeOnDocumentClick={false} showBackdrop={isBackDrop} style={{ display: 'block' }}>
                                 <div className="d-flex flex-column justify-content-between h-100">
                                     <div>
                                         <div className="d-flex align-items-center p-3 fs-6">
@@ -222,14 +222,14 @@ export default function AISidebar4() {
                                         </div>
                                     </div>
                                     <div className="pb-3 px-3">
-                                        <ButtonComponent className="e-primary w-100" iconCss="e-icons e-plus e-medium" type="button" content="Start new chat"></ButtonComponent>
+                                        <ButtonComponent className="e-primary w-100" iconCss="e-icons e-plus e-medium" content="Start new chat" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

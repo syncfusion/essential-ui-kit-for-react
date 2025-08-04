@@ -11,7 +11,7 @@ export default function Rating6() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'rating-6' && blockData.theme) {
@@ -84,7 +84,7 @@ export default function Rating6() {
                 return (
                     <section className="bg-body-tertiary">
                         <div className="pt-4" style={{ minHeight: "36rem" }}>
-                            <div className="mx-auto w-100 mt-3 border rounded-3 text-center bg-body" style={{ maxWidth: "320px" }}>
+                            <div className="mx-auto w-100 mt-3 border rounded-3 text-center bg-body" style={{ maxWidth: "360px" }}>
                                 <h3 className="fw-semibold fs-6 text-body mt-4">Rate your experience</h3>
                                 <p className="small mt-3 mb-0 text-body-secondary" style={{ width: "316px" }}>We'd love to hear from you! How is your experience with our platform?</p>
                                 <div className="d-flex justify-content-center align-items-center mb-3 mt-1" style={{minHeight:'84px'}}>

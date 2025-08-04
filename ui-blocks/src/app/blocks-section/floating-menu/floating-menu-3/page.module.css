@@ -1,6 +1,6 @@
 #floating-contact :global(.e-dlg-header-content),
 #floating-contact :global(.e-dlg-content),
 #floating-contact :global(.e-footer-content) {
-  border: 0 !important;
-  padding: 0 !important;
+    border: 0 !important;
+    padding: 0 !important;
 }

@@ -41,7 +41,7 @@ export default function Statistics6() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'statistics-6' && blockData.theme) {
@@ -74,9 +74,9 @@ export default function Statistics6() {
                                 {metricsData.map((data, index) => (
                                     <div key={index} className="e-card rounded-lg">
                                         <div className="e-card-stacked">
-                                            <div className="e-card-header !justify-between items-center !py-3 !px-6 bg-gray-50 dark:bg-gray-700">
+                                            <div className="e-card-header !justify-between items-center !py-3 !px-6 bg-gray-50 dark:bg-gray-600 opacity-70">
                                                 <div className="e-card-header-title">
-                                                    <h3 className="text-base font-medium text-gray-500 dark:text-gray-400">{data.metricName}</h3>
+                                                    <h3 className="text-base font-medium text-gray-700 dark:text-gray-200">{data.metricName}</h3>
                                                 </div>
                                                 <ButtonComponent cssClass="e-flat e-icons e-more-horizontal-1 e-medium" type="button"></ButtonComponent>
                                             </div>
@@ -104,7 +104,7 @@ export default function Statistics6() {
                             <div className="row g-4 g-lg-3">
                                 {metricsData.map((data, index) => (
                                     <div key={index} className="col-12 col-sm-6 col-xl-3">
-                                        <div className="e-card rounded-3 e-bigger shadow-lg">
+                                        <div className="e-card rounded-3 e-bigger shadow">
                                             <div className="e-card-stacked">
                                                 <div className="e-card-header d-flex justify-content-between align-items-center py-3 px-4 bg-body-tertiary">
                                                     <div className="e-card-header-title">

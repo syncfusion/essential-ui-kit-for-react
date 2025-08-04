@@ -14,7 +14,7 @@ export default function Checkout2() {
     
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'checkout-2' && blockData.theme) {
@@ -45,16 +45,16 @@ export default function Checkout2() {
         switch (theme) {
             case 'tailwind':
                 return (
-                    <section className="bg-gray-50 dark:bg-gray-950">
+                    <section className="bg-gray-50 dark:bg-gray-900">
                         <div id="checkout-accordion" className="container-lg px-4 md:px-6 text-gray-700 dark:text-gray-300 py-20" style={{ minHeight: "1145px" }}>
                             <div className="m-auto w-full max-w-3xl">
                                 <h2 className="font-semibold text-xl">Checkout</h2>
                                 <div className="e-bigger mt-4 mb-6">
-                                    <AccordionComponent className="border-t-0 border-l-0 border-r-0 border-b border-gray-200 dark:border-gray-600" ref={accordion} expandMode="Single">
+                                    <AccordionComponent ref={accordion} className="border-t-0 border-l-0 border-r-0 border-b border-gray-200 dark:border-gray-600" expandMode="Single">
                                         <AccordionItemsDirective>
                                             <AccordionItemDirective header="Delivery information" expanded={true} content={() =>
                                                 <div>
-                                                    <div className="e-card pt-3 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+                                                    <div className="e-card pt-3 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-700">
                                                         <div className="e-card-content !pt-1 !px-4">
                                                             <div className="e-bigger">
                                                                 <RadioButtonComponent label="Trig Yellow - (+1) 432 434 2345" name="delivery"></RadioButtonComponent>
@@ -62,7 +62,7 @@ export default function Checkout2() {
                                                             <div className="mt-1 ml-7 text-gray-500 dark:text-gray-400">68 Dakota St, San Francisco, California 94107.</div>
                                                         </div>
                                                     </div>
-                                                    <div className="e-card pt-3 mt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+                                                    <div className="e-card pt-3 mt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-700">
                                                         <div className="e-card-content !pt-1 !px-4">
                                                             <div className="e-bigger">
                                                                 <RadioButtonComponent label="G8 - (+1) 432 000 2245" name="delivery" checked={true}></RadioButtonComponent>
@@ -71,7 +71,7 @@ export default function Checkout2() {
                                                         </div>
                                                     </div>
                                                     <div className="e-bigger mt-5">
-                                                        <ButtonComponent className="e-flat m-1" type="button" content="Add new delivery information" iconCss="e-icons e-plus"></ButtonComponent>
+                                                        <ButtonComponent className="e-flat m-1" iconCss="e-icons e-plus" content="Add new delivery information" type="button"></ButtonComponent>
                                                     </div>
                                                 </div>}
                                             ></AccordionItemDirective>
@@ -133,7 +133,7 @@ export default function Checkout2() {
                                         <TextAreaComponent placeholder="Enter additional information here" floatLabelType="Never" resizeMode="Vertical"></TextAreaComponent>
                                     </div>
                                     <div className="mt-5">
-                                        <ButtonComponent className="w-full border-gray-300 dark:border-gray-500" type="button" content="Add new info" iconCss="e-icons e-plus"></ButtonComponent>
+                                        <ButtonComponent className="w-full border-gray-300 dark:border-gray-500" iconCss="e-icons e-plus" content="Add new info" type="button"></ButtonComponent>
                                     </div>
                                 </form>
                                 <div className="e-bigger mt-8">
@@ -155,11 +155,11 @@ export default function Checkout2() {
                             <div className="mx-auto px-0 col-md-12 col-xl-6 col-lg-9">
                                 <h2 className="fw-semibold fs-4">Checkout</h2>
                                 <div className="e-bigger my-4">
-                                    <AccordionComponent className="border-0 border-bottom rounded-0 border-light-subtle" ref={accordion} expandMode="Single">
+                                    <AccordionComponent ref={accordion} className="border-0 border-bottom rounded-0 border-light-subtle" expandMode="Single">
                                         <AccordionItemsDirective>
                                             <AccordionItemDirective header="Delivery information" expanded={true} content={() =>
                                                 <div>
-                                                    <div className="e-card">
+                                                    <div className="e-card bg-body-tertiary">
                                                         <div className="e-card-content">
                                                             <div className="e-bigger">
                                                                 <RadioButtonComponent label="Trig Yellow - (+1) 432 434 2345" name="delivery"></RadioButtonComponent>
@@ -167,7 +167,7 @@ export default function Checkout2() {
                                                             <div className="mt-1 ms-4 text-light-emphasis">68 Dakota St, San Francisco, California 94107.</div>
                                                         </div>
                                                     </div>
-                                                    <div className="e-card mt-3">
+                                                    <div className="e-card mt-3 bg-body-tertiary">
                                                         <div className="e-card-content">
                                                             <div className="e-bigger">
                                                                 <RadioButtonComponent label="G8 - (+1) 432 000 2245" name="delivery" checked={true}></RadioButtonComponent>
@@ -176,7 +176,7 @@ export default function Checkout2() {
                                                         </div>
                                                     </div>
                                                     <div className="e-bigger mt-3">
-                                                        <ButtonComponent cssClass="e-flat" content="Add new delivery information" type="button" iconCss="e-icons e-plus"></ButtonComponent>
+                                                        <ButtonComponent cssClass="e-flat" iconCss="e-icons e-plus" content="Add new delivery information" type="button"></ButtonComponent>
                                                     </div>
                                                 </div>}
                                             ></AccordionItemDirective>   
@@ -236,7 +236,7 @@ export default function Checkout2() {
                                         <TextAreaComponent placeholder="Enter additional information here" resizeMode="Vertical"></TextAreaComponent>
                                     </div>
                                     <div className="mt-3">
-                                        <ButtonComponent cssClass="e-block e-secondary" content="Add new info" type="button" iconCss="e-icons e-plus"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-block e-secondary" iconCss="e-icons e-plus" content="Add new info" type="button"></ButtonComponent>
                                     </div>
                                 </form>
                                 <div className="e-bigger mt-4">

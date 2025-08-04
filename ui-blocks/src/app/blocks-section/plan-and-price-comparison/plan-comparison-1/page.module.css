@@ -1,0 +1,10 @@
+#plan-comparison :global(.table th:first-child),
+#plan-comparison :global(.table td:first-child) {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+#plan-comparison :global(.table thead th:first-child) {
+  z-index: 2;
+}

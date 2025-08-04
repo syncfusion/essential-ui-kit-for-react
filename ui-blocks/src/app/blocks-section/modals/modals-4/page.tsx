@@ -22,14 +22,14 @@ export default function Modals4() {
         { id: 5, name: 'Lisa Green', email: 'lisa.green@example.com', status: 'Active', role: 'Viewer' }
     ];
 
-    const checkWindowSize = () => {
+    const checkWindowSize = (): void => {
         const isMobile = window.innerWidth <= 640;
         dialog.current?.show(isMobile)
     }
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'modals-4' && blockData.theme) {
@@ -62,9 +62,8 @@ export default function Modals4() {
             case 'tailwind':
                 return (
                     <section>
-                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: "660px" }}>
-                            <ButtonComponent className="h-fit my-5" type="button" onClick={() => dialog.current?.show()}>Manage Access</ButtonComponent>
-                            <DialogComponent id={styles["dialog"]} ref={dialog} className="rounded-none sm:rounded-lg sm:m-4" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '660px'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="540px" isModal={true}
+                        <div id="dialog-container" className="relative" style={{ minHeight: "660px" }}>
+                            <DialogComponent ref={dialog} id={styles["dialog"]} className="rounded-none sm:rounded-lg sm:m-4 overflow-hidden" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '660px'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="540px" isModal={true}
                                 header={() => (
                                     <div>
                                         <h3 className="font-semibold leading-normal mb-0.5">Manage Access</h3>
@@ -75,8 +74,8 @@ export default function Modals4() {
                                     <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 sm:gap-1 py-2">
                                         <p className="text-left text-sm text-gray-500 dark:text-gray-400">Changes will be logged for audit purposes</p>
                                         <div className="flex gap-2 sm:gap-1">
-                                            <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" type="button">Cancel</ButtonComponent>
-                                            <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" type="button">Apply Changes</ButtonComponent>
+                                            <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" content="Cancel" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" content="Apply Changes" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 }
@@ -98,21 +97,25 @@ export default function Modals4() {
                                                 </div>
                                                 <span className={`e-badge e-badge-pill sm:mr-3 ${data.status === "Active" ? "e-badge-success" : "e-badge-warning"}`}>{data.status}</span>
                                             </div>
-                                            <DropDownButtonComponent className="mr-1 e-outline" type="button" content={data.role} beforeOpen={(e) => (e.cancel = true)} style={{ width: "100px" }}></DropDownButtonComponent>
+                                            <DropDownButtonComponent className="mr-1 e-outline" content={data.role} type="button" beforeOpen={(e) => (e.cancel = true)} style={{ width: "100px" }}></DropDownButtonComponent>
                                         </div>
                                     )}
                                     ></ListViewComponent>
                                 </div>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="top-0 left-0 absolute w-full flex">
+                            <ButtonComponent className="my-5 mx-auto" content="Manage Access" type="button" onClick={() => dialog.current?.show()}></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 ); 
             case 'bootstrap5':
                 return (
                     <section>
-                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: "660px" }}>
-                            <ButtonComponent className="mx-auto my-3 e-outline" type="button" onClick={() => dialog.current?.show()}>Manage Access</ButtonComponent>
-                            <DialogComponent id={styles["dialog"]} ref={dialog} className="rounded-3 m-sm-2" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '660px'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="540px" isModal={true}
+                        <div id="dialog-container" className="position-relative" style={{ minHeight: "660px" }}>
+                            <DialogComponent ref={dialog} id={styles["dialog"]} className="rounded-3 m-sm-2" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '660px'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="540px" isModal={true}
                                 header={() => (
                                     <div>
                                         <h3 className="fw-bold mb-0 text-body">Manage Access</h3>
@@ -120,11 +123,11 @@ export default function Modals4() {
                                     </div>
                                 )}
                                 footerTemplate={() =>
-                                    <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 py-1">
-                                        <p className="text-body text-opacity-50 text-start mb-0">Changes will be logged for audit purposes</p>
+                                    <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 py-1 fs-6">
+                                        <p className="text-body text-opacity-50 text-start mb-0 small">Changes will be logged for audit purposes</p>
                                         <div className="d-flex justify-content-end gap-2 gap-sm-1">
-                                            <ButtonComponent cssClass="col col-sm-auto ms-0" type="button">Cancel</ButtonComponent>
-                                            <ButtonComponent cssClass="e-primary col col-sm-auto" type="button">Apply Changes</ButtonComponent>
+                                            <ButtonComponent cssClass="col col-sm-auto ms-0" content="Cancel" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-primary col col-sm-auto" content="Apply Changes" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 }
@@ -153,6 +156,11 @@ export default function Modals4() {
                                 </div>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="position-absolute top-0 start-0 d-flex w-100">
+                            <ButtonComponent className="mx-auto my-3 e-outline" content="Manage Access" type="button" onClick={() => dialog.current?.show()}></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 );
         };

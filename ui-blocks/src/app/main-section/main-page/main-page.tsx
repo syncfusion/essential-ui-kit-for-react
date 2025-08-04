@@ -63,7 +63,7 @@ export default function MainPage() {
                 <div className={styles['main-container-header']}>
                     <h1 className={styles['main-title']}>Develop Apps Faster with Pre-Built Blocks</h1>
                     <p className={styles['main-description']}>
-                        Accelerate your web app development with 230+ responsive blocks for React, fully compatible with Tailwind and Bootstrap 5.3.
+                        Accelerate your web app development with 260+ responsive blocks for React, fully compatible with Tailwind and Bootstrap 5.3.
                     </p>
                     <div className={styles['button-container']}>
                         <a href="https://www.syncfusion.com/feedback/react" target="_blank" className={styles['request-btn']} role="button" tabIndex={0} rel="noopener noreferrer" aria-label="Request a block">

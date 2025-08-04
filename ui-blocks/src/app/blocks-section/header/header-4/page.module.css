@@ -1,9 +1,9 @@
-#tab_tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-tab-text),
-#tab_tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-badge) {
+#tab-tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-tab-text),
+#tab-tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-badge) {
     color: #4F46E5 !important;
 }
 
-:global(.dark) #tab_tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-tab-text),
-:global(.dark) #tab_tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-badge) {
+:global(.dark) #tab-tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-tab-text),
+:global(.dark) #tab-tw :global(.e-tab .e-tab-header .e-toolbar-item:not(.e-active) .e-tab-wrap:hover .e-badge) {
     color: #22d3ee !important;
 }

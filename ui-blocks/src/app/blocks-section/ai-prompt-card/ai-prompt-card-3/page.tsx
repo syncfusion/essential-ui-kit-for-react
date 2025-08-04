@@ -9,7 +9,7 @@ export default function AIPromptCard3() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-prompt-card-3' && blockData.theme) {
@@ -106,7 +106,7 @@ export default function AIPromptCard3() {
                         <div className="px-4 py-5 px-sm-5 mx-auto" style={{ maxWidth: "1062px" }}>
                             <div className="row g-3">
                                 <div className="col-sm-6 col-lg-4">
-                                    <div className="e-card rounded-3 border-0 shadow-lg w-100">
+                                    <div className="e-card rounded-3 border-0 shadow w-100">
                                         <div className="d-flex">
                                             <div className="p-3 pe-0 d-flex align-items-center">
                                                 <span className="e-icons e-edit fs-4 text-body-secondary"></span>
@@ -127,7 +127,7 @@ export default function AIPromptCard3() {
                                     </div>
                                 </div>
                                 <div className="col-sm-6 col-lg-4">
-                                    <div className="e-card rounded-3 border-0 shadow-lg w-100">
+                                    <div className="e-card rounded-3 border-0 shadow w-100">
                                         <div className="d-flex">
                                             <div className="p-3 pe-0 d-flex align-items-center">
                                                 <span className="e-icons e-edit fs-4 text-body-secondary"></span>
@@ -148,7 +148,7 @@ export default function AIPromptCard3() {
                                     </div>
                                 </div>
                                 <div className="col-sm-6 col-lg-4">
-                                    <div className="e-card rounded-3 border-0 shadow-lg w-100">
+                                    <div className="e-card rounded-3 border-0 shadow w-100">
                                         <div className="d-flex">
                                             <div className="p-3 pe-0 d-flex align-items-center">
                                                 <span className="e-icons e-edit fs-4 text-body-secondary"></span>

@@ -10,9 +10,9 @@ export default function ReturnBlock2() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const stepper = useRef<StepperComponent | null>(null);
     const [stepperStyle, setStepperStyle] = useState({});
-
+    const stepper = useRef<StepperComponent | null>(null);
+    
     const data: any[] = [
         {
             product: {
@@ -64,7 +64,7 @@ export default function ReturnBlock2() {
     
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'returns-2' && blockData.theme) {
@@ -102,11 +102,11 @@ export default function ReturnBlock2() {
                             <div className="sm:mb-8 mb-5" style={stepperStyle}>
                                 <StepperComponent ref={stepper} labelPosition="bottom" activeStep={1}>
                                     <StepsDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"My Products"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Return Reason"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Pickup Option"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Refund Choice"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Confirmation"}></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="My Products"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Return Reason"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Pickup Option"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Refund Choice"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Confirmation"></StepDirective>
                                     </StepsDirective>
                                 </StepperComponent>
                             </div>
@@ -114,7 +114,7 @@ export default function ReturnBlock2() {
                                 <p className="mb-3 font-medium text-gray-900 dark:text-white">Choose the reason for your return</p>
                                 <p className="mb-4 text-sm text-gray-900 dark:text-white">To assist us in addressing your request promptly, please respond to the following questions.</p>
                                 <div className="mb-5">
-                                    <GridComponent dataSource={data} key={"grid-1-tw"} width="100%" rowHeight={60} gridLines="None" allowTextWrap={true} className="e-bigger" textWrapSettings={{ wrapMode: "Content" }}>
+                                    <GridComponent key={"grid-1-tw"} dataSource={data} width="100%" rowHeight={60} gridLines="None" allowTextWrap={true} className="e-bigger" textWrapSettings={{ wrapMode: "Content" }}>
                                         <ColumnsDirective>
                                             <ColumnDirective type="checkbox" width="40"></ColumnDirective>
                                             <ColumnDirective field="product" headerText="Product" width="488" template={(data: any) => (
@@ -151,7 +151,7 @@ export default function ReturnBlock2() {
                                             <RadioButtonComponent label="The product was not dispatched" name="condition"></RadioButtonComponent>
                                         </div>
                                     </div>
-                                    <ButtonComponent className="self-start" type="button">Other Condition</ButtonComponent>
+                                    <ButtonComponent className="self-start" content="Other Condition" type="button"></ButtonComponent>
                                 </div>
                                 <div className="flex flex-col justify-between sm:w-1/2 md:w-auto">
                                     <div className="flex flex-col gap-4 lg:mb-5 mb-4 e-bigger">
@@ -172,7 +172,7 @@ export default function ReturnBlock2() {
                                             <CheckBoxComponent label="Misleading product information" name="reason"></CheckBoxComponent>
                                         </div>
                                     </div>
-                                    <ButtonComponent className="self-start" type="button">I have other reason</ButtonComponent>
+                                    <ButtonComponent className="self-start" content="I have other reason" type="button"></ButtonComponent>
                                 </div>
                             </div>
                             <MessageComponent
@@ -183,8 +183,8 @@ export default function ReturnBlock2() {
                                 content="Please carefully select your reasons for returning the product, as this will help us process your request more efficiently and ensure your satisfaction with your purchase experience."
                             ></MessageComponent>
                             <div className="flex justify-end lg:gap-3 gap-4">
-                                <ButtonComponent className="grow sm:grow-0" type="button">Previous</ButtonComponent>
-                                <ButtonComponent isPrimary={true} className="grow sm:grow-0" type="button">Next</ButtonComponent>
+                                <ButtonComponent className="grow sm:grow-0" content="Previous" type="button"></ButtonComponent>
+                                <ButtonComponent isPrimary={true} className="grow sm:grow-0" content="Next" type="button"></ButtonComponent>
                             </div>
                         </div>
                     </section>
@@ -197,11 +197,11 @@ export default function ReturnBlock2() {
                             <div className="mb-4" style={stepperStyle}>
                                 <StepperComponent ref={stepper} labelPosition="bottom" activeStep={1}>
                                     <StepsDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"My Products"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Return Reason"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Pickup Option"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Refund Choice"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Confirmation"}></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="My Products"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Return Reason"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Pickup Option"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Refund Choice"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Confirmation"></StepDirective>
                                     </StepsDirective>
                                 </StepperComponent>
                             </div>
@@ -236,7 +236,7 @@ export default function ReturnBlock2() {
                                         <RadioButtonComponent label="The product was not delivered" name="condition"></RadioButtonComponent>
                                         <RadioButtonComponent label="The product was not dispatched" name="condition"></RadioButtonComponent>
                                     </div>
-                                    <ButtonComponent className="e-outline align-self-start" type="button">Other Condition</ButtonComponent>
+                                    <ButtonComponent className="e-outline align-self-start" content="Other Condition" type="button"></ButtonComponent>
                                 </div>
                                 <div className="d-flex flex-column justify-content-between">
                                     <div className="d-flex flex-column gap-3 mb-4 mb-md-3 e-bigger">
@@ -247,7 +247,7 @@ export default function ReturnBlock2() {
                                         <CheckBoxComponent label="Changed mind/not as expected" name="reason"></CheckBoxComponent>
                                         <CheckBoxComponent label="Misleading product information" name="reason"></CheckBoxComponent>
                                     </div>
-                                    <ButtonComponent className="e-outline align-self-start" type="button">I have other reason</ButtonComponent>
+                                    <ButtonComponent className="e-outline align-self-start" content="I have other reason" type="button"></ButtonComponent>
                                 </div>
                             </div>
                             <MessageComponent
@@ -258,8 +258,8 @@ export default function ReturnBlock2() {
                                 content="Please carefully select your reasons for returning the product, as this will help us process your request more efficiently and ensure your satisfaction with your purchase experience."
                             ></MessageComponent>
                             <div className="d-flex justify-content-end gap-1">
-                                <ButtonComponent className="e-outline flex-grow-1 flex-sm-grow-0 me-2" type="button">Previous</ButtonComponent>
-                                <ButtonComponent isPrimary={true} className="flex-grow-1 flex-sm-grow-0" type="button">Next</ButtonComponent>
+                                <ButtonComponent className="e-outline flex-grow-1 flex-sm-grow-0 me-2" content="Previous" type="button"></ButtonComponent>
+                                <ButtonComponent isPrimary={true} className="flex-grow-1 flex-sm-grow-0" content="Next" type="button"></ButtonComponent>
                             </div>
                         </div>
                     </section>

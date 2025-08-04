@@ -15,7 +15,7 @@ export default function Modals1() {
     const dialog = useRef<DialogComponent>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const checkWindowSize = () => {
+    const checkWindowSize = (): void => {
         const isMobile = window.innerWidth <= 640;
         if (containerRef.current) {
             containerRef.current.style.minHeight = isMobile ? "726px" : "826px";
@@ -27,7 +27,7 @@ export default function Modals1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === "modals-1" && blockData.theme) {
@@ -46,6 +46,7 @@ export default function Modals1() {
         /* SB Code - End */
         checkWindowSize();
         window.addEventListener("resize", checkWindowSize);
+        
         return () => {
             /* SB Code - Start */
             window.removeEventListener("message", handleMessageEvent);
@@ -59,8 +60,7 @@ export default function Modals1() {
             case "tailwind":
                 return (
                     <section>
-                        <div ref={containerRef} id="dialog-container" className="relative flex justify-center">
-                            <ButtonComponent className="h-fit my-5" type="button" onClick={() => dialog.current?.show()}>Contact Information</ButtonComponent>
+                        <div ref={containerRef} id="dialog-container" className="relative">
                             <DialogComponent ref={dialog} key={"modal-1-tw"} className="rounded-none sm:rounded-lg sm:m-4" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="548px" isModal={true}
                                 header={() =>
                                     <div>
@@ -70,8 +70,8 @@ export default function Modals1() {
                                 }
                                 footerTemplate={() => (
                                     <div className="flex justify-end gap-2 sm:gap-1 mt-1 mb-2">
-                                        <ButtonComponent className="w-1/2 sm:w-fit !ml-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent className="e-primary w-1/2 sm:w-fit" type="button">Save Contact</ButtonComponent>
+                                        <ButtonComponent className="w-1/2 sm:w-fit !ml-0" content="Cancel" type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-primary w-1/2 sm:w-fit" content="Save Contact" type="button"></ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -144,13 +144,17 @@ export default function Modals1() {
                                 </div>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="top-0 left-0 absolute w-full flex">
+                            <ButtonComponent className="my-5 mx-auto" content="Contact Information" type="button" onClick={() => dialog.current?.show()}></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 );
             case "bootstrap5":
                 return (
                     <section>
-                        <div ref={containerRef} id="dialog-container" className="position-relative d-flex align-items-start">
-                            <ButtonComponent className="mx-auto my-3 e-outline" type="button" onClick={() => dialog.current?.show()}>Contact Information</ButtonComponent>
+                        <div ref={containerRef} id="dialog-container" className="position-relative">
                             <DialogComponent ref={dialog} key={"modal-1-bs"} className="rounded-3 m-sm-2" target="#dialog-container" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="548px" isModal={true}
                                 header={() =>
                                     <div>
@@ -160,8 +164,8 @@ export default function Modals1() {
                                 }
                                 footerTemplate={() => (
                                     <div className="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                                        <ButtonComponent className="col col-sm-auto ms-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent className="e-primary col col-sm-auto" type="button">Save Contact</ButtonComponent>
+                                        <ButtonComponent className="col col-sm-auto ms-0" content="Cancel" type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-primary col col-sm-auto" content="Save Contact" type="button"></ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -234,6 +238,11 @@ export default function Modals1() {
                                 </div>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="position-absolute top-0 start-0 d-flex w-100">
+                            <ButtonComponent className="mx-auto my-3 e-outline" content="Contact Information" type="button" onClick={() => dialog.current?.show()}></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 );
         }

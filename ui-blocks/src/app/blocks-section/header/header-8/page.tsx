@@ -9,9 +9,9 @@ export default function Header8() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const breadcrumb = useRef<BreadcrumbComponent | null>(null);
     const [maxItems, setMaxItems] = useState<number>(2);
     const [overflowMode, setOverflowMode] = useState<BreadcrumbOverflowMode>(BreadcrumbOverflowMode.None);
+    const breadcrumb = useRef<BreadcrumbComponent | null>(null);
     
     const handleResize = (): void => {
         const width = window.innerWidth;
@@ -32,7 +32,7 @@ export default function Header8() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'header-8' && blockData.theme) {
@@ -69,7 +69,7 @@ export default function Header8() {
                     <section className="bg-white dark:bg-gray-800">
                         <div key={"header-8-tw"} style={{ minHeight: "36rem" }}>
                             <div className="py-3 px-4 sm:px-6 flex justify-between">
-                                <div id={styles.breadcrumb} className="flex items-center">
+                                <div id={styles["breadcrumb"]} className="flex items-center">
                                     <BreadcrumbComponent ref={breadcrumb} enableNavigation={false} overflowMode={overflowMode} maxItems={maxItems} items={[{ text: "Workflows" }, { text: "Row Event: Created Employee" }]} separatorTemplate={() => <span className="e-icons e-chevron-right"></span>}></BreadcrumbComponent>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@ export default function Header8() {
                                     <ButtonComponent content="Run" type="button"></ButtonComponent>
                                 </div>
                                 <div className="block sm:hidden">
-                                    <ButtonComponent cssClass="block sm:hidden" iconCss=" e-icons e-more-vertical-1" type="button"></ButtonComponent>
+                                    <ButtonComponent cssClass="block sm:hidden" iconCss="e-icons e-more-vertical-1" type="button"></ButtonComponent>
                                 </div>
                             </div>
                         </div>

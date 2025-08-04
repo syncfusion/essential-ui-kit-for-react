@@ -69,7 +69,7 @@ export default function TileView4() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'tile-view-4' && blockData.theme) {
@@ -144,7 +144,7 @@ export default function TileView4() {
                                             </div>
                                             <div className="e-card-content !p-0 flex items-center flex-wrap gap-4 text-gray-500 dark:text-gray-400">
                                                 <div className="flex items-center gap-2">
-                                                    <RatingComponent cssClass="e-small" value={data.rating} precision="Exact"></RatingComponent>
+                                                    <RatingComponent cssClass="e-small" value={data.rating} readOnly={true} precision="Exact"></RatingComponent>
                                                     <span>{data.reviews} reviews</span>
                                                 </div>
                                                 <span className="e-bigger e-badge e-badge-pill e-badge-success">Free date change</span>
@@ -157,8 +157,8 @@ export default function TileView4() {
                                                 <div className="border-s border-gray-500 dark:border-gray-400"></div>
                                                 <p>{data.seats} seats</p>
                                             </div>
-                                            <p className="text-base mb-4 sm:mb-3">Starting at <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">{data.price.toLocaleString("en-US", { style: "currency", currency: "USD" })}</span></p>
-                                            <ButtonComponent className="e-primary e-block" type="button">Show seats</ButtonComponent>
+                                            <p className="text-base mb-4 sm:mb-3">Starting at <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50 ms-2">{data.price.toLocaleString("en-US", { style: "currency", currency: "USD" })}</span></p>
+                                            <ButtonComponent className="e-primary e-block" content="Show seats" type="button"></ButtonComponent>
                                         </div>
                                     </div>)}
                                 ></ListViewComponent>
@@ -216,7 +216,7 @@ export default function TileView4() {
                                             </div>
                                             <div className="e-card-content p-0 d-flex align-items-center flex-wrap gap-3">
                                                 <div className="d-flex align-items-center gap-2">
-                                                    <RatingComponent cssClass="e-small" value={data.rating} precision="Exact"></RatingComponent>
+                                                    <RatingComponent cssClass="e-small" value={data.rating} readOnly={true} precision="Exact"></RatingComponent>
                                                     <span className="text-body-secondary">{data.reviews} reviews</span>
                                                 </div>
                                                 <span className="e-bigger e-badge e-badge-pill e-badge-success">Free date change</span>
@@ -229,8 +229,8 @@ export default function TileView4() {
                                                 <div className="border-start border-light-subtle"></div>
                                                 <p className="mb-0">{data.seats} seats</p>
                                             </div>
-                                            <p className="mb-2 pb-1 fs-6 fw-medium text-body-secondary">Starting at <span className="fs-5 fw-bold lh-sm text-body">{data.price.toLocaleString("en-US", { style: "currency", currency: "USD" })}</span></p>
-                                            <ButtonComponent className="e-primary e-block" type="button">Show seats</ButtonComponent>
+                                            <p className="mb-2 pb-1 fs-6 fw-medium text-body-secondary">Starting at <span className="fs-5 fw-bold lh-sm text-body ms-1">{data.price.toLocaleString("en-US", { style: "currency", currency: "USD" })}</span></p>
+                                            <ButtonComponent className="e-primary e-block" content="Show seats" type="button"></ButtonComponent>
                                         </div>
                                     </div>)}
                                 ></ListViewComponent>

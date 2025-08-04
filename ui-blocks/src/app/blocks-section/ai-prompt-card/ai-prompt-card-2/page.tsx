@@ -9,7 +9,7 @@ export default function AIPromptCard2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-prompt-card-2' && blockData.theme) {
@@ -145,7 +145,7 @@ export default function AIPromptCard2() {
                         <div className="px-3 py-5 mx-auto" style={{ maxWidth: "1140px" }}>
                             <div className="row g-4">
                                 <div className="col-sm-6">
-                                    <div className="e-card rounded-3 border-0 shadow-lg w-100">
+                                    <div className="e-card rounded-3 border-0 shadow w-100">
                                         <div className="e-card-stacked">
                                             <div className="d-flex align-items-start justify-content-between">
                                                 <div>
@@ -173,7 +173,7 @@ export default function AIPromptCard2() {
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
-                                    <div className="e-card rounded-3 border-0 shadow-lg w-100">
+                                    <div className="e-card rounded-3 border-0 shadow w-100">
                                         <div className="e-card-stacked">
                                             <div className="d-flex align-items-start justify-content-between">
                                                 <div>
@@ -201,7 +201,7 @@ export default function AIPromptCard2() {
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
-                                    <div className="e-card rounded-3 border-0 shadow-lg w-100">
+                                    <div className="e-card rounded-3 border-0 shadow w-100">
                                         <div className="e-card-stacked">
                                             <div className="d-flex align-items-start justify-content-between">
                                                 <div>
@@ -229,7 +229,7 @@ export default function AIPromptCard2() {
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
-                                    <div className="e-card rounded-3 border-0 shadow-lg w-100">
+                                    <div className="e-card rounded-3 border-0 shadow w-100">
                                         <div className="e-card-stacked">
                                             <div className="d-flex align-items-start justify-content-between">
                                                 <div>

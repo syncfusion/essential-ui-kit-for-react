@@ -10,6 +10,7 @@ export default function Sidebar3() {
     /* SB Code - Start */ 
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */ 
+    const [backDrop, setBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const data: any[] = [
@@ -59,10 +60,14 @@ export default function Sidebar3() {
             fontIcon: 'e-user'
         }
     ];
+
+    const handleResize = (): void => {
+        setBackDrop(window.innerWidth <= 640);
+    };
     
     /* SB Code - Start */ 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'sidebar-3' && blockData.theme) {
@@ -78,11 +83,16 @@ export default function Sidebar3() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
+        /* SB Code - End */
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
+            window.removeEventListener('resize', handleResize);
         };
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -91,7 +101,7 @@ export default function Sidebar3() {
                 return (
                     <section className="bg-white dark:bg-gray-950">
                         <div id={styles["notification-sidebar"]} style={{ height: '700px' }}>
-                            <SidebarComponent key={"sidebar-3-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-3-tw"} ref={sidebar} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="flex flex-col justify-between h-screen">
                                     <div>
                                         <div className="flex flex-col justify-center items-center pt-6">
@@ -99,7 +109,7 @@ export default function Sidebar3() {
                                                 <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={56} height={56} alt="profile picture" />
                                             </span>
                                             <div className="text-xl font-medium leading-normal text-gray-900 dark:text-white mt-4">John Wick</div>
-                                            <p className="mb-0 text-base text-gray-900 dark:text-white mt-2">johnwick&#64;123.com</p>
+                                            <a className="text-base text-gray-900 dark:text-white mt-2" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                         </div>
                                         <hr className="m-4 border-gray-200 dark:border-gray-700" />
                                         <div>
@@ -119,7 +129,7 @@ export default function Sidebar3() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -128,7 +138,7 @@ export default function Sidebar3() {
                 return (
                     <section className="bg-body">
                         <div id={styles["notification-sidebar"]} style={{ height: '700px' }}>
-                            <SidebarComponent key={"sidebar-3-bs"} width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-3-bs"} ref={sidebar} width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="d-flex flex-column justify-content-between vh-100">
                                     <div>
                                         <div className="d-flex flex-column justify-content-center align-items-center pt-4 mb-3">
@@ -136,8 +146,9 @@ export default function Sidebar3() {
                                                 <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={56} height={56} alt="profile picture" />
                                             </span>
                                             <div className="fs-5 fw-medium text-body mt-3">John Wick</div>
-                                            <p className="mb-0 fs-6 text-body-secondary mt-2">johnwick&#64;123.com</p>
+                                            <a className="fs-6 text-body-secondary mt-2 text-decoration-none" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                         </div>
+                                        <hr className="mx-3 border-light-subtle opacity-100" />
                                         <div>
                                             <ListViewComponent cssClass="border-0 e-bigger" dataSource={data} template={(data: any) => (
                                                 <div className="e-list-wrapper d-flex align-items-center px-2">
@@ -148,14 +159,14 @@ export default function Sidebar3() {
                                         </div>
                                     </div>
                                     <div className="p-3">
-                                        <ButtonComponent iconCss="e-icons sf-icon-logout-07 fs-6" cssClass="e-outline w-100" type="button" content="Logout"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-outline w-100" iconCss="e-icons sf-icon-logout-07 fs-6" content="Logout" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="py-3 px-1 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

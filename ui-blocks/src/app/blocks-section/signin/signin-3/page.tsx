@@ -9,7 +9,7 @@ export default function Signin3() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'signin-3' && blockData.theme) {
@@ -38,7 +38,7 @@ export default function Signin3() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="flex flex-col lg:flex-row mx-auto p-0" style={{ minHeight: '770px' }}>
-                            <div className="w-full lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                            <div className="w-full order-2 lg:order-1 lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                                 <div className="flex flex-wrap mx-0 w-full sm:p-6 xl:p-0 md:p-8 lg:px-6">
                                     <div className="hidden xl:block xl:w-1/6"></div>
                                     <div className="w-full xl:w-2/3">
@@ -68,7 +68,7 @@ export default function Signin3() {
                                     <div className="hidden xl:block xl:w-1/6"></div>
                                 </div>
                             </div>
-                            <div className="w-full lg:w-5/12">
+                            <div className="w-full order-1 lg:order-2 lg:w-5/12">
                                 <div className="bg-gray-50 dark:bg-gray-950">
                                     <div className="flex items-center justify-center">
                                         <div className="w-full max-w-md rounded-lg px-4 py-14 md:px-6 md:py-20">
@@ -92,7 +92,7 @@ export default function Signin3() {
                                                     <a href="#" className="text-primary-600 dark:text-primary-400 font-medium text-base" style={{ paddingRight: 0 }}>Forgot password?</a>
                                                 </div>
                                                 <div className="e-bigger mt-6">
-                                                    <ButtonComponent className="w-full e-primary" type="submit">Sign in</ButtonComponent>
+                                                    <ButtonComponent className="w-full e-primary" content="Sign in" type="submit"></ButtonComponent>
                                                 </div>
                                             </form>
                                             <div>
@@ -124,8 +124,8 @@ export default function Signin3() {
                 );
             case 'bootstrap5':
                 return (
-                    <section className="container-fluid d-md-flex d-block flex-wrap mx-auto p-0" style={{ minHeight: '770px' }}>
-                        <div className="col-12 col-lg-7 d-flex align-items-center bg-success p-4 p-lg-4" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                    <section className="container-fluid row d-flex flex-wrap mx-auto p-0" style={{ minHeight: '770px' }}>
+                        <div className="col-12 col-lg-7 order-2 order-lg-1 d-flex align-items-center bg-success p-4 p-lg-4" style={{ backgroundImage: "url('/react/essential-ui-kit/blocks/assets/images/authentication/feature-list/feature-list.png')", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                             <div className="row mx-0 w-100 py-5">
                                 <div className="col-xl-2 d-lg-block"></div>
                                 <div className="col-xl-8">
@@ -156,9 +156,9 @@ export default function Signin3() {
                                 <div className="col-xl-2 d-lg-block"></div>
                             </div>
                         </div>
-                        <div className="col-12 col-lg-5 p-0">
+                        <div className="col-12 col-lg-5 order-1 order-lg-2 p-0">
                             <div className="d-flex justify-content-center align-items-center bg-body">
-                                <div className="max-w-lg bg-body rounded-lg p-4 p-md-5 w-100" style={{ maxWidth: '508px' }}>
+                                <div className="max-w-lg bg-body rounded-lg p-4 py-5 p-md-5 w-100" style={{ maxWidth: '508px' }}>
                                     <div className="d-flex justify-content-center align-items-center mb-4">
                                         <img className="me-2" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" alt="company logo" width={32} height={32} />
                                         <h5 className="text-center fw-bold mb-0 fs-5 text-body">Company Name</h5>
@@ -181,7 +181,7 @@ export default function Signin3() {
                                             <a href="#" className="text-primary fs-6 fw-medium text-decoration-none" style={{ paddingRight: '0 !important', paddingTop: '4px !important' }}>Forgot password?</a>
                                         </div>
                                         <div className="mt-4 e-bigger">
-                                            <ButtonComponent className="e-block e-primary" type="submit">Sign in</ButtonComponent>
+                                            <ButtonComponent className="e-block e-primary" content="Sign in" type="submit"></ButtonComponent>
                                         </div>
                                     </form>
                                     <div className="d-flex flex-wrap align-items-center justify-content-center mt-3 gap-1">

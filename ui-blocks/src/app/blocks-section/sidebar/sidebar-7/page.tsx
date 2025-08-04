@@ -11,6 +11,7 @@ export default function Sidebar7() {
     /* SB Code - Start */ 
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */ 
+    const [backDrop, setBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const navigationMenu: any[] = [  
@@ -53,10 +54,14 @@ export default function Sidebar7() {
             fontIcon: 'e-circle-info'
         }
     ];
+
+    const handleResize = (): void => {
+        setBackDrop(window.innerWidth <= 640);
+    };
     
     /* SB Code - Start */ 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'sidebar-7' && blockData.theme) {
@@ -72,11 +77,16 @@ export default function Sidebar7() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
+        /* SB Code - End */
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
+            window.removeEventListener('resize', handleResize);
         };
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -85,7 +95,7 @@ export default function Sidebar7() {
                 return (
                     <section className="bg-white dark:bg-gray-950">
                         <div id={styles["profile-sidebar"]} style={{ height: '605px' }}>
-                            <SidebarComponent key={"sidebar-7-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-7-tw"} ref={sidebar} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="flex flex-col h-screen justify-between">
                                     <div>
                                         <div className="flex items-center p-4">
@@ -94,7 +104,7 @@ export default function Sidebar7() {
                                             </span>
                                             <div className="ml-3">
                                                 <div className="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
-                                                <p className="mb-0 text-gray-900 dark:text-white">johnwick&#64;123.com</p>
+                                                <a className="text-gray-900 dark:text-white" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                             </div>
                                         </div>
                                         <div className="px-4 py-3">
@@ -127,7 +137,7 @@ export default function Sidebar7() {
                                             <h3 className="text-xl mt-2 text-gray-700 font-semibold dark:text-gray-300">70 GB free of 150 GB</h3>
                                         </div>
                                         <div className="py-3">
-                                            <ProgressBarComponent key={"progressbar-1-tw"} value={54} type="Linear" height="8" width="205" trackThickness={8} progressThickness={8} progressColor="#4F46E5"></ProgressBarComponent>
+                                            <ProgressBarComponent key={"progressbar-1-tw"} value={54} type="Linear" margin={{left: 0, right: 0}} height="8" width="223" trackThickness={8} progressThickness={8} progressColor="#4F46E5"></ProgressBarComponent>
                                         </div>
                                         <div className="py-3">
                                             <ButtonComponent iconCss="e-icons sf-icon-upload-cloud text-base" className="e-outline w-full" content="Upgrade to Pro" type="button"></ButtonComponent>
@@ -138,7 +148,7 @@ export default function Sidebar7() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -147,7 +157,7 @@ export default function Sidebar7() {
                 return (
                     <section className="bg-body">
                         <div id={styles["profile-sidebar"]} style={{ height: '630px' }}>
-                            <SidebarComponent key={"sidebar-7-bs"} width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-7-bs"} ref={sidebar} width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="d-flex flex-column vh-100 justify-content-between">
                                     <div>
                                         <div className="d-flex align-items-center px-3 pb-3 mt-4">
@@ -156,7 +166,7 @@ export default function Sidebar7() {
                                             </span>
                                             <div className="ms-2">
                                                 <div className="fs-6 fw-medium text-body">John Wick</div>
-                                                <p className="mb-0 text-body-secondary">johnwick&#64;123.com</p>
+                                                <a className="text-body-secondary text-decoration-none" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                             </div>
                                         </div>
                                         <div className="px-3">
@@ -173,7 +183,7 @@ export default function Sidebar7() {
                                                 </div>)}
                                             ></ListViewComponent>
                                         </div>
-                                        <p className="m-3 fs-6 text-body-secondary">Others</p>
+                                        <hr className="mx-3 border-light-subtle opacity-100" />
                                         <div>
                                             <ListViewComponent className="border-0 e-bigger" dataSource={supportMenu} template={(data: any) => (
                                                 <div className="e-list-wrapper d-flex align-items-center px-1">
@@ -189,7 +199,7 @@ export default function Sidebar7() {
                                             <h3 className="mt-1 text-body fw-medium fs-5 mb-0">70 GB free of 150 GB</h3>
                                         </div>
                                         <div className="mt-2">
-                                            <ProgressBarComponent key={"progressbar-1-bs"} type="Linear" value={54} height="8" width="205" trackThickness={8} progressThickness={8} progressColor="#0D6EFD" cornerRadius="Round"></ProgressBarComponent>
+                                            <ProgressBarComponent key={"progressbar-1-bs"} type="Linear" value={54} margin={{left: 0, right: 0}} height="8" width="223" trackThickness={8} progressThickness={8} progressColor="#0D6EFD" cornerRadius="Round"></ProgressBarComponent>
                                         </div>
                                         <div className="mt-3">
                                             <ButtonComponent className="e-outline w-100" iconCss="e-icons sf-icon-upload-cloud fs-6" content="Upgrade to Pro" type="button"></ButtonComponent>
@@ -200,7 +210,7 @@ export default function Sidebar7() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="py-3 px-1 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

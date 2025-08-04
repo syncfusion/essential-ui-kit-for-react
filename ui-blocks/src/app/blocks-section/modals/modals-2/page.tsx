@@ -12,20 +12,20 @@ export default function Modals2() {
     /* SB Code - End */
     const dialog = useRef<DialogComponent>(null);
 
-    const checkWindowSize = () => {
+    const checkWindowSize = (): void => {
         const isMobile = window.innerWidth <= 640;
         dialog.current?.show(isMobile)
     }
 
     /* SB Code - Start */
-    const refreshDialog = (timeout: number) => {
+    const refreshDialog = (timeout: number): void => {
         setTimeout(() => {
             dialog.current?.show(window.innerWidth <= 640);
         }, timeout);
     };
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === "modals-2" && blockData.theme) {
@@ -59,14 +59,13 @@ export default function Modals2() {
             case "tailwind":
                 return (
                     <section>
-                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: "580px" }}>
-                            <ButtonComponent className="h-fit my-5" type="button" onClick={() => dialog.current?.show()}>Personal Information</ButtonComponent>
+                        <div id="dialog-container" className="relative" style={{ minHeight: "580px" }}>
                             <DialogComponent ref={dialog} className="rounded-none sm:rounded-lg sm:m-4" target="#dialog-container" width="400px" isModal={true} showCloseIcon={true} open={(e) => { e.preventFocus = true; }}
                                 header={() => <div className="font-semibold leading-normal">Personal Information</div>}
                                 footerTemplate={() => (
                                     <div className="flex flex-row justify-end gap-2 sm:gap-1 mt-1 mb-2">
-                                        <ButtonComponent className="w-1/2 sm:w-fit !ml-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent className="e-primary w-1/2 sm:w-fit" type="submit">Submit</ButtonComponent>
+                                        <ButtonComponent className="w-1/2 sm:w-fit !ml-0" content="Cancel" type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-primary w-1/2 sm:w-fit" content="Submit" type="submit"></ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -94,19 +93,23 @@ export default function Modals2() {
                                 </form>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="top-0 left-0 absolute w-full flex">
+                            <ButtonComponent className="my-5 mx-auto" content="Personal Information" type="button" onClick={() => dialog.current?.show()}></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 );
             case "bootstrap5":
                 return (
                     <section>
-                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: "580px" }}>
-                            <ButtonComponent className="mx-auto my-3 e-outline" type="button" onClick={() => dialog.current?.show()}>Personal Information</ButtonComponent>
+                        <div id="dialog-container" className="position-relative" style={{ minHeight: "580px" }}>
                             <DialogComponent ref={dialog} className="rounded-3 m-sm-2" target="#dialog-container" width="400px" isModal={true} showCloseIcon={true} open={(e) => { e.preventFocus = true; }}
                                 header={() => <div className="fw-bold mb-0 text-body">Personal Information</div>}
                                 footerTemplate={() => (
                                     <div className="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                                        <ButtonComponent className="col col-sm-auto ms-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent className="e-primary col col-sm-auto" type="submit">Submit</ButtonComponent>
+                                        <ButtonComponent className="col col-sm-auto ms-0" content="Cancel" type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-primary col col-sm-auto" content="Submit" type="submit"></ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -134,6 +137,11 @@ export default function Modals2() {
                                 </form>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="position-absolute top-0 start-0 d-flex w-100">
+                            <ButtonComponent className="mx-auto my-3 e-outline" content="Personal Information" type="button" onClick={() => dialog.current?.show()}></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 )
         }
