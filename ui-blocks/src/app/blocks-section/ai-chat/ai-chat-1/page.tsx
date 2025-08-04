@@ -12,12 +12,12 @@ export default function AIChat1() {
 
     const promptData: any[] = [
         {
-            id: "1",
+            id: 1,
             text: "Suggest 3 websites about ethical hacking",
             category: "sender"
         },
         {
-            id: "2",
+            id: 2,
             category: "reply",
             isList: true,
             resources: [
@@ -46,7 +46,7 @@ export default function AIChat1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-chat-1' && blockData.theme) {
@@ -82,10 +82,10 @@ export default function AIChat1() {
                                             <div className="flex justify-end ml-auto sm:mr-3 gap-3 items-start w-full sm:w-3/4">
                                                 <div className="flex flex-col gap-1 items-end">
                                                     <div className="p-3 rounded-lg bg-primary-100 dark:bg-primary-800">
-                                                        <div className="text-sm text-gray-900 dark:text-white">{data.text}</div>
-                                                        <div className="flex gap-1">
-                                                            <span className="e-avatar e-avatar-circle e-avatar-small e-icons e-edit !text-base !text-gray-700 dark:!text-white bg-transparent"></span>
-                                                            <span className="e-avatar e-avatar-circle e-avatar-small e-icons e-copy !text-base !text-gray-700 dark:!text-white bg-transparent"></span>
+                                                        <div className="mb-1 text-sm text-gray-900 dark:text-white">{data.text}</div>
+                                                        <div className="flex">
+                                                            <ButtonComponent className="e-flat !border-0 text-base" iconCss="e-icons e-edit" type="button" style={{ pointerEvents: 'none' }}></ButtonComponent>
+                                                            <ButtonComponent className="e-flat !border-0 text-base" iconCss="e-icons e-copy" type="button" style={{ pointerEvents: 'none' }}></ButtonComponent>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -112,14 +112,14 @@ export default function AIChat1() {
                                                             ></ListViewComponent>
                                                             <div className="flex justify-between px-3">
                                                                 <div className="flex gap-1 sm:pr-0">
-                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-thumbs-up" content=" " type="button"></ButtonComponent>
-                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-thumbs-down" content=" " type="button"></ButtonComponent>
-                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-edit" content=" " type="button"></ButtonComponent>
+                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-thumbs-up" type="button"></ButtonComponent>
+                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-thumbs-down" type="button"></ButtonComponent>
+                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-edit" type="button"></ButtonComponent>
                                                                 </div>
                                                                 <div className="flex gap-1">
-                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-copy" content=" " type="button"></ButtonComponent>
-                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons sf-icon-share-arrow-02" content=" " type="button"></ButtonComponent>
-                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-align-bottom" content=" " type="button"></ButtonComponent>
+                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-copy" type="button"></ButtonComponent>
+                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons sf-icon-share-arrow-02" type="button"></ButtonComponent>
+                                                                    <ButtonComponent className="e-flat text-base !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-align-bottom" type="button"></ButtonComponent>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -138,56 +138,58 @@ export default function AIChat1() {
                     <section>
                         <div id={styles["chat-header"]} className="d-flex flex-column align-items-center mx-auto pb-4 rounded overflow-hidden bg-body" style={{ maxHeight: '850px', minHeight: '36rem', maxWidth: '850px' }}>
                             <div className="d-flex align-items-center w-100 flex-column px-1 px-sm-3 py-2">
-                                <ListViewComponent className="border-0 py-4" dataSource={promptData} width="100%" height="100%" template={(data: any)=>
-                                    data.category !== 'reply' ? (
-                                    <div className="d-flex justify-content-end ms-auto me-sm-3 gap-3 align-items-start w-100 w-sm-75">
-                                        <div className="d-flex flex-column gap-1 align-items-end">
-                                            <div className="p-3 rounded bg-primary-subtle">
-                                                <div className="fs-6 text-body pb-2">{data.text}</div>
-                                                <div className="d-flex gap-1">
-                                                    <span className="e-avatar e-avatar-circle e-avatar-small e-icons e-edit fs-6 text-secondary bg-transparent"></span>
-                                                    <span className="e-avatar e-avatar-circle e-avatar-small e-icons e-copy fs-6 text-secondary bg-transparent"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    ) : (
-                                    <div className="d-flex justify-content-start gap-3 align-items-start w-100 pe-3" style={{ maxWidth: '700px' }}>
-                                        <div>
-                                            <span className="e-avatar e-avatar-circle e-avatar-small fs-5 text-white e-icons e-ai-chat bg-primary"></span>
-                                        </div>
-                                        <div className="d-flex flex-column gap-1 pt-2 pb-3 rounded bg-light-subtle">
-                                            {data.isList && (
-                                            <div>
-                                                <ListViewComponent className="border-0 px-2" dataSource={data.resources} fields={{ text: 'text' }} showIcon={false} 
-                                                    template={(resource: any)=>
-                                                        resource.type === 'header' ? (
-                                                        <p className="fs-6 text-body mb-2">{resource.text}</p>
-                                                        ) : (
-                                                        <div>
-                                                            <div className="fs-6 d-inline-flex fw-medium text-body">{resource.text}</div>
-                                                            <div className="fs-6 d-inline text-body">{resource.description}</div>
+                                <ListViewComponent className="border-0 py-4" dataSource={promptData} width="100%" height="100%"
+                                     template={(data: any)=>
+                                        data.category !== 'reply' ? (
+                                            <div className="d-flex justify-content-end ms-auto me-sm-3 gap-3 align-items-start w-100 w-sm-75">
+                                                <div className="d-flex flex-column gap-1 align-items-end">
+                                                    <div className="p-3 rounded bg-primary-subtle">
+                                                        <div className="fs-6 text-body pb-2">{data.text}</div>
+                                                        <div className="d-flex">
+                                                            <ButtonComponent className="e-flat border-0 fs-6" iconCss="e-icons e-edit" type="button" style={{ pointerEvents: 'none' }}></ButtonComponent>
+                                                            <ButtonComponent className="e-flat border-0 fs-6" iconCss="e-icons e-copy" type="button" style={{ pointerEvents: 'none' }}></ButtonComponent>
                                                         </div>
-                                                        )
-                                                    }
-                                                ></ListViewComponent>
-                                                <div className="d-flex justify-content-between px-3">
-                                                    <div className="d-flex gap-1 pe-sm-0">
-                                                        <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-thumbs-up" content=" " type="button"></ButtonComponent>
-                                                        <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-thumbs-down" content=" " type="button"></ButtonComponent>
-                                                        <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-edit" content=" " type="button"></ButtonComponent>
-                                                    </div>
-                                                    <div className="d-flex gap-1">
-                                                        <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-copy" content=" " type="button"></ButtonComponent>
-                                                        <ButtonComponent className="e-flat fs-6" iconCss="e-icons sf-icon-share-arrow-02" content=" " type="button"></ButtonComponent>
-                                                        <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-align-bottom" content=" " type="button"></ButtonComponent>
                                                     </div>
                                                 </div>
                                             </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                    )}
+                                        ) : (
+                                            <div className="d-flex justify-content-start gap-3 align-items-start w-100 pe-3" style={{ maxWidth: '700px' }}>
+                                                <div>
+                                                    <span className="e-avatar e-avatar-circle e-avatar-small fs-5 text-white e-icons e-ai-chat bg-primary"></span>
+                                                </div>
+                                                <div className="d-flex flex-column gap-1 pt-2 pb-3 rounded bg-light-subtle">
+                                                    {data.isList && (
+                                                        <div>
+                                                            <ListViewComponent className="border-0 px-2" dataSource={data.resources} fields={{ text: 'text' }} showIcon={false} 
+                                                                template={(resource: any)=>
+                                                                    resource.type === 'header' ? (
+                                                                    <p className="fs-6 text-body mb-2">{resource.text}</p>
+                                                                    ) : (
+                                                                    <div>
+                                                                        <div className="fs-6 d-inline-flex fw-medium text-body">{resource.text}</div>
+                                                                        <div className="fs-6 d-inline text-body">{resource.description}</div>
+                                                                    </div>
+                                                                    )
+                                                                }
+                                                            ></ListViewComponent>
+                                                            <div className="d-flex justify-content-between px-3">
+                                                                <div className="d-flex gap-1 pe-sm-0">
+                                                                    <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-thumbs-up" type="button"></ButtonComponent>
+                                                                    <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-thumbs-down" type="button"></ButtonComponent>
+                                                                    <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-edit" type="button"></ButtonComponent>
+                                                                </div>
+                                                                <div className="d-flex gap-1">
+                                                                    <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-copy" type="button"></ButtonComponent>
+                                                                    <ButtonComponent className="e-flat fs-6" iconCss="e-icons sf-icon-share-arrow-02" type="button"></ButtonComponent>
+                                                                    <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-align-bottom" type="button"></ButtonComponent>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )
+                                    }
                                 ></ListViewComponent>
                             </div>
                         </div>

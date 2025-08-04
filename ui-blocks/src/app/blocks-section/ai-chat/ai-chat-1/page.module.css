@@ -1,10 +1,10 @@
 #chat-header :global(.e-list-item) {
-  border: none !important;
-  height: auto !important;
-  padding: 8px !important;
+	border: none !important;
+	height: auto !important;
+	padding: 8px !important;
 }
 
 #chat-header :global(.e-list-item.e-active),
 #chat-header :global(.e-list-item:hover) {
-  background-color: transparent !important;
+	background-color: transparent !important;
 }

@@ -9,7 +9,7 @@ export default function SignUp1() {
     const [theme, setTheme] = useState('tailwind');
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'signup-1' && blockData.theme) {
@@ -66,7 +66,7 @@ export default function SignUp1() {
                                         </span>
                                     </div>
                                     <div className="e-bigger">
-                                        <ButtonComponent cssClass="w-full text-base e-primary" type="submit">Sign up</ButtonComponent>
+                                        <ButtonComponent cssClass="w-full text-base e-primary" content="Sign up" type="submit"></ButtonComponent>
                                     </div>
                                 </form>
                             </div>
@@ -112,25 +112,25 @@ export default function SignUp1() {
                             <form action="#" className="mt-4 mb-4" onSubmit={(event) => event.preventDefault()}>
                                 <div className="mb-3">
                                     <label className="form-label mb-1 fw-medium text-dark-emphasis small">Name</label>
-                                    <TextBoxComponent cssClass="e-bigger" type="text" placeholder="Name" />
+                                    <TextBoxComponent cssClass="e-bigger" type="text" placeholder="Name" floatLabelType="Never"></TextBoxComponent>
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label mb-1 fw-medium text-dark-emphasis small">Email</label>
-                                    <TextBoxComponent cssClass="e-bigger" type="email" placeholder="Email" />
+                                    <TextBoxComponent cssClass="e-bigger" type="email" placeholder="Email" floatLabelType="Never"></TextBoxComponent>
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label mb-1 fw-medium text-dark-emphasis small">Password</label>
-                                    <TextBoxComponent cssClass="e-bigger" type="password" placeholder="Password" />
+                                    <TextBoxComponent cssClass="e-bigger" type="password" placeholder="Password" floatLabelType="Never"></TextBoxComponent>
                                 </div>
                                 <div className="mb-4">
-                                    <CheckBoxComponent cssClass="e-bigger" />
+                                    <CheckBoxComponent cssClass="e-bigger"></CheckBoxComponent>
                                     <span className="ms-2 text-body">I agree with{" "}
                                         <a href="#" className="text-primary fs-6 px-0 text-decoration-none" style={{ paddingTop: '1px' }}>terms</a>{" "}and{" "}
                                         <a href="#" className="text-primary fs-6 px-0 text-decoration-none" style={{ paddingTop: '1px' }}>privacy policy</a>
                                     </span>
                                 </div>
                                 <div className="e-bigger">
-                                    <ButtonComponent className="w-100" cssClass="e-primary" type="submit">Sign up</ButtonComponent>
+                                    <ButtonComponent className="w-100" cssClass="e-primary" content="Sign up" type="submit"></ButtonComponent>
                                 </div>
                             </form>
                             <div className="d-flex justify-content-center align-items-center position-relative mt-4">

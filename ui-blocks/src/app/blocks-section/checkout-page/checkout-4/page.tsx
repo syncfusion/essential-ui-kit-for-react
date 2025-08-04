@@ -13,14 +13,14 @@ export default function Checkout4() {
     const [width, setWidth] = useState('540px');
     const sidebar = useRef<SidebarComponent | null>(null);
 
-    const handleResize = () => {
+    const handleResize = (): void => {
         setWidth(window.innerWidth < 540 ? '100%' : '540px')
         sidebar.current?.refresh();
     }
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'checkout-4' && blockData.theme) {
@@ -53,13 +53,11 @@ export default function Checkout4() {
                 return (
                     <section className="bg-gray-100 dark:bg-gray-900">
                         <div style={{ height: "1298px", width: width, float: "right" }}>
-                            <SidebarComponent className="w-full" ref={sidebar} key={"checkout-4-tw"} position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: "block" }}>
+                            <SidebarComponent key={"checkout-4-tw"} ref={sidebar} className="w-full" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: "block" }}>
                                 <div className="p-4 md:p-6 bg-gray-100 dark:bg-gray-900">
                                     <div className="flex justify-between items-center mb-5">
                                         <h2 className="text-lg font-medium text-gray-900 dark:text-white">My shopping cart</h2>
-                                        <ButtonComponent className="e-icons e-flat text-xl" onClick={() => sidebar.current?.hide()} type="button">
-                                            <i className="e-icons e-close"></i>
-                                        </ButtonComponent>
+                                        <ButtonComponent className="e-icons e-flat text-xl" iconCss="e-icons e-close" onClick={() => sidebar.current?.hide()} type="button"></ButtonComponent>
                                     </div>
                                     <div className="rounded-lg p-3 bg-gray-200 dark:bg-gray-800">
                                         <div className="grid grid-cols-1 gap-3">
@@ -170,10 +168,10 @@ export default function Checkout4() {
                                     </div>
                                     <div className="flex flex-col md:flex-row items-center justify-center gap-4 pt-2">
                                         <div className="w-full md:w-1/2 e-bigger">
-                                            <ButtonComponent className="w-full e-primary text-lg" type="submit">Proceed to checkout</ButtonComponent>
+                                            <ButtonComponent className="w-full e-primary text-lg" content="Proceed to checkout" type="submit"></ButtonComponent>
                                         </div>
                                         <div className="w-full md:w-1/2 e-bigger">
-                                            <ButtonComponent className="w-full e-outline text-lg" type="submit">Continue shopping</ButtonComponent>
+                                            <ButtonComponent className="w-full e-outline text-lg" content="Continue shopping" type="submit"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -181,7 +179,7 @@ export default function Checkout4() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -190,13 +188,11 @@ export default function Checkout4() {
                 return (
                     <section className="bg-light-subtle">
                         <div style={{ height: "1298px", width: width, float: "right" }}>
-                            <SidebarComponent position="Right" ref={sidebar} key={"checkout-4-bs"} type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: "block" }}>
+                            <SidebarComponent key={"checkout-4-bs"} ref={sidebar} position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: "block" }}>
                                 <div className="p-3 p-md-4 bg-light-subtle">
                                     <div className="d-flex justify-content-between align-items-center mb-4">
                                         <h2 className="h5 fs-5 fw-bold text-body mb-0">My shopping cart</h2>
-                                        <ButtonComponent className="e-icons e-flat" onClick={() => sidebar.current?.hide()} type="button">
-                                            <i className="e-icons e-close"></i>
-                                        </ButtonComponent>
+                                        <ButtonComponent className="e-flat" iconCss="e-icons e-close" onClick={() => sidebar.current?.hide()} type="button"></ButtonComponent>
                                     </div>
                                     <div className="rounded p-3 px-2 bg-body-tertiary">
                                         <div className="row g-3">
@@ -286,7 +282,7 @@ export default function Checkout4() {
                                             <div className="d-flex flex-column gap-3 pt-3 e-bigger">
                                                 <RadioButtonComponent label="Delivery to the same address" name="deliveryType" value="same address" checked></RadioButtonComponent>
                                                 <RadioButtonComponent label="Delivery to the another address" name="deliveryType" value="another address"></RadioButtonComponent>
-                                                <RadioButtonComponent label="Store pickup" name="deliveryType" value="store pickup" />
+                                                <RadioButtonComponent label="Store pickup" name="deliveryType" value="store pickup"></RadioButtonComponent>
                                             </div>
                                         </div>
                                         <div className="pt-4">
@@ -300,11 +296,11 @@ export default function Checkout4() {
                                         </div>
                                     </div>
                                     <div className="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
-                                        <div className="w-100">
-                                            <ButtonComponent cssClass="e-primary e-block" type="submit">Proceed to checkout</ButtonComponent>
+                                        <div className="w-100 e-bigger">
+                                            <ButtonComponent cssClass="e-primary e-block" content="Proceed to checkout" type="submit"></ButtonComponent>
                                         </div>
-                                        <div className="w-100">
-                                            <ButtonComponent cssClass="e-secondary e-block" type="submit">Continue shopping</ButtonComponent>
+                                        <div className="w-100 e-bigger">
+                                            <ButtonComponent cssClass="e-secondary e-block" content="Continue shopping" type="submit"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -312,7 +308,7 @@ export default function Checkout4() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

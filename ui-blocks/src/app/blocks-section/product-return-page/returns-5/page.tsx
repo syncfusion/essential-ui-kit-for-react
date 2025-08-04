@@ -8,8 +8,8 @@ export default function ReturnBlock5() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const stepper = useRef<StepperComponent | null>(null);
     const [stepperStyle, setStepperStyle] = useState({});
+    const stepper = useRef<StepperComponent | null>(null);
 
     const checkWindowSize = (): void => {
         if (!stepper.current) return;
@@ -35,7 +35,7 @@ export default function ReturnBlock5() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'returns-5' && blockData.theme) {
@@ -73,18 +73,18 @@ export default function ReturnBlock5() {
                             <div className="sm:mb-8 mb-5" style={stepperStyle}>
                                 <StepperComponent ref={stepper} labelPosition="bottom" activeStep={4}>
                                     <StepsDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"My Products"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Return Reason"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Pickup Option"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Refund Choice"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Confirmation"}></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="My Products"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Return Reason"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Pickup Option"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Refund Choice"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Confirmation"></StepDirective>
                                     </StepsDirective>
                                 </StepperComponent>
                             </div>
                             <p className="mb-3 font-medium text-gray-900 dark:text-white">Your request has been successfully registered.</p>
                             <p className="sm:mb-6 mb-5 text-sm text-gray-700 dark:text-gray-300">We have successfully received your return request. As we process it, you can monitor the status of your order.</p>
                             <div className="flex justify-end">
-                                <ButtonComponent className="w-full sm:max-w-max" type="button">View Status</ButtonComponent>
+                                <ButtonComponent className="w-full sm:max-w-max" content="View Status" type="button"></ButtonComponent>
                             </div>
                         </div>
                     </section>
@@ -97,18 +97,18 @@ export default function ReturnBlock5() {
                             <div className="mb-4" style={stepperStyle}>
                                 <StepperComponent ref={stepper} labelPosition="bottom" activeStep={4}>
                                     <StepsDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"My Products"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Return Reason"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Pickup Option"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Refund Choice"}></StepDirective>
-                                        <StepDirective iconCss={"e-icons e-circle-check"} label={"Confirmation"}></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="My Products"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Return Reason"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Pickup Option"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Refund Choice"></StepDirective>
+                                        <StepDirective iconCss="e-icons e-circle-check" label="Confirmation"></StepDirective>
                                     </StepsDirective>
                                 </StepperComponent>
                             </div>
                             <p className="h6 mb-2 fw-bold text-body">Your request has been successfully registered.</p>
                             <p className="mb-4 mb-sm-3 text-body-emphasis">We have successfully received your return request. As we process it, you can monitor the status of your order.</p>
                             <div className="d-flex justify-content-end">
-                                <ButtonComponent className="e-outline flex-grow-1 flex-sm-grow-0" type="button">View Status</ButtonComponent>
+                                <ButtonComponent className="e-outline flex-grow-1 flex-sm-grow-0" content="View Status" type="button"></ButtonComponent>
                             </div>
                         </div>
                     </section>

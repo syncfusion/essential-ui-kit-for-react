@@ -13,7 +13,7 @@ export default function AILogin1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-login-1' && blockData.theme) {
@@ -53,7 +53,7 @@ export default function AILogin1() {
                                         <div className="flex items-center justify-center">
                                             <div className="w-full max-w-md rounded-lg px-3 py-8 md:px-6 md:py-20">
                                                 <div className="flex justify-center gap-3 mb-8">
-                                                    <i className="e-icons e-ai-chat text-2xl text-primary-600 dark:text-primary-400"></i>
+                                                    <span className="e-icons e-ai-chat text-2xl text-primary-600 dark:text-primary-400"></span>
                                                     <h2 className="text-center font-semibold text-gray-900 dark:text-white text-2xl">Fusion AI</h2>
                                                 </div>
                                                 <form action="#" className="mt-6" onSubmit={(event) => event.preventDefault()}>
@@ -72,23 +72,23 @@ export default function AILogin1() {
                                                         </ButtonComponent>
                                                     </div>
                                                     <div className="relative flex justify-center items-center mt-6">
-                                                        <span className="bg-gray-50 dark:bg-gray-800 px-2.5 z-10 absolute text-sm text-gray-700 dark:text-gray-300">Or</span>
+                                                        <span className="bg-white dark:bg-gray-800 px-2.5 z-10 absolute text-sm text-gray-700 dark:text-gray-300">Or</span>
                                                         <hr className="w-full absolute border-gray-200 dark:border-gray-600" />
                                                     </div>
                                                     <div className="mt-6 mb-4">
-                                                        <TextBoxComponent ref={userName} cssClass="e-normal !border-0 shadow-sm dark:bg-gray-700" type="email" placeholder="Username or email" created={() => userName.current?.addIcon("prepend", "e-icons e-user e-small")} floatLabelType="Never"></TextBoxComponent>
+                                                        <TextBoxComponent ref={userName} cssClass="e-normal !border-0 shadow-sm !bg-gray-50 dark:!bg-gray-700" type="email" placeholder="Username or email" created={() => userName.current?.addIcon("prepend", "e-icons e-user e-small")} floatLabelType="Never"></TextBoxComponent>
                                                     </div>
                                                     <div className="mb-6 relative">
-                                                        <TextBoxComponent ref={password} cssClass="e-normal !border-0 shadow-sm bg-none dark:bg-gray-700" type="password" placeholder="Password" created={() => password.current?.addIcon("prepend", "e-icons e-lock e-small")} floatLabelType="Never"></TextBoxComponent>
+                                                        <TextBoxComponent ref={password} cssClass="e-normal !border-0 shadow-sm !bg-gray-50 dark:!bg-gray-700" type="password" placeholder="Password" created={() => password.current?.addIcon("prepend", "e-icons e-lock e-small")} floatLabelType="Never"></TextBoxComponent>
                                                     </div>
                                                     <div className="mb-4">
-                                                        <ButtonComponent cssClass="e-normal w-full e-primary e-btn" type="submit">Sign in with Fusion AI</ButtonComponent>
+                                                        <ButtonComponent cssClass="e-normal w-full e-primary" content="Sign in with Fusion AI" type="submit"></ButtonComponent>
                                                     </div>
                                                 </form>
                                                 <div>
                                                     <p className="w-80 sm:w-96 text-xs font-normal text-center text-gray-700 dark:text-gray-300">
                                                         By creating an account, you agree to our <span className="font-medium text-gray-900 dark:text-white">terms of service</span> and
-                                                        <span className="font-medium text-gray-900 dark:text-white"> privacy & cookie statement</span>.
+                                                        <span className="font-medium text-gray-900 dark:text-white"> privacy & cookie statement.</span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -109,12 +109,12 @@ export default function AILogin1() {
                                     <h1 className="fs-2 fw-semibold mt-lg-2" style={{ maxWidth: "275px", fontSize: "32px" }}>Unlock the power of AI</h1>
                                     <p className="fw-normal pt-4 pb-5 mb-0" style={{ maxWidth: "275px" }}>Experience the power of AI with us.</p>
                                 </div>
-                                <div className="col-12 col-lg-7 position-relative">
+                                <div key={"ailogin-1-bs"} className="col-12 col-lg-7 position-relative">
                                     <div className="bg-body rounded-3">
                                         <div className="d-flex align-items-center justify-content-center">
                                             <div className="w-100 rounded-lg px-3 py-5 px-md-4 px-md-5" style={{ maxWidth: "448px" }}>
                                                 <div className="d-flex justify-content-center gap-2 mb-4">
-                                                    <i className="e-icons e-ai-chat fs-4 text-primary"></i>
+                                                    <span className="e-icons e-ai-chat fs-4 text-primary"></span>
                                                     <h2 className="text-center fw-semibold text-body fs-4">Fusion AI</h2>
                                                 </div>
                                                 <form action="#" className="mt-4" onSubmit={(event) => event.preventDefault()}>
@@ -137,19 +137,19 @@ export default function AILogin1() {
                                                         <hr className="w-100 border-light-subtle opacity-100" />
                                                     </div>
                                                     <div className="mt-4 mb-3">
-                                                        <TextBoxComponent ref={userName} cssClass="e-normal small text-secondary border-0 shadow-sm bg-body-tertiary" type="email" placeholder="Username or email" created={() => userName.current?.addIcon("prepend", "e-icons e-user e-small")} floatLabelType="Never"></TextBoxComponent>
+                                                        <TextBoxComponent ref={userName} cssClass="e-normal small text-secondary border-0 bg-body-tertiary" type="email" placeholder="Username or email" created={() => userName.current?.addIcon("prepend", "e-icons e-user e-small border-0")} floatLabelType="Never"></TextBoxComponent>
                                                     </div>
                                                     <div className="mb-4 position-relative">
-                                                        <TextBoxComponent ref={password} cssClass="e-normal small text-secondary border-0 shadow-sm bg-body-tertiary" type="password" placeholder="Password" created={() => password.current?.addIcon("prepend", "e-icons e-lock e-small")} floatLabelType="Never"></TextBoxComponent>
+                                                        <TextBoxComponent ref={password} cssClass="e-normal small text-secondary border-0 bg-body-tertiary" type="password" placeholder="Password" created={() => password.current?.addIcon("prepend", "e-icons e-lock e-small border-0")} floatLabelType="Never"></TextBoxComponent>
                                                     </div>
                                                     <div className="mb-3">
-                                                        <ButtonComponent cssClass="e-normal w-100 e-primary e-btn" type="submit">Sign in with Fusion AI</ButtonComponent>
+                                                        <ButtonComponent cssClass="e-normal w-100 e-primary" content="Sign in with Fusion AI" type="submit"></ButtonComponent>
                                                     </div>
                                                 </form>
                                                 <div>
                                                     <p className="w-100 small fw-normal text-center text-body-secondary">
                                                         By creating an account, you agree to our <span className="fw-medium text-body">terms of service</span> and
-                                                        <span className="fw-medium text-body"> privacy & cookie statement</span>.
+                                                        <span className="fw-medium text-body"> privacy & cookie statement.</span>
                                                     </p>
                                                 </div>
                                             </div>

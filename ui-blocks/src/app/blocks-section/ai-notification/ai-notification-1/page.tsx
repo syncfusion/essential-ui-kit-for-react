@@ -11,7 +11,7 @@ export default function AINotification1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-notification-1' && blockData.theme) {
@@ -39,7 +39,7 @@ export default function AINotification1() {
             case 'tailwind':
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
-                        <div key={'notification-tw'} className="w-full px-4 sm:px-0 h-screen">
+                        <div key={"notification-tw"} className="w-full px-4 sm:px-0 h-screen">
                             <div id="toast" className="mx-auto" style={{ maxWidth: '327px' }}>
                                 <ToastComponent ref={toastRef} cssClass="!w-full !m-0 !p-0" position={{ X: 'Center' }} width="100%" timeOut={0} target="#toast" newestOnTop={true} created={() => toastRef.current?.show()}
                                     content={() => (
@@ -53,8 +53,7 @@ export default function AINotification1() {
                                             </div>
                                         </div>
                                     )}
-                                >
-                                </ToastComponent>
+                                ></ToastComponent>
                             </div>
                         </div>
                     </section>
@@ -62,7 +61,7 @@ export default function AINotification1() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div key={'notification-bs'} className="w-100 px-3 px-sm-0 vh-100">
+                        <div key={"notification-bs"} className="w-100 px-3 px-sm-0 vh-100">
                             <div id="toast" className="mx-auto" style={{ maxWidth: '327px' }}>
                                 <ToastComponent ref={toastRef} cssClass="w-100 m-0 p-0" position={{ X: 'Center' }} width="100%" timeOut={0} target="#toast" newestOnTop={true} created={() => toastRef.current?.show()}
                                     content={() => (
@@ -76,8 +75,7 @@ export default function AINotification1() {
                                             </div>
                                         </div>
                                     )}
-                                >
-                                </ToastComponent>
+                                ></ToastComponent>
                             </div>
                         </div>
                     </section>

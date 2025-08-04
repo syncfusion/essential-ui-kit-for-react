@@ -11,7 +11,7 @@ export default function Rating7() {
     
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'rating-7' && blockData.theme) {
@@ -64,8 +64,8 @@ export default function Rating7() {
                                             <div className="flex gap-4 justify-center">
                                                 <p className="text-sm text-gray-700 dark:text-gray-100">Was this page helpful?</p>
                                                 <div className="flex justify-center gap-3">
-                                                <ButtonComponent cssClass="e-small" iconCss="e-icons e-thumbs-up" type="button">Yes</ButtonComponent>
-                                                <ButtonComponent cssClass="e-small" iconCss="e-icons e-thumbs-down" type="button">No</ButtonComponent>
+                                                <ButtonComponent cssClass="e-small" iconCss="e-icons e-thumbs-up" content='Yes' type="button"></ButtonComponent>
+                                                <ButtonComponent cssClass="e-small" iconCss="e-icons e-thumbs-down" content='No' type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,8 +102,8 @@ export default function Rating7() {
                                     <div className="mt-3 d-flex flex-row justify-content-center align-item-center gap-3">
                                         <p className="small text-body-secondary mb-1">Was this page helpful?</p>
                                         <div className="d-flex justify-content-center gap-2 pl-1">
-                                            <ButtonComponent iconCss="e-icons e-thumbs-up" cssClass="e-small e-outline">Yes</ButtonComponent>
-                                            <ButtonComponent iconCss="e-icons e-thumbs-down" cssClass="e-small e-outline">No</ButtonComponent>
+                                            <ButtonComponent cssClass="e-small e-outline" iconCss="e-icons e-thumbs-up" content='Yes' type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-small e-outline" iconCss="e-icons e-thumbs-down" content='No' type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>

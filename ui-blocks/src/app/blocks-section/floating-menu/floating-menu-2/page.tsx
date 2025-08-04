@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
-import { FabComponent } from "@syncfusion/ej2-react-buttons";
+import { ButtonComponent, FabComponent } from "@syncfusion/ej2-react-buttons";
 import { DialogComponent } from "@syncfusion/ej2-react-popups";
 import { ListViewComponent } from "@syncfusion/ej2-react-lists";
 import { RatingComponent, TextBoxComponent } from "@syncfusion/ej2-react-inputs";
@@ -11,28 +11,28 @@ export default function FloatingMenu2() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const [toggleState, setToggleState] = useState(true);
+    const [isToggleState, setIsToggleState] = useState(true);
     const [isMobileView, setIsMobileView] = useState(false);
     const textboxRef = useRef<TextBoxComponent | null>(null);
     const dialogRef = useRef<DialogComponent | null>(null);
     const fabRef = useRef<FabComponent | null>(null);
-    let textboxIconAdded: boolean = false;
+    let isTextboxIconAdded: boolean = false;
 
     const data: any[] = [
         {
-            id: "1",
+            id: 1,
             time: "12:12 PM",
             contact: "ChatBot",
             chat: "Hello! How can I help you?"
         },
         {
-            id: "2",
+            id: 2,
             time: "12:12 PM",
             contact: "You",
             chat: "Hi, I'm having trouble accessing the company VPN."
         },
         {
-            id: "3",
+            id: 3,
             time: "12:12 PM",
             contact: "ChatBot",
             chat: "I can help with that. Are you seeing any error messages?"
@@ -40,14 +40,7 @@ export default function FloatingMenu2() {
     ];
 
     const toggleDialog = (): void => {
-        if (dialogRef.current) {
-            if (toggleState) {
-                dialogRef.current.hide();
-            } else {
-                dialogRef.current.show();
-            }
-            setToggleState(!toggleState);
-        }
+        setIsToggleState(!isToggleState);
     };
 
     const setDialogPosition = (event: any): void => {
@@ -66,15 +59,15 @@ export default function FloatingMenu2() {
     };
 
     const addTextBoxIcon = (): void => {
-        if (textboxIconAdded) return;
+        if (isTextboxIconAdded) return;
 
         textboxRef.current?.addIcon("append", "sf-icon-navigation-right-up border-0");
-        textboxIconAdded = true;
+        isTextboxIconAdded = true;
     };
        
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'floating-menu-2' && blockData.theme) {
@@ -92,6 +85,13 @@ export default function FloatingMenu2() {
         window.addEventListener('message', handleMessageEvent);
         /* SB Code - End */
         window.addEventListener('resize', setDialogPosition);
+        if (dialogRef.current) {
+            if (isToggleState) {
+                dialogRef.current.show();
+            } else {
+                dialogRef.current.hide();
+            }
+        }
 
         return () => {
             /* SB Code - Start */
@@ -99,7 +99,7 @@ export default function FloatingMenu2() {
             /* SB Code - End */
             window.removeEventListener('resize', setDialogPosition);
         }
-    }, []);
+    }, [isToggleState]);
 
     const getContent = () => {
         switch (theme) {
@@ -107,7 +107,10 @@ export default function FloatingMenu2() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div id="target" className="w-full" style={{ height: isMobileView ? "580px" : "720px" }}>
-                            <DialogComponent id={styles["floating-chat"]} className="sm:!rounded-t !rounded-none overflow-hidden !border-0" width="400px" minHeight="580px" ref={dialogRef} open={setDialogPosition} created={() => dialogRef.current?.show()}
+                            <div className="flex items-center justify-center pt-4 block sm:hidden">
+                                <ButtonComponent cssClass="e-primary e-round e-bigger" iconCss="sf-icon-message-chat-circle !text-xl" type="button" onClick={toggleDialog}></ButtonComponent>
+                            </div>
+                            <DialogComponent ref={dialogRef} id={styles["floating-chat"]} className="sm:!rounded-t !rounded-none overflow-hidden !border-0" width="400px" minHeight="580px" open={setDialogPosition} created={() => dialogRef.current?.show()}
                                 header={() => {
                                     return (
                                         <div className="flex justify-between items-center bg-primary-600 dark:bg-primary-400 py-4 px-4 sm:px-6">
@@ -117,6 +120,9 @@ export default function FloatingMenu2() {
                                                     <div className="w-3 h-3 rounded-full bg-green-700 dark:bg-green-500 absolute right-0 bottom-0.5 border border-white dark:border-black"></div>
                                                 </div>
                                                 <p className="text-white font-semibold dark:text-gray-900">ChatBot</p>
+                                            </div>
+                                            <div className="flex justify-end block sm:hidden">
+                                                <ButtonComponent className="e-primary e-round" iconCss="e-icons e-close text-white dark:text-black !text-base" type="button" onClick={toggleDialog}></ButtonComponent>
                                             </div>
                                         </div>
                                     );
@@ -131,7 +137,7 @@ export default function FloatingMenu2() {
                                                 </div>
                                             </div>
                                             <div className="e-bigger mt-3">
-                                                <TextBoxComponent type="text" placeholder="Enter a message" ref={textboxRef} created={addTextBoxIcon}></TextBoxComponent>
+                                                <TextBoxComponent ref={textboxRef} type="text" placeholder="Enter a message" created={addTextBoxIcon}></TextBoxComponent>
                                             </div>
                                         </div>
                                     );
@@ -147,7 +153,6 @@ export default function FloatingMenu2() {
                                                 <p className="text-gray-500 dark:text-gray-400 mt-1 text-xs">{data.contact}</p>
                                             </div>
                                         );
-
                                         const receiverTemplate = (
                                             <div className="flex justify-start gap-3 w-full">
                                                 <div>
@@ -161,12 +166,11 @@ export default function FloatingMenu2() {
                                                 </div>
                                             </div>
                                         );
-
                                         return <div>{data.contact !== "ChatBot" ? senderTemplate : receiverTemplate}</div>;
                                     }}
                                 ></ListViewComponent>
                             </DialogComponent>
-                            <FabComponent cssClass="e-primary e-round e-bigger !hidden sm:!block" iconCss={!toggleState ? "sf-icon-message-chat-circle !text-2xl" : "e-icons e-close !text-2xl"} position="BottomRight" type="button" target="#target" ref={fabRef} onClick={toggleDialog}></FabComponent>
+                            <FabComponent ref={fabRef} cssClass="e-primary e-round e-bigger !hidden sm:!block" iconCss={!isToggleState ? "sf-icon-message-chat-circle !text-2xl" : "e-icons e-close !text-2xl"} position="BottomRight" target="#target" type="button" onClick={toggleDialog}></FabComponent>
                         </div>
                     </section>
                 );
@@ -174,7 +178,10 @@ export default function FloatingMenu2() {
                 return (
                     <section className="bg-body">
                         <div id="target" className="w-100" style={{ height: isMobileView ? "580px" : "720px" }}>
-                            <DialogComponent id={styles["floating-chat"]} className="rounded-1 overflow-hidden border-0" width="400px" minHeight="580px" ref={dialogRef} open={setDialogPosition} created={() => dialogRef.current?.show()}
+                            <div className="d-flex align-items-center justify-content-center pt-4 d-block d-sm-none">
+                                <ButtonComponent cssClass="e-primary e-round e-bigger" iconCss="sf-icon-message-chat-circle fs-5 lh-base" type="button" onClick={toggleDialog}></ButtonComponent>
+                            </div>
+                            <DialogComponent ref={dialogRef} id={styles["floating-chat"]} className="rounded-1 overflow-hidden border-0" width="400px" minHeight="580px" open={setDialogPosition} created={() => dialogRef.current?.show()}
                                 header={() => {
                                     return (
                                         <div className="d-flex justify-content-between align-items-center bg-primary py-3 px-4">
@@ -184,6 +191,9 @@ export default function FloatingMenu2() {
                                                     <div className="position-absolute end-0 bottom-0 border rounded-circle bg-success" style={{ width: "12px", height: "12px" }}></div>
                                                 </div>
                                                 <p className="text-white fw-semibold fs-6 lh-sm m-0">ChatBot</p>
+                                            </div>
+                                            <div className="d-flex justify-content-end d-block d-sm-none">
+                                                <ButtonComponent className="e-primary e-round" iconCss="e-icons e-close text-white" type="button" onClick={toggleDialog}></ButtonComponent>
                                             </div>
                                         </div>
                                     );
@@ -198,7 +208,7 @@ export default function FloatingMenu2() {
                                                 </div>
                                             </div>
                                             <div className="e-bigger mt-3">
-                                                <TextBoxComponent type="text" placeholder="Enter a message" ref={textboxRef} created={addTextBoxIcon}></TextBoxComponent>
+                                                <TextBoxComponent ref={textboxRef} type="text" placeholder="Enter a message" created={addTextBoxIcon}></TextBoxComponent>
                                             </div>
                                         </div>
                                     );
@@ -225,12 +235,11 @@ export default function FloatingMenu2() {
                                                 </div>
                                             </div>
                                         );
-
                                         return <div>{data.contact !== "ChatBot" ? senderTemplate : receiverTemplate}</div>;
                                     }}
                                 ></ListViewComponent>
                             </DialogComponent>
-                            <FabComponent cssClass="e-primary e-bigger e-round d-none d-sm-block" iconCss={!toggleState ? "sf-icon-message-chat-circle fs-4" : "e-icons e-close fs-5"} position="BottomRight" type="button" target="#target" ref={fabRef} onClick={toggleDialog}></FabComponent>
+                            <FabComponent ref={fabRef} cssClass="e-primary e-bigger e-round d-none d-sm-block" iconCss={!isToggleState ? "sf-icon-message-chat-circle fs-4" : "e-icons e-close fs-5"} position="BottomRight" target="#target" type="button" onClick={toggleDialog}></FabComponent>
                         </div>
                     </section>
                 );

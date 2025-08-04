@@ -1,9 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
-import { OverflowMode, TabComponent, TabItemDirective, TabItemsDirective } from "@syncfusion/ej2-react-navigations";
-import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
-import { ChipListComponent, ChipsDirective, ChipDirective } from "@syncfusion/ej2-react-buttons";
+import { TabComponent, TabItemDirective, TabItemsDirective, OverflowMode } from "@syncfusion/ej2-react-navigations";
+import { ButtonComponent, ChipListComponent, ChipsDirective, ChipDirective } from "@syncfusion/ej2-react-buttons";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
 import styles from "./page.module.css";
 
@@ -11,8 +10,8 @@ export default function Header4() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const tab = useRef<TabComponent | null>(null);
     const [overflowMode, setOverflowMode] = useState<OverflowMode>('Popup');
+    const tab = useRef<TabComponent | null>(null);
 
     const updateTabItems = (): void => {
         if (window.innerWidth < 640) {
@@ -21,15 +20,15 @@ export default function Header4() {
             setOverflowMode('Extended');
         }
         tab.current?.refresh();
-        onTabCreated();
+        tabCreated();
     };
 
-    const onTabSelected = (args: any): void => {
+    const tabSelected = (args: any): void => {
         args.previousItem?.querySelector(".e-badge")?.classList.remove("e-badge-primary");
         args.selectedItem?.querySelector(".e-badge")?.classList.add("e-badge-primary");
     };
 
-    const onTabCreated = (): void => {
+    const tabCreated = (): void => {
         setTimeout(() => {
             const badge = tab.current?.element.querySelector(".e-toolbar-item.e-active")?.querySelector(".e-badge");
             if (badge) {
@@ -40,14 +39,14 @@ export default function Header4() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'header-4' && blockData.theme) {
                     setTheme(blockData.theme);
                     setTimeout(() => {
                         tab.current?.refresh();
-                        onTabCreated();
+                        tabCreated();
                     }, 250);
                 }
             } catch (error) {
@@ -60,15 +59,17 @@ export default function Header4() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
-        window.addEventListener('resize', updateTabItems);
         tab.current?.refresh();
         tab.current?.refreshActiveTabBorder();
+        /* SB Code - End */
+        window.addEventListener('resize',updateTabItems);
         
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
             window.removeEventListener('resize', updateTabItems);
         }
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -89,8 +90,8 @@ export default function Header4() {
                                 </div>
                             </div>
                             <div className="flex items-center justify-between px-4 sm:px-6">
-                                <div id={styles.tab_tw} className="w-full">
-                                    <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode} created={onTabCreated} selected={onTabSelected}>
+                                <div id={styles["tab-tw"]} className="w-full">
+                                    <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode} created={tabCreated} selected={tabSelected}>
                                         <TabItemsDirective>
                                             <TabItemDirective headerTemplate={() => (
                                                 <div className='space-x-2 flex items-center'>
@@ -164,7 +165,7 @@ export default function Header4() {
                             </div>
                             <div className="d-flex align-items-center justify-content-between px-3 px-sm-4">
                                 <div className="w-100">
-                                    <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode} created={onTabCreated} selected={onTabSelected}>
+                                    <TabComponent ref={tab} heightAdjustMode="Auto" width={"100%"} overflowMode={overflowMode} created={tabCreated} selected={tabSelected}>
                                         <TabItemsDirective>
                                             <TabItemDirective headerTemplate={() => (
                                                 <div className="d-flex align-items-center gap-2">

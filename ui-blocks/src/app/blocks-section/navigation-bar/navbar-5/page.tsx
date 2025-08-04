@@ -1,10 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { MenuComponent } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownButtonComponent } from '@syncfusion/ej2-react-splitbuttons';
-import { BreadcrumbComponent, BreadcrumbItemDirective, BreadcrumbItemsDirective } from '@syncfusion/ej2-react-navigations';
+import { MenuComponent, BreadcrumbComponent, BreadcrumbItemDirective, BreadcrumbItemsDirective } from '@syncfusion/ej2-react-navigations';
 import styles from './page.module.css';
 
 export default function Navbar5() {
@@ -36,7 +35,7 @@ export default function Navbar5() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'navbar-5' && blockData.theme) {
@@ -73,9 +72,7 @@ export default function Navbar5() {
                                 <div className="flex items-center justify-between py-2 ms-6 me-1 sm:me-2.5 lg:me-6">
                                     <div className="flex items-center">
                                         <img className="mr-3 h-7" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={28} height={28} alt="company logo" />
-                                        <span className="text-lg font-semibold text-gray-900 dark:text-white">
-                                            Company Name
-                                        </span>
+                                        <span className="text-lg font-semibold text-gray-900 dark:text-white">Company Name</span>
                                     </div>
                                     <div className="flex items-center">
                                         <div className="hidden lg:block mr-4">
@@ -84,15 +81,15 @@ export default function Navbar5() {
                                                 <span className="e-input-group-icon e-icons e-search"></span>
                                             </div>
                                         </div>
-                                        <ButtonComponent className="sf-icon-notification-bell-02 leading-3 text-base mr-1 sm:mr-2" cssClass="e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent className="leading-3 mr-1 sm:mr-2" cssClass="e-flat" iconCss="sf-icon-notification-bell-02" type="button"></ButtonComponent>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 hidden sm:block mr-2 h-7"></div>
-                                        <ButtonComponent className="e-icons e-grid-view hidden sm:block mr-2" cssClass="e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent className="hidden sm:block mr-2" cssClass="e-flat" iconCss="e-icons e-grid-view" type="button"></ButtonComponent>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 hidden sm:block mr-2 h-7"></div>
                                         <span className="e-avatar e-avatar-small e-avatar-circle hidden sm:block ml-2 mr-2 lg:mr-0">
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 block lg:hidden ms-1  h-7"></div>
-                                        <span id={styles.menu} className="block lg:hidden">
+                                        <span id={styles["menu"]} className="block lg:hidden">
                                             <MenuComponent items={[{ text: 'Builders' }, { text: 'Features' }, { text: 'Websites' }, { text: 'Elements' }, { text: 'Pricing' }]} hamburgerMode={true} title=""></MenuComponent>
                                         </span>
                                     </div>
@@ -118,14 +115,14 @@ export default function Navbar5() {
                                             }
                                         >
                                             <BreadcrumbItemsDirective>
-                                                <BreadcrumbItemDirective text="Personal" />
-                                                <BreadcrumbItemDirective text="CompanyName.com" />
+                                                <BreadcrumbItemDirective text="Personal"></BreadcrumbItemDirective>
+                                                <BreadcrumbItemDirective text="CompanyName.com"></BreadcrumbItemDirective>
                                             </BreadcrumbItemsDirective>
                                         </BreadcrumbComponent>
                                     </div>
                                     <div className="flex items-center gap-2 w-full sm:w-max px-6 sm:px-0">
                                         <div className="w-1/2 mt-3 sm:mt-0">
-                                            <ButtonComponent cssClass="e-primary w-full" type="button">Open App</ButtonComponent>
+                                            <ButtonComponent cssClass="e-primary w-full" content="Open App" type="button"></ButtonComponent>
                                         </div>
                                         <div className="w-1/2 md:w-full mt-3 sm:mt-0 p-0">
                                             <DropDownButtonComponent ref={moreOptionsDropdown} className="e-outline e-primary w-full" items={[{ text: 'Create new app', iconCss: 'e-icons e-folder' }, { text: 'Inbox', iconCss: 'e-icons e-folder' }, { text: 'App info', iconCss: 'e-icons e-folder' }, { text: 'Edit app', iconCss: 'e-icons e-folder' }]} type="button">More</DropDownButtonComponent>
@@ -155,15 +152,15 @@ export default function Navbar5() {
                                             <span className="e-input-group-icon e-icons e-search border-start-0"></span>
                                         </div>
                                     </div>
-                                    <ButtonComponent className="sf-icon-notification-bell-01 fs-6 me-0 me-sm-3" cssClass="e-flat" type="button"></ButtonComponent>
+                                    <ButtonComponent className="me-0 me-sm-3" cssClass="e-flat" iconCss="sf-icon-notification-bell-01 fs-6" type="button"></ButtonComponent>
                                     <div className="border-end border-secondary-subtle d-none d-sm-block me-3" style={{ height: "24px" }}></div>
-                                    <ButtonComponent className="e-icons e-grid-view d-none d-sm-block me-3 e-medium" cssClass="e-flat" type="button"></ButtonComponent>
+                                    <ButtonComponent className="d-none d-sm-block me-3 e-medium" cssClass="e-flat" iconCss="e-icons e-grid-view" type="button"></ButtonComponent>
                                     <div className="border-end border-secondary-subtle d-none d-sm-block" style={{ height: "24px" }}></div>
                                     <span className="e-avatar e-avatar-small e-avatar-circle d-none d-sm-block ms-3">
                                         <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                     </span>
                                     <div className="border-end border-secondary-subtle d-block d-lg-none ms-2 ms-sm-3" style={{ height: "24px" }}></div>
-                                    <span id={styles.menu} className="d-block d-lg-none">
+                                    <span id={styles["menu"]} className="d-block d-lg-none">
                                         <MenuComponent className="bg-body-tertiary" hamburgerMode={true} title="" items={[{ text: "Builders" }, { text: "Features" }, { text: "Websites" }, { text: "Elements" }, { text: "Pricing" }]}></MenuComponent>
                                     </span>
                                 </div>
@@ -189,14 +186,14 @@ export default function Navbar5() {
                                         }
                                     >
                                         <BreadcrumbItemsDirective>
-                                            <BreadcrumbItemDirective text="Personal" />
-                                            <BreadcrumbItemDirective text="CompanyName.com" />
+                                            <BreadcrumbItemDirective text="Personal"></BreadcrumbItemDirective>
+                                            <BreadcrumbItemDirective text="CompanyName.com"></BreadcrumbItemDirective>
                                         </BreadcrumbItemsDirective>
                                     </BreadcrumbComponent>
                                 </div>
                                 <div className="d-flex p-0 pe-2 pe-md-2 gap-2 col-sm-4 col-md-4 col-lg-2 col-xl-2 m-0">
                                     <div className="col-6 mt-3 mt-sm-0">
-                                        <ButtonComponent className="e-primary p-lg-1 px-2 w-100" type="button">Open App</ButtonComponent>
+                                        <ButtonComponent className="e-primary p-lg-1 px-2 w-100" content="Open App" type="button"></ButtonComponent>
                                     </div>
                                     <div className="p-0 col-6 mt-3 mt-sm-0">
                                         <DropDownButtonComponent ref={moreOptionsDropdown} className="e-outline e-primary w-100" items={[{ text: "Create new app", iconCss: "e-icons e-folder" }, { text: "Inbox", iconCss: "e-icons e-folder" }, { text: "App info", iconCss: "e-icons e-folder" }, { text: "Edit app", iconCss: "e-icons e-folder" }]} type="button">More</DropDownButtonComponent>

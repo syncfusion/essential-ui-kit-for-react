@@ -12,13 +12,13 @@ export default function Calendar4() {
     const [width, setWidth] = useState("310px");
     const sidebar = useRef<SidebarComponent | null>(null);
 
-    const handleResize = () => {
+    const handleResize = (): void => {
         setWidth(window.innerWidth < 540 ? '100%' : '310px');
     };
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'calendar-4' && blockData.theme) {
@@ -51,14 +51,14 @@ export default function Calendar4() {
                 return (
                     <section className="bg-white dark:bg-gray-900">
                         <div style={{ height: '685px', width: width, float: 'right' }}>
-                            <SidebarComponent className="w-full bg-white dark:bg-gray-900" ref={sidebar} position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: 'block' }}>
+                            <SidebarComponent ref={sidebar} className="w-full bg-white dark:bg-gray-900" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: 'block' }}>
                                 <div className="bg-white dark:bg-gray-900 min-h-screen">
                                     <div className="border-b border-gray-200 dark:border-gray-600">
                                         <div className="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-600">
                                             <h2 className="text-base font-semibold text-gray-900 dark:text-white">Meetings</h2>
-                                            <ButtonComponent className="e-flat text-base" iconCss="e-icons e-close" onClick={() => sidebar.current?.show()} content=" " type="button"></ButtonComponent>
+                                            <ButtonComponent className="e-flat text-base" iconCss="e-icons e-close" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                                         </div>
-                                        <div className="p-4 flex justify-center items-center">
+                                        <div className="flex justify-center items-center">
                                             <CalendarComponent className="e-bigger shadow-none border-none"></CalendarComponent>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@ export default function Calendar4() {
                                                     </div>
                                                     <div className="w-1 h-100 rounded-lg bg-cyan-500 ml-2 mr-4"></div>
                                                     <div className="py-1">
-                                                        <h5 className="font-medium text-gray-700 dark:text-gray-300">Project Kickoff</h5>
+                                                        <h5 className="font-medium text-sm text-gray-700 dark:text-gray-300">Project Kickoff</h5>
                                                         <p className="text-xs text-gray-700 dark:text-gray-300">Online</p>
                                                     </div>
                                                 </div>
@@ -85,7 +85,7 @@ export default function Calendar4() {
                                                     </div>
                                                     <div className="w-1 h-100 rounded-lg bg-red-500 ml-2 mr-4"></div>
                                                     <div className="py-1">
-                                                        <h5 className="font-medium text-gray-700 dark:text-gray-300">Marketing Strategy</h5>
+                                                        <h5 className="font-medium text-sm text-gray-700 dark:text-gray-300">Marketing Strategy</h5>
                                                         <p className="text-xs text-gray-700 dark:text-gray-300">Online</p>
                                                     </div>
                                                 </div>
@@ -98,7 +98,7 @@ export default function Calendar4() {
                                                     </div>
                                                     <div className="w-1 h-100 rounded-lg bg-orange-500 ml-2 mr-4"></div>
                                                     <div className="py-1">
-                                                        <h5 className="font-medium text-gray-700 dark:text-gray-300">Product Design Review</h5>
+                                                        <h5 className="font-medium text-sm text-gray-700 dark:text-gray-300">Product Design Review</h5>
                                                         <p className="text-xs text-gray-700 dark:text-gray-300">Online</p>
                                                     </div>
                                                 </div>
@@ -110,7 +110,7 @@ export default function Calendar4() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" onClick={() => sidebar.current?.show()} type="button"></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -119,12 +119,12 @@ export default function Calendar4() {
                 return (
                     <section className="bg-body">
                         <div style={{ height: '702px', width: width, float: 'right' }}>
-                            <SidebarComponent className="bg-body" ref={sidebar} position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: 'block' }}>
+                            <SidebarComponent ref={sidebar} className="bg-body" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: 'block' }}>
                                 <div className="bg-body">
                                     <div className="border-bottom border-light-subtle">
                                         <div className="d-flex justify-content-between align-items-center p-3 border-bottom border-light-subtle">
                                             <div className="text-body fw-bold fs-6 mb-0">Meetings</div>
-                                            <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-close" onClick={() => sidebar.current?.show()} content=" " type="button"></ButtonComponent>
+                                            <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-close" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                                         </div>
                                         <div className="p-3 pb-0 d-flex justify-content-center align-items-center">
                                             <CalendarComponent className="e-bigger shadow-none border-0"></CalendarComponent>
@@ -138,9 +138,9 @@ export default function Calendar4() {
                                                         <p className="fw-normal text-body-emphasis mb-1">10:00</p>
                                                         <span className="text-body-secondary">1 hour</span>
                                                     </div>
-                                                    <div className="ms-3">
+                                                    <div className="ms-3 fs-6">
                                                         <p className="fw-medium text-body-emphasis mb-1">Project Kickoff</p>
-                                                        <p className="text-body-secondary mb-0">Online</p>
+                                                        <p className="text-body-secondary mb-0 small">Online</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -150,9 +150,9 @@ export default function Calendar4() {
                                                         <p className="fw-normal text-body-emphasis mb-1">11:00</p>
                                                         <span className="text-body-secondary">1 hour</span>
                                                     </div>
-                                                    <div className="ms-3">
-                                                        <p className="fw-medium text-body-emphasis mb-1">Marketing Strategy</p>
-                                                        <p className="text-body-secondary mb-0">Online</p>
+                                                    <div className="ms-3 fs-6">
+                                                        <p className="fw-medium text-body-emphasis mb-1 small">Marketing Strategy</p>
+                                                        <p className="text-body-secondary mb-0 small">Online</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,9 +162,9 @@ export default function Calendar4() {
                                                         <p className="fw-normal text-body-emphasisk mb-1">12:00</p>
                                                         <span className="text-body-secondary">1 hour</span>
                                                     </div>
-                                                    <div className="ms-3">
-                                                        <p className="fw-medium text-body-emphasis mb-1">Product Design Review</p>
-                                                        <p className="text-body-secondary mb-0">Online</p>
+                                                    <div className="ms-3 fs-6">
+                                                        <p className="fw-medium text-body-emphasis mb-1 small">Product Design Review</p>
+                                                        <p className="text-body-secondary mb-0 small">Online</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -175,7 +175,7 @@ export default function Calendar4() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" onClick={() => sidebar.current?.show()} type="button"></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

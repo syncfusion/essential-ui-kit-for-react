@@ -8,7 +8,7 @@ export default function Card5() {
     const [theme, setTheme] = useState('tailwind');
     
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'cards-5' && blockData.theme) {
@@ -36,60 +36,62 @@ export default function Card5() {
             case 'tailwind':
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
-                        <div className="py-20 px-4 sm:px-6" style={{ minHeight: "36rem" }}>
-                            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-                                <div className="e-card e-bigger rounded-lg justify-start">
-                                    <div className="e-card-header items-center">
-                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-13.jpg)" }}></span>
-                                        <div className="e-card-header-caption !pl-3">
-                                            <div className="e-card-header-title">
-                                                <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">Kristin Watson</p>
+                        <div className="h-screen sm:h-full">
+                            <div className="py-10 px-4 sm:px-6" style={{ minHeight: "36rem" }}>
+                                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+                                    <div className="e-card e-bigger rounded-lg justify-start">
+                                        <div className="e-card-header items-center">
+                                            <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-13.jpg)" }}></span>
+                                            <div className="e-card-header-caption !pl-3">
+                                                <div className="e-card-header-title">
+                                                    <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">Kristin Watson</p>
+                                                </div>
+                                                <div className="e-card-sub-title">
+                                                    <p className="text-sm text-gray-700 dark:text-gray-300 truncate">Content Creator</p>
+                                                </div>
                                             </div>
-                                            <div className="e-card-sub-title">
-                                                <p className="text-sm text-gray-700 dark:text-gray-300 truncate">Content Creator</p>
-                                            </div>
+                                            <ButtonComponent cssClass="e-round e-flat" iconCss="e-icons e-edit" type="button"></ButtonComponent>
                                         </div>
-                                        <ButtonComponent cssClass="e-round e-flat e-icons e-edit" type="button"></ButtonComponent>
-                                    </div>
-                                    <div className="e-card-content">
-                                        <h2 className="pt-2 text-xl font-semibold text-gray-900 dark:text-white truncate">Travel Destinations</h2>
-                                        <p className="mt-3 pb-2 text-base">Discover the most exciting travel destinations around the globe. From picturesque beaches to bustling cities, our curated list of must-visit locations will help you plan your perfect getaway.</p>
-                                    </div>
-                                </div>
-                                <div className="e-card e-bigger rounded-lg justify-start">
-                                    <div className="e-card-header items-center">
-                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-4.jpg)" }}></span>
-                                        <div className="e-card-header-caption !pl-3">
-                                            <div className="e-card-header-title">
-                                                <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">Brooklyn Simmons</p>
-                                            </div>
-                                            <div className="e-card-sub-title">
-                                                <p className="text-sm text-gray-700 dark:text-gray-300 truncate">Story Writer</p>
-                                            </div>
+                                        <div className="e-card-content">
+                                            <h2 className="pt-2 text-xl font-semibold text-gray-900 dark:text-white truncate">Travel Destinations</h2>
+                                            <p className="mt-3 pb-2 text-base">Discover the most exciting travel destinations around the globe. From picturesque beaches to bustling cities, our curated list of must-visit locations will help you plan your perfect getaway.</p>
                                         </div>
-                                        <ButtonComponent cssClass="e-round e-flat e-icons e-edit" type="button"></ButtonComponent>
                                     </div>
-                                    <div className="e-card-content">
-                                        <h2 className="pt-2 text-xl font-semibold text-gray-900 dark:text-white truncate">Healthy Lifestyle</h2>
-                                        <p className="mt-3 pb-2 text-base">Embrace a healthier lifestyle with our easy-to-follow tips and advice. From nutritious meal ideas to effective exercise routines, find practical strategies to improve life.</p>
-                                    </div>
-                                </div>
-                                <div className="e-card e-bigger rounded-lg justify-start">
-                                    <div className="e-card-header items-center">
-                                        <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-12.jpg)" }}></span>
-                                        <div className="e-card-header-caption !pl-3">
-                                            <div className="e-card-header-title">
-                                                <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">Annie Amber</p>
+                                    <div className="e-card e-bigger rounded-lg justify-start">
+                                        <div className="e-card-header items-center">
+                                            <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-4.jpg)" }}></span>
+                                            <div className="e-card-header-caption !pl-3">
+                                                <div className="e-card-header-title">
+                                                    <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">Brooklyn Simmons</p>
+                                                </div>
+                                                <div className="e-card-sub-title">
+                                                    <p className="text-sm text-gray-700 dark:text-gray-300 truncate">Story Writer</p>
+                                                </div>
                                             </div>
-                                            <div className="e-card-sub-title">
-                                                <p className="text-sm text-gray-700 dark:text-gray-300 truncate">Script Writer</p>
-                                            </div>
+                                            <ButtonComponent cssClass="e-round e-flat" iconCss="e-icons e-edit" type="button"></ButtonComponent>
                                         </div>
-                                        <ButtonComponent cssClass="e-round e-flat e-icons e-edit" type="button"></ButtonComponent>
+                                        <div className="e-card-content">
+                                            <h2 className="pt-2 text-xl font-semibold text-gray-900 dark:text-white truncate">Healthy Lifestyle</h2>
+                                            <p className="mt-3 pb-2 text-base">Embrace a healthier lifestyle with our easy-to-follow tips and advice. From nutritious meal ideas to effective exercise routines, find practical strategies to improve life.</p>
+                                        </div>
                                     </div>
-                                    <div className="e-card-content">
-                                        <h2 className="pt-2 text-xl font-semibold text-gray-900 dark:text-white truncate">Tech Gadget</h2>
-                                        <p className="mt-3 pb-2 text-base">Stay up-to-date with the latest tech gadgets and innovations. Our in-depth reviews and comparisons will help you make informed decisions on the best devices for your needs.</p>
+                                    <div className="e-card e-bigger rounded-lg justify-start">
+                                        <div className="e-card-header items-center">
+                                            <span className="e-avatar e-avatar-circle e-avatar-large" style={{ backgroundImage: "url(/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-12.jpg)" }}></span>
+                                            <div className="e-card-header-caption !pl-3">
+                                                <div className="e-card-header-title">
+                                                    <p className="text-lg font-semibold text-gray-900 dark:text-white truncate">Annie Amber</p>
+                                                </div>
+                                                <div className="e-card-sub-title">
+                                                    <p className="text-sm text-gray-700 dark:text-gray-300 truncate">Script Writer</p>
+                                                </div>
+                                            </div>
+                                            <ButtonComponent cssClass="e-round e-flat" iconCss="e-icons e-edit" type="button"></ButtonComponent>
+                                        </div>
+                                        <div className="e-card-content">
+                                            <h2 className="pt-2 text-xl font-semibold text-gray-900 dark:text-white truncate">Tech Gadget</h2>
+                                            <p className="mt-3 pb-2 text-base">Stay up-to-date with the latest tech gadgets and innovations. Our in-depth reviews and comparisons will help you make informed decisions on the best devices for your needs.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +115,7 @@ export default function Card5() {
                                                     <p className="small mb-0 text-truncate">Content Creator</p>
                                                 </div>
                                             </div>
-                                            <ButtonComponent cssClass="e-round e-flat e-icons e-edit" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-round e-flat" iconCss="e-icons e-edit" type="button"></ButtonComponent>
                                         </div>
                                         <div className="e-card-content text-body">
                                             <h2 className="fs-5 fw-bolder mb-2 text-truncate">Travel Destinations</h2>
@@ -133,7 +135,7 @@ export default function Card5() {
                                                     <p className="small mb-0 text-truncate">Story Writer</p>
                                                 </div>
                                             </div>
-                                            <ButtonComponent cssClass="e-round e-flat e-icons e-edit" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-round e-flat" iconCss="e-icons e-edit" type="button"></ButtonComponent>
                                         </div>
                                         <div className="e-card-content text-body">
                                             <h2 className="fs-5 fw-bolder mb-2 text-truncate">Healthy Lifestyle</h2>
@@ -153,7 +155,7 @@ export default function Card5() {
                                                     <p className="small mb-0 text-truncate">Script Writer</p>
                                                 </div>
                                             </div>
-                                            <ButtonComponent cssClass="e-round e-flat e-icons e-edit" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-round e-flat" iconCss="e-icons e-edit" type="button"></ButtonComponent>
                                         </div>
                                         <div className="e-card-content text-body">
                                             <h2 className="fs-5 fw-bolder mb-2 text-truncate">Tech Gadget</h2>

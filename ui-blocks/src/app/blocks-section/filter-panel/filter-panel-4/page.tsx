@@ -24,7 +24,7 @@ export default function FilterPanel4() {
     }
 
     /* SB Code - Start */  
-    const refreshDialog = (timeout: number) => {
+    const refreshDialog = (timeout: number): void => {
         setTimeout(() => {
             requesterAccordion.current?.refresh();
             ticketAccordion.current?.refresh();
@@ -32,7 +32,7 @@ export default function FilterPanel4() {
     }
    
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'filter-panel-4' && blockData.theme) {
@@ -79,7 +79,7 @@ export default function FilterPanel4() {
                                                             <span className="ml-2 font-semibold">Details</span>
                                                         </div>
                                                     )}
-                                                />
+                                                ></TabItemDirective>
                                                 <TabItemDirective
                                                     headerTemplate={() => (
                                                         <div className="flex items-center justify-center">
@@ -87,7 +87,7 @@ export default function FilterPanel4() {
                                                             <span className="ml-2 font-semibold">Apps</span>
                                                         </div>
                                                     )}
-                                                />
+                                                ></TabItemDirective>
                                             </TabItemsDirective>
                                         </TabComponent>
                                     </div>
@@ -98,59 +98,59 @@ export default function FilterPanel4() {
                                 <AccordionComponent ref={requesterAccordion} className="border-0 border-b bg-transparent" expandMode="Multiple">
                                     <AccordionItemsDirective>
                                         <AccordionItemDirective expanded={true} 
-                                        header={() => (
-                                            <div className="text-sm font-medium text-gray-900 dark:text-white">Requester Details</div>
-                                        )} 
-                                        content={() => (
-                                            <div className="flex items-center space-x-2 p-1">
-                                                <span className="e-avatar e-avatar-medium e-avatar-circle bg-primary-600 dark:bg-primary-400 text-sm text-white dark:text-black">MG</span>
-                                                <div>
-                                                    <h2 className="text-sm font-medium text-gray-900 dark:text-white">Michael Green</h2>
-                                                    <a href="#" className="text-xs font-normal text-gray-500 dark:text-gray-400">michael.green@example.com</a>
+                                            header={() => (
+                                                <div className="text-sm font-medium text-gray-900 dark:text-white">Requester Details</div>
+                                            )} 
+                                            content={() => (
+                                                <div className="flex items-center space-x-2 p-1">
+                                                    <span className="e-avatar e-avatar-medium e-avatar-circle bg-primary-600 dark:bg-primary-400 text-sm text-white dark:text-black">MG</span>
+                                                    <div>
+                                                        <h2 className="text-sm font-medium text-gray-900 dark:text-white">Michael Green</h2>
+                                                        <a href="#" className="text-xs font-normal text-gray-500 dark:text-gray-400">michael.green@example.com</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )}>
-                                        </AccordionItemDirective>
+                                            )}
+                                        ></AccordionItemDirective>
                                     </AccordionItemsDirective>
                                 </AccordionComponent>
                                 <AccordionComponent ref={ticketAccordion} className="border-0 bg-transparent" expandMode="Multiple">
                                     <AccordionItemsDirective>
                                         <AccordionItemDirective expanded={true}
-                                        header={() => (
-                                            <div className="text-sm font-medium text-gray-900 dark:text-white">Ticket Properties</div>
-                                        )} 
-                                        content={() => (
-                                            <div className="grid grid-cols-1 gap-4 w-full px-1 pb-1">
-                                                <div className="w-1/2">
-                                                    <label className="block my-1 text-sm font-medium text-gray-900 dark:text-white">Status</label>
-                                                    <DropDownListComponent dataSource={status} placeholder="Open"></DropDownListComponent>
+                                            header={() => (
+                                                <div className="text-sm font-medium text-gray-900 dark:text-white">Ticket Properties</div>
+                                            )} 
+                                            content={() => (
+                                                <div className="grid grid-cols-1 gap-4 w-full px-1 pb-1">
+                                                    <div className="w-1/2">
+                                                        <label className="block my-1 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                                                        <DropDownListComponent dataSource={status} placeholder="Open"></DropDownListComponent>
+                                                    </div>
+                                                    <div>
+                                                        <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Assignee</label>
+                                                        <DropDownListComponent dataSource={assignee} placeholder="Select assignee"></DropDownListComponent>
+                                                    </div>
+                                                    <div>
+                                                        <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Response Due</label>
+                                                        <DatePickerComponent cssClass="shadow-none" placeholder="MM/DD/YYYY"></DatePickerComponent>
+                                                    </div>
+                                                    <div>
+                                                        <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Resolution Due</label>
+                                                        <DatePickerComponent cssClass="shadow-none" placeholder="MM/DD/YYYY"></DatePickerComponent>
+                                                    </div>
+                                                    <div>
+                                                        <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Tags</label>
+                                                        <DropDownListComponent dataSource={tags} placeholder="Enter tags"></DropDownListComponent>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Assignee</label>
-                                                    <DropDownListComponent dataSource={assignee} placeholder="Select assignee"></DropDownListComponent>
-                                                </div>
-                                                <div>
-                                                    <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Response Due</label>
-                                                    <DatePickerComponent cssClass="shadow-none" placeholder="MM/DD/YYYY"></DatePickerComponent>
-                                                </div>
-                                                <div>
-                                                    <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Resolution Due</label>
-                                                    <DatePickerComponent cssClass="shadow-none" placeholder="MM/DD/YYYY"></DatePickerComponent>
-                                                </div>
-                                                <div>
-                                                    <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Tags</label>
-                                                    <DropDownListComponent dataSource={tags} placeholder="Enter tags"></DropDownListComponent>
-                                                </div>
-                                            </div>
-                                        )}>
-                                        </AccordionItemDirective>
+                                            )}
+                                        ></AccordionItemDirective>
                                     </AccordionItemsDirective>
                                 </AccordionComponent>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-round" iconCss="e-icons e-chevron-left" onClick={() => sidebar.current?.show()} type="button"></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -159,7 +159,7 @@ export default function FilterPanel4() {
                 return (
                     <section className="bg-body">
                         <div style={{ height: "780px", width: width, float: "right" }}>
-                            <SidebarComponent ref={sidebar} className="d-flex flex-column bg-body" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true}>
+                            <SidebarComponent ref={sidebar} className="d-flex flex-column bg-body" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: "block" }}>
                                 <div className="d-flex justify-content-between pt-2 w-100">
                                     <div className="w-100">
                                         <TabComponent headerPlacement="Top">
@@ -171,7 +171,7 @@ export default function FilterPanel4() {
                                                             <span className="fw-medium fs-6">Details</span>
                                                         </div>
                                                     )} 
-                                                />
+                                                ></TabItemDirective>
                                                 <TabItemDirective 
                                                     headerTemplate={() => (
                                                         <div className="d-flex align-items-center gap-2">
@@ -179,12 +179,12 @@ export default function FilterPanel4() {
                                                             <span className="fw-medium fs-6">Apps</span>
                                                         </div>
                                                     )}
-                                                />
+                                                ></TabItemDirective>
                                             </TabItemsDirective>
                                         </TabComponent>
                                     </div>
-                                    <div className="w-10 px-2 border-bottom border-subtle d-flex justify-content-center align-items-center">
-                                        <a href="#" className="e-icons e-chevron-right-double fs-6 text-decoration-none text-secondary" ></a>
+                                    <div className="w-10 px-3 border-bottom border-subtle d-flex justify-content-center align-items-center">
+                                        <a href="#" className="e-icons e-chevron-right-double small text-decoration-none text-secondary"></a>
                                     </div>
                                 </div>
                                 <div>
@@ -195,15 +195,15 @@ export default function FilterPanel4() {
                                                     <div className="fs-6 fw-medium text-body">Requester Details</div>
                                                 )} 
                                                 content={() => (
-                                                    <div className="d-flex align-items-center gap-2">
+                                                    <div className="d-flex align-items-center gap-2 p-1">
                                                         <span className="e-avatar e-avatar-medium e-avatar-circle bg-primary text-white">MG</span>
                                                         <div>
                                                             <h2 className="fs-6 mb-1 fw-medium text-body">Michael Green</h2>
-                                                            <a href="#" className="fs-6 fw-normal text-secondary">michael.green@example.com</a>
+                                                            <a href="#" className="fs-6 fw-normal text-secondary text-decoration-none">michael.green@example.com</a>
                                                         </div>
                                                     </div>
-                                                )}>
-                                            </AccordionItemDirective>
+                                                )}
+                                            ></AccordionItemDirective>
                                         </AccordionItemsDirective>
                                     </AccordionComponent>
                                     <AccordionComponent ref={ticketAccordion} className="border-0 bg-transparent" expandMode="Multiple">
@@ -214,7 +214,7 @@ export default function FilterPanel4() {
                                                 )} 
                                                 content={() => (
                                                     <div className="row g-3 w-100 m-0 pb-1">
-                                                        <div className="col-6 px-1">
+                                                        <div className="col-6 px-1 mt-1">
                                                             <label className="mb-1 fs-6 fw-medium text-body">Status</label>
                                                             <DropDownListComponent dataSource={status} placeholder="Open"></DropDownListComponent>
                                                         </div>
@@ -235,8 +235,8 @@ export default function FilterPanel4() {
                                                             <DropDownListComponent dataSource={tags} placeholder="Enter tags"></DropDownListComponent>
                                                         </div>
                                                     </div>
-                                                )}>
-                                            </AccordionItemDirective>
+                                                )}
+                                            ></AccordionItemDirective>
                                         </AccordionItemsDirective>
                                     </AccordionComponent>
                                 </div>
@@ -244,7 +244,7 @@ export default function FilterPanel4() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-round" iconCss="e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

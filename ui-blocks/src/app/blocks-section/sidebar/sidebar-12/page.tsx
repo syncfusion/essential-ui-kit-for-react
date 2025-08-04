@@ -10,6 +10,7 @@ export default function Sidebar12() {
     /* SB Code - Start */ 
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */ 
+    const [backDrop, setBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const data: any[] = [
@@ -57,9 +58,13 @@ export default function Sidebar12() {
         }
     ];
     
+    const handleResize = (): void => {
+        setBackDrop(window.innerWidth <= 640);
+    };
+    
     /* SB Code - Start */ 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'sidebar-12' && blockData.theme) {
@@ -75,11 +80,16 @@ export default function Sidebar12() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
+        /* SB Code - End */
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
+            window.removeEventListener('resize', handleResize);
         };
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -87,8 +97,8 @@ export default function Sidebar12() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-950">
-                        <div id={styles["tracker-sidebar"]} className="float-right" style={{ height: '600px' }}>
-                            <SidebarComponent key={"sidebar-12-tw"} className="bg-gray-50 dark:bg-gray-900 !border-l !border-gray-200 dark:!border-gray-700" width="256px" ref={sidebar} isOpen={true} position="Right" showBackdrop={true} style={{ display: 'block' }}>
+                        <div id={styles["tracker-sidebar"]} style={{ height: '600px' }}>
+                            <SidebarComponent key={"sidebar-12-tw"} ref={sidebar} className="bg-gray-50 dark:bg-gray-900 !border-l !border-gray-200 dark:!border-gray-700" width="256px" isOpen={true} position="Right" showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="py-6 h-screen">
                                     <div className="flex justify-between items-center px-3 mb-2">
                                         <span className="text-base text-gray-600 dark:text-gray-400">Market Cap</span>
@@ -117,7 +127,7 @@ export default function Sidebar12() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -125,8 +135,8 @@ export default function Sidebar12() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div id={styles["tracker-sidebar"]} className="float-right" style={{ height: '600px' }}>
-                            <SidebarComponent key={"sidebar-12-bs"} width="256px" ref={sidebar} position="Right" showBackdrop={true} isOpen={true} style={{ display: 'block' }}>
+                        <div id={styles["tracker-sidebar"]} style={{ height: '600px' }}>
+                            <SidebarComponent key={"sidebar-12-bs"} ref={sidebar} width="256px" position="Right" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="py-4 vh-100">
                                     <div className="d-flex justify-content-between align-items-center mb-2 px-2 ms-1">
                                         <span className="fs-6 text-body-secondary">Market Cap</span>
@@ -155,7 +165,7 @@ export default function Sidebar12() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="py-3 px-1 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

@@ -44,7 +44,7 @@ export default function Statistics2() {
             currentValue: '36.7%',
             contextInfo: 'Average revenue generated per visit.',
             currentPercentage: '3.31',
-            total: '34,12%'
+            total: '34.12%'
         }
     ];
 
@@ -62,7 +62,7 @@ export default function Statistics2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'statistics-2' && blockData.theme) {

@@ -7,7 +7,7 @@ export default function Card7() {
     const [theme, setTheme] = useState('tailwind');
     
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'cards-7' && blockData.theme) {
@@ -58,7 +58,7 @@ export default function Card7() {
                                     <div className="e-card-stacked grow">
                                         <div className="e-card-content grow">
                                             <h2 className="text-xl mb-3 font-semibold text-gray-950 dark:text-gray-50 line-clamp-2">Natural Wonders</h2>
-                                            <p className="text-base mb-1 dark:text-gray-200">Witness the awe-inspiring natural wonders that showcase the planet’s incredible diversity. From majestic waterfalls and towering mountain ranges to expansive deserts, the choice is endless.</p>
+                                            <p className="text-base mb-1 dark:text-gray-200">Witness the awe-inspiring natural wonders that showcase the planet's incredible diversity. From majestic waterfalls and towering mountain ranges to expansive deserts, the choice is endless.</p>
                                         </div>
                                         <div className="e-card-actions w-full leading-5">
                                             <span className="e-badge e-badge-pill">#Natural Wonders</span>
@@ -112,7 +112,7 @@ export default function Card7() {
                                         <div className="e-card-stacked flex-grow-1">
                                             <div className="e-card-content flex-grow-1 py-4 text-body">
                                                 <h4 className="mb-2 fw-bold lh-sm text-truncate">Natural Wonders</h4>
-                                                <p className="fs-6 mb-0">Witness the awe-inspiring natural wonders that showcase the planet’s incredible diversity. From majestic waterfalls and towering mountain ranges to expansive deserts, the choice is endless.</p>
+                                                <p className="fs-6 mb-0">Witness the awe-inspiring natural wonders that showcase the planet's incredible diversity. From majestic waterfalls and towering mountain ranges to expansive deserts, the choice is endless.</p>
                                             </div>
                                             <div className="e-card-actions e-bigger pb-4 w-100 lh-sm">
                                                 <span className="e-badge e-badge-pill">#Natural Wonders</span>

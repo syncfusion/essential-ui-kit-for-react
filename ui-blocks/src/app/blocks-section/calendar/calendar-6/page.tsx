@@ -37,7 +37,7 @@ export default function Calendar6() {
         const months: string[] = [];
         const descriptions: string[] = [];
         templateContents.forEach((item) => {
-            const month = item.description.split(", ")[1].split(" ")[0]; // Extract the month
+            const month = item.description.split(", ")[1].split(" ")[0];
             if (!months.includes(month)) {
                 months.push(month);
                 descriptions.push(item.description);
@@ -60,7 +60,7 @@ export default function Calendar6() {
         return date.split(", ")[1].split(" ")[0];
     };
   
-    const handleResize = () => {
+    const handleResize = (): void => {
         setWidth(window.innerWidth < 540 ? '100%' : '310px');
         /* SB Code - Start */
         setTimeout(() => {
@@ -71,7 +71,7 @@ export default function Calendar6() {
     
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'calendar-6' && blockData.theme) {
@@ -115,13 +115,13 @@ export default function Calendar6() {
                                             <label className="text-sm text-gray-900 dark:text-white">CALENDAR</label>
                                             <DatePickerComponent start="Decade" depth="Decade" format="yyyy"></DatePickerComponent>
                                         </div>
-                                        <ButtonComponent className="e-flat text-base" iconCss="e-icons e-close" onClick={() => sidebar.current?.hide()} content=" " type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-flat text-base" iconCss="e-icons e-close" onClick={() => sidebar.current?.hide()} type="button"></ButtonComponent>
                                     </div>
                                 </div>
                                 <div className="flex px-4 py-2 border-y border-gray-200 dark:border-gray-600 justify-between">
-                                    <ButtonComponent className="e-primary e-outline" content="Request time off" iconCss="e-icons e-plus" type="button"></ButtonComponent>
+                                    <ButtonComponent className="e-primary e-outline" iconCss="e-icons e-plus" content="Request time off" type="button"></ButtonComponent>
                                     <div className="my-auto">
-                                        <DropDownButtonComponent items={menuItems} cssClass="e-flat background-none !border-none e-caret-hide" iconCss="e-icons e-more-vertical-2" type="button" content=" " select={leaveOptions}></DropDownButtonComponent>
+                                        <DropDownButtonComponent items={menuItems} cssClass="e-flat background-none !border-none e-caret-hide" iconCss="e-icons e-more-vertical-2" type="button" select={leaveOptions}></DropDownButtonComponent>
                                     </div>
                                 </div>
                                 <div className="p-4">
@@ -152,7 +152,7 @@ export default function Calendar6() {
                                                 <div className="e-card shadow-none pt-3 border-gray-200 dark:border-gray-600 flex-row justify-between">
                                                     <div className="e-card-stacked">
                                                         <div className="e-card-content">
-                                                            <div className="font-normal text-xs text-gray-500 mb-0.5">3 day request</div>
+                                                            <div className="font-normal text-xs text-gray-500 dark:text-gray-300 mb-0.5">3 day request</div>
                                                             <div className="text-xs font-semibold mb-2">24 Sep - 26 Sep</div>
                                                             <span className="e-badge e-badge-pill e-bigger e-badge-secondary border border-gray-200 dark:border-gray-600">Casual</span>
                                                         </div>
@@ -162,7 +162,7 @@ export default function Calendar6() {
                                                 <div className="e-card shadow-none pt-3 border-gray-200 dark:border-gray-600 flex-row justify-between">
                                                     <div className="e-card-stacked">
                                                         <div className="e-card-content">
-                                                            <div className="font-normal text-xs text-gray-500 mb-0.5">Half day request</div>
+                                                            <div className="font-normal text-xs text-gray-500 dark:text-gray-300 mb-0.5">Half day request</div>
                                                             <div className="text-xs font-semibold mb-2">04 Sep</div>
                                                             <span className="e-badge e-badge-pill e-bigger e-badge-info">Sick</span>
                                                         </div>
@@ -175,7 +175,7 @@ export default function Calendar6() {
                                                 <div className="e-card shadow-none pt-3 border-gray-200 dark:border-gray-600 flex-row justify-between">
                                                     <div className="e-card-stacked">
                                                         <div className="e-card-content">
-                                                            <div className="font-normal text-xs text-gray-500 mb-0.5">2 day request</div>
+                                                            <div className="font-normal text-xs text-gray-500 dark:text-gray-300 mb-0.5">2 day request</div>
                                                             <div className="text-xs font-semibold mb-2">23 Jul - 24 Jul</div>
                                                             <span className="e-badge e-badge-pill e-bigger e-badge-secondary border border-gray-200 dark:border-gray-600">Casual</span>
                                                         </div>
@@ -213,7 +213,7 @@ export default function Calendar6() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" onClick={() => sidebar.current?.show()} type="button"></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -229,13 +229,13 @@ export default function Calendar6() {
                                             <label className="fs-6 text-body-secondary">CALENDAR</label>
                                             <DatePickerComponent start="Decade" depth="Decade" format="yyyy"></DatePickerComponent>
                                         </div>
-                                        <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-close" onClick={() => sidebar.current?.hide()} content=" " type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-flat fs-6" iconCss="e-icons e-close" type="button" onClick={() => sidebar.current?.hide()}></ButtonComponent>
                                     </div>
                                 </div>
                                 <div className="d-flex p-3 border-bottom border-top border-light-subtle justify-content-between">
-                                    <ButtonComponent className="e-primary e-outline" content="Request time off" iconCss="e-icons e-plus" type="button"></ButtonComponent>
+                                    <ButtonComponent className="e-primary e-outline" iconCss="e-icons e-plus" content="Request time off" type="button"></ButtonComponent>
                                     <div className="my-auto">
-                                        <DropDownButtonComponent items={menuItems} cssClass="e-flat border-0 e-caret-hide" iconCss="e-icons e-more-vertical-2" type="button" content=" " select={leaveOptions}></DropDownButtonComponent>
+                                        <DropDownButtonComponent items={menuItems} cssClass="e-flat border-0 e-caret-hide" iconCss="e-icons e-more-vertical-2" type="button" select={leaveOptions}></DropDownButtonComponent>
                                     </div>
                                 </div>
                                 {selectedItem === "Holiday" ? (
@@ -325,7 +325,7 @@ export default function Calendar6() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" onClick={() => sidebar.current?.show()} type="button"></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

@@ -15,112 +15,112 @@ export default function Chat2() {
 
     const data: any[] = [
         {
-            id: '1',
-            name: 'John',
-            time: '8:57 AM',
-            avatar: '',
-            text: 'Hi, I’m having trouble accessing the company VPN.',
-            chat: 'sender',
+            id: 1,
+            name: "John",
+            time: "8:57 AM",
+            avatar: "",
+            text: "Hi, I'm having trouble accessing the company VPN.",
+            chat: "sender",
             open: false
         },
         {
-            id: '2',
-            name: 'Mark Davis',
-            time: '9:00 AM',
-            avatar: 'avatar-3.jpg',
-            text: 'Hello! I can help with that. Are you seeing any error messages?',
-            chat: 'receiver'
+            id: 2,
+            name: "Mark Davis",
+            time: "9:00 AM",
+            avatar: "avatar-3.jpg",
+            text: "Hello! I can help with that. Are you seeing any error messages?",
+            chat: "receiver"
         },
         {
-            id: '1',
-            name: 'John',
-            time: '9:05 AM',
-            avatar: '',
-            text: 'Yes, it says "VPN connection failed. Authentication error."',
-            chat: 'sender',
+            id: 1,
+            name: "John",
+            time: "9:05 AM",
+            avatar: "",
+            text: "Yes, it says 'VPN connection failed. Authentication error.'",
+            chat: "sender",
             open: false
         },
         {
-            id: '2',
-            name: 'Mark Davis',
-            time: '10:00 AM',
-            avatar: 'avatar-3.jpg',
-            text: 'Thanks for the details. Can you confirm if you’ve recently changed your network password?',
-            chat: 'receiver'
+            id: 2,
+            name: "Mark Davis",
+            time: "10:00 AM",
+            avatar: "avatar-3.jpg",
+            text: "Thanks for the details. Can you confirm if you've recently changed your network password?",
+            chat: "receiver"
         },
         {
-            id: '1',
-            name: 'John',
-            time: '10:32 AM',
-            avatar: '',
-            text: 'Yes, I changed it yesterday.',
-            chat: 'sender',
+            id: 1,
+            name: "John",
+            time: "10:32 AM",
+            avatar: "",
+            text: "Yes, I changed it yesterday.",
+            chat: "sender",
             open: true
         },
         {
-            id: '2',
-            name: 'Mark Davis',
-            time: '10:35 AM',
-            avatar: 'avatar-3.jpg',
-            text: 'That’s likely the issue. The VPN might still be using the old password. Try updating your VPN credentials with the new password.',
-            chat: 'receiver'
+            id: 2,
+            name: "Mark Davis",
+            time: "10:35 AM",
+            avatar: "avatar-3.jpg",
+            text: "That's likely the issue. The VPN might still be using the old password. Try updating your VPN credentials with the new password.",
+            chat: "receiver"
         }
     ];
 
     const dataTranslate: any[] = [
         {
-            id: '1',
-            name: 'Olivia Martinez',
-            time: '8:57 AM',
-            avatar: 'avatar-10.jpg',
-            text: 'Hola, tengo problemas para acceder a la VPN de la empresa.',
-            chat: 'sender'
+            id: 1,
+            name: "Olivia Martinez",
+            time: "8:57 AM",
+            avatar: "avatar-10.jpg",
+            text: "Hola, tengo problemas para acceder a la VPN de la empresa.",
+            chat: "sender"
         },
         {
-            id: '2',
-            name: 'Mark Davis',
-            time: '9:00 AM',
-            avatar: 'avatar-3.jpg',
-            text: '¡Hola! Puedo ayudar con eso. ¿Estás viendo algún mensaje de error?',
-            chat: 'receiver'
+            id: 2,
+            name: "Mark Davis",
+            time: "9:00 AM",
+            avatar: "avatar-3.jpg",
+            text: "¡Hola! Puedo ayudar con eso. ¿Estás viendo algún mensaje de error?",
+            chat: "receiver"
         },
         {
-            id: '1',
-            name: 'Olivia Martinez',
-            time: '9:05 AM',
-            avatar: 'avatar-10.jpg',
-            text: 'Sí, dice "Error en la conexión VPN. Error de autenticación."',
-            chat: 'sender'
+            id: 1,
+            name: "Olivia Martinez",
+            time: "9:05 AM",
+            avatar: "avatar-10.jpg",
+            text: "Sí, dice 'Error en la conexión VPN. Error de autenticación.'",
+            chat: "sender"
         },
         {
-            id: '2',
-            name: 'Mark Davis',
-            time: '10:00 AM',
-            avatar: 'avatar-3.jpg',
-            text: 'Gracias por los detalles. ¿Puedes confirmar si has cambiado recientemente tu contraseña de red?',
-            chat: 'receiver'
+            id: 2,
+            name: "Mark Davis",
+            time: "10:00 AM",
+            avatar: "avatar-3.jpg",
+            text: "Gracias por los detalles. ¿Puedes confirmar si has cambiado recientemente tu contraseña de red?",
+            chat: "receiver"
         },
         {
-            id: '1',
-            name: 'Olivia Martinez',
-            time: '10:32 AM',
-            avatar: 'avatar-10.jpg',
-            text: 'Sí, lo cambié ayer.',
-            chat: 'sender'
+            id: 1,
+            name: "Olivia Martinez",
+            time: "10:32 AM",
+            avatar: "avatar-10.jpg",
+            text: "Sí, lo cambié ayer.",
+            chat: "sender"
         },
         {
-            id: '2',
-            name: 'Mark Davis',
-            time: '10:35 AM',
-            avatar: 'avatar-3.jpg',
-            text: 'Probablemente ese sea el problema. Es posible que la VPN todavía esté usando la contraseña anterior. Intente actualizar sus credenciales de VPN con la nueva contraseña.',
-            chat: 'receiver'
+            id: 2,
+            name: "Mark Davis",
+            time: "10:35 AM",
+            avatar: "avatar-3.jpg",
+            text: "Probablemente ese sea el problema. Es posible que la VPN todavía esté usando la contraseña anterior. Intente actualizar sus credenciales de VPN con la nueva contraseña.",
+            chat: "receiver"
         }
     ];
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'chat-2' && blockData.theme) {
@@ -161,18 +161,18 @@ export default function Chat2() {
                                     </div>
                                     <div className="e-appbar-spacer"></div>
                                     <div className="flex items-center gap-3">
-                                        <ButtonComponent cssClass="e-flat sf-icon-phone-01 leading-3 text-base sm:block hidden" type="button"></ButtonComponent>
-                                        <ButtonComponent cssClass="e-flat e-icons e-video sm:block hidden" type="button"></ButtonComponent>
-                                        <ButtonComponent cssClass="e-flat e-icons e-more-vertical-1" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat leading-3 text-base sm:block hidden" iconCss="sf-icon-phone-01" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat sm:block hidden" iconCss="e-icons e-video" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat" iconCss="e-icons e-more-vertical-1" type="button"></ButtonComponent>
                                         <div className="border-l h-6 border-gray-200 dark:border-gray-600 sm:block hidden"></div>
-                                        <ButtonComponent cssClass="e-flat e-icons e-show-hide-panel text-base leading-3 sm:block hidden" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat text-base leading-3 sm:block hidden" iconCss="e-icons e-show-hide-panel" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </div>
                             <div className="flex flex-wrap border-t border-gray-200 dark:border-gray-800">
                                 <div className="w-full sm:w-4/6 pb-6">
                                     <div className="flex items-center flex-col pt-7 bg-white dark:bg-gray-900">
-                                        <span className="e-badge e-badge-pill e-badge-secondary border border-gray-200 e-small">Wednesday, Sep 18th</span>
+                                        <span className="e-badge e-badge-pill e-badge-secondary border border-gray-200 dark:border-gray-600 e-small">Wednesday, Sep 18th</span>
                                         <ListViewComponent cssClass="!border-0 px-2 sm:px-4 sm:pr-7 py-4" dataSource={data} width="100%" height="100%"
                                             template={(data: any) => {
                                                 const senderTemplate = (
@@ -188,7 +188,6 @@ export default function Chat2() {
                                                         </div>
                                                     </div>
                                                 );
-                
                                                 const receiverTemplate = (
                                                     <div className="flex justify-start gap-3 items-start sm:w-11/12">
                                                         {data.avatar && (
@@ -204,13 +203,12 @@ export default function Chat2() {
                                                         </div>
                                                     </div>
                                                 );
-                
                                                 return <div>{data.chat !== "receiver" ? senderTemplate : receiverTemplate}</div>;
                                             }}
                                         ></ListViewComponent>
                                     </div>
                                     <div className="e-bigger w-full text-base px-4 px-4 sm:pl-6 sm:pr-12">
-                                        <TextBoxComponent type="text" placeholder="Enter a message" ref={textboxRef} created={() => textboxRef.current?.addIcon("append", "sf-icon-navigation-right-up border-0")}></TextBoxComponent>
+                                        <TextBoxComponent ref={textboxRef} type="text" placeholder="Enter a message" created={() => textboxRef.current?.addIcon("append", "sf-icon-navigation-right-up border-0")}></TextBoxComponent>
                                     </div>
                                 </div>
                                 <div className="w-full sm:w-2/6 sm:border-s border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
@@ -235,7 +233,6 @@ export default function Chat2() {
                                                     </div>
                                                 </div>
                                             );
-                
                                             const receiverTemplate = (
                                                 <div className="flex justify-start gap-2 items-start">
                                                     {data.avatar && (
@@ -251,7 +248,6 @@ export default function Chat2() {
                                                     </div>
                                                 </div>
                                             );
-                
                                             return <div>{data.chat !== "receiver" ? senderTemplate : receiverTemplate}</div>;
                                         }}
                                     ></ListViewComponent>
@@ -303,7 +299,6 @@ export default function Chat2() {
                                                         </div>
                                                     </div>
                                                 );
-                
                                                 const receiverTemplate = (
                                                     <div className="d-flex justify-content-start gap-2 align-items-start me-sm-3">
                                                         {data.avatar && (
@@ -319,7 +314,6 @@ export default function Chat2() {
                                                         </div>
                                                     </div>
                                                 );
-                
                                                 return <div>{data.chat !== "receiver" ? senderTemplate : receiverTemplate}</div>;
                                             }}
                                         ></ListViewComponent>
@@ -352,7 +346,6 @@ export default function Chat2() {
                                                         </div>
                                                     </div>
                                                 );
-                
                                                 const receiverTemplate = (
                                                     <div className="d-flex justify-content-start gap-2 align-items-start">
                                                         {data.avatar && (
@@ -368,7 +361,6 @@ export default function Chat2() {
                                                         </div>
                                                     </div>
                                                 );
-                
                                                 return <div>{data.chat !== "receiver" ? senderTemplate : receiverTemplate}</div>;
                                             }}
                                         ></ListViewComponent>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
-import { Category, ChartComponent, Inject, SeriesCollectionDirective, SeriesDirective, StackingBarSeries } from "@syncfusion/ej2-react-charts";
+import { Inject, ChartComponent, SeriesCollectionDirective, SeriesDirective, StackingBarSeries, Category } from "@syncfusion/ej2-react-charts";
 
 export default function BarChart8() {
     /* SB Code - Start */
@@ -47,7 +47,7 @@ export default function BarChart8() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'bar-chart-8' && blockData.theme) {
@@ -81,7 +81,7 @@ export default function BarChart8() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-950">
-                        <div key={'barchart-8-tw'} className="h-screen flex justify-center py-4 sm:py-6">
+                        <div key={"barchart-8-tw"} className="h-screen flex justify-center py-4 sm:py-6">
                             <div className="w-full" style={{ maxWidth: '476px' }}>
                                 <div className="flex justify-between items-center mb-1 px-4 sm:px-6">
                                     <h1 className="text-base font-medium text-gray-900 dark:text-white mb-2">Stock Report</h1>
@@ -126,7 +126,7 @@ export default function BarChart8() {
                                         </div>
                                         <div className="flex items-center gap-7">
                                             <p className="text-sm font-medium">$50,113</p>
-                                            <span className="e-badge e-badge-info">40%</span>
+                                            <span className="e-badge e-badge-info">28%</span>
                                         </div>
                                     </div>
                                     <div className="flex justify-between items-center text-gray-500 dark:text-gray-400">
@@ -136,7 +136,7 @@ export default function BarChart8() {
                                         </div>
                                         <div className="flex items-center gap-7">
                                             <p className="text-sm font-medium">$57,272</p>
-                                            <span className="e-badge e-badge-warning">40%</span>
+                                            <span className="e-badge e-badge-warning">32%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +147,7 @@ export default function BarChart8() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div key={'barchart-8-bs'} className="vh-100 d-flex justify-content-center py-3 py-sm-4">
+                        <div key={"barchart-8-bs"} className="vh-100 d-flex justify-content-center py-3 py-sm-4">
                             <div className="w-100" style={{ maxWidth: '476px' }}>
                                 <div className="d-flex justify-content-between align-items-center mb-1 px-4 px-sm-6">
                                     <h1 className="fw-medium fs-6 text-body mb-0">Stock Report</h1>
@@ -192,7 +192,7 @@ export default function BarChart8() {
                                         </div>
                                         <div className="d-flex align-items-center gap-4">
                                             <p className="small mb-0 fw-medium">$50,113</p>
-                                            <span className="e-badge e-badge-success">40%</span>
+                                            <span className="e-badge e-badge-success">28%</span>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between align-items-center text-body-secondary">
@@ -202,7 +202,7 @@ export default function BarChart8() {
                                         </div>
                                         <div className="d-flex align-items-center gap-4">
                                             <p className="small mb-0 fw-medium">$57,272</p>
-                                            <span className="e-badge e-badge-warning">40%</span>
+                                            <span className="e-badge e-badge-warning">32%</span>
                                         </div>
                                     </div>
                                 </div>

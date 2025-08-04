@@ -10,7 +10,7 @@ export default function AISidebar1() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const [backDrop, setBackDrop] = useState(false);
+    const [isBackDrop, setIsBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const navigationMenu: any[] = [
@@ -60,12 +60,12 @@ export default function AISidebar1() {
     ];
 
     const handleResize = (): void => {
-        setBackDrop(window.innerWidth <= 660);
+        setIsBackDrop(window.innerWidth <= 660);
     };
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-sidebar-1' && blockData.theme) {
@@ -99,7 +99,7 @@ export default function AISidebar1() {
                 return (
                     <section className="bg-white dark:bg-gray-800">
                         <div id={styles["sidebar-navigation"]} style={{ height: '766px' }}>
-                            <SidebarComponent ref={sidebar} className="bg-gray-50 dark:bg-gray-700" width="256px" isOpen={true} type="Push" closeOnDocumentClick={false} showBackdrop={backDrop} style={{ display: 'block' }}>
+                            <SidebarComponent ref={sidebar} className="bg-gray-50 dark:bg-gray-700" width="256px" isOpen={true} type="Push" closeOnDocumentClick={false} showBackdrop={isBackDrop} style={{ display: 'block' }}>
                                 <div className="flex flex-col justify-between h-full">
                                     <div>
                                         <div className="flex items-center px-3 py-2 mt-1">
@@ -145,8 +145,8 @@ export default function AISidebar1() {
                                     </div>
                                     <div className="flex items-center justify-center">
                                         <div className="bg-white dark:bg-gray-800 mb-6 p-1 w-fit border border-gray-200 dark:border-gray-600 rounded-lg">
-                                            <ButtonComponent cssClass="rounded-lg e-primary" iconCss="e-icons e-brightness" type="button" content="Light"></ButtonComponent>
-                                            <ButtonComponent cssClass="rounded-lg e-flat" iconCss="e-icons e-contrast" type="button" content="Dark"></ButtonComponent>
+                                            <ButtonComponent cssClass="rounded-lg e-primary" iconCss="e-icons e-brightness" content="Light" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="rounded-lg e-flat" iconCss="e-icons e-contrast" content="Dark" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +154,7 @@ export default function AISidebar1() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -163,7 +163,7 @@ export default function AISidebar1() {
                 return (
                     <section className="bg-body">
                         <div id={styles["sidebar-navigation"]} style={{ height: '766px' }}>
-                            <SidebarComponent ref={sidebar} className="bg-body border-light-subtle" width="256px" isOpen={true} type="Push" closeOnDocumentClick={false} showBackdrop={backDrop} style={{ display: 'block' }}>
+                            <SidebarComponent ref={sidebar} className="bg-body border-light-subtle" width="256px" isOpen={true} type="Push" closeOnDocumentClick={false} showBackdrop={isBackDrop} style={{ display: 'block' }}>
                                 <div className="d-flex flex-column justify-content-between h-100">
                                     <div>
                                         <div className="d-flex align-items-center px-3 py-2 my-1">
@@ -209,8 +209,8 @@ export default function AISidebar1() {
                                     </div>
                                     <div className="d-flex justify-content-center">
                                         <div className="bg-body mb-4 p-1 border border-light-subtle rounded-3">
-                                            <ButtonComponent cssClass="rounded-3 e-primary" iconCss="e-icons e-brightness" type="button" content="Light"></ButtonComponent>
-                                            <ButtonComponent cssClass="rounded-3 e-flat" iconCss="e-icons e-contrast" type="button" content="Dark"></ButtonComponent>
+                                            <ButtonComponent cssClass="rounded-3 e-primary" iconCss="e-icons e-brightness" content="Light" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="rounded-3 e-flat" iconCss="e-icons e-contrast" content="Dark" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +218,7 @@ export default function AISidebar1() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

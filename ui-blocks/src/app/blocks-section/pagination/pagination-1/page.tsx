@@ -9,7 +9,7 @@ export default function Pagination1() {
     const [theme, setTheme] = useState('tailwind');
     
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'pagination-1' && blockData.theme) {
@@ -43,12 +43,12 @@ export default function Pagination1() {
                                     <ButtonComponent className="sm:hidden" iconCss="e-icons e-chevron-left" type="button"></ButtonComponent>
                                     <ButtonComponent className="hidden sm:inline-block" iconCss="e-icons e-chevron-left" content="PREVIOUS" type="button"></ButtonComponent>
                                     <span className="e-btn-group">
-                                        <ButtonComponent type="button">1</ButtonComponent>
-                                        <ButtonComponent className="e-secondary e-active" type="button">2</ButtonComponent>
-                                        <ButtonComponent className="hidden sm:inline-block" type="button">3</ButtonComponent>
-                                        <ButtonComponent type="button">...</ButtonComponent>
-                                        <ButtonComponent className="hidden sm:inline-block" type="button">79</ButtonComponent>
-                                        <ButtonComponent type="button">80</ButtonComponent>
+                                        <ButtonComponent content="1" type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-secondary e-active" content="2" type="button"></ButtonComponent>
+                                        <ButtonComponent className="hidden sm:inline-block" content="3" type="button"></ButtonComponent>
+                                        <ButtonComponent content="..." type="button"></ButtonComponent>
+                                        <ButtonComponent className="hidden sm:inline-block" content="79" type="button"></ButtonComponent>
+                                        <ButtonComponent content="80" type="button"></ButtonComponent>
                                     </span>
                                     <ButtonComponent className="hidden sm:inline-block" iconCss="e-icons e-chevron-right" iconPosition="Right" content="NEXT" type="button"></ButtonComponent>
                                     <ButtonComponent className="sm:hidden" iconCss="e-icons e-chevron-right" iconPosition="Right" type="button"></ButtonComponent>
@@ -66,12 +66,12 @@ export default function Pagination1() {
                                     <ButtonComponent className="e-outline d-sm-none" iconCss="e-icons e-chevron-left" type="button"></ButtonComponent>
                                     <ButtonComponent className="e-outline d-none d-sm-inline-block" iconCss="e-icons e-chevron-left" content="PREVIOUS" type="button"></ButtonComponent>
                                     <span className="e-btn-group shadow-none mx-1">
-                                        <ButtonComponent className="e-flat" type="button">1</ButtonComponent>
-                                        <ButtonComponent className="e-secondary" type="button">2</ButtonComponent>
-                                        <ButtonComponent className="e-flat d-none d-sm-inline-block" type="button">3</ButtonComponent>
-                                        <ButtonComponent className="e-flat" type="button">...</ButtonComponent>
-                                        <ButtonComponent className="e-flat d-none d-sm-inline-block" type="button">79</ButtonComponent>
-                                        <ButtonComponent className="e-flat" type="button">80</ButtonComponent>
+                                        <ButtonComponent className="e-flat" content="1" type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-secondary" content="2" type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-flat d-none d-sm-inline-block" content="3" type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-flat" content="..." type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-flat d-none d-sm-inline-block" content="79" type="button"></ButtonComponent>
+                                        <ButtonComponent className="e-flat" content="80" type="button"></ButtonComponent>
                                     </span>
                                     <ButtonComponent className="e-outline d-none d-sm-inline-block" iconCss="e-icons e-chevron-right" iconPosition="Right" content="NEXT" type="button"></ButtonComponent>
                                     <ButtonComponent className="e-outline d-sm-none" iconCss="e-icons e-chevron-right" iconPosition="Right" type="button"></ButtonComponent>

@@ -10,7 +10,7 @@ export default function FloatingMenu1() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const [toggleState, setToggleState] = useState(true);
+    const [isToggleState, setIsToggleState] = useState(true);
     const [isMobileView, setIsMobileView] = useState(false);
     const dialogRef = useRef<DialogComponent | null>(null);
     const fabRef = useRef<FabComponent | null>(null);
@@ -39,14 +39,7 @@ export default function FloatingMenu1() {
     ];
 
     const toggleDialog = (): void => {
-        if (dialogRef.current) {
-            if (toggleState) {
-                dialogRef.current.hide();
-            } else {
-                dialogRef.current.show();
-            }
-            setToggleState(!toggleState);
-        }
+        setIsToggleState(!isToggleState);
     };
 
     const setDialogPosition = (event: any): void => {
@@ -66,7 +59,7 @@ export default function FloatingMenu1() {
         
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'floating-menu-1' && blockData.theme) {
@@ -84,6 +77,13 @@ export default function FloatingMenu1() {
         window.addEventListener('message', handleMessageEvent);
         /* SB Code - End */
         window.addEventListener('resize', setDialogPosition);
+        if (dialogRef.current) {
+            if (isToggleState) {
+                dialogRef.current.show();
+            } else {
+                dialogRef.current.hide();
+            }
+        }
 
         return () => {
             /* SB Code - Start */
@@ -91,7 +91,7 @@ export default function FloatingMenu1() {
             /* SB Code - End */
             window.removeEventListener('resize', setDialogPosition);
         }
-    }, []);
+    }, [isToggleState]);
 
     const getContent = () => {
         switch (theme) {
@@ -99,7 +99,10 @@ export default function FloatingMenu1() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div id="target" className="w-full" style={{ height: isMobileView ? "591px" : "720px" }}>
-                            <DialogComponent id={styles["floating-article"]} className="sm:!rounded-t !rounded-none overflow-hidden !border-0" width="400px" minHeight="591px" ref={dialogRef} open={setDialogPosition} created={() => dialogRef.current?.show()}
+                            <div className="flex items-center justify-center pt-4 block sm:hidden">
+                                <ButtonComponent cssClass="e-primary e-round e-bigger" iconCss="sf-icon-help-circle !text-xl" type="button" onClick={toggleDialog}></ButtonComponent>
+                            </div>
+                            <DialogComponent ref={dialogRef} id={styles["floating-article"]} className="sm:!rounded-t !rounded-none overflow-hidden !border-0" width="400px" minHeight="591px" open={setDialogPosition} created={() => dialogRef.current?.show()}
                                 header={() => {
                                     return (
                                         <div className="flex flex-col justify-between items-center bg-primary-600 dark:bg-primary-400 p-3">
@@ -109,6 +112,9 @@ export default function FloatingMenu1() {
                                                     <input className="e-input" type="text" placeholder="Search for help" />
                                                     <span className="e-input-group-icon e-icons e-search !text-lg !leading-4"></span>
                                                 </div>
+                                            </div>
+                                            <div className="flex justify-end block sm:hidden px-4 absolute right-0">
+                                                <ButtonComponent cssClass="e-primary e-round" iconCss="e-icons e-close text-white dark:text-black !leading-5 !text-base" type="button" onClick={toggleDialog}></ButtonComponent>
                                             </div>
                                         </div>
                                     );
@@ -130,7 +136,7 @@ export default function FloatingMenu1() {
                                     }}
                                 ></ListViewComponent>
                             </DialogComponent>
-                            <FabComponent cssClass="e-primary e-round e-bigger !hidden sm:!block" iconCss={!toggleState ? "sf-icon-help-circle !text-2xl" : "e-icons e-close !text-2xl"} position="BottomRight" type="button" target="#target" ref={fabRef} onClick={toggleDialog}></FabComponent>
+                            <FabComponent ref={fabRef} cssClass="e-primary e-round e-bigger !hidden sm:!block" iconCss={!isToggleState ? "sf-icon-help-circle !text-2xl" : "e-icons e-close !text-2xl"} target="#target" position="BottomRight" type="button" onClick={toggleDialog}></FabComponent>
                         </div>
                     </section>
                 );
@@ -138,7 +144,10 @@ export default function FloatingMenu1() {
                 return (
                     <section className="bg-body">
                         <div id="target" className="w-100" style={{ height: isMobileView ? "591px" : "720px" }}>
-                            <DialogComponent id={styles["floating-article"]} className="rounded-1 overflow-hidden border-0" width="400px" minHeight="592px" ref={dialogRef} open={setDialogPosition} created={() => dialogRef.current?.show()}
+                            <div className="d-flex align-items-center justify-content-center pt-4 d-block d-sm-none">
+                                <ButtonComponent cssClass="e-primary e-round e-bigger" iconCss="sf-icon-help-circle fs-5 lh-base" type="button" onClick={toggleDialog}></ButtonComponent>
+                            </div>
+                            <DialogComponent ref={dialogRef} id={styles["floating-article"]} className="rounded-1 overflow-hidden border-0" width="400px" minHeight="592px" open={setDialogPosition} created={() => dialogRef.current?.show()}
                                 header={() => {
                                     return (
                                         <div className="d-flex flex-column justify-content-between align-items-center bg-primary text-white p-3">
@@ -148,6 +157,9 @@ export default function FloatingMenu1() {
                                                     <input className="e-input form-control" type="text" placeholder="Search for help" />
                                                     <span className="e-input-group-icon e-icons e-search border-start-0 text-secondary"></span>
                                                 </div>
+                                            </div>
+                                            <div className="d-flex justify-content-end d-block d-sm-none px-3 top-0 pt-2 position-absolute end-0">
+                                                <ButtonComponent className="e-primary e-round" iconCss="e-icons e-close text-white" type="button" onClick={toggleDialog}></ButtonComponent>
                                             </div>
                                         </div>
                                     );
@@ -169,7 +181,7 @@ export default function FloatingMenu1() {
                                     }}
                                 ></ListViewComponent>
                             </DialogComponent>
-                            <FabComponent cssClass="e-primary e-round e-bigger d-none d-sm-block" iconCss={!toggleState ? "sf-icon-help-circle fs-4" : "e-icons e-close fs-5"} position="BottomRight" type="button" target="#target" ref={fabRef} onClick={toggleDialog}></FabComponent>
+                            <FabComponent ref={fabRef} cssClass="e-primary e-round e-bigger d-none d-sm-block" target="#target" iconCss={!isToggleState ? "sf-icon-help-circle fs-4" : "e-icons e-close fs-5"} position="BottomRight" type="button" onClick={toggleDialog}></FabComponent>
                         </div>
                     </section>
                 );

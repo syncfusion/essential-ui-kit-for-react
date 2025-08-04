@@ -70,7 +70,7 @@ export default function AIFAQ1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-faq-1' && blockData.theme) {
@@ -101,7 +101,7 @@ export default function AIFAQ1() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-950">
-                        <div key={'faq-tw'} id={styles.FAQ} className="w-full px-4 sm:px-0 py-7 sm:py-12 mx-auto h-full" style={{ maxWidth: '615px', minHeight: '940px' }}>
+                        <div key={"faq-tw"} id={styles["FAQ"]} className="w-full px-4 sm:px-0 py-7 sm:py-12 mx-auto h-full" style={{ maxWidth: '615px', minHeight: '940px' }}>
                             <AccordionComponent ref={accordion} className="bg-transparent !border-0 !my-1" expandMode="Single">
                                 <AccordionItemsDirective>
                                     {
@@ -109,8 +109,7 @@ export default function AIFAQ1() {
                                             <AccordionItemDirective key={data.id} cssClass="!border-0 !rounded-xl mb-2" expanded={data.id == 1}
                                                 header={() => <div className="w-full font-normal pl-1 sm:p-0 pr-12">{data.question}</div>}
                                                 content={() => <div className="px-4 sm:px-3 py-3 bg-gray-50 dark:bg-gray-700">{data.answer}</div>}
-                                            >
-                                            </AccordionItemDirective>
+                                            ></AccordionItemDirective>
                                         ))
                                     }
                                 </AccordionItemsDirective>
@@ -121,7 +120,7 @@ export default function AIFAQ1() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div key={'faq-bs'} id={styles.FAQ} className="w-100 px-3 py-4 py-sm-5 mx-auto h-100" style={{ maxWidth: '615px', minHeight: '820px' }}>
+                        <div key={"faq-bs"} id={styles["FAQ"]} className="w-100 px-3 py-4 py-sm-5 mx-auto h-100" style={{ maxWidth: '615px', minHeight: '820px' }}>
                             <AccordionComponent ref={accordion} className="bg-transparent border-0 my-1" expandMode="Single">
                                 <AccordionItemsDirective>
                                     {
@@ -129,8 +128,7 @@ export default function AIFAQ1() {
                                             <AccordionItemDirective key={data.id} expanded={data.id == 1}
                                                 header={() => <div className="w-100 ps-1 py-1 p-sm-0 pe-5">{data.question}</div>}
                                                 content={() => <div className="p-3 bg-body-tertiary text-body">{data.answer}</div>}
-                                            >
-                                            </AccordionItemDirective>
+                                            ></AccordionItemDirective>
                                         ))
                                     }
                                 </AccordionItemsDirective>

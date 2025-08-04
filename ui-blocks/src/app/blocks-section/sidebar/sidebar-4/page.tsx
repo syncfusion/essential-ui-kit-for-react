@@ -10,6 +10,7 @@ export default function Sidebar4() {
     /* SB Code - Start */ 
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */ 
+    const [backDrop, setBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const navigationMenu: any[] = [
@@ -78,9 +79,13 @@ export default function Sidebar4() {
         }
     ];
     
+    const handleResize = (): void => {
+        setBackDrop(window.innerWidth <= 640);
+    };
+    
     /* SB Code - Start */ 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'sidebar-4' && blockData.theme) {
@@ -96,11 +101,16 @@ export default function Sidebar4() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
+        /* SB Code - End */
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
+            window.removeEventListener('resize', handleResize);
         };
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -109,19 +119,19 @@ export default function Sidebar4() {
                 return (
                     <section className="bg-white dark:bg-gray-950">
                         <div id={styles["revenue-sidebar"]} style={{ height: '730px' }}>
-                            <SidebarComponent key={"sidebar-4-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-4-tw"} ref={sidebar} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="h-screen">
                                     <div className="flex justify-between items-center p-4">
                                         <div className="flex items-center">
                                             <span className="e-avatar e-avatar-circle e-avatar-small">
                                                 <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
                                             </span>
-                                            <div className="ml-3">
+                                            <div className="ml-2">
                                                 <div className="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
-                                                <p className="mb-0 text-gray-900 dark:text-white">johnwick&#64;123.com</p>
+                                                <a className="text-gray-900 dark:text-white" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                             </div>
                                         </div>
-                                        <ButtonComponent cssClass="e-icons e-chevron-down-double e-large e-flat px-1" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-large e-flat px-1 e-icons e-chevron-down-double" type="button"></ButtonComponent>
                                     </div>
                                     <div className="px-4 py-3">
                                         <div className="e-input-group">
@@ -141,7 +151,7 @@ export default function Sidebar4() {
                                     <div>
                                         <div className="flex justify-between items-center px-4 py-3">
                                             <span className="text-base text-gray-900 dark:text-white">Collection</span>
-                                            <ButtonComponent cssClass="e-icons e-circle-add e-medium e-flat" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-medium e-flat" iconCss="e-icons e-circle-add" type="button"></ButtonComponent>
                                         </div>
                                         <div>
                                             <ListViewComponent className="border-0" dataSource={businessCategories} template={(data: any) => (
@@ -152,7 +162,7 @@ export default function Sidebar4() {
                                             ></ListViewComponent>
                                         </div>
                                         <div className="p-4">
-                                            <ButtonComponent iconCss="e-icons e-plus e-medium" cssClass="e-outline w-full" type="button" content="Add Collection"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-outline w-full" iconCss="e-icons e-plus e-medium" content="Add Collection" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +170,7 @@ export default function Sidebar4() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -168,8 +178,8 @@ export default function Sidebar4() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div id={styles["revenue-sidebar"]} style={{ height: '730px' }}>
-                            <SidebarComponent key={"sidebar-4-bs"} width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                        <div id={styles["revenue-sidebar"]} style={{ height: '740px' }}>
+                            <SidebarComponent key={"sidebar-4-bs"} ref={sidebar} width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="vh-100">
                                     <div className="d-flex justify-content-between align-items-center p-3">
                                         <div className="d-flex align-items-center">
@@ -178,10 +188,10 @@ export default function Sidebar4() {
                                             </span>
                                             <div className="ms-3">
                                                 <div className="fs-6 fw-medium text-body">John Wick</div>
-                                                <p className="mb-0 text-body-secondary">johnwick&#64;123.com</p>
+                                                <a className="text-body-secondary text-decoration-none" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                             </div>
                                         </div>
-                                        <ButtonComponent cssClass="e-icons e-chevron-down-double e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat" iconCss="e-icons e-chevron-down-double" type="button"></ButtonComponent>
                                     </div>
                                     <div className="px-3">
                                         <div className="e-input-group">
@@ -197,10 +207,11 @@ export default function Sidebar4() {
                                             </div>)}
                                         ></ListViewComponent>
                                     </div>
+                                    <hr className="mx-3 border-light-subtle opacity-100" />
                                     <div>
-                                        <div className="d-flex justify-content-between align-items-center p-3">
+                                        <div className="d-flex justify-content-between align-items-center px-3 pb-2">
                                             <span className="mb-0 text-body-secondary fs-6">Collection</span>
-                                            <ButtonComponent cssClass="e-icons e-circle-add e-medium e-flat" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-medium e-flat" iconCss="e-icons e-circle-add" type="button"></ButtonComponent>
                                         </div>
                                         <div className="mt-1">
                                             <ListViewComponent cssClass="border-0 e-bigger" dataSource={businessCategories} template={(data: any) => (
@@ -219,7 +230,7 @@ export default function Sidebar4() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="py-3 px-1 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

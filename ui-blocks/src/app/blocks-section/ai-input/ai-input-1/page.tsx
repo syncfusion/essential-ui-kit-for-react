@@ -9,6 +9,7 @@ export default function AIInput1() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
+    const [promptMessage, setPromptMessage] = useState('');
     const textareaRef = useRef<TextAreaComponent | null>(null);
     
     const adjustHeight = (): void => {
@@ -16,12 +17,13 @@ export default function AIInput1() {
         if (textarea) {
             textarea.style.height = 'auto';
             textarea.style.height = `${textarea.scrollHeight}px`;
+            setPromptMessage(textarea.value);
         }
     };
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-input-1' && blockData.theme) {
@@ -58,9 +60,9 @@ export default function AIInput1() {
                             <div className="flex flex-col-reverse px-0 lg:px-28 mx-auto" style={{ minHeight: '16rem', maxWidth: '720px' }}>
                                 <div className="bg-white dark:bg-gray-800 rounded-md py-3 px-3 flex flex-col-reverse">
                                     <span className="e-input-group !border-0 !shadow-none">
-                                        <TextAreaComponent ref={textareaRef} placeholder="Enter prompt" rows={1} cols={300} resizeMode="None" input={adjustHeight} style={{ maxHeight: '14rem' }}></TextAreaComponent>
-                                        <span style={{ bottom: "7px", position: "absolute", right: "5px" }}>
-                                            <ButtonComponent className="!border-0 e-flat e-icons e-assist-send" type="submit" style={{ pointerEvents: 'none' }}></ButtonComponent>
+                                        <TextAreaComponent ref={textareaRef} value={promptMessage} placeholder="Enter prompt" rows={1} cols={300} resizeMode="None" input={adjustHeight} style={{ maxHeight: '14rem' }}></TextAreaComponent>
+                                        <span style={{ bottom: "4px", position: "absolute", right: "5px" }}>
+                                            <ButtonComponent className="!border-0 e-flat" iconCss="e-icons e-assist-send" disabled={!promptMessage} type="submit" style={{ pointerEvents: 'none' }}></ButtonComponent>
                                         </span>
                                     </span>
                                 </div>
@@ -75,9 +77,9 @@ export default function AIInput1() {
                             <div className="d-flex flex-column-reverse px-0 px-lg-5 mx-auto" style={{ minHeight: '18rem', maxWidth: '720px' }}>
                                 <div className="bg-body rounded py-3 px-3 d-flex flex-column-reverse position-relative">
                                     <span className="e-input-group border-0 shadow-none">
-                                        <TextAreaComponent ref={textareaRef} placeholder="Enter prompt" rows={1} cols={300} resizeMode="None" input={adjustHeight} style={{ maxHeight: '15rem' }}></TextAreaComponent>
-                                        <span style={{ bottom: '7px', position: 'absolute', right: '5px' }}>
-                                            <ButtonComponent className="border-0 e-flat e-icons e-assist-send" type="submit" style={{ pointerEvents: 'none' }}></ButtonComponent>
+                                        <TextAreaComponent ref={textareaRef} value={promptMessage} placeholder="Enter prompt" rows={1} cols={300} resizeMode="None" input={adjustHeight} style={{ maxHeight: '15rem' }}></TextAreaComponent>
+                                        <span style={{ bottom: '2px', position: 'absolute', right: '5px' }}>
+                                            <ButtonComponent className="border-0 e-outline" iconCss="e-icons e-assist-send" disabled={!promptMessage} type="submit" style={{ pointerEvents: 'none' }}></ButtonComponent>
                                         </span>
                                     </span>
                                 </div>

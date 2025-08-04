@@ -1,7 +1,16 @@
-#dialogs :global(.e-dlg-content) {
+#dialogs :global(.e-dlg-header-content),
+#dialogs :global(.e-footer-content) {
     border: inherit;
     border-inline: none;
     border-radius: 0;
+}
+
+#dialogs :global(.e-dlg-header-content) {
+    border-top: 0;
+}
+
+#dialogs :global(.e-footer-content) {
+    border-bottom: 0;
 }
 
 #dialogs :global(.e-accordion .e-acrdn-item) {

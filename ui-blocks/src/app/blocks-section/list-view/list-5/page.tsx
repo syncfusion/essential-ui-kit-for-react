@@ -11,56 +11,56 @@ export default function List5() {
 
     const countries: any[] = [
         {
-            id: '1',
+            id: 1,
             country: 'Afghanistan',
             number: '+93',
             badge: 'AF',
             pic: 'afghanistan.png'
         },
         {
-            id: '2',
+            id: 2,
             country: 'Albania',
             number: '+355',
             badge: 'AL',
             pic: 'albania.png'
         },
         {
-            id: '3',
+            id: 3,
             country: 'Algeria',
             number: '+213',
             badge: 'DZ',
             pic: 'algeria.png'
         },
         {
-            id: '4',
+            id: 4,
             country: 'Andorra',
             number: '+376',
             badge: 'AD',
             pic: 'andorra.png'
         },
         {
-            id: '5',
+            id: 5,
             country: 'Angola',
             number: '+244',
             badge: 'AO',
             pic: 'angola.png'
         },
         {
-            id: '6',
+            id: 6,
             country: 'Argentina',
             number: '+54',
             badge: 'AR',
             pic: 'argentina.png'
         },
         {
-            id: '7',
+            id: 7,
             country: 'Armenia',
             number: '+374',
             badge: 'AM',
             pic: 'armenia.png'
         },
         {
-            id: '8',
+            id: 8,
             country: 'Australia',
             number: '+61',
             badge: 'AU',
@@ -78,7 +78,7 @@ export default function List5() {
     
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'list-5' && blockData.theme) {

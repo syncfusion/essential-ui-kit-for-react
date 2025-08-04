@@ -51,7 +51,7 @@ export default function TileView2() {
     
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'tile-view-2' && blockData.theme) {
@@ -106,14 +106,14 @@ export default function TileView2() {
                                     </div>
                                     <div className="mt-4 sm:flex items-center justify-between w-full">
                                         <span className="flex items-center">
-                                            <SwitchComponent checked={true} cssClass="w-9"></SwitchComponent>
+                                            <SwitchComponent cssClass="w-9" checked={true}></SwitchComponent>
                                             <span className="text-base sm:text-sm text-gray-900 dark:text-gray-50 ml-2">Show only discounted items</span>
                                         </span>
-                                        <DropDownButtonComponent className="mt-3 sm:mt-0" type="button" content="All Categories" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
+                                        <DropDownButtonComponent className="mt-3 sm:mt-0" content="All Categories" type="button" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
                                     </div>
                                     <ListViewComponent cssClass="e-list-template !border-0 mt-6" dataSource={productDetails} template={(data: any) => (
                                         <div className="e-card flex flex-row p-4 sm:py-5 sm:px-5">
-                                            <div className="e-card-image !w-auto shrink-0">
+                                            <div className="e-card-image flex items-center !w-auto shrink-0 bg-gray-50 dark:bg-gray-700 rounded">
                                                 <img className="!w-28 h-24 sm:h-28" src={`/react/essential-ui-kit/blocks/assets/images/tile-view/shopping-cart/${data.image}`} width={112} height={108} alt="product picture" />
                                             </div>
                                             <div className="e-card-stacked ml-3 flex sm:!flex-row flex-col w-full sm:!justify-between">
@@ -138,8 +138,8 @@ export default function TileView2() {
                                                         <NumericTextBoxComponent format="###.##" value={1} width="130px"></NumericTextBoxComponent>
                                                     </div>
                                                     <div className="mt-3 text-end flex px-1">
-                                                        <ButtonComponent className="e-primary sm:w-44 w-full" iconCss="sf-icon-cart !text-base" type="button" content=" Add to Cart"></ButtonComponent>
-                                                        <ButtonComponent className="sf-icon-heart text-base sm:!flex sm:!items-center ml-2 h-8 px-2 !hidden" type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-primary sm:w-44 w-full" iconCss="sf-icon-cart !text-base" content="Add to Cart" type="button"></ButtonComponent>
+                                                        <ButtonComponent className="text-base sm:!flex sm:!items-center ml-2 h-8 px-2 !hidden" iconCss="sf-icon-heart" type="button"></ButtonComponent>
                                                     </div>
                                                 </div>
                                             </div>
@@ -185,11 +185,11 @@ export default function TileView2() {
                                             <SwitchComponent checked={true} style={{ width: "36px" }}></SwitchComponent>
                                             <span className="fs-6 text-body ms-2 ps-1">Show only discounted items</span>
                                         </span>
-                                        <DropDownButtonComponent className="mt-3 mt-sm-0 e-outline" type="button" content="All Categories" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
+                                        <DropDownButtonComponent className="mt-3 mt-sm-0 e-outline" content="All Categories" type="button" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
                                     </div>
                                     <ListViewComponent cssClass="border-0 mt-4 e-list-template" dataSource={productDetails} template={(data: any) => (
                                         <div className="e-card d-flex flex-row p-2 rounded-3">
-                                            <div className="e-card-image w-auto ps-2">
+                                            <div className="e-card-image d-flex align-items-center w-auto bg-body-tertiary rounded-1">
                                                 <img src={`/react/essential-ui-kit/blocks/assets/images/tile-view/shopping-cart/${data.image}`} width={112} height={108} alt="product picture" />
                                             </div>
                                             <div className="e-card-stacked ms-2 ps-1 py-1 d-flex flex-column flex-sm-row w-100 justify-content-between">
@@ -214,8 +214,8 @@ export default function TileView2() {
                                                         <NumericTextBoxComponent format="###.##" value={1} width="130px"></NumericTextBoxComponent>
                                                     </div>
                                                     <div className="mt-2 pt-1 d-flex justify-content-sm-end">
-                                                        <ButtonComponent className="e-primary w-100 w-sm-25" iconCss="sf-icon-cart" type="button" content="Add to Cart"></ButtonComponent>
-                                                        <ButtonComponent className="e-outline sf-icon-heart fs-6 ms-2 d-none d-sm-block" type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-primary w-100 w-sm-25" iconCss="sf-icon-cart" content="Add to Cart" type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-outline fs-6 ms-2 d-none d-sm-block" iconCss="sf-icon-heart" type="button"></ButtonComponent>
                                                     </div>
                                                 </div>
                                             </div>

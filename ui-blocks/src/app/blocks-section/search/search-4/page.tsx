@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
+import styles from './page.module.css';
 
 export default function Search4() {
     /* SB Code - Start */
@@ -62,37 +63,23 @@ export default function Search4() {
                 const inputContainer = search.current['inputWrapper'].container;
                 const searchIcon = document.createElement('span');
                 searchIcon.className = 'e-icons e-search';
-                searchIcon.style.cssText = 'display: flex; align-items: center; margin-left: 10px;';
                 inputContainer?.insertAdjacentElement('afterbegin', searchIcon);
             }
-        }, 250);
+        }, 550);
     };
 
     const handleResize = (): void => {
         setWidth(window.innerWidth > 767 ? { maxWidth: "480px" } : { width: "100%" })
-        search.current?.refresh();
+        search.current?.hidePopup();
         const searchInterval = setInterval(() => {
             search.current?.showPopup();
         }, 250);
         setTimeout(() => clearInterval(searchInterval), 1000);
     }
 
-    const avatarColorClass = (colorTheme: any) => {
-        switch (colorTheme) {
-          case "Orange":
-            return "bg-orange-100 dark:bg-orange-800 dark:text-orange-300 text-orange-700";
-          case "Blue":
-            return "bg-cyan-100 dark:bg-cyan-800 dark:text-cyan-200 text-cyan-700";
-          case "Red":
-            return "bg-red-100 dark:bg-red-800 dark:text-red-300 text-red-600";
-          default:
-            return "";
-        }
-    };
-
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'search-4' && blockData.theme) {
@@ -125,10 +112,10 @@ export default function Search4() {
                 return (
                     <section className="bg-white dark:bg-gray-900 h-full">
                         <div className="w-full pt-5 pb-4 h-screen">
-                            <div className="px-4 mx-auto lg:px-0" style={width}>
+                            <div id={styles["search-list"]} className="px-4 mx-auto lg:px-0" style={width}>
                                 <AutoCompleteComponent
-                                    cssClass="e-bigger"
                                     ref={search}
+                                    cssClass="e-bigger"
                                     dataSource={data}
                                     fields={{ value: "name" }}
                                     popupHeight="750px"
@@ -137,7 +124,7 @@ export default function Search4() {
                                     created={openPopup}
                                     itemTemplate={(data: any) => (
                                         <div className="flex items-center px-5 py-2">
-                                            <span className={`indent-0 e-avatar e-avatar-medium e-avatar-circle text-sm shrink-0 ${avatarColorClass(data.colorTheme)}`}>{data.initial}</span>
+                                            <span className={`indent-0 e-avatar e-avatar-medium e-avatar-circle text-sm shrink-0 ${ data.colorTheme === "Orange" ? "bg-orange-100 dark:bg-orange-800 dark:text-orange-300 text-orange-700" : data.colorTheme === "Blue" ? "bg-cyan-100 dark:bg-cyan-800 dark:text-cyan-200 text-cyan-700" : data.colorTheme === "Red" ? "bg-red-100 dark:bg-red-800 dark:text-red-300 text-red-600" : "" }`}>{data.initial}</span>
                                             <div className="w-full">
                                                 <div className="text-sm !font-medium flex items-center !text-wrap text-gray-900 dark:text-white mb-0.5">{data.name}</div>
                                                 <div className="text-gray-600 font-normal flex items-center !text-wrap dark:text-gray-300 text-sm">{data.emailId}</div>
@@ -153,12 +140,12 @@ export default function Search4() {
                 return (
                     <section className="bg-body h-100">
                         <div className="w-100 pt-4 pb-3">
-                            <div className="px-3 px-lg-0 mx-auto" style={width}>
+                            <div id={styles["search-list"]} className="px-3 px-lg-0 mx-auto" style={width}>
                                 <AutoCompleteComponent
-                                    cssClass="e-bigger"
                                     ref={search}
+                                    cssClass="e-bigger"
                                     dataSource={data}
-                                    fields={{ value: 'name' }}
+                                    fields={{ value: "name" }}
                                     popupHeight="750px"
                                     placeholder="Search"
                                     focus={() => search.current?.showPopup()}

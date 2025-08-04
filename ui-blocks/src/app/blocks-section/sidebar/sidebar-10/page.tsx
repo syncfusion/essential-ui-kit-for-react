@@ -9,7 +9,8 @@ import styles from './page.module.css';
 export default function Sidebar10() {
     /* SB Code - Start */ 
     const [theme, setTheme] = useState('tailwind');
-    /* SB Code - End */ 
+    /* SB Code - End */
+    const [backDrop, setBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const data: any[] = [
@@ -35,9 +36,13 @@ export default function Sidebar10() {
         }
     ];
     
+    const handleResize = (): void => {
+        setBackDrop(window.innerWidth <= 640);
+    };
+    
     /* SB Code - Start */ 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'sidebar-10' && blockData.theme) {
@@ -53,11 +58,16 @@ export default function Sidebar10() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
+        /* SB Code - End */
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
+            window.removeEventListener('resize', handleResize);
         };
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -66,7 +76,7 @@ export default function Sidebar10() {
                 return (
                     <section className="bg-white dark:bg-gray-950">
                         <div id={styles["quick-access-sidebar"]} className="flex relative" style={{ height: '600px' }}>
-                            <SidebarComponent key={"sidebar-10-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="72px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-10-tw"} ref={sidebar} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="72px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="pt-6">
                                     <div className="flex justify-center items-center mb-3 px-3">
                                         <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
@@ -78,13 +88,13 @@ export default function Sidebar10() {
                                     ></ListViewComponent>
                                 </div>
                             </SidebarComponent>
-                            <div className="p-3 bottom-0 left-0 absolute !right-full">
-                                <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button"></ButtonComponent>
+                            <div className="p-3 bottom-0 left-0 absolute !right-full" style={{ zIndex: '1000' }}>
+                                <ButtonComponent cssClass="e-bigger e-round" iconCss="e-icons e-chevron-left !text-xl" type="button"></ButtonComponent>
                             </div>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -93,7 +103,7 @@ export default function Sidebar10() {
                 return (
                     <section className="bg-body">
                         <div id={styles["quick-access-sidebar"]} className="d-flex position-relative" style={{ height: '600px' }}>
-                            <SidebarComponent key={"sidebar-10-bs"} className="border-end border-light-subtle" width="72px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-10-bs"} ref={sidebar} className="border-end border-light-subtle" width="72px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="pt-4 d-flex flex-column align-items-center">
                                     <div className="d-flex justify-content-center align-items-center px-3 mb-2">
                                         <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
@@ -105,13 +115,13 @@ export default function Sidebar10() {
                                     ></ListViewComponent>
                                 </div>
                             </SidebarComponent>
-                            <div className="py-3 px-1 position-absolute bottom-0 start-0">
-                                <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button"></ButtonComponent>
+                            <div className="py-3 px-1 position-absolute bottom-0 start-0" style={{ zIndex: '1000' }}>
+                                <ButtonComponent cssClass="e-bigger e-round e-outline" iconCss="e-icons e-chevron-left" type="button"></ButtonComponent>
                             </div>
                         </div>
                         {/* SB Code - Start */}
                         <div className="py-3 px-1 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

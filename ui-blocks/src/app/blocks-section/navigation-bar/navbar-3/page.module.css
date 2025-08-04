@@ -7,7 +7,7 @@
     z-index: 1;
 }
 
-#menu .e-menu-wrapper.e-hamburger ul .e-menu-item,
-.e-menu-container.e-hamburger ul .e-menu-item {
-    padding-right: 14px;
+#menu :global(.e-menu-wrapper.e-hamburger ul .e-menu-item),
+#menu :global(.e-menu-container.e-hamburger ul .e-menu-item) {
+    padding-left: 14px;
 }

@@ -8,9 +8,10 @@ import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import styles from './page.module.css';
 
 export default function Sidebar5() {
-    /* SB Code - Start */ 
+    /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */ 
+    const [backDrop, setBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
     const toast1 = useRef<ToastComponent>(null);
     const toast2 = useRef<ToastComponent>(null);
@@ -32,10 +33,14 @@ export default function Sidebar5() {
             fontIcon: 'sf-icon-notification-bell-01'
         }
     ];
+
+    const handleResize = (): void => {
+        setBackDrop(window.innerWidth <= 640);
+    };
     
     /* SB Code - Start */ 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'sidebar-5' && blockData.theme) {
@@ -51,11 +56,16 @@ export default function Sidebar5() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
+        /* SB Code - End */
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
+            window.removeEventListener('resize', handleResize);
         };
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -64,7 +74,7 @@ export default function Sidebar5() {
                 return (
                     <section className="bg-white dark:bg-gray-950">
                         <div id={styles["notification-sidebar"]} style={{ height: '700px' }}>
-                            <SidebarComponent key={"sidebar-5-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-5-tw"} ref={sidebar} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="h-screen">
                                     <div className="flex items-center py-4 px-3">
                                         <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
@@ -92,14 +102,14 @@ export default function Sidebar5() {
                                         </AccordionItemsDirective>
                                     </AccordionComponent>
                                     <div id="toastmsg" className="!absolute" style={{ bottom: '25%' }}></div>
-                                    <ToastComponent ref={toast1} target="#toastmsg" position={{ X: 'Left', Y: 'Bottom' }} cssClass="e-toast-info" width="224" title="<div className='pr-2'>Adaptive Tiles Meeting</div>" content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast1.current?.show()}></ToastComponent>
-                                    <ToastComponent ref={toast2} target="#toastmsg" position={{ X: 'Left', Y: 'Top' }} cssClass="e-toast-warning" width="224" title="<div className='pr-2'>Adaptive Tiles Meeting</div>" content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast2.current?.show()}></ToastComponent>
+                                    <ToastComponent ref={toast1} target="#toastmsg" position={{ X: 'Left', Y: 'Bottom' }} cssClass="e-toast-info" width="224" title="<div class='pr-2'>Adaptive Tiles Meeting</div>" content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast1.current?.show()}></ToastComponent>
+                                    <ToastComponent ref={toast2} target="#toastmsg" position={{ X: 'Left', Y: 'Top' }} cssClass="e-toast-warning" width="224" title="<div class='pr-2'>Adaptive Tiles Meeting</div>" content={() => <div>There was a problem with your network connection</div>} showCloseButton={true} timeOut={0} newestOnTop={true} created={() => toast2.current?.show()}></ToastComponent>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -108,7 +118,7 @@ export default function Sidebar5() {
                 return (
                     <section className="bg-body">
                         <div id={styles["notification-sidebar"]} style={{ height: '700px' }}>
-                            <SidebarComponent key={"sidebar-5-bs"} width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-5-bs"} ref={sidebar} width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="vh-100">
                                     <div className="d-flex align-items-center p-3">
                                         <img src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
@@ -125,7 +135,7 @@ export default function Sidebar5() {
                                             )}
                                         </div>)}
                                     ></ListViewComponent>
-                                    <p className="m-3 fs-6 text-body-secondary">Others</p>
+                                    <hr className="mx-3 border-light-subtle opacity-100" />
                                     <AccordionComponent className="bg-transparent border-0" expandMode="Single">
                                         <AccordionItemsDirective>
                                             <AccordionItemDirective iconCss="e-icons e-notes e-medium" header={() => <div className="fs-6 fw-normal ps-1">News</div>} cssClass="border-0"></AccordionItemDirective>
@@ -141,7 +151,7 @@ export default function Sidebar5() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="py-3 px-1 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

@@ -15,6 +15,11 @@ export default function AIDialog1() {
     const uploader = useRef<UploaderComponent | null>(null);
     const stepper = useRef<StepperComponent | null>(null);
 
+    const path = {
+        removeUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Remove',
+        saveUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Save'
+    };
+
     const checkWindowSize = (): void => {
         if (dialog && stepper) {
             dialog.current?.show(window.innerWidth <= 640);
@@ -26,7 +31,7 @@ export default function AIDialog1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-dialog-1' && blockData.theme) {
@@ -60,7 +65,7 @@ export default function AIDialog1() {
                 return (
                     <section>
                         <div id="dialog-container" style={{ minHeight: "580px" }}>
-                            <DialogComponent id={styles["dialog"]} ref={dialog} className="rounded-none sm:rounded-lg overflow-hidden" target="#dialog-container" isModal={true} width="357px" beforeOpen={(event) => (event.maxHeight = '100%')} open={(event) => (event.preventFocus = true)}>
+                            <DialogComponent ref={dialog} id={styles["dialog"]} className="rounded-none sm:rounded-lg overflow-hidden" target="#dialog-container" isModal={true} width="357px" beforeOpen={(event) => (event.maxHeight = '100%')} open={(event) => (event.preventFocus = true)}>
                                 <div className="flex flex-col h-full">
                                     <div className="border-b py-6 dark:border-gray-600">
                                         <StepperComponent ref={stepper} cssClass="e-small mx-auto" labelPosition="End" activeStep={1} style={{ maxWidth: "256px" }}>
@@ -77,14 +82,14 @@ export default function AIDialog1() {
                                                 <ButtonComponent className="!px-1.5 mb-2 md:mb-3" iconCss="e-icons e-align-top" onClick={() => uploader.current?.element.click()} type="button"></ButtonComponent>
                                                 <p>Drag & drop or <a href="#" className="font-medium underline text-primary-600 dark:text-primary-400" onClick={() => uploader.current?.element.click()}>choose file</a> to upload.</p>
                                                 <p className="mb-6">Image format: JPG, PNG, & SVG, Max 5.0MB</p>
-                                                <UploaderComponent ref={uploader} className="w-full" dropArea=".drop-area"></UploaderComponent>
+                                                <UploaderComponent ref={uploader} className="w-full" asyncSettings={path} dropArea=".drop-area"></UploaderComponent>
                                             </div>
                                         </div>
                                         <div className="flex flex-col gap-1 grow text-xs">
                                             <label className="font-medium">Describe to AI</label>
                                             <TextAreaComponent value="I want to have modern and clean looking workspace with minimal and bright accent colors. Completed with natural wood color and beige furniture." resizeMode="None" rows={5} style={{ height: "112px" }}></TextAreaComponent>
                                         </div>
-                                        <ButtonComponent cssClass="e-primary sm:self-center" iconCss="e-icons e-ai-chat" type="button">Generate design</ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary sm:self-center" iconCss="e-icons e-ai-chat" content="Generate design" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </DialogComponent>
@@ -95,7 +100,7 @@ export default function AIDialog1() {
                 return (
                     <section>
                         <div id="dialog-container" style={{ minHeight: "580px" }}>
-                            <DialogComponent id={styles["dialog"]} ref={dialog} className="rounded-2" target="#dialog-container" isModal={true} width="357px" beforeOpen={(event) => (event.maxHeight = '100%')} open={(event) => (event.preventFocus = true)}>
+                            <DialogComponent ref={dialog} id={styles["dialog"]} className="rounded-2" target="#dialog-container" isModal={true} width="357px" beforeOpen={(event) => (event.maxHeight = '100%')} open={(event) => (event.preventFocus = true)}>
                                 <div className="d-flex flex-column h-100">
                                     <div className="border-bottom py-4 border-light-subtle">
                                         <StepperComponent ref={stepper} cssClass="e-small mx-auto" labelPosition="End" activeStep={1} style={{ maxWidth: "256px" }}>
@@ -112,14 +117,14 @@ export default function AIDialog1() {
                                                 <ButtonComponent className="e-outline px-2 mb-2 mb-md-3" iconCss="e-icons e-align-top" onClick={() => uploader.current?.element.click()} type="button"></ButtonComponent>
                                                 <p className="mb-0">Drag & drop or <a href="#" className="fw-medium text-primary" onClick={() => uploader.current?.element.click()}>choose file</a> to upload.</p>
                                                 <p className="mb-4">Image format: JPG, PNG, & SVG, Max 5.0MB</p>
-                                                <UploaderComponent ref={uploader} className="w-100" dropArea=".drop-area"></UploaderComponent>
+                                                <UploaderComponent ref={uploader} className="w-100" asyncSettings={path} dropArea=".drop-area"></UploaderComponent>
                                             </div>
                                         </div>
                                         <div className="d-flex flex-column gap-1 flex-grow-1">
                                             <label className="fw-medium small">Describe to AI</label>
                                             <TextAreaComponent value="I want to have modern and clean looking workspace with minimal and bright accent colors. Completed with natural wood color and beige furniture." resizeMode="None" rows={5} style={{ height: "112px" }}></TextAreaComponent>
                                         </div>
-                                        <ButtonComponent cssClass="e-primary align-self-sm-center" iconCss="e-icons e-ai-chat" type="button">Generate design</ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary align-self-sm-center" iconCss="e-icons e-ai-chat" content="Generate design" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </DialogComponent>

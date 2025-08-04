@@ -7,7 +7,7 @@ export default function Card2() {
     const [theme, setTheme] = useState('tailwind');
     
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'cards-2' && blockData.theme) {
@@ -35,39 +35,41 @@ export default function Card2() {
             case 'tailwind':
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
-                        <div className="px-4 py-20 sm:px-6">
-                            <div className="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:gap-10">
-                                <div className="e-card rounded-lg gap-2 pb-2 e-bigger justify-start">
-                                    <div className="e-card-header">
-                                        <div className="e-card-image overflow-hidden rounded-lg h-52">
-                                            <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card/fashion-trends.jpg" alt="fashion trends" />
+                        <div className="h-screen sm:h-full">
+                            <div className="px-4 py-10 sm:px-6" style={{ minHeight: '36rem' }}>
+                                <div className="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:gap-10">
+                                    <div className="e-card rounded-lg gap-2 pb-2 e-bigger justify-start">
+                                        <div className="e-card-header">
+                                            <div className="e-card-image overflow-hidden rounded-lg h-52">
+                                                <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card/fashion-trends.jpg" alt="fashion trends" />
+                                            </div>
+                                        </div>
+                                        <div className="e-card-content flex-1">
+                                            <h2 className="text-xl font-semibold mb-3 text-gray-950 dark:text-gray-50 line-clamp-2">Fashion Trends</h2>
+                                            <p className="text-base dark:text-gray-200">Discover the latest trends in spring fashion that are taking the world by storm. From vibrant floral prints to chic pastels, this season's styles will refresh your look and keep you on-trend.</p>
                                         </div>
                                     </div>
-                                    <div className="e-card-content flex-1">
-                                        <h2 className="text-xl font-semibold mb-3 text-gray-950 dark:text-gray-50 line-clamp-2">Fashion Trends</h2>
-                                        <p className="text-base dark:text-gray-200">Discover the latest trends in spring fashion that are taking the world by storm. From vibrant floral prints to chic pastels, this season's styles will refresh your look and keep you on-trend.</p>
-                                    </div>
-                                </div>
-                                <div className="e-card rounded-lg gap-2 pb-2 e-bigger justify-start">
-                                    <div className="e-card-header">
-                                        <div className="e-card-image overflow-hidden rounded-lg h-52">
-                                            <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card/ultimate-workouts.jpg" alt="ultimate workouts" />
+                                    <div className="e-card rounded-lg gap-2 pb-2 e-bigger justify-start">
+                                        <div className="e-card-header">
+                                            <div className="e-card-image overflow-hidden rounded-lg h-52">
+                                                <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card/ultimate-workouts.jpg" alt="ultimate workouts" />
+                                            </div>
+                                        </div>
+                                        <div className="e-card-content flex-1">
+                                            <h2 className="text-xl font-semibold mb-3 text-gray-950 dark:text-gray-50 line-clamp-2">Ultimate Workouts</h2>
+                                            <p className="text-base dark:text-gray-200">Transform your fitness routine with our collection of ultimate workouts designed to build strength and endurance, whether you're looking for high-intensity interval training.</p>
                                         </div>
                                     </div>
-                                    <div className="e-card-content flex-1">
-                                        <h2 className="text-xl font-semibold mb-3 text-gray-950 dark:text-gray-50 line-clamp-2">Ultimate Workouts</h2>
-                                        <p className="text-base dark:text-gray-200">Transform your fitness routine with our collection of ultimate workouts designed to build strength and endurance, whether you're looking for high-intensity interval training.</p>
-                                    </div>
-                                </div>
-                                <div className="e-card rounded-lg gap-2 pb-2 e-bigger justify-start">
-                                    <div className="e-card-header">
-                                        <div className="e-card-image overflow-hidden rounded-lg h-52">
-                                            <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card/tech-innovations.jpg" alt="tech innovations" />
+                                    <div className="e-card rounded-lg gap-2 pb-2 e-bigger justify-start">
+                                        <div className="e-card-header">
+                                            <div className="e-card-image overflow-hidden rounded-lg h-52">
+                                                <img className="object-cover w-full h-full" src="/react/essential-ui-kit/blocks/assets/images/card/image-title-description-card/tech-innovations.jpg" alt="tech innovations" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="e-card-content flex-1">
-                                        <h2 className="text-xl font-semibold mb-3 text-gray-950 dark:text-gray-50 line-clamp-2">Tech Innovations</h2>
-                                        <p className="text-base dark:text-gray-200">Explore the latest advancements in technology that are reshaping our world. From groundbreaking gadgets to revolutionary software, stay informed about the innovations.</p>
+                                        <div className="e-card-content flex-1">
+                                            <h2 className="text-xl font-semibold mb-3 text-gray-950 dark:text-gray-50 line-clamp-2">Tech Innovations</h2>
+                                            <p className="text-base dark:text-gray-200">Explore the latest advancements in technology that are reshaping our world. From groundbreaking gadgets to revolutionary software, stay informed about the innovations.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -7,7 +7,7 @@ export default function Footer2() {
     const [theme, setTheme] = useState('tailwind');
     
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'footer-2' && blockData.theme) {
@@ -36,7 +36,7 @@ export default function Footer2() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-900">
                         <footer className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 xl:px-10 sm:px-6 px-4 py-6">
-                            <p className="text-base text-gray-500 dark:text-gray-400">© 2024 ShopNezt. All rights reserved.</p>
+                            <p className="text-base text-gray-500 dark:text-gray-400 text-sm">© 2024 Company Name. All rights reserved.</p>
                             <div className="flex gap-4">
                                 <a href="#" className="sf-icon-twitter text-2xl text-gray-500 dark:text-gray-400"></a>
                                 <a href="#" className="sf-icon-facebook text-2xl text-gray-500 dark:text-gray-400"></a>
@@ -49,7 +49,7 @@ export default function Footer2() {
                 return (
                     <section className="bg-body">
                         <footer className="py-4 px-3 px-md-4 px-xl-5 d-flex flex-column-reverse flex-sm-row align-items-center justify-content-between gap-3">
-                            <p className="text-body-secondary mb-0">© 2024 ShopNezt. All rights reserved.</p>
+                            <p className="text-body-secondary mb-0">© 2024 Company Name. All rights reserved.</p>
                             <div className="d-flex gap-3">
                                 <a href="#" className="sf-icon-twitter text-body-secondary fs-4 text-decoration-none"></a>
                                 <a href="#" className="sf-icon-facebook text-body-secondary fs-4 text-decoration-none"></a>

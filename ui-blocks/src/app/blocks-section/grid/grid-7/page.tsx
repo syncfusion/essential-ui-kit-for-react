@@ -244,7 +244,7 @@ export default function Grid7() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'grid-7' && blockData.theme) {
@@ -277,10 +277,10 @@ export default function Grid7() {
                                 <div className="w-full sm:w-56">
                                     <div className="e-input-group">
                                         <span className="e-input-group-icon e-icons e-search"></span>
-                                        <input className="e-input" type="text" placeholder="Search transactions" />
+                                        <input className="e-input !pl-0" type="text" placeholder="Search transactions" />
                                     </div>
                                 </div>
-                                <ButtonComponent cssClass="e-primary self-end" content="Export to CSV" iconCss="e-icons e-export" iconPosition="Left" type="button"></ButtonComponent>
+                                <ButtonComponent cssClass="e-primary self-end" iconCss="e-icons e-export" iconPosition="Left" content="Export to CSV" type="button"></ButtonComponent>
                             </div>
                             <GridComponent dataSource={gridData} key={"grid-7-tw"} width={"100%"} height={668} allowPaging={true}>
                                 <ColumnsDirective>
@@ -306,7 +306,7 @@ export default function Grid7() {
                                     <ColumnDirective field="product" headerText="Product" width="208"
                                         template={(data: any) => (
                                             <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10">
+                                                <div className="w-10 h-10 shrink-0 bg-gray-50 dark:bg-gray-700 rounded">
                                                     <img className="rounded" src={`/react/essential-ui-kit/blocks/assets/images/advance-grid/sales-transactions-table/${data.product.image}`} width={40} height={40} alt="product image" />
                                                 </div>
                                                 <p>{data.product.name}</p>
@@ -353,7 +353,7 @@ export default function Grid7() {
                                         </div>
                                     </div>
                                 </div>
-                                <ButtonComponent cssClass="e-primary align-self-end" content="Export to CSV" iconCss="e-icons e-export" iconPosition="Left" type="button"></ButtonComponent>
+                                <ButtonComponent cssClass="e-primary align-self-end" iconCss="e-icons e-export" iconPosition="Left" content="Export to CSV" type="button"></ButtonComponent>
                             </div>
                             <GridComponent dataSource={gridData} key={"grid-7-bs"} width="100%" height={668} allowPaging={true}>
                                 <ColumnsDirective>
@@ -366,7 +366,7 @@ export default function Grid7() {
                                         template={(data: any) => (
                                             <div className="d-flex gap-3 align-items-center py-1">
                                                 <div style={{ width: "32px", height: "32px" }}>
-                                                    <span className={`e-avatar e-avatar-circle e-avatar-small ${data.customerDetails.colorTheme === "Red" ? "bg-danger-subtle text-danger" : data.customerDetails.colorTheme === "Green" ? "bg-success-subtle text-success" : data.customerDetails.colorTheme === "Blue" ? "bg-info-subtle text-info" : data.customerDetails.colorTheme === "Orange" ? "bg-warning-subtle text-warning" : "bg-primary-subtle text-primary"}`}>{data.customerDetails.initial}</span>
+                                                    <span className={`e-avatar e-avatar-circle e-avatar-small ${data.customerDetails.colorTheme === "Red" ? "bg-danger-subtle text-danger-emphasis" : data.customerDetails.colorTheme === "Green" ? "bg-success-subtle text-success-emphasis" : data.customerDetails.colorTheme === "Blue" ? "bg-info-subtle text-info-emphasis" : data.customerDetails.colorTheme === "Orange" ? "bg-warning-subtle text-warning-emphasis" : "bg-primary-subtle text-primary-emphasis"}`}>{data.customerDetails.initial}</span>
                                                 </div>
                                                 <div className="d-flex flex-column">
                                                     <p className="text-body mb-0">{data.customerDetails.name}</p>
@@ -379,7 +379,7 @@ export default function Grid7() {
                                     <ColumnDirective field="product" headerText="Product" width="219"
                                         template={(data: any) => (
                                             <div className="d-flex align-items-center gap-3">
-                                                <div style={{ width: "40px", height: "40px" }}>
+                                                <div className="flex-shrink-0 bg-body-tertiary rounded-1" style={{ width: "40px", height: "40px" }}>
                                                     <img className="rounded" src={`/react/essential-ui-kit/blocks/assets/images/advance-grid/sales-transactions-table/${data.product.image}`} width={40} height={40} alt="product image" />
                                                 </div>
                                                 <p className="mb-0">{data.product.name}</p>

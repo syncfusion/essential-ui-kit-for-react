@@ -10,10 +10,10 @@ export default function Header10() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const breadcrumb = useRef<BreadcrumbComponent | null>(null);
-    const dropdown = useRef<DropDownButtonComponent | null>(null);
     const [maxItems, setMaxItems] = useState<number>(3);
     const [overflowMode, setOverflowMode] = useState<BreadcrumbOverflowMode>(BreadcrumbOverflowMode.None);
+    const breadcrumb = useRef<BreadcrumbComponent | null>(null);
+    const dropdown = useRef<DropDownButtonComponent | null>(null);
 
     const handleResize = (): void => {
         const width = window.innerWidth;
@@ -43,7 +43,7 @@ export default function Header10() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'header-10' && blockData.theme) {
@@ -80,7 +80,7 @@ export default function Header10() {
                     <section className="bg-white dark:bg-gray-800">
                         <div key={"header-10-tw"} style={{ minHeight: "36rem" }}>
                             <div className="py-3 px-4 sm:px-6 flex justify-between border-b border-gray-200 dark:border-gray-600">
-                                <div id={styles.breadcrumb} className="flex items-center">
+                                <div id={styles["breadcrumb"]} className="flex items-center">
                                     <BreadcrumbComponent ref={breadcrumb} enableNavigation={false} overflowMode={overflowMode} maxItems={maxItems} items={[{ text: "Analytics Hub" }, { text: "Metrics" }, { text: "Performance Monitor" }]} separatorTemplate={() => <span className="text-base e-icons e-chevron-right"></span>}></BreadcrumbComponent>
                                 </div>
                                 <div>
@@ -98,7 +98,7 @@ export default function Header10() {
                                             </div>
                                         </ButtonComponent>
                                     </div>
-                                    <DropDownButtonComponent ref={dropdown} className="block sm:hidden e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" items={[{ text: 'API Documentation' }, { text: 'Feedback' }]} type="button" ></DropDownButtonComponent>
+                                    <DropDownButtonComponent ref={dropdown} className="block sm:hidden e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" items={[{ text: 'API Documentation' }, { text: 'Feedback' }]} type="button"></DropDownButtonComponent>
                                 </div>
                             </div>
                             <div className="flex justify-between gap-3 px-4 sm:px-6 py-4 sm:py-3">

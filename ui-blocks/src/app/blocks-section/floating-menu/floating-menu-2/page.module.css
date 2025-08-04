@@ -1,17 +1,17 @@
 #floating-chat :global(.e-list-item) {
-  border: none;
-  height: auto;
-  padding: 8px;
+    border: none;
+    height: auto;
+    padding: 8px;
 }
 
 #floating-chat :global(.e-listview .e-list-item.e-active),
 #floating-chat :global(.e-list-item:hover) {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 #floating-chat :global(.e-dlg-header-content),
 #floating-chat :global(.e-dlg-content),
 #floating-chat :global(.e-footer-content) {
-  border: 0 !important;
-  padding: 0 !important;
+    border: 0 !important;
+    padding: 0 !important;
 }

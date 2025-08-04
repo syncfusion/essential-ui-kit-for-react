@@ -1,18 +1,17 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
-import { OverflowMode, TabComponent, TabItemDirective, TabItemsDirective } from "@syncfusion/ej2-react-navigations";
-import { ChipListComponent, ChipsDirective, ChipDirective } from "@syncfusion/ej2-react-buttons";
+import { TabComponent, TabItemDirective, TabItemsDirective, OverflowMode } from "@syncfusion/ej2-react-navigations";
+import { ButtonComponent, ChipListComponent, ChipsDirective, ChipDirective } from "@syncfusion/ej2-react-buttons";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
-import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 
 export default function Header6() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
+    const [overflowMode, setOverflowMode] = useState<OverflowMode>('Popup');
     const tab = useRef<TabComponent | null>(null);
     const dropdown = useRef<DropDownButtonComponent | null>(null);
-    const [overflowMode, setOverflowMode] = useState<OverflowMode>('Popup');
     const headerData: any = { new: 156, verificationDue: 23, approvalDue: 18 };
 
     const handleResize = (): void => {
@@ -37,7 +36,7 @@ export default function Header6() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'header-6' && blockData.theme) {
@@ -56,14 +55,17 @@ export default function Header6() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
-        window.addEventListener('resize', handleResize);
         tab.current?.refresh();
+        /* SB Code - End */
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
             window.removeEventListener('resize', handleResize);
         }
-        /* SB Code - End */
+        
     }, []);
 
     const getContent = () => {
@@ -95,7 +97,7 @@ export default function Header6() {
                                                                 <span className="e-input-group-icon e-icons e-search border-start-0"></span>
                                                             </div>
                                                             <div className="border-l border-gray-200 dark:border-gray-600 h-5 me-2"></div>
-                                                            <DropDownButtonComponent ref={dropdown} items={[{ text: 'Review Today' }, { text: 'Expired' }, { text: 'Upcoming' }, { text: 'Unassigned' }]} cssClass="e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" type="button"></DropDownButtonComponent>
+                                                            <DropDownButtonComponent ref={dropdown} cssClass="e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" items={[{ text: 'Review Today' }, { text: 'Expired' }, { text: 'Upcoming' }, { text: 'Unassigned' }]} type="button"></DropDownButtonComponent>
                                                         </div>
                                                         <div className="border-b border-gray-200 mt-4 dark:border-gray-600 block sm:hidden"></div>
                                                         <div className="hidden lg:flex py-3 items-center">
@@ -106,10 +108,10 @@ export default function Header6() {
                                                             <div className="border-l border-gray-200 dark:border-gray-600 h-5 me-2"></div>
                                                             <ChipListComponent>
                                                                 <ChipsDirective>
-                                                                    <ChipDirective cssClass={"e-outline !rounded-2xl"} text={"Review Today"}></ChipDirective>
-                                                                    <ChipDirective cssClass={"e-outline !rounded-2xl"} text={"Expired"}></ChipDirective>
-                                                                    <ChipDirective cssClass={"e-outline !rounded-2xl"} text={"Upcoming"}></ChipDirective>
-                                                                    <ChipDirective cssClass={"e-outline !rounded-2xl"} text={"Unassigned"}></ChipDirective>
+                                                                    <ChipDirective cssClass="e-outline !rounded-2xl" text="Review Today"></ChipDirective>
+                                                                    <ChipDirective cssClass="e-outline !rounded-2xl" text="Expired"></ChipDirective>
+                                                                    <ChipDirective cssClass="e-outline !rounded-2xl" text="Upcoming"></ChipDirective>
+                                                                    <ChipDirective cssClass="e-outline !rounded-2xl" text="Unassigned"></ChipDirective>
                                                                 </ChipsDirective>
                                                             </ChipListComponent>
                                                         </div>
@@ -173,7 +175,7 @@ export default function Header6() {
                                                                 <span className="e-input-group-icon e-icons e-search border-start-0"></span>
                                                             </div>
                                                             <div className="border-start me-2" style={{ height: "20px" }}></div>
-                                                            <DropDownButtonComponent ref={dropdown} items={[{ text: "Review Today" }, { text: "Expired" }, { text: "Upcoming" }, { text: "Unassigned" }]} cssClass="e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" type="button"></DropDownButtonComponent>
+                                                            <DropDownButtonComponent ref={dropdown} cssClass="e-flat e-caret-hide" iconCss="e-icons e-more-vertical-1" items={[{ text: "Review Today" }, { text: "Expired" }, { text: "Upcoming" }, { text: "Unassigned" }]} type="button"></DropDownButtonComponent>
                                                         </div>
                                                         <div className="border-bottom mt-4 d-block d-sm-none"></div>
                                                         <div className="d-none d-lg-flex py-3 align-items-center">

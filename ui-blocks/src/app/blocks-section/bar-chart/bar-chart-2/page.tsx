@@ -23,10 +23,10 @@ export default function BarChart2() {
     ];
 
     const piechartData: object[] = [
-        { x: 'Food', y: 30 },
-        { x: 'Grocery', y: 15 },
-        { x: 'Shopping', y: 35 },
-        { x: 'Transport', y: 20 }
+        { xAxis: 'Food', yAxis: 30 },
+        { xAxis: 'Grocery', yAxis: 15 },
+        { xAxis: 'Shopping', yAxis: 35 },
+        { xAxis: 'Transport', yAxis: 20 }
     ];
 
     const primaryXAxis: object = {
@@ -89,7 +89,7 @@ export default function BarChart2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'bar-chart-2' && blockData.theme) {
@@ -124,7 +124,7 @@ export default function BarChart2() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-950">
-                        <div key={'barchart-2-tw'} className="h-screen flex justify-center p-4 sm:p-6" style={{ minHeight: '674px' }}>
+                        <div key={"barchart-2-tw"} className="h-screen flex justify-center p-4 sm:p-6" style={{ minHeight: '674px' }}>
                             <div className="w-full" style={{ maxWidth: '800px' }}>
                                 <div className="flex justify-between items-start mb-5">
                                     <div>
@@ -150,7 +150,7 @@ export default function BarChart2() {
                                         <AccumulationChartComponent ref={piechartRef} width="100%" height="300px" centerLabel={centerLabel} legendSettings={pieLegend} enableBorderOnMouseMove={false} load={(args) => chartLoad(args, 'Tailwind3', 'Tailwind3Dark')}>
                                             <Inject services={[AccumulationDataLabel, PieSeries, AccumulationLegend]} />
                                             <AccumulationSeriesCollectionDirective>
-                                                <AccumulationSeriesDirective name='Expense data' dataSource={piechartData} xName='x' yName='y' border={{ width: 1 }} startAngle={0} innerRadius='65%' radius='70%' dataLabel={dataLabel} palettes={['#03B4B4', '#78B008', '#F39C12', '#0D72DE']} legendShape='Rectangle'></AccumulationSeriesDirective>
+                                                <AccumulationSeriesDirective name='Expense data' dataSource={piechartData} xName='xAxis' yName='yAxis' border={{ width: 1 }} startAngle={0} innerRadius='65%' radius='70%' dataLabel={dataLabel} palettes={['#03B4B4', '#78B008', '#F39C12', '#0D72DE']} legendShape='Rectangle'></AccumulationSeriesDirective>
                                             </AccumulationSeriesCollectionDirective>
                                         </AccumulationChartComponent>
                                     </div>
@@ -162,7 +162,7 @@ export default function BarChart2() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div key={'barchart-2-bs'} className="vh-100 d-flex justify-content-center p-3 p-sm-4" style={{ minHeight: '674px' }}>
+                        <div key={"barchart-2-bs"} className="vh-100 d-flex justify-content-center p-3 p-sm-4" style={{ minHeight: '674px' }}>
                             <div className="w-100" style={{ maxWidth: '800px' }}>
                                 <div className="d-flex justify-content-between align-items-start mb-3 pb-1">
                                     <div>
@@ -188,7 +188,7 @@ export default function BarChart2() {
                                         <AccumulationChartComponent ref={piechartRef} width="100%" height="300px" centerLabel={centerLabel} legendSettings={pieLegend} enableBorderOnMouseMove={false} load={(args) => chartLoad(args, 'Bootstrap5', 'Bootstrap5Dark')}>
                                             <Inject services={[AccumulationDataLabel, PieSeries, AccumulationLegend]} />
                                             <AccumulationSeriesCollectionDirective>
-                                                <AccumulationSeriesDirective name='Expense data' dataSource={piechartData} xName='x' yName='y' border={{ width: 1 }} startAngle={0} innerRadius='65%' radius='70%' dataLabel={dataLabel} palettes={["#EF6400", "#0EAB44", "#FDDA02", "#006EEF"]} legendShape='Rectangle'></AccumulationSeriesDirective>
+                                                <AccumulationSeriesDirective name='Expense data' dataSource={piechartData} xName='xAxis' yName='yAxis' border={{ width: 1 }} startAngle={0} innerRadius='65%' radius='70%' dataLabel={dataLabel} palettes={["#EF6400", "#0EAB44", "#FDDA02", "#006EEF"]} legendShape='Rectangle'></AccumulationSeriesDirective>
                                             </AccumulationSeriesCollectionDirective>
                                         </AccumulationChartComponent>
                                     </div>

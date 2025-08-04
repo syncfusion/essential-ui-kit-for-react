@@ -10,6 +10,7 @@ export default function Sidebar8() {
     /* SB Code - Start */ 
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */ 
+    const [backDrop, setBackDrop] = useState(false);
     const sidebar = useRef<SidebarComponent | null>(null);
 
     const contactList: any[] = [
@@ -50,9 +51,13 @@ export default function Sidebar8() {
         }
     ];
     
+    const handleResize = (): void => {
+        setBackDrop(window.innerWidth <= 640);
+    };
+    
     /* SB Code - Start */ 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'sidebar-8' && blockData.theme) {
@@ -68,11 +73,16 @@ export default function Sidebar8() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
+        /* SB Code - End */
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
+            window.removeEventListener('resize', handleResize);
         };
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -81,7 +91,7 @@ export default function Sidebar8() {
                 return (
                     <section className="bg-white dark:bg-gray-950">
                         <div id={styles["user-contact-sidebar"]} style={{ height: '680px' }}>
-                            <SidebarComponent key={"sidebar-8-tw"} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-8-tw"} ref={sidebar} className="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="flex items-center p-3 justify-between">
                                     <div className="flex items-center">
                                         <span className="e-avatar e-avatar-circle e-avatar-small">
@@ -89,10 +99,10 @@ export default function Sidebar8() {
                                         </span>
                                         <div className="ml-3">
                                             <div className="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
-                                            <p className="mb-0 text-gray-900 dark:text-white">johnwick&#64;123.com</p>
+                                            <a className="text-gray-900 dark:text-white" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                         </div>
                                     </div>
-                                    <ButtonComponent cssClass="e-icons e-chevron-down-double e-flat e-large px-1" type="button"></ButtonComponent>
+                                    <ButtonComponent cssClass="e-flat e-large px-1 e-icons e-chevron-down-double" type="button"></ButtonComponent>
                                 </div>
                                 <div>
                                     <AccordionComponent className="bg-transparent !border-0">
@@ -120,7 +130,7 @@ export default function Sidebar8() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 left-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -129,7 +139,7 @@ export default function Sidebar8() {
                 return (
                     <section className="bg-body">
                         <div id={styles["user-contact-sidebar"]} style={{ height: '700px' }}>
-                            <SidebarComponent key={"sidebar-8-bs"} width="256px" ref={sidebar} isOpen={true} style={{ display: 'block' }}>
+                            <SidebarComponent key={"sidebar-8-bs"} ref={sidebar} width="256px" isOpen={true} showBackdrop={backDrop} style={{ display: 'block' }}>
                                 <div className="d-flex justify-content-between align-items-center px-3 pb-3 mt-4">
                                     <div className="d-flex align-items-center">
                                         <span className="e-avatar e-avatar-small e-avatar-circle">
@@ -137,10 +147,10 @@ export default function Sidebar8() {
                                         </span>
                                         <div className="ms-2">
                                             <div className="fs-6 fw-medium text-body">John Wick</div>
-                                            <p className="mb-0 text-body-secondary">johnwick&#64;123.com</p>
+                                            <a className="text-body-secondary text-decoration-none" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                         </div>
                                     </div>
-                                    <ButtonComponent cssClass="e-icons e-chevron-down-double e-flat" type="button"></ButtonComponent>
+                                    <ButtonComponent cssClass="e-flat" iconCss="e-icons e-chevron-down-double" type="button"></ButtonComponent>
                                 </div>
                                 <div>
                                     <AccordionComponent className="border-0 bg-transparent">
@@ -168,7 +178,7 @@ export default function Sidebar8() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="py-3 px-1 position-absolute top-0 start-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-right e-round" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-right" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

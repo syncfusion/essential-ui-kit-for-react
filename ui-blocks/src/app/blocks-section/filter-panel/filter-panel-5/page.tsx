@@ -10,16 +10,22 @@ export default function FilterPanel5() {
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
     const [width, setWidth] = useState("320px");
+    const [sliderWidth, setsliderWidth] = useState("270px");
     const sidebar = useRef<SidebarComponent | null>(null);
+    const slider = useRef<SliderComponent | null>(null);
     const tooltipInfo = { isVisible: true };
 
     const setSidebarWidth = (): void => {
         setWidth(window.innerWidth < 400 ? '100%' : '320px')
+        setsliderWidth(window.innerWidth < 400 ? '100%' : '270px')
+        setTimeout(() => {
+            slider.current?.refresh();
+        }, 1000);
     }
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'filter-panel-5' && blockData.theme) {
@@ -56,7 +62,7 @@ export default function FilterPanel5() {
                                 <div>
                                     <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-600">
                                         <h2 className="text-base font-semibold text-gray-900 dark:text-white">Filters</h2>
-                                        <ButtonComponent cssClass="e-flat text-base" iconCss=" e-icons e-close" content=" " type="button" onClick={() => sidebar.current?.toggle()}></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat text-base" iconCss="e-icons e-close" type="button" onClick={() => sidebar.current?.toggle()}></ButtonComponent>
                                     </div>
                                     <div className="p-4">
                                         <div className="border-b border-gray-200 dark:border-gray-600 pb-4">
@@ -84,7 +90,7 @@ export default function FilterPanel5() {
                                         <div className="my-4">
                                             <label className="text-sm font-medium text-gray-900 dark:text-white">User Ratings</label>
                                             <div className="px-3">
-                                                <SliderComponent type="Range" value={[0, 4.5]} min={0} max={5} step={1} ticks={{ placement: 'After', largeStep: 5}} tooltip={tooltipInfo} style={{ width:'256px', left:'5px' }}></SliderComponent>
+                                                <SliderComponent ref={slider} type="Range" value={[0, 4.5]} min={0} max={5} step={1} ticks={{ placement: 'After', largeStep: 5}} tooltip={tooltipInfo} style={{ width:sliderWidth }}></SliderComponent>
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +103,7 @@ export default function FilterPanel5() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-round" iconCss="e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -106,11 +112,11 @@ export default function FilterPanel5() {
                 return (
                     <section className="bg-body">
                         <div style={{ height: "750px", width: width, float: "right" }}>
-                            <SidebarComponent ref={sidebar} className="d-flex flex-column bg-body" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true}>
+                            <SidebarComponent ref={sidebar} className="d-flex flex-column bg-body" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: "block" }}>
                                 <div>
                                     <div className="d-flex justify-content-between align-items-center p-3 border-bottom">
                                         <h2 className="h6 mb-0 fw-bold">Filters</h2>
-                                        <ButtonComponent cssClass="e-flat fs-6" iconCss="e-icons e-close" content=" " onClick={() => sidebar.current?.toggle()}></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat fs-6" iconCss="e-icons e-close" type="button" onClick={() => sidebar.current?.toggle()}></ButtonComponent>
                                     </div>
                                     <div className="p-3">
                                         <div className="border-bottom pb-3">
@@ -138,20 +144,20 @@ export default function FilterPanel5() {
                                         <div className="my-3">
                                             <label className="text-body fs-6 fw-medium">User Ratings</label>
                                             <div className="px-2">
-                                                <SliderComponent type="Range" value={[0, 4.5]} tooltip={tooltipInfo} min={0} max={5} step={1} ticks={{ placement: 'After', largeStep: 5 }} style={{ width:'256px', left:'5px' }}></SliderComponent>
+                                                <SliderComponent ref={slider} type="Range" value={[0, 4.5]} tooltip={tooltipInfo} min={0} max={5} step={1} ticks={{ placement: 'After', largeStep: 5 }} style={{ width: sliderWidth}}></SliderComponent>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-end gap-2 p-3 border-top">
-                                        <ButtonComponent cssClass="e-outline" content="Clear"></ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary" content="Apply"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-outline" content="Clear" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary" content="Apply" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-round" iconCss="e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

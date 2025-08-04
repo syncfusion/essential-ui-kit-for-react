@@ -65,19 +65,19 @@ export default function Notification6() {
         }
     ];
 
-    const onTabCreated = (): void => {
+    const tabCreated = (): void => {
         if (tab.current) {
             updateListView(tab.current?.selectedItem)
         }
     }
 
-    const onTabSelected = (): void => {
+    const tabSelected = (): void => {
         if (tab.current) {
             updateListView(tab.current?.selectedItem);
         }
     }
 
-    const updateListView = (index: number) => {
+    const updateListView = (index: number): void => {
         const headers = tab.current?.element.querySelectorAll('.e-tab-header .e-tab-text');
         const selectedText = headers?.[index]?.textContent?.split(' ')[0]?.trim().toLowerCase() ?? 'all';
         const filteredData = selectedText === 'all' ? ticketData : ticketData.filter((e) => e.category?.toLowerCase() === selectedText);
@@ -103,7 +103,7 @@ export default function Notification6() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'notification-6' && blockData.theme) {
@@ -137,23 +137,23 @@ export default function Notification6() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-900">
-                        <div id={styles.notification} style={{ height: '793px', width: width, float: 'right' }}>
+                        <div id={styles["notification"]} style={{ height: '793px', width: width, float: 'right' }}>
                             <SidebarComponent key={"notification-6-tw"} ref={sidebarRef} className="flex flex-col bg-white dark:bg-gray-900" position="Right" type="Push" width={width} isOpen={true} showBackdrop={true} style={{ display: 'block' }}>
                                 <div className="flex-none bg-white dark:bg-gray-900">
                                     <div className="flex justify-between items-center px-3 py-2">
                                         <div className="flex items-center gap-1">
                                             <p className="text-base font-medium text-gray-900 dark:text-white">Notifications</p>
                                             <span className="e-bigger e-badge e-badge-warning ml-1">Beta</span>
-                                            <ButtonComponent cssClass="e-round e-flat hidden sm:block ml-1" iconCss="e-icons e-refresh text-base" content=" " type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-round e-flat hidden sm:block ml-1" iconCss="e-icons e-refresh text-base" type="button"></ButtonComponent>
                                         </div>
                                         <div className="flex gap-1.5">
-                                            <ButtonComponent cssClass="e-round e-flat font-semibold block sm:hidden" iconCss="e-icons e-more-vertical-2" content=" " type="button"></ButtonComponent>
-                                            <ButtonComponent cssClass="e-round e-flat font-semibold hidden sm:block" iconCss="e-icons e-settings" content=" " type="button"></ButtonComponent>
-                                            <ButtonComponent cssClass="e-round e-flat" iconCss="e-icons e-close" content=" " onClick={() => sidebarRef.current?.toggle()} type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-round e-flat font-semibold block sm:hidden" iconCss="e-icons e-more-vertical-2" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-round e-flat font-semibold hidden sm:block" iconCss="e-icons e-settings" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-round e-flat" iconCss="e-icons e-close" onClick={() => sidebarRef.current?.toggle()} type="button"></ButtonComponent>
                                         </div>
                                     </div>
-                                    <div id={styles.tab_container} className="mt-3">
-                                        <TabComponent ref={tab} heightAdjustMode="Auto" overflowMode={overflowMode} created={onTabCreated} selected={onTabSelected}>
+                                    <div id={styles["tab-container"]} className="mt-3">
+                                        <TabComponent ref={tab} heightAdjustMode="Auto" overflowMode={overflowMode} created={tabCreated} selected={tabSelected}>
                                             <TabItemsDirective>
                                                 <TabItemDirective header={{ text: 'All (1)' }}></TabItemDirective>
                                                 <TabItemDirective header={{ text: 'Focused (1)' }}></TabItemDirective>
@@ -172,7 +172,7 @@ export default function Notification6() {
                                                     <div className="border-e border-s hidden sm:block px-2 border-gray-200 dark:border-gray-600 leading-6">
                                                         <ButtonComponent cssClass="e-primary e-flat" content="Mark all as read" type="button"></ButtonComponent>
                                                     </div>
-                                                    <ButtonComponent cssClass="e-flat" iconCss="e-icons e-more-vertical-1" content=" " type="button"></ButtonComponent>
+                                                    <ButtonComponent cssClass="e-flat" iconCss="e-icons e-more-vertical-1" type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                             <div className="flex-grow overflow-y-auto bg-white dark:bg-gray-900">
@@ -192,8 +192,7 @@ export default function Notification6() {
                                                         </span>
                                                     </div>
                                                 )}
-                                            >
-                                            </ListViewComponent>
+                                            ></ListViewComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +200,7 @@ export default function Notification6() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" onClick={() => sidebarRef.current?.show()} type="button"></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebarRef.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -209,23 +208,23 @@ export default function Notification6() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div id={styles.notification} style={{ height: "765px", width: width, float: "right" }}>
+                        <div id={styles["notification"]} style={{ height: "765px", width: width, float: "right" }}>
                             <SidebarComponent key={"notification-6-bs"} ref={sidebarRef} className="bg-body d-flex flex-column border-0" position="Right" type="Push" width={width} isOpen={true} showBackdrop={true} style={{ display: "block" }}>
                                 <div className="flex-shrink-0">
                                     <div className="d-flex justify-content-between align-items-center px-3 py-2">
                                         <div className="d-flex align-items-center gap-1">
                                             <p className="fs-6 fw-medium text-body m-0">Notifications</p>
                                             <span className="e-bigger e-badge e-badge-warning ms-1">Beta</span>
-                                            <ButtonComponent cssClass="e-round e-flat d-none d-sm-inline-block ms-1" iconCss="e-icons e-refresh fs-6" content=" " type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-round e-flat d-none d-sm-inline-block ms-1" iconCss="e-icons e-refresh fs-6" type="button"></ButtonComponent>
                                         </div>
                                         <div className="d-flex gap-2">
-                                            <ButtonComponent cssClass="e-round e-flat fw-semibold d-block d-sm-none" iconCss="e-icons e-more-vertical-2" content=" " type="button"></ButtonComponent>
-                                            <ButtonComponent cssClass="e-round e-flat fw-semibold d-none d-sm-block" iconCss="e-icons e-settings" content=" " type="button"></ButtonComponent>
-                                            <ButtonComponent cssClass="e-round e-flat" iconCss="e-icons e-close" content=" " onClick={() => sidebarRef.current?.toggle()} type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-round e-flat fw-semibold d-block d-sm-none" iconCss="e-icons e-more-vertical-2" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-round e-flat fw-semibold d-none d-sm-block" iconCss="e-icons e-settings" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-round e-flat" iconCss="e-icons e-close" onClick={() => sidebarRef.current?.toggle()} type="button"></ButtonComponent>
                                         </div>
                                     </div>
-                                    <div id={styles.tab_container} className="mt-2">
-                                        <TabComponent ref={tab} heightAdjustMode="Auto" overflowMode={overflowMode} created={onTabCreated} selected={onTabSelected}>
+                                    <div id={styles["tab-container"]} className="mt-2">
+                                        <TabComponent ref={tab} heightAdjustMode="Auto" overflowMode={overflowMode} created={tabCreated} selected={tabSelected}>
                                             <TabItemsDirective>
                                                 <TabItemDirective header={{ text: "All (1)" }}></TabItemDirective>
                                                 <TabItemDirective header={{ text: "Focused (1)" }}></TabItemDirective>
@@ -244,7 +243,7 @@ export default function Notification6() {
                                                     <div className="border-start border-end d-none d-sm-block px-2">
                                                         <ButtonComponent cssClass="e-primary e-flat" content="Mark all as read" type="button"></ButtonComponent>
                                                     </div>
-                                                    <ButtonComponent cssClass="e-flat" iconCss="e-icons e-more-vertical-1" content=" " type="button"></ButtonComponent>
+                                                    <ButtonComponent cssClass="e-flat" iconCss="e-icons e-more-vertical-1" type="button"></ButtonComponent>
                                                 </div>
                                             </div>
                                             <div className="flex-grow-1 overflow-auto">
@@ -264,8 +263,7 @@ export default function Notification6() {
                                                         </span>
                                                     </div>
                                                 )}
-                                            >
-                                            </ListViewComponent>
+                                            ></ListViewComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -273,7 +271,7 @@ export default function Notification6() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" onClick={() => sidebarRef.current?.show()} type="button"></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebarRef.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

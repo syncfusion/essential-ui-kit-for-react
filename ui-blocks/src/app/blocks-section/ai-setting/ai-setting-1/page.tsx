@@ -12,7 +12,7 @@ export default function AISetting1() {
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
     const [isMobileView, setIsMobileView] = useState(false);
-    const [preventSidebarClose, setPreventSidebarClose] = useState(true);
+    const [isPreventSidebarClose, setIsPreventSidebarClose] = useState(true);
     const sidebar = useRef<SidebarComponent | null>(null);
     const themeDropdown = useRef<DropDownButtonComponent | null>(null);
     const languageDropdown = useRef<DropDownButtonComponent | null>(null);
@@ -31,7 +31,7 @@ export default function AISetting1() {
             sidebar.current.hide();
             setIsMobileView(isMobile);
             sidebar.current.type = isMobile ? 'Over' : 'Push';
-            setPreventSidebarClose(!isMobile);
+            setIsPreventSidebarClose(!isMobile);
             sidebar.current.show();
 
             if (!isMobile) {
@@ -55,7 +55,7 @@ export default function AISetting1() {
     };
     
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-setting-1' && blockData.theme) {
@@ -98,7 +98,7 @@ export default function AISetting1() {
                                     <h3 className="text-base font-semibold text-gray-900 dark:text-white">Settings</h3>
                                 </div>
                                 <div id="settings-page" className="lg:max-w-3xl flex h-full text-gray-700 dark:text-gray-300">
-                                    <SidebarComponent ref={sidebar} key={"setting-1-tw"} className="p-3 !border-r !border-gray-200 dark:!border-gray-600 bg-white dark:bg-gray-800" target="#settings-page" showBackdrop={isMobileView} type="Push" width="248px" isOpen={true} close={(event) => (event.cancel = preventSidebarClose)}>
+                                    <SidebarComponent ref={sidebar} key={"setting-1-tw"} className="p-3 !border-r !border-gray-200 dark:!border-gray-600 bg-white dark:bg-gray-800" target="#settings-page" showBackdrop={isMobileView} type="Push" width="248px" isOpen={true} close={(event) => (event.cancel = isPreventSidebarClose)}>
                                         <ListViewComponent id={styles["navigation-list"]} className="border-0" cssClass="e-list-template" dataSource={navigationMenu} template={(data: any) => (
                                             <div className="e-list-wrapper !p-3 flex items-center gap-3 rounded-lg">
                                                 <span className={`e-icons ${data.fontIcon} text-base dark:!text-gray-200`}></span>
@@ -129,7 +129,7 @@ export default function AISetting1() {
                                         </div>
                                         <div className="flex gap-2 items-center justify-between sm:gap-8">
                                             <label className="w-52 sm:grow">Manage side panel settings</label>
-                                            <ButtonComponent type="button">Manage</ButtonComponent>
+                                            <ButtonComponent content="Manage" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@ export default function AISetting1() {
                                     <h3 className="fs-6 fw-bold text-body mb-0">Settings</h3>
                                 </div>
                                 <div id="settings-page" className="d-flex h-100" style={{ maxWidth: '768px' }}>
-                                    <SidebarComponent ref={sidebar} key={"setting-1-bs"} className="p-3 border-end bg-body border-light-subtle" target="#settings-page" showBackdrop={isMobileView} type="Push" width="248px" isOpen={true} close={(event) => (event.cancel = preventSidebarClose)}>
+                                    <SidebarComponent ref={sidebar} key={"setting-1-bs"} className="p-3 border-end bg-body border-light-subtle" target="#settings-page" showBackdrop={isMobileView} type="Push" width="248px" isOpen={true} close={(event) => (event.cancel = isPreventSidebarClose)}>
                                         <ListViewComponent id={styles["navigation-list"]} className="border-0" cssClass="e-list-template" dataSource={navigationMenu} template={(data: any) => (
                                             <div className="e-list-wrapper p-2 d-flex align-items-center gap-2 rounded">
                                                 <span className={`e-icons ${data.fontIcon} fs-6 ms-1 my-1`}></span>
@@ -181,7 +181,7 @@ export default function AISetting1() {
                                         </div>
                                         <div className="d-flex gap-2 align-items-center justify-content-between">
                                             <label className="flex-sm-grow-1" style={{ width: '13rem' }}>Manage side panel settings</label>
-                                            <ButtonComponent cssClass="e-outline" type="button">Manage</ButtonComponent>
+                                            <ButtonComponent cssClass="e-outline" content="Manage" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>

@@ -39,7 +39,7 @@ export default function Grid9() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'grid-9' && blockData.theme) {
@@ -69,7 +69,7 @@ export default function Grid9() {
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="mx-auto w-full py-12 sm:px-6 px-4">
                             <div className="flex justify-end items-center mb-6">
-                                <ButtonComponent cssClass="e-primary w-max" content="Edit Permissions" iconCss="e-icons e-edit" iconPosition="Left" type="button"></ButtonComponent>
+                                <ButtonComponent cssClass="e-primary w-max" iconCss="e-icons e-edit" iconPosition="Left" content="Edit Permissions" type="button"></ButtonComponent>
                             </div>
                             <GridComponent dataSource={gridData} key={"grid-9-tw"} width="100%" height={1117} rowHeight={44} allowGrouping={true} groupSettings={groupSettings} gridLines="Both">
                                 <ColumnsDirective>
@@ -121,7 +121,7 @@ export default function Grid9() {
                     <section className="bg-body">
                         <div className="py-5 px-4 px-sm-6 mx-auto">
                             <div className="d-flex justify-content-end align-items-center mb-4">
-                                <ButtonComponent cssClass="e-primary" content="Edit Permissions" iconCss="e-icons e-edit" iconPosition="Left" type="button"></ButtonComponent>
+                                <ButtonComponent cssClass="e-primary" iconCss="e-icons e-edit" iconPosition="Left" content="Edit Permissions" type="button"></ButtonComponent>
                             </div>
                             <GridComponent dataSource={gridData} key={"grid-9-bs"} width="100%" height={1117} rowHeight={44} allowGrouping={true} groupSettings={groupSettings} gridLines="Both">
                                 <ColumnsDirective>

@@ -16,20 +16,20 @@ export default function Modals8() {
     const dialog = useRef<DialogComponent>(null);
     const uploaders = useRef<UploaderComponent>(null);
 
-    const checkWindowSize = () => {
+    const checkWindowSize = (): void => {
         const isMobile = window.innerWidth <= 640;
         dialog.current?.show(isMobile);
     };
 
     /* SB Code - Start */
-    const refreshDialog = (timeout: number) => {
+    const refreshDialog = (timeout: number): void => {
         setTimeout(() => {
             dialog.current?.show(window.innerWidth <= 640);
         }, timeout);
     };
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'modals-8' && blockData.theme) {
@@ -63,16 +63,15 @@ export default function Modals8() {
             case 'tailwind':
                 return (
                     <section>
-                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: "750px" }}>
-                            <ButtonComponent className="h-fit my-5" type="button" onClick={() => dialog.current?.show()}>My Settings</ButtonComponent>
-                            <DialogComponent id={styles["dialog"]} ref={dialog} className="rounded-none sm:rounded-lg sm:m-4" target="#dialog-container" height="645px" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="644px" isModal={true}
+                        <div id="dialog-container" className="relative" style={{ minHeight: "750px" }}>
+                            <DialogComponent ref={dialog} id={styles["dialog"]} className="rounded-none sm:rounded-lg sm:m-4" target="#dialog-container" height="645px" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="644px" isModal={true}
                                 header={() => (
                                     <p className="font-semibold leading-normal">My Settings</p>
                                 )}
                                 footerTemplate={() =>
                                     <div className="flex justify-end gap-2 sm:gap-1 py-2">
-                                        <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" type="button">Discard</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" type="button">Save Changes</ButtonComponent>
+                                        <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" content="Discard" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" content="Save Changes" type="button"></ButtonComponent>
                                     </div>
                                 }
                             >
@@ -217,7 +216,7 @@ export default function Modals8() {
                                                             <p className="text-xs text-gray-700 dark:text-gray-300 mb-4">Add upto 5 email addresses to forwarding</p>
                                                             <div className="flex flex-col sm:flex-row gap-4 sm:gap-3">
                                                                 <TextBoxComponent className="grow" placeholder="Add forwarding emails" type="email"></TextBoxComponent>
-                                                                <ButtonComponent cssClass="w-fit" iconCss="e-icons e-plus" type="button">Add</ButtonComponent>
+                                                                <ButtonComponent cssClass="w-fit" iconCss="e-icons e-plus" content="Add" type="button"></ButtonComponent>
                                                             </div>
                                                             <div className="border-t border-gray-200 dark:border-gray-600 mt-4 md:mt-3 pt-4 md:pt-3">
                                                                 <div className="flex gap-3 items-center py-1.5">
@@ -247,7 +246,7 @@ export default function Modals8() {
                                                                     <p className="text-xs text-wrap text-gray-700 dark:text-gray-300">Update your password regularly to maintain account security</p>
                                                                 </div>
                                                             </div>
-                                                            <ButtonComponent className="w-fit ml-7 sm:ml-0 mr-1" type="button">Update</ButtonComponent>
+                                                            <ButtonComponent className="w-fit ml-7 sm:ml-0 mr-1" content="Update" type="button"></ButtonComponent>
                                                         </div>
                                                     </div>
                                                     <div className="e-card shadow-none px-4 py-2 mb-6">
@@ -259,7 +258,7 @@ export default function Modals8() {
                                                                     <p className="text-xs text-wrap text-gray-700 dark:text-gray-300">Add an extra layer of security to your account</p>
                                                                 </div>
                                                             </div>
-                                                            <ButtonComponent className="w-fit ml-7 sm:ml-0 mr-1" type="button">Enable</ButtonComponent>
+                                                            <ButtonComponent className="w-fit ml-7 sm:ml-0 mr-1" content="Enable" type="button"></ButtonComponent>
                                                         </div>
                                                     </div>
                                                     <h2 className="font-medium text-base mb-3">Accounts</h2>
@@ -271,7 +270,7 @@ export default function Modals8() {
                                                                     <p className="text-sm font-medium text-gray-900 dark:text-white mb-0.5">Microsoft</p>
                                                                     <p className="text-xs text-wrap text-gray-700 dark:text-gray-300">Access Microsoft services and single sign-on</p>
                                                                 </div>
-                                                                <ButtonComponent className="w-fit mr-1" type="button">Disconnect</ButtonComponent>
+                                                                <ButtonComponent className="w-fit mr-1" content="Disconnect" type="button"></ButtonComponent>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -283,11 +282,11 @@ export default function Modals8() {
                                                                     <div className="text-sm font-medium text-gray-900 dark:text-white mb-0.5">Twitter</div>
                                                                     <div className="text-xs text-wrap text-gray-700 dark:text-gray-300">Connect to share updates and manage social features</div>
                                                                 </div>
-                                                                <ButtonComponent className="w-fit mr-1" type="button">Connect</ButtonComponent>
+                                                                <ButtonComponent className="w-fit mr-1" content="Connect" type="button"></ButtonComponent>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <ButtonComponent cssClass="e-danger e-outline" type="button">Delete Account</ButtonComponent>
+                                                    <ButtonComponent cssClass="e-danger e-outline" content="Delete Account" type="button"></ButtonComponent>
                                                 </div>
                                             )}
                                         ></TabItemDirective>
@@ -299,14 +298,14 @@ export default function Modals8() {
                                                             <p className="font-medium mb-0.5">Theme</p>
                                                             <p className="text-xs text-gray-700 dark:text-gray-300">Choose your preferred system theme</p>
                                                         </div>
-                                                        <DropDownButtonComponent className="w-fit" type="button" content="System Theme" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
+                                                        <DropDownButtonComponent className="w-fit" content="System Theme" type="button" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
                                                     </div>
                                                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                                                         <div>
                                                             <p className="font-medium mb-0.5">Layout</p>
                                                             <p className="text-xs text-gray-700 dark:text-gray-300">Select a layout that suits your preference</p>
                                                         </div>
-                                                        <DropDownButtonComponent className="w-fit" type="button" content="Compact" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
+                                                        <DropDownButtonComponent className="w-fit" content="Compact" type="button" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
                                                     </div>
                                                 </div>
                                             )}
@@ -315,21 +314,25 @@ export default function Modals8() {
                                 </TabComponent>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="top-0 left-0 absolute w-full flex">
+                            <ButtonComponent className="my-5 mx-auto" content="My Settings" type="button" onClick={() => dialog.current?.show()}></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 );
             case 'bootstrap5':
                 return (
                     <section>
-                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: "750px" }}>
-                            <ButtonComponent className="mx-auto my-3 e-outline" type="button" onClick={() => dialog.current?.show()}>My Settings</ButtonComponent>
-                            <DialogComponent id={styles["dialog"]} ref={dialog} className="rounded-3 m-sm-2" target="#dialog-container" height="650px" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="644px" isModal={true}
+                        <div id="dialog-container" className="position-relative" style={{ minHeight: "750px" }}>
+                            <DialogComponent ref={dialog} id={styles["dialog"]} className="rounded-3 m-sm-2" target="#dialog-container" height="650px" beforeOpen={(event) => { event.maxHeight = '100%'; }} open={(e) => { e.preventFocus = true; }} showCloseIcon={true} width="644px" isModal={true}
                                 header={() => (
                                     <p className="fw-bold text-body mb-0 lh-sm">My Settings</p>
                                 )}
                                 footerTemplate={() =>
                                     <div className="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                                        <ButtonComponent className="col col-sm-auto ms-0" type="button">Discard</ButtonComponent>
-                                        <ButtonComponent className="col col-sm-auto e-primary" type="button">Save Changes</ButtonComponent>
+                                        <ButtonComponent className="col col-sm-auto ms-0" content="Discard" type="button"></ButtonComponent>
+                                        <ButtonComponent className="col col-sm-auto e-primary" content="Save Changes" type="button"></ButtonComponent>
                                     </div>
                                 }
                             >
@@ -474,7 +477,7 @@ export default function Modals8() {
                                                             <p className="text-muted small pt-1">Add up to 5 email addresses to forwarding</p>
                                                             <div className="d-flex flex-column flex-sm-row gap-3">
                                                                 <TextBoxComponent className="flex-grow-1 mx-1" placeholder="Add forwarding emails" type="email"></TextBoxComponent>
-                                                                <ButtonComponent iconCss="e-icons e-plus" type="button" style={{ width:"fit-content" }}>Add</ButtonComponent>
+                                                                <ButtonComponent iconCss="e-icons e-plus" content="Add" type="button" style={{ width:"fit-content" }}></ButtonComponent>
                                                             </div>
                                                             <div className="border-top mt-3 pt-3">
                                                                 <div className="d-flex gap-3 align-items-center py-1">
@@ -504,7 +507,7 @@ export default function Modals8() {
                                                                     <div className="small text-secondary">Update your password regularly to maintain account security</div>
                                                                 </div>
                                                             </div>
-                                                            <ButtonComponent className="w-auto ms-4 ms-sm-0" type="button">Update</ButtonComponent>
+                                                            <ButtonComponent className="w-auto ms-4 ms-sm-0" content="Update" type="button"></ButtonComponent>
                                                         </div>
                                                     </div>
                                                     <div className="e-card px-3 py-2 mb-4">
@@ -516,7 +519,7 @@ export default function Modals8() {
                                                                     <div className="small text-secondary">Add an extra layer of security to your account</div>
                                                                 </div>
                                                             </div>
-                                                            <ButtonComponent className="ms-4 ms-sm-0" type="button">Enable</ButtonComponent>
+                                                            <ButtonComponent className="ms-4 ms-sm-0" content="Enable" type="button"></ButtonComponent>
                                                         </div>
                                                     </div>
                                                     <h2 className="fw-medium fs-6 mb-2">Accounts</h2>
@@ -528,7 +531,7 @@ export default function Modals8() {
                                                                     <div className="d-flex align-items-center fs-6 text-body">Microsoft</div>
                                                                     <div className="d-flex align-items-center text-wrap small text-body-secondary">Access Microsoft services and single sign-on</div>
                                                                 </div>
-                                                                <ButtonComponent type="button">Disconnect</ButtonComponent>
+                                                                <ButtonComponent content="Disconnect" type="button"></ButtonComponent>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -540,11 +543,11 @@ export default function Modals8() {
                                                                     <div className="d-flex align-items-center fs-6 text-body">Twitter</div>
                                                                     <div className="d-flex align-items-center text-wrap small text-body-secondary">Connect to share updates and manage social features</div>
                                                                 </div>
-                                                                <ButtonComponent type="button">Connect</ButtonComponent>
+                                                                <ButtonComponent content="Connect" type="button"></ButtonComponent>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <ButtonComponent className="e-danger e-outline" type="button">Delete Account</ButtonComponent>
+                                                    <ButtonComponent className="e-danger e-outline" content="Delete Account" type="button"></ButtonComponent>
                                                 </div>
                                             )}
                                         ></TabItemDirective>
@@ -572,6 +575,11 @@ export default function Modals8() {
                                 </TabComponent>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="position-absolute top-0 start-0 d-flex w-100">
+                            <ButtonComponent className="mx-auto my-3 e-outline" content="My Settings" type="button" onClick={() => dialog.current?.show()}></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 );
         };

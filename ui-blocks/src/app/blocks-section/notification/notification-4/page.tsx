@@ -10,7 +10,7 @@ export default function Notification4() {
     const [theme, setTheme] = useState('tailwind');
     
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'notification-4' && blockData.theme) {
@@ -38,7 +38,7 @@ export default function Notification4() {
             case 'tailwind':
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
-                        <div key={'notification-4-tw'} id="toast" className="mx-4 sm:mx-auto h-screen" style={{ maxWidth: '520px' }}>
+                        <div key={"notification-4-tw"} id="toast" className="mx-4 sm:mx-auto h-screen" style={{ maxWidth: '520px' }}>
                             <ToastComponent ref={toastRef} cssClass="!w-full" position={{ X: 'Center' }} width="100%" timeOut={0} target="#toast" newestOnTop={true} created={() => toastRef.current?.show()}
                                 content={() => (
                                     <div className="flex gap-4">
@@ -51,21 +51,20 @@ export default function Notification4() {
                                                 <p className="leading-5">Check out the latest updates to enhance your experience. Explore them now or view them later.</p>
                                             </div>
                                             <div className="flex justify-end sm:justify-start gap-2.5 pb-1 pr-1 mt-3 sm:mt-0">
-                                                <ButtonComponent cssClass="e-primary e-flat" content="Let’s see" type="button"></ButtonComponent>
+                                                <ButtonComponent cssClass="e-primary e-flat" content="Let's see" type="button"></ButtonComponent>
                                                 <ButtonComponent cssClass="e-flat" content="Not now" type="button"></ButtonComponent>
                                             </div>
                                         </div>
                                     </div>
                                 )}
-                            >
-                            </ToastComponent>
+                            ></ToastComponent>
                         </div>
                     </section>
                 );
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div key={'notification-4-bs'} id="toast" className="mx-3 mx-sm-auto vh-100" style={{ maxWidth: '522px' }}>
+                        <div key={"notification-4-bs"} id="toast" className="mx-3 mx-sm-auto vh-100" style={{ maxWidth: '522px' }}>
                             <ToastComponent ref={toastRef} cssClass="w-100" position={{ X: 'Center' }} width="100%" timeOut={0} target="#toast" newestOnTop={true} created={() => toastRef.current?.show()}
                                 content={() => (
                                     <div className="d-flex gap-3 p-1">
@@ -78,14 +77,13 @@ export default function Notification4() {
                                                 <p className="lh-base m-0">Check out the latest updates to enhance your experience. Explore them now or view them later.</p>
                                             </div>
                                             <div className="d-flex justify-content-end justify-content-sm-start gap-3 gap-sm-2 mt-3 mt-sm-0">
-                                                <ButtonComponent cssClass="e-primary e-flat" content="Let’s see" type="button"></ButtonComponent>
+                                                <ButtonComponent cssClass="e-primary e-flat" content="Let's see" type="button"></ButtonComponent>
                                                 <ButtonComponent cssClass="e-flat ms-sm-1" content="Not now" type="button"></ButtonComponent>
                                             </div>
                                         </div>
                                     </div>
                                 )}
-                            >
-                            </ToastComponent>
+                            ></ToastComponent>
                         </div>
                     </section>
                 );

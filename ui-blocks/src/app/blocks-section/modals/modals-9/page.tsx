@@ -17,14 +17,14 @@ export default function Modals9() {
     const upload = useRef<UploaderComponent | null>(null);
     const rte = useRef<RichTextEditorComponent>(null);
 
-    const checkWindowSize = () => {
+    const checkWindowSize = (): void => {
         const isMobile = window.innerWidth <= 640;
         if (dialog) {
             dialog.current?.show(isMobile);
         }
     };
 
-    const onCreated = () => {
+    const created = (): void => {
           const hiddenSelectElements = document.getElementsByClassName("e-ddl-hidden");
           if (hiddenSelectElements.length > 1) {
               const hiddenSelectElement = hiddenSelectElements[1];
@@ -37,7 +37,7 @@ export default function Modals9() {
           }
     };
 
-    const onDialogOpen = (args: OpenEventArgs) => {
+    const dialogOpen = (args: OpenEventArgs): void => {
         args.preventFocus = true;
         setTimeout(() => {
             rte.current?.refresh();
@@ -45,14 +45,14 @@ export default function Modals9() {
     };
 
     /* SB Code - Start */
-    const refreshDialog = (timeout: number) => {
+    const refreshDialog = (timeout: number): void => {
         setTimeout(() => {
             dialog.current?.show(window.innerWidth <= 640);
         }, timeout);
     };
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === "modals-9" && blockData.theme) {
@@ -86,14 +86,13 @@ export default function Modals9() {
             case "tailwind":
                 return (
                     <section>
-                        <div id="dialog-container" className="relative flex justify-center" style={{ minHeight: "866px" }}>
-                            <ButtonComponent className="h-fit my-5" type="button" onClick={() => dialog.current?.show()}>Create Ticket</ButtonComponent>
-                            <DialogComponent id={styles["dialogs"]} key={"modal-2-tw"} className="rounded-none sm:rounded-lg sm:m-4" width="492px" ref={dialog} isModal={true} showCloseIcon={true} beforeOpen={(event) => { event.maxHeight = '100%'; }} open={onDialogOpen} 
+                        <div id="dialog-container" className="relative" style={{ minHeight: "866px" }}>
+                            <DialogComponent ref={dialog} key={"modal-9-tw"} id={styles["dialogs"]} className="rounded-none sm:rounded-lg sm:m-4" width="492px" isModal={true} showCloseIcon={true} beforeOpen={(event) => { event.maxHeight = '100%'; }} open={dialogOpen} 
                                 header={() => <p className="font-semibold leading-normal">Create Ticket</p>}
                                 footerTemplate={() => (
                                     <div className="flex flex-row justify-end gap-2 sm:gap-1 mt-1 mb-2">
-                                        <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" type="button">Create Ticket</ButtonComponent>
+                                        <ButtonComponent cssClass="w-1/2 sm:w-fit !ml-0" content="Cancel" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary w-1/2 sm:w-fit" content="Create Ticket" type="button"></ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -104,7 +103,7 @@ export default function Modals9() {
                                     </div>
                                     <div className="flex flex-col gap-1">
                                         <label>Assign to</label>
-                                        <DropDownListComponent created={onCreated} placeholder="Select a team or individual responsible for this ticket"></DropDownListComponent>
+                                        <DropDownListComponent created={created} placeholder="Select a team or individual responsible for this ticket"></DropDownListComponent>
                                     </div>
                                     <div className="flex flex-col gap-1">
                                         <label>Subject <span className="text-red-600 font-normal dark:text-red-400">*</span></label>
@@ -112,7 +111,7 @@ export default function Modals9() {
                                     </div>
                                     <div className="flex flex-col gap-1">
                                         <label>Description <span className="text-red-600 font-normal dark:text-red-400">*</span></label>
-                                        <RichTextEditorComponent id={styles["rte"]} ref={rte} toolbarSettings={{items: ['Bold', 'Italic', 'Underline', '|', 'FontName', '|', 'Alignments', 'OrderedList', 'UnorderedList']}} showCharCount={true} maxLength={500} height="160">
+                                        <RichTextEditorComponent ref={rte} id={styles["rte"]} toolbarSettings={{items: ['Bold', 'Italic', 'Underline', '|', 'FontName', '|', 'Alignments', 'OrderedList', 'UnorderedList']}} showCharCount={true} maxLength={500} height="160">
                                             <p></p>
                                             <Inject services={[Toolbar, HtmlEditor, Link, Image, Table,Count]} />
                                         </RichTextEditorComponent>
@@ -140,21 +139,25 @@ export default function Modals9() {
                                 </form>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="top-0 left-0 absolute w-full flex">
+                            <ButtonComponent className="my-5 mx-auto" content="Create Ticket" type="button" onClick={() => dialog.current?.show()}></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 );
             case "bootstrap5":
                 return (
                     <section>
-                        <div id="dialog-container" className="position-relative d-flex align-items-start" style={{ minHeight: "866px" }}>
-                            <ButtonComponent className="mx-auto my-3 e-outline" onClick={() => dialog.current?.show()} type="button">Create Ticket</ButtonComponent>
-                            <DialogComponent id={styles["dialogs"]} key={"modal-2-bs"} className="rounded-3 m-sm-2" ref={dialog} target="#dialog-container" isModal={true} showCloseIcon={true} width="492px" open={onDialogOpen} beforeOpen={(event) => (event.maxHeight = "100%")}
+                        <div id="dialog-container" className="position-relative" style={{ minHeight: "866px" }}>
+                            <DialogComponent ref={dialog} key={"modal-9-bs"} id={styles["dialogs"]} className="rounded-3 m-sm-2" target="#dialog-container" isModal={true} showCloseIcon={true} width="492px" open={dialogOpen} beforeOpen={(event) => (event.maxHeight = "100%")}
                                 header={() =>
                                     <div className="fw-bold mb-0 text-body">Create Ticket</div>
                                 }
                                 footerTemplate={() => (
                                     <div className="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                                        <ButtonComponent cssClass="col col-sm-auto ms-0" type="button">Cancel</ButtonComponent>
-                                        <ButtonComponent cssClass="e-primary col col-sm-auto" type="button">Create Ticket</ButtonComponent>
+                                        <ButtonComponent cssClass="col col-sm-auto ms-0" content="Cancel" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-primary col col-sm-auto" content="Create Ticket" type="button"></ButtonComponent>
                                     </div>
                                 )}
                             >
@@ -165,7 +168,7 @@ export default function Modals9() {
                                     </div>
                                     <div className="d-flex flex-column gap-1 small">
                                         <label>Assign to</label>
-                                        <DropDownListComponent created={onCreated} placeholder="Select a team or individual responsible for this ticket"></DropDownListComponent>
+                                        <DropDownListComponent created={created} placeholder="Select a team or individual responsible for this ticket"></DropDownListComponent>
                                     </div>
                                     <div className="d-flex flex-column gap-1 small">
                                         <label>Subject <span className="text-danger">*</span></label>
@@ -173,7 +176,7 @@ export default function Modals9() {
                                     </div>
                                     <div className="d-flex flex-column gap-1 small">
                                         <label>Description <span className="text-danger">*</span></label>
-                                        <RichTextEditorComponent id={styles["rte"]} ref={rte} toolbarSettings={{ items: ['Bold', 'Italic', 'Underline', '|', 'FontName', '|', 'Alignments', 'OrderedList', 'UnorderedList'] }} showCharCount={true} maxLength={500} height="170">
+                                        <RichTextEditorComponent ref={rte} id={styles["rte"]} toolbarSettings={{ items: ['Bold', 'Italic', 'Underline', '|', 'FontName', '|', 'Alignments', 'OrderedList', 'UnorderedList'] }} showCharCount={true} maxLength={500} height="170">
                                             <p></p>
                                             <Inject services={[Toolbar, HtmlEditor, Link, Image, Table, Count]} />
                                         </RichTextEditorComponent>
@@ -203,6 +206,11 @@ export default function Modals9() {
                                 </form>
                             </DialogComponent>
                         </div>
+                        {/* SB Code - Start */}
+                        <div className="position-absolute top-0 start-0 d-flex w-100">
+                            <ButtonComponent className="mx-auto my-3 e-outline" content="Create Ticket" onClick={() => dialog.current?.show()} type="button"></ButtonComponent>
+                        </div>
+                        {/* SB Code - End */}
                     </section>
                 );
         }

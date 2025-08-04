@@ -10,11 +10,11 @@ export default function Header9() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
+    const [maxItems, setMaxItems] = useState<number>(2);
+    const [overflowMode, setOverflowMode] = useState<BreadcrumbOverflowMode>(BreadcrumbOverflowMode.None);
     const additionalOptionDropdown = useRef<DropDownButtonComponent | null>(null);
     const newCourseDropdown = useRef<SplitButtonComponent | null>(null);
     const breadcrumb = useRef<BreadcrumbComponent | null>(null);
-    const [maxItems, setMaxItems] = useState<number>(2);
-    const [overflowMode, setOverflowMode] = useState<BreadcrumbOverflowMode>(BreadcrumbOverflowMode.None);
 
     const handleResize = (): void => {
         const width = window.innerWidth;
@@ -46,7 +46,7 @@ export default function Header9() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'header-9' && blockData.theme) {
@@ -84,7 +84,7 @@ export default function Header9() {
                         <div key={"header-9-tw"} style={{ minHeight: "36rem" }}>
                             <div className="py-3 px-4 sm:px-6 flex justify-between border-b border-gray-200 dark:border-gray-600">
                                 <div className="flex items-center">
-                                    <div id={styles.breadcrumb}>
+                                    <div id={styles["breadcrumb"]}>
                                         <BreadcrumbComponent ref={breadcrumb} className="flex items-center" overflowMode={overflowMode} maxItems={maxItems} items={[{ text: "Learning Portal" }, { text: "Current Term" }]} separatorTemplate={() => <span className="text-base e-icons e-chevron-right"></span>}></BreadcrumbComponent>
                                     </div>
                                     <ButtonComponent className="ml-3" type="button">

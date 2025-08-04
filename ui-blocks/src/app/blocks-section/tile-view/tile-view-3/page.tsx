@@ -57,7 +57,7 @@ export default function TileView3() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'tile-view-3' && blockData.theme) {
@@ -93,7 +93,7 @@ export default function TileView3() {
                                         <input className="e-input !pl-0" type="text" placeholder="Search" />
                                     </div>
                                     <div className="e-appbar-spacer"></div>
-                                    <ButtonComponent cssClass="e-flat sf-icon-notification-bell-01 text-base ml-2" type="button"></ButtonComponent>
+                                    <ButtonComponent cssClass="e-flat ml-2" iconCss="sf-icon-notification-bell-01 text-base" type="button"></ButtonComponent>
                                     <span className="e-avatar e-avatar-circle e-avatar-small shrink-0 ml-3">
                                         <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
                                     </span>
@@ -110,7 +110,7 @@ export default function TileView3() {
                                     <div className="flex flex-col justify-between gap-4 mb-3 text-gray-900 dark:text-gray-50 md:flex-row">
                                         <div className="flex justify-between">
                                             <p className="text-xl font-medium">Transactions</p>
-                                            <ButtonComponent cssClass="e-primary sm:hidden e-icons e-plus" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-primary sm:hidden" iconCss="e-icons e-plus" type="button"></ButtonComponent>
                                         </div>
                                         <div className="flex flex-col gap-4 sm:flex-row">
                                             <div className="flex items-center gap-2 text-sm">
@@ -118,13 +118,13 @@ export default function TileView3() {
                                                 <span>Show pending only</span>
                                             </div>
                                             <DropDownButtonComponent cssClass="w-fit" content="This week" type="button" beforeOpen={(event) => (event.cancel = true)}></DropDownButtonComponent>
-                                            <ButtonComponent cssClass="e-primary hidden sm:inline-block" type="button">Add New Transaction</ButtonComponent>
+                                            <ButtonComponent cssClass="e-primary hidden sm:inline-block" content="Add New Transaction" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                     <ListViewComponent className="!border-0" cssClass="e-list-template" dataSource={transactionDetails} template={(data: any) => (
                                         <div className="e-card flex-row gap-1 rounded-lg sm:gap-0 p-4">
                                             <span className={`e-avatar e-avatar-large e-avatar-circle shrink-0 mr-2 sm:mr-4 ${data.paymentType === "Credit Card" ? "bg-green-100 text-green-700 dark:text-green-500" : data.paymentType === "Wire Transfer" ? "bg-indigo-100 text-indigo-600" : data.paymentType === "Deposit" ? "bg-orange-100 text-orange-500 dark:text-orange-700" : "bg-cyan-100 dark:bg-sky-100 text-cyan-700 dark:text-cyan-600"}`}>
-                                                <i className="sf-icon-dollar text-2xl"></i>
+                                                <span className="sf-icon-dollar text-2xl"></span>
                                             </span>
                                             <div className="e-card-stacked grow sm:space-y-3">
                                                 <div className="e-card-header !flex-col gap-2 sm:!flex-row items-start !p-0">
@@ -168,7 +168,7 @@ export default function TileView3() {
                                         <input className="e-input ps-0" type="text" placeholder="Search" />
                                     </div>
                                     <div className="d-flex gap-2">
-                                        <ButtonComponent cssClass="e-flat sf-icon-notification-bell-01 fs-6" type="button"></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat fs-6" iconCss="sf-icon-notification-bell-01" type="button"></ButtonComponent>
                                         <span className="e-avatar e-avatar-circle e-avatar-small flex-shrink-0 ms-1">
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
@@ -186,7 +186,7 @@ export default function TileView3() {
                                     <div className="d-flex flex-column justify-content-between gap-4 mt-2 pt-1 flex-md-row">
                                         <div className="d-flex justify-content-between">
                                             <h5 className="mb-0 fw-medium lh-base text-body">Transactions</h5>
-                                            <ButtonComponent cssClass="e-primary d-sm-none e-icons e-plus" type="button"></ButtonComponent>
+                                            <ButtonComponent cssClass="e-primary d-sm-none" iconCss="e-icons e-plus" type="button"></ButtonComponent>
                                         </div>
                                         <div className="d-flex flex-column align-items-start align-items-sm-center gap-3 flex-sm-row">
                                             <div className="d-flex align-items-center gap-2 fs-6 text-body">
@@ -194,13 +194,13 @@ export default function TileView3() {
                                                 <span>Show pending only</span>
                                             </div>
                                             <DropDownButtonComponent cssClass="e-outline" content="This week" type="button" beforeOpen={(e) => (e.cancel = true)}></DropDownButtonComponent>
-                                            <ButtonComponent cssClass="e-primary d-none d-sm-inline-block" type="button">Add New Transaction</ButtonComponent>
+                                            <ButtonComponent cssClass="e-primary d-none d-sm-inline-block" content="Add New Transaction" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                     <ListViewComponent className="border-0 mt-4" cssClass="e-list-template" dataSource={transactionDetails} template={(data: any) => (
                                         <div className="e-card d-flex flex-row gap-2 gap-sm-0 lh-base px-2 py-3 rounded-3 px-sm-3">
                                             <span className={`e-avatar e-avatar-large e-avatar-circle flex-shrink-0 me-2 me-sm-3 ${data.paymentType === "Deposit" ? "bg-warning-subtle text-warning-emphasis" : data.paymentType === "Wire Transfer" ? "bg-success-subtle text-success-emphasis" : data.paymentType === "Credit Card" ? "bg-info-subtle text-info-emphasis" : "bg-primary-subtle text-primary"}`}>
-                                                <i className="sf-icon-dollar fs-3"></i>
+                                                <span className="sf-icon-dollar fs-3"></span>
                                             </span>
                                             <div className="e-card-stacked flex-grow-1">
                                                 <div className="e-card-header flex-column gap-2 flex-sm-row align-items-start p-0 mb-sm-2">

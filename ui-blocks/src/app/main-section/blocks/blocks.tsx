@@ -67,7 +67,7 @@ export default function Blocks({ blockName }) {
                 <div className={styles['block-container']}>
                     <img className={styles['block-image']} src={`/react/essential-ui-kit/blocks/assets/images/sample-browser/${blockName}.png`} alt={`${name} - Image`} width={200} height={120} />
                     <div className={styles['block-section']}>
-                        <div className={styles['block-title']}>{name}</div>
+                        <h1 className={styles['block-title']}>{name}</h1>
                         <div className={styles['block-description']}>{description}</div>
                     </div>
                 </div>

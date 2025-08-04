@@ -14,7 +14,7 @@ export default function Notification2() {
     const dialogRef = useRef<DialogComponent>(null);
     const buttonRef = useRef<ButtonComponent>(null);
     const progressbarRef = useRef<ProgressBarComponent>(null);
-    const toggleRef = useRef(false);
+    const isToggleRef = useRef(false);
 
     const notificationData: any[] = [
         {
@@ -33,7 +33,7 @@ export default function Notification2() {
         }
     ];
 
-    const setDialogPosition = (event: any) => {
+    const setDialogPosition = (event: any): void => {
         if (!buttonRef.current || !dialogRef.current) return;
 
         const position = buttonRef.current.element.getBoundingClientRect();
@@ -49,8 +49,8 @@ export default function Notification2() {
 
     const toggleDialog = (): void => {
         if (dialogRef.current) {
-            toggleRef.current = !toggleRef.current;
-            if (toggleRef.current) {
+            isToggleRef.current = !isToggleRef.current;
+            if (isToggleRef.current) {
                 dialogRef.current.hide();
             } else {
                 dialogRef.current.show();
@@ -60,7 +60,7 @@ export default function Notification2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'notification-2' && blockData.theme) {
@@ -93,16 +93,16 @@ export default function Notification2() {
                 return (
                     <section className="bg-gray-50 dark:bg-gray-950">
                         <div className="relative h-screen mx-auto" style={{ maxWidth: '480px' }}>
-                            <div key={'notification-2-tw'} className="w-full flex justify-end p-4" style={{ minHeight: '580px' }}>
+                            <div key={"notification-2-tw"} className="w-full flex justify-end p-4" style={{ minHeight: '580px' }}>
                                 <div className="relative w-8 h-8">
                                     <ButtonComponent ref={buttonRef} cssClass="e-outline e-round" iconCss="sf-icon-notification-bell-02" type="button" onClick={toggleDialog}></ButtonComponent>
                                     <span className="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 mr-2">4</span>
                                 </div>
-                                <DialogComponent ref={dialogRef} id={styles.notification} className="!bg-white dark:!bg-gray-800 rounded-lg overflow-hidden !border" width="448px" created={() => dialogRef.current?.show()} open={setDialogPosition}
+                                <DialogComponent ref={dialogRef} id={styles["notification"]} className="!bg-white dark:!bg-gray-800 rounded-lg overflow-hidden !border" width="448px" created={() => dialogRef.current?.show()} open={setDialogPosition}
                                     header={() => (
                                         <div className="flex justify-between items-center p-4 md:py-2.5">
                                             <p className="text-base md:text-lg text-gray-900 dark:text-white font-medium">Notifications</p>
-                                            <ButtonComponent cssClass="e-flat e-small e-round" iconCss="e-icons e-close" type="button" onClick={toggleDialog}></ButtonComponent>
+                                            <ButtonComponent cssClass="e-flat e-small" iconCss="e-icons e-close" type="button" onClick={toggleDialog}></ButtonComponent>
                                         </div>
                                     )}
                                     footerTemplate={() => (
@@ -141,8 +141,7 @@ export default function Notification2() {
                                                 </div>
                                             </div>
                                         )}
-                                    >
-                                    </ListViewComponent>
+                                    ></ListViewComponent>
                                 </DialogComponent>
                             </div>
                         </div>
@@ -152,16 +151,16 @@ export default function Notification2() {
                 return (
                     <section className="bg-body">
                         <div className="position-relative vh-100 mx-auto" style={{ maxWidth: '480px' }}>
-                            <div key={'notification-2-bs'} className="w-100 d-flex justify-content-end p-3" style={{ minHeight: '580px' }}>
+                            <div key={"notification-2-bs"} className="w-100 d-flex justify-content-end p-3" style={{ minHeight: '580px' }}>
                                 <div className="position-relative" style={{width: '32px',height: '32px'}}>
                                     <ButtonComponent ref={buttonRef} cssClass="e-outline e-round" iconCss="sf-icon-notification-bell-02" type="button" onClick={toggleDialog}></ButtonComponent>
                                     <span className="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 me-2">4</span>
                                 </div>
-                                <DialogComponent ref={dialogRef} id={styles.notification} className="bg-body rounded overflow-hidden border" width="448px" created={() => dialogRef.current?.show()} open={setDialogPosition}
+                                <DialogComponent ref={dialogRef} id={styles["notification"]} className="bg-body rounded overflow-hidden border" width="448px" created={() => dialogRef.current?.show()} open={setDialogPosition}
                                     header={() => (
                                         <div className="d-flex justify-content-between align-items-center px-3 py-2 my-1 border-bottom border-light-subtle">
                                             <p className="text-body fs-5 lh-base fw-medium mb-0">Notifications</p>
-                                            <ButtonComponent cssClass="e-flat e-small e-round e-inherit" iconCss="e-icons e-close" type="button" onClick={toggleDialog}></ButtonComponent>
+                                            <ButtonComponent cssClass="e-flat e-small e-inherit" iconCss="e-icons e-close" type="button" onClick={toggleDialog}></ButtonComponent>
                                         </div>
                                     )}
                                     footerTemplate={() => (
@@ -200,8 +199,7 @@ export default function Notification2() {
                                                 </div>
                                             </div>
                                         )}
-                                    >
-                                    </ListViewComponent>
+                                    ></ListViewComponent>
                                 </DialogComponent>
                             </div>
                         </div>

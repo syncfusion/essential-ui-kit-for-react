@@ -1,5 +1,14 @@
-#dialog :global(.e-dlg-header-content+.e-dlg-content) {
+#dialog :global(.e-dlg-header-content),
+#dialog :global(.e-footer-content) {
     border: inherit;
     border-inline: none;
     border-radius: 0;
+}
+
+#dialog :global(.e-dlg-header-content) {
+    border-top: 0;
+}
+
+#dialog :global(.e-footer-content) {
+    border-bottom: 0;
 }

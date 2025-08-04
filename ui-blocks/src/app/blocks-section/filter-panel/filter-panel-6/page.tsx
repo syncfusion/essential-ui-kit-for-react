@@ -17,7 +17,7 @@ export default function FilterPanel6() {
     const locationAccordion = useRef<AccordionComponent | null>(null);
     const typeAccordion = useRef<AccordionComponent | null>(null);
 
-    const addSearchIcon = () => {
+    const addSearchIcon = (): void => {
         const container =autoComplete.current && autoComplete.current['inputWrapper'].container;
         if (container && !container.querySelector('.e-search')) {
             const searchIcon = document.createElement('span');
@@ -28,11 +28,11 @@ export default function FilterPanel6() {
     };
 
     const setSidebarWidth = (): void => {
-        setWidth(window.innerWidth < 400 ? '100%' : '320px')
+        setWidth(window.innerWidth < 400 ? '100%' : '320px');
     }
 
     /* SB Code - Start */
-    const refreshDialog = (timeout: number) => {
+    const refreshDialog = (timeout: number): void => {
         setTimeout(() => {
             industryAccordion.current?.refresh();
             sizeAccordion.current?.refresh();
@@ -42,7 +42,7 @@ export default function FilterPanel6() {
     }
 
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'filter-panel-6' && blockData.theme) {
@@ -90,70 +90,70 @@ export default function FilterPanel6() {
                                         <AccordionComponent ref={industryAccordion} className="border-b-0 border-r-0" expandMode="Single">
                                             <AccordionItemsDirective>
                                                 <AccordionItemDirective expanded={true} 
-                                                header={() => (
-                                                    <div className="font-medium text-gray-900 dark:text-white">Industry</div>
-                                                )} 
-                                                content={() => (
-                                                    <div className="flex flex-col gap-4 py-1 px-1">
-                                                        <CheckBoxComponent label="Technology" checked={true}></CheckBoxComponent>
-                                                        <CheckBoxComponent label="Healthcare" checked={true}></CheckBoxComponent>
-                                                        <CheckBoxComponent label="Finance"></CheckBoxComponent>
-                                                        <CheckBoxComponent label="Education"></CheckBoxComponent>
-                                                        <CheckBoxComponent label="Manufacturing"></CheckBoxComponent>
-                                                    </div>
-                                                )}>
-                                                </AccordionItemDirective>
+                                                    header={() => (
+                                                        <div className="font-medium text-gray-900 dark:text-white">Industry</div>
+                                                    )} 
+                                                    content={() => (
+                                                        <div className="flex flex-col gap-4 py-1 px-1">
+                                                            <CheckBoxComponent label="Technology" checked={true}></CheckBoxComponent>
+                                                            <CheckBoxComponent label="Healthcare" checked={true}></CheckBoxComponent>
+                                                            <CheckBoxComponent label="Finance"></CheckBoxComponent>
+                                                            <CheckBoxComponent label="Education"></CheckBoxComponent>
+                                                            <CheckBoxComponent label="Manufacturing"></CheckBoxComponent>
+                                                        </div>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                         <AccordionComponent ref={sizeAccordion} className="border-b-0 border-r-0" expandMode="Single">
                                             <AccordionItemsDirective>
                                                 <AccordionItemDirective expanded={true} 
-                                                header={() => (
-                                                    <div className="font-medium text-gray-900 dark:text-white">Company Size</div>
-                                                )} 
-                                                content={() => (
-                                                    <div className="flex flex-col gap-4 py-1 px-1">
-                                                        <CheckBoxComponent label="1-50" checked={true} ></CheckBoxComponent>
-                                                        <CheckBoxComponent label="51-200" checked={true}></CheckBoxComponent>
-                                                        <CheckBoxComponent label="201-500"></CheckBoxComponent>
-                                                        <CheckBoxComponent label="501-1000"></CheckBoxComponent>
-                                                        <CheckBoxComponent label="1000+"></CheckBoxComponent>
-                                                    </div>
-                                                )}>
-                                                </AccordionItemDirective>
+                                                    header={() => (
+                                                        <div className="font-medium text-gray-900 dark:text-white">Company Size</div>
+                                                    )} 
+                                                    content={() => (
+                                                        <div className="flex flex-col gap-4 py-1 px-1">
+                                                            <CheckBoxComponent label="1-50" checked={true} ></CheckBoxComponent>
+                                                            <CheckBoxComponent label="51-200" checked={true}></CheckBoxComponent>
+                                                            <CheckBoxComponent label="201-500"></CheckBoxComponent>
+                                                            <CheckBoxComponent label="501-1000"></CheckBoxComponent>
+                                                            <CheckBoxComponent label="1000+"></CheckBoxComponent>
+                                                        </div>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                         <AccordionComponent ref={locationAccordion} className="border-b-0 border-r-0" expandMode="Single">
                                             <AccordionItemsDirective>
                                                 <AccordionItemDirective expanded={true} 
-                                                header={() => (
-                                                    <div className="font-medium text-gray-900 dark:text-white">Company Places</div>
-                                                )} 
-                                                content={() => (
-                                                    <div className="flex flex-col gap-4 py-1 px-1">
-                                                        <CheckBoxComponent label="North America" checked={true}></CheckBoxComponent>
-                                                        <CheckBoxComponent label="Europe" checked={true}></CheckBoxComponent>
-                                                        <CheckBoxComponent label="Asia"></CheckBoxComponent>
-                                                        <CheckBoxComponent label="South America"></CheckBoxComponent>
-                                                        <CheckBoxComponent label="Africa"></CheckBoxComponent>
-                                                    </div>
-                                                )}>
-                                                </AccordionItemDirective>
+                                                    header={() => (
+                                                        <div className="font-medium text-gray-900 dark:text-white">Location</div>
+                                                    )} 
+                                                    content={() => (
+                                                        <div className="flex flex-col gap-4 py-1 px-1">
+                                                            <CheckBoxComponent label="North America" checked={true}></CheckBoxComponent>
+                                                            <CheckBoxComponent label="Europe" checked={true}></CheckBoxComponent>
+                                                            <CheckBoxComponent label="Asia"></CheckBoxComponent>
+                                                            <CheckBoxComponent label="South America"></CheckBoxComponent>
+                                                            <CheckBoxComponent label="Africa"></CheckBoxComponent>
+                                                        </div>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                         <AccordionComponent ref={typeAccordion} className="border-b-0 border-r-0" expandMode="Single">
                                             <AccordionItemsDirective>
                                                 <AccordionItemDirective expanded={true} 
-                                                header={() => (
-                                                    <div className="font-medium text-gray-900 dark:text-white">Company Type</div>
-                                                )} 
-                                                content={() => (
-                                                    <div className="flex flex-col gap-4 py-1 px-1">
-                                                        <CheckBoxComponent label="Public"></CheckBoxComponent>
-                                                        <CheckBoxComponent label="Private"></CheckBoxComponent>
-                                                    </div>
-                                                )}>
-                                                </AccordionItemDirective>
+                                                    header={() => (
+                                                        <div className="font-medium text-gray-900 dark:text-white">Company Type</div>
+                                                    )} 
+                                                    content={() => (
+                                                        <div className="flex flex-col gap-4 py-1 px-1">
+                                                            <CheckBoxComponent label="Public"></CheckBoxComponent>
+                                                            <CheckBoxComponent label="Private"></CheckBoxComponent>
+                                                        </div>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                     </div>
@@ -165,7 +165,7 @@ export default function FilterPanel6() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-round" iconCss="e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -198,8 +198,8 @@ export default function FilterPanel6() {
                                                             <CheckBoxComponent label="Education"></CheckBoxComponent>
                                                             <CheckBoxComponent label="Manufacturing"></CheckBoxComponent>
                                                         </div>
-                                                    )}>
-                                                </AccordionItemDirective>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                         <AccordionComponent ref={sizeAccordion} className="border-0" expandMode="Single">
@@ -216,15 +216,15 @@ export default function FilterPanel6() {
                                                             <CheckBoxComponent label="501-1000"></CheckBoxComponent>
                                                             <CheckBoxComponent label="1000+"></CheckBoxComponent>
                                                         </div>
-                                                    )}>
-                                                </AccordionItemDirective>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                         <AccordionComponent ref={locationAccordion} className="border-0" expandMode="Single">
                                             <AccordionItemsDirective>
                                                 <AccordionItemDirective expanded={true} 
                                                     header={() => (
-                                                        <div className="fw-medium text-body">Company Places</div>
+                                                        <div className="fw-medium text-body">Location</div>
                                                     )} 
                                                     content={() => (
                                                         <div className="d-flex flex-column gap-3 py-1 px-1">
@@ -234,8 +234,8 @@ export default function FilterPanel6() {
                                                             <CheckBoxComponent label="South America"></CheckBoxComponent>
                                                             <CheckBoxComponent label="Africa"></CheckBoxComponent>
                                                         </div>
-                                                    )}>
-                                                </AccordionItemDirective>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                         <AccordionComponent ref={typeAccordion} className="border-0" expandMode="Single">
@@ -249,8 +249,8 @@ export default function FilterPanel6() {
                                                             <CheckBoxComponent label="Public"></CheckBoxComponent>
                                                             <CheckBoxComponent label="Private"></CheckBoxComponent>
                                                         </div>
-                                                    )}>
-                                                </AccordionItemDirective>
+                                                    )}
+                                                ></AccordionItemDirective>
                                             </AccordionItemsDirective>
                                         </AccordionComponent>
                                     </div>
@@ -262,7 +262,7 @@ export default function FilterPanel6() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" onClick={() => sidebar.current?.show()} type="button"></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

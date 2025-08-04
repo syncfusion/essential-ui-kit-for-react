@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
-import { Category, ChartComponent, DateTime, Inject, LineSeries, SeriesCollectionDirective, SeriesDirective } from "@syncfusion/ej2-react-charts";
+import { Inject, ChartComponent, SeriesCollectionDirective, SeriesDirective, LineSeries, DateTime, Category } from "@syncfusion/ej2-react-charts";
 
 export default function LineChart3() {
     /* SB Code - Start */
@@ -184,6 +184,7 @@ export default function LineChart3() {
         valueType: 'DateTime',
         labelFormat: 'MMM',
         labelRotation: labelRotation,
+        labelIntersectAction: 'None',
         lineStyle: { width: 0 },
         majorGridLines: { width: 0 },
         minorTickLines: { width: 0 },
@@ -235,6 +236,7 @@ export default function LineChart3() {
 
     const chartLoad = (args: any, lightTheme: string, darkTheme: string): void => {
         args.chart.theme = isDarkMode ? darkTheme : lightTheme;
+        handleResize();
     };
 
     const handleResize = (): void => {
@@ -247,7 +249,7 @@ export default function LineChart3() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'line-chart-3' && blockData.theme) {
@@ -288,21 +290,21 @@ export default function LineChart3() {
             case 'tailwind':
                 return (
                     <section className="bg-white dark:bg-gray-950">
-                        <div key={'linechart-3-tw'} className="flex justify-center p-4 sm:p-6" style={{ minHeight: 710, maxHeight: 1390 }}>
+                        <div key={"linechart-3-tw"} className="flex justify-center p-4 sm:p-6" style={{ minHeight: 710, maxHeight: 1390 }}>
                             <div className="w-full" style={{ maxWidth: '1100px' }}>
                                 <div className="flex justify-between items-center mb-2 sm:mb-5">
                                     <p className="text-base font-medium text-gray-900 dark:text-white">Currency Exchange Rates</p>
                                     <div className="flex items-start gap-3">
                                         <div className="e-btn-group hidden sm:block">
-                                            <input type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
+                                            <input type="radio" id="day" name="align" value="D" />
                                             <label className="e-btn" htmlFor="day">D</label>
-                                            <input type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
+                                            <input type="radio" id="week" name="align" value="W" />
                                             <label className="e-btn" htmlFor="week">W</label>
-                                            <input type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
+                                            <input type="radio" id="month" name="align" value="M" />
                                             <label className="e-btn" htmlFor="month">M</label>
-                                            <input type="radio" id="year" name="align" value="Y" aria-label="year" role="button" />
+                                            <input type="radio" id="year" name="align" value="Y" />
                                             <label className="e-btn" htmlFor="year">Y</label>
-                                            <input type="radio" id="custom" name="align" value="Custom" defaultChecked aria-label="custom" role="button" />
+                                            <input type="radio" id="custom" name="align" value="Custom" defaultChecked  />
                                             <label className="e-btn" htmlFor="custom">Custom</label>
                                         </div>
                                         <ButtonComponent cssClass="e-outline" iconCss="e-icons e-refresh" type="button"></ButtonComponent>
@@ -354,21 +356,21 @@ export default function LineChart3() {
             case 'bootstrap5':
                 return (
                     <section className="bg-body">
-                        <div key={'linechart-3-bs'} className="d-flex justify-content-center p-3 p-sm-4" style={{ minHeight: 710, maxHeight: 1390 }}>
+                        <div key={"linechart-3-bs"} className="d-flex justify-content-center p-3 p-sm-4" style={{ minHeight: 710, maxHeight: 1390 }}>
                             <div className="w-100" style={{ maxWidth: '1100px' }}>
                                 <div className="d-flex justify-content-between align-items-center mb-2 mb-sm-5">
                                     <p className="h6 fw-medium text-body">Currency Exchange Rates</p>
                                     <div className="d-flex align-items-start gap-3">
                                         <div className="e-btn-group d-none d-sm-block">
-                                            <input type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
+                                            <input type="radio" id="day" name="align" value="D" />
                                             <label className="e-btn" htmlFor="day">D</label>
-                                            <input type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
+                                            <input type="radio" id="week" name="align" value="W" />
                                             <label className="e-btn" htmlFor="week">W</label>
-                                            <input type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
+                                            <input type="radio" id="month" name="align" value="M" />
                                             <label className="e-btn" htmlFor="month">M</label>
-                                            <input type="radio" id="year" name="align" value="Y" aria-label="year" role="button" />
+                                            <input type="radio" id="year" name="align" value="Y" />
                                             <label className="e-btn" htmlFor="year">Y</label>
-                                            <input type="radio" id="custom" name="align" value="Custom" defaultChecked aria-label="custom" role="button" />
+                                            <input type="radio" id="custom" name="align" value="Custom" defaultChecked />
                                             <label className="e-btn" htmlFor="custom">Custom</label>
                                         </div>
                                         <ButtonComponent cssClass="e-outline" iconCss="e-icons e-refresh" type="button"></ButtonComponent>

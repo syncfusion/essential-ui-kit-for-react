@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from 'react';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
@@ -66,7 +66,7 @@ export default function Notification7() {
     
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'notification-7' && blockData.theme) {
@@ -112,7 +112,7 @@ export default function Notification7() {
                                             <DropDownButtonComponent ref={dropdownRef} className="e-primary" items={items} content="Transactions" type="button"></DropDownButtonComponent>
                                         </div>
                                     </div>
-                                    <ListViewComponent id={styles.list} cssClass="!border-0 px-4 h-full" dataSource={transactionData}
+                                    <ListViewComponent id={styles["list"]} cssClass="!border-0 px-4 h-full" dataSource={transactionData}
                                         template={(data: any) => (
                                             <div className="e-card shadow-none rounded-lg flex-row !p-4 !pb-2 sm:!pb-1 flex items-start">
                                                 <span className="e-avatar e-avatar-circle shrink-0" style={{ backgroundImage: `url(/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar})` }}></span>
@@ -129,20 +129,19 @@ export default function Notification7() {
                                                                 <span>{data.date.toLocaleDateString('en-GB')}</span>
                                                                 <span>{data.date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
                                                             </span>
-                                                            <ButtonComponent cssClass="e-primary e-flat" content="View details" iconCss="e-icons e-chevron-right text-xl" iconPosition="Right" type="button"></ButtonComponent>
+                                                            <ButtonComponent cssClass="e-primary e-flat" iconCss="e-icons e-chevron-right text-xl" iconPosition="Right" content="View details" type="button"></ButtonComponent>
                                                         </div>
                                                     </span>
                                                 </div>
                                             </div>
                                         )}
-                                    >
-                                    </ListViewComponent>
+                                    ></ListViewComponent>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" onClick={() => sidebarRef.current?.show()} type="button"></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebarRef.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -163,7 +162,7 @@ export default function Notification7() {
                                     </div>
                                 </div>
                                 <div>
-                                    <ListViewComponent id={styles.list} cssClass="border-0 px-3" dataSource={transactionData}
+                                    <ListViewComponent id={styles["list"]} cssClass="border-0 px-3" dataSource={transactionData}
                                         template={(data: any) => (
                                             <div className="e-card rounded-3 lh-base p-3 pb-2 d-flex flex-row align-items-start">
                                                 <span className="e-avatar e-avatar-circle flex-shrink-0" style={{ backgroundImage: `url(/react/essential-ui-kit/blocks/assets/images/common/avatar/${data.avatar})` }}></span>
@@ -180,20 +179,19 @@ export default function Notification7() {
                                                                 <span>{data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'numeric', year: 'numeric' })}</span>
                                                                 <span className="ms-1">{data.date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
                                                             </span>
-                                                            <ButtonComponent cssClass="e-primary e-flat" content="View details" iconCss="e-icons e-chevron-right" iconPosition="Right" type="button"></ButtonComponent>
+                                                            <ButtonComponent cssClass="e-primary e-flat" iconCss="e-icons e-chevron-right" iconPosition="Right" content="View details" type="button"></ButtonComponent>
                                                         </div>
                                                     </span>
                                                 </div>
                                             </div>
                                         )}
-                                    >
-                                    </ListViewComponent>
+                                    ></ListViewComponent>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-icons e-chevron-left e-round" onClick={() => sidebarRef.current?.show()} type="button"></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebarRef.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

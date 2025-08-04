@@ -1,15 +1,15 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
-import { OverflowMode, TabComponent, TabItemDirective, TabItemsDirective } from "@syncfusion/ej2-react-navigations";
+import { TabComponent, TabItemDirective, TabItemsDirective, OverflowMode } from "@syncfusion/ej2-react-navigations";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 
 export default function Header1() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
-    const tab = useRef<TabComponent | null>(null);
     const [overflowMode, setOverflowMode] = useState<OverflowMode>('Popup');
+    const tab = useRef<TabComponent | null>(null);
 
     const updateTabItems = (): void => {
         if (window.innerWidth < 640) {
@@ -22,7 +22,7 @@ export default function Header1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'header-1' && blockData.theme) {
@@ -41,15 +41,17 @@ export default function Header1() {
     useEffect(() => {
         /* SB Code - Start */
         window.addEventListener('message', handleMessageEvent);
-        window.addEventListener('resize', updateTabItems);
         tab.current?.refresh();
         tab.current?.refreshActiveTabBorder();
-
+        /* SB Code - End */
+        window.addEventListener('resize',updateTabItems);
+        
         return () => {
+            /* SB Code - Start */
             window.removeEventListener('message', handleMessageEvent);
+            /* SB Code - End */
             window.removeEventListener('resize', updateTabItems);
         }
-        /* SB Code - End */
     }, []);
 
     const getContent = () => {
@@ -63,7 +65,7 @@ export default function Header1() {
                                     <h1 className="text-lg font-semibold text-gray-900 dark:text-white ms-4 sm:ms-6">Notification</h1>
                                 </div>
                                 <div className="flex items-center me-4 sm:me-6">
-                                    <ButtonComponent cssClass="e-flat" iconCss="e-icons e-settings" type="button"></ButtonComponent>
+                                    <ButtonComponent cssClass="e-flat" iconCss="e-icons e-settings !text-base" type="button"></ButtonComponent>
                                 </div>
                             </div>
                             <div className="flex mt-3 px-4 sm:px-6 w-full justify-between items-center">

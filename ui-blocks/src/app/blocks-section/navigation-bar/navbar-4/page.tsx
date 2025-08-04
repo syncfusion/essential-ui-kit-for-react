@@ -28,7 +28,7 @@ export default function Navbar4() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'navbar-4' && blockData.theme) {
@@ -67,17 +67,17 @@ export default function Navbar4() {
                                         <img className="mr-3 h-7" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={28} height={28} alt="company logo" />
                                         <span className="text-lg font-semibold text-gray-900 dark:text-white">Company Name</span>
                                         <div className="flex pl-4 hidden lg:block">
-                                            <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" type="button">Home</ButtonComponent>
-                                            <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" type="button">Products</ButtonComponent>
-                                            <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" type="button">Company</ButtonComponent>
+                                            <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" content="Home" type="button"></ButtonComponent>
+                                            <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" content="Products" type="button"></ButtonComponent>
+                                            <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" content="Company" type="button"></ButtonComponent>
                                             <DropDownButtonComponent ref={resourcesDropdown} className="py-2 mr-1.5" cssClass="e-flat" items={[{ text: "Dashboard" }, { text: "Earnings" }, { text: "Support" }]} type="button">Resources</DropDownButtonComponent>
-                                            <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" type="button">Contact</ButtonComponent>
+                                            <ButtonComponent className="py-2 mr-1.5" cssClass="e-flat" content="Contact" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                     <div className="flex items-center">
-                                        <ButtonComponent className="sf-icon-notification-bell-02 leading-3 text-base hidden sm:block mr-2" cssClass="e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent className="leading-3 hidden sm:block mr-2" cssClass="e-flat" iconCss="sf-icon-notification-bell-02" type="button"></ButtonComponent>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 hidden xl:block mr-2 h-7"></div>
-                                        <ButtonComponent className="e-icons e-grid-view hidden xl:block mr-2" cssClass="e-flat" type="button"></ButtonComponent>
+                                        <ButtonComponent className="hidden xl:block mr-2" cssClass="e-flat" iconCss="e-icons e-grid-view" type="button"></ButtonComponent>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 hidden lg:block mr-2 h-7"></div>
                                         <DropDownButtonComponent ref={brandDropdown} className="me-2 hidden lg:block" cssClass="e-flat" items={[{ text: "React" }, { text: "Vue.js" }, { text: "Angular" }]} type="button">CompanyName.com</DropDownButtonComponent>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 hidden sm:block h-7"></div>
@@ -85,7 +85,7 @@ export default function Navbar4() {
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
                                         <div className="border border-r border-gray-200 dark:border-gray-600 h-7 block lg:hidden ms-3"></div>
-                                        <span id={styles.menu} className="block lg:hidden">
+                                        <span id={styles["menu"]} className="block lg:hidden">
                                             <MenuComponent hamburgerMode={true} title="" showItemOnClick={true} items={[{ text: 'Home' }, { text: 'Products' }, { text: 'Company' }, { text: 'Resources', items: [{ text: 'Dashboard' }, { text: 'Earnings' }, { text: 'Support' }] }, { text: 'Contact' }]}></MenuComponent>
                                         </span>
                                     </div>
@@ -111,17 +111,17 @@ export default function Navbar4() {
                                     <img className="me-2" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={32} height={32} alt="company logo" />
                                     <h5 className="fw-bold text-body fs-5 mb-0">Company Name</h5>
                                     <div className="d-flex ps-3 d-none d-lg-block">
-                                        <ButtonComponent className="py-2 me-2" cssClass="e-flat" type="button">Home</ButtonComponent>
-                                        <ButtonComponent className="py-2 me-2" cssClass="e-flat" type="button">Products</ButtonComponent>
-                                        <ButtonComponent className="py-2 me-2" cssClass="e-flat" type="button">Company</ButtonComponent>
+                                        <ButtonComponent className="py-2 me-2" cssClass="e-flat" content="Home" type="button"></ButtonComponent>
+                                        <ButtonComponent className="py-2 me-2" cssClass="e-flat" content="Products" type="button"></ButtonComponent>
+                                        <ButtonComponent className="py-2 me-2" cssClass="e-flat" content="Company" type="button"></ButtonComponent>
                                         <DropDownButtonComponent ref={resourcesDropdown} className='py-2 me-2' cssClass="e-flat" items={[{ text: "Dashboard" }, { text: "Earnings" }, { text: "Support" }]} type="button">Resources</DropDownButtonComponent>
-                                        <ButtonComponent className="py-2 me-2" cssClass="e-flat" type="button">Contact</ButtonComponent>
+                                        <ButtonComponent className="py-2 me-2" cssClass="e-flat" content="Contact" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                                 <div className="d-flex align-items-center">
-                                    <ButtonComponent className="sf-icon-notification-bell-01 fs-6 d-none d-sm-block me-3" cssClass="e-flat" type="button"></ButtonComponent>
+                                    <ButtonComponent className="fs-6 d-none d-sm-block me-3" cssClass="e-flat" iconCss="sf-icon-notification-bell-01" type="button"></ButtonComponent>
                                     <div className="border-end border-secondary-subtle d-none d-xl-block me-3" style={{ height: "24px" }}></div>
-                                    <ButtonComponent className="e-icons e-grid-view d-none d-xl-block me-3 e-medium" cssClass="e-flat" type="button"></ButtonComponent>
+                                    <ButtonComponent className="d-none d-xl-block me-3 e-medium" cssClass="e-flat" iconCss="e-icons e-grid-view" type="button"></ButtonComponent>
                                     <div className="border-end border-secondary-subtle d-none d-lg-block me-3" style={{ height: "24px" }}></div>
                                     <DropDownButtonComponent ref={brandDropdown} className="me-3 d-none d-lg-block" cssClass="e-flat" items={[{ text: "React" }, { text: "Vue.js" }, { text: "Angular" }]} type="button">CompanyName.com</DropDownButtonComponent>
                                     <div className="border-end border-secondary-subtle d-none d-sm-block" style={{ height: "24px" }}></div>
@@ -129,7 +129,7 @@ export default function Navbar4() {
                                         <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                     </span>
                                     <div className="border-end border-secondary-subtle d-block d-lg-none ms-3" style={{ height: "24px" }}></div>
-                                    <span id={styles.menu} className="d-block d-lg-none">
+                                    <span id={styles["menu"]} className="d-block d-lg-none">
                                         <MenuComponent className="bg-body-tertiary" hamburgerMode={true} title="" showItemOnClick={true} items={[{ text: "Home" }, { text: "Products" }, { text: "Company" }, { text: "Resources", items: [{ text: "Dashboard" }, { text: "Earnings" }, { text: "Support" }] }, { text: "Contact" }]}></MenuComponent>
                                     </span>
                                 </div>

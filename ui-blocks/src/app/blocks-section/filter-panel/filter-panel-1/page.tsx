@@ -21,7 +21,7 @@ export default function FilterPanel1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'filter-panel-1' && blockData.theme) {
@@ -58,7 +58,7 @@ export default function FilterPanel1() {
                                 <div>
                                     <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-600">
                                         <h2 className="text-base font-semibold text-gray-900 dark:text-white">Apply Filter</h2>
-                                        <ButtonComponent cssClass="e-flat text-base" iconCss="e-icons e-close" content=" " type="button" onClick={() => sidebar.current?.toggle()} ></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat text-base" iconCss="e-icons e-close" type="button" onClick={() => sidebar.current?.toggle()}></ButtonComponent>
                                     </div>
                                     <div className="flex-grow overflow-y-auto p-4" style={{ minHeight: "442px" }}>
                                         <div className="grid grid-cols-1 gap-4">
@@ -84,7 +84,7 @@ export default function FilterPanel1() {
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 absolute top-0 right-0">
-                            <ButtonComponent cssClass="e-large e-round" iconCss="e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>
@@ -93,11 +93,11 @@ export default function FilterPanel1() {
                 return (
                     <section className="bg-body">
                         <div style={{ height: "576px", width: width, float: "right" }}>
-                            <SidebarComponent ref={sidebar} className="d-flex flex-column bg-body" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true}>
+                            <SidebarComponent ref={sidebar} className="d-flex flex-column bg-body" position="Right" type="Push" width={width} isOpen={true} closeOnDocumentClick={false} showBackdrop={true} style={{ display: "block" }}>
                                 <div>
                                     <div className="d-flex justify-content-between align-items-center p-3 border-bottom">
                                         <h2 className="h6 mb-0 fw-bold text-body">Apply Filter</h2>
-                                        <ButtonComponent cssClass="e-flat fs-6" iconCss="e-icons e-close" onClick={() => sidebar.current?.toggle()} content=""></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat fs-6" iconCss="e-icons e-close" type="button" onClick={() => sidebar.current?.toggle()}></ButtonComponent>
                                     </div>
                                     <div className="flex-grow-1 overflow-auto p-3" style={{ minHeight: "436px" }}>
                                         <div className="row g-3">
@@ -116,14 +116,14 @@ export default function FilterPanel1() {
                                         </div>
                                     </div>
                                     <div className="w-100 p-3 border-top">
-                                        <ButtonComponent cssClass="btn btn-primary w-100" content="Apply"></ButtonComponent>
+                                        <ButtonComponent cssClass="btn btn-primary w-100" content="Apply" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </SidebarComponent>
                         </div>
                         {/* SB Code - Start */}
                         <div className="p-3 position-absolute top-0 end-0">
-                            <ButtonComponent cssClass="e-large e-round" iconCss="e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
+                            <ButtonComponent cssClass="e-round e-large e-icons e-chevron-left" type="button" onClick={() => sidebar.current?.show()}></ButtonComponent>
                         </div>
                         {/* SB Code - End */}
                     </section>

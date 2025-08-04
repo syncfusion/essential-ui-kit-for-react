@@ -28,13 +28,13 @@ export default function List9() {
             id: 3,
             time: "Yesterday",
             title: "Scheduled maintenance notification",
-            message: "We’ll be conducting maintenance in your apartment on Wednesday at 10.00 AM. Please ensure access to your unit.",
+            message: "We'll be conducting maintenance in your apartment on Wednesday at 10.00 AM. Please ensure access to your unit.",
             tag: "maintenance"
         },
         {
             id: 4,
             time: "20 Sep",
-            title: "Don’t forget: Grocery shopping time!",
+            title: "Don't forget: Grocery shopping time!",
             message: "Time to stock up on groceries! Check your pantry for essentials and make your shopping list to save time.",
             tag: "shopping"
         },
@@ -57,7 +57,7 @@ export default function List9() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'list-9' && blockData.theme) {
@@ -101,14 +101,10 @@ export default function List9() {
                                                 </span>
                                                 <span className="ml-6 w-11/12">
                                                     <div className="flex justify-between relative">
-                                                        <span className="e-list-item-header flex items-center !text-base !font-medium !text-wrap !line-clamp-2 w-3/5 sm:w-4/5 !truncate !text-gray-900 dark:!text-gray-200">
-                                                            {data.title}
-                                                        </span>
+                                                        <span className="e-list-item-header flex items-center !text-base !font-medium !text-wrap !line-clamp-2 w-3/5 sm:w-4/5 !truncate !text-gray-900 dark:!text-gray-200">{data.title}</span>
                                                         <span className="text-gray-700 dark:text-gray-200 absolute right-0 top-0">{data.time}</span>
                                                     </div>
-                                                    <span className="e-list-content !text-sm !text-gray-700 dark:!text-gray-200 !whitespace-normal !pt-2 !truncate w-full md:w-full !line-clamp-3">
-                                                        {data.message}
-                                                    </span>
+                                                    <span className="e-list-content !text-sm !text-gray-700 dark:!text-gray-200 !whitespace-normal !pt-2 !truncate w-full md:w-full !line-clamp-3">{data.message}</span>
                                                 </span>
                                             </div>
                                         </div>

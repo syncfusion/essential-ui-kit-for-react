@@ -49,7 +49,7 @@ export default function List6() {
     
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'list-6' && blockData.theme) {
@@ -91,7 +91,7 @@ export default function List6() {
                                     <span className="e-list-item-header text-sm font-medium text-gray-900 dark:text-white">{data.field}</span>
                                 </div>)}
                             ></ListBoxComponent>
-                            <ButtonComponent iconCss="e-icons e-plus" cssClass="e-flat e-primary mt-2" type="button" content="Add a field"></ButtonComponent>
+                            <ButtonComponent cssClass="e-flat e-primary mt-2" iconCss="e-icons e-plus" content="Add a field" type="button"></ButtonComponent>
                         </div>
                     </section>
                 );           
@@ -107,7 +107,7 @@ export default function List6() {
                                     <span className="e-list-item-header fw-medium">{data.field}</span>
                                 </div>)}
                             ></ListBoxComponent>
-                            <ButtonComponent iconCss="e-icons e-plus" cssClass="e-flat e-primary mt-2" type="button" content="Add a field"></ButtonComponent>
+                            <ButtonComponent cssClass="e-flat e-primary mt-2" iconCss="e-icons e-plus" content="Add a field" type="button"></ButtonComponent>
                         </div>
                     </section>
                 );

@@ -12,14 +12,14 @@ export default function AIChat2() {
 
     const promptData: any[] = [
         {
-            id: '1',
+            id: 1,
             name: 'You',
             time: '20m',
             text: 'Make a description about this picture',
             category: 'sender'
         },
         {
-            id: '2',
+            id: 2,
             category: 'reply',
             isList: true,
             resources: [
@@ -33,7 +33,7 @@ export default function AIChat2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-chat-2' && blockData.theme) {
@@ -80,7 +80,7 @@ export default function AIChat2() {
                                                         </div>
                                                     </div>
                                                     <div className="flex items-center justify-center">
-                                                        <ButtonComponent className="e-outline hidden sm:inline !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-edit" content=" " type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-outline hidden sm:inline !text-gray-500 dark:!text-gray-200" iconCss="e-icons e-edit" type="button"></ButtonComponent>
                                                     </div>
                                                 </div>
                                             </div>
@@ -119,13 +119,13 @@ export default function AIChat2() {
                                                 </div>
                                                 <div className="flex justify-between w-full gap-3">
                                                     <div>
-                                                        <ButtonComponent className="e-outline sm:hidden inline" iconCss="e-icons e-edit" content=" " type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-outline sm:hidden inline" iconCss="e-icons e-edit" type="button"></ButtonComponent>
                                                     </div>
                                                     <div className="flex justify-between gap-3">
-                                                        <ButtonComponent className="e-outline sm:hidden" iconCss="e-icons e-download" content=" " type="button"></ButtonComponent>
-                                                        <ButtonComponent className="e-outline sm:hidden" iconCss="e-icons e-repeat" content=" " type="button"></ButtonComponent>
-                                                        <ButtonComponent className="e-outline hidden sm:inline" iconCss="e-icons e-download" content="Download chat" type="button"></ButtonComponent>
-                                                        <ButtonComponent className="e-outline hidden sm:inline" iconCss="e-icons e-repeat" content="Regenerate" type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-outline sm:hidden !bg-white dark:!bg-gray-800" iconCss="e-icons e-download" type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-outline sm:hidden !bg-white dark:!bg-gray-800" iconCss="e-icons e-repeat" type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-outline hidden sm:inline !bg-white dark:!bg-gray-800" iconCss="e-icons e-download" content="Download chat" type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-outline hidden sm:inline !bg-white dark:!bg-gray-800" iconCss="e-icons e-repeat" content="Regenerate" type="button"></ButtonComponent>
                                                     </div>
                                                 </div>
                                             </div>
@@ -158,7 +158,7 @@ export default function AIChat2() {
                                                         </div>
                                                     </div>
                                                     <div className="d-flex align-items-center justify-content-center">
-                                                        <ButtonComponent className="e-outline d-none d-sm-inline" iconCss="e-icons e-edit" content=" " type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-outline d-none d-sm-inline" iconCss="e-icons e-edit" type="button"></ButtonComponent>
                                                     </div>
                                                 </div>
                                             </div>
@@ -197,11 +197,11 @@ export default function AIChat2() {
                                                 </div>
                                                 <div className="d-flex justify-content-between w-100 gap-3">
                                                     <div>
-                                                        <ButtonComponent className="e-outline d-sm-none d-inline" iconCss="e-icons e-edit" content=" " type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-outline d-sm-none d-inline" iconCss="e-icons e-edit" type="button"></ButtonComponent>
                                                     </div>
                                                     <div className="d-flex justify-content-between gap-3">
-                                                        <ButtonComponent className="e-outline d-sm-none" iconCss="e-icons e-download" content=" " type="button"></ButtonComponent>
-                                                        <ButtonComponent className="e-outline d-sm-none" iconCss="e-icons e-repeat" content=" " type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-outline d-sm-none" iconCss="e-icons e-download" type="button"></ButtonComponent>
+                                                        <ButtonComponent className="e-outline d-sm-none" iconCss="e-icons e-repeat" type="button"></ButtonComponent>
                                                         <ButtonComponent className="e-outline d-none d-sm-inline" iconCss="e-icons e-download" content="Download chat" type="button"></ButtonComponent>
                                                         <ButtonComponent className="e-outline d-none d-sm-inline" iconCss="e-icons e-repeat" content="Regenerate" type="button"></ButtonComponent>
                                                     </div>

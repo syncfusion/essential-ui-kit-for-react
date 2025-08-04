@@ -32,7 +32,7 @@ export default function Header7() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'header-7' && blockData.theme) {
@@ -69,21 +69,21 @@ export default function Header7() {
                     <section className="bg-white dark:bg-gray-800">
                         <div key={"header-7-tw"} style={{ minHeight: "36rem" }}>
                             <div className="flex justify-between items-center px-4 sm:px-6 py-3 border-b border-gray-200 dark:border-gray-600">
-                                <div id={styles.breadcrumb}>
+                                <div id={styles["breadcrumb"]}>
                                     <BreadcrumbComponent ref={breadcrumb} enableNavigation={false} overflowMode={overflowMode} maxItems={maxItems} items={[{ iconCss: "e-icons e-folder", text: "Reports" }, { text: "Business Metrics" }]}></BreadcrumbComponent>
                                 </div>
                                 <div className="flex gap-2">
                                     <div className="flex items-center -space-x-3 mr-1">
-                                        <span className="e-avatar e-avatar-small e-avatar-circle z-30">
+                                        <span className="e-avatar e-avatar-small e-avatar-circle">
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
-                                        <span className="e-avatar e-avatar-small e-avatar-circle z-20 hidden sm:block">
+                                        <span className="e-avatar e-avatar-small e-avatar-circle hidden sm:block">
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
-                                        <span className="e-avatar e-avatar-small e-avatar-circle z-10 hidden sm:block">
+                                        <span className="e-avatar e-avatar-small e-avatar-circle hidden sm:block">
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
-                                        <span className="e-avatar e-avatar-small e-avatar-circle z-0 block sm:hidden text-sm bg-gray-700 dark:bg-gray-200 text-white dark:text-black pl-1">+ 2</span>
+                                        <span className="e-avatar e-avatar-small e-avatar-circle z-0 block sm:hidden text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-center">+2</span>
                                     </div>
                                     <div className="flex gap-1">
                                         <ButtonComponent cssClass="e-flat hidden sm:block" type="button">
@@ -92,7 +92,7 @@ export default function Header7() {
                                                 <span className="ml-1 hidden lg:block">Share</span>
                                             </div>
                                         </ButtonComponent>
-                                        <ButtonComponent cssClass="e-flat mx-2 hidden sm:block" iconCss="e-icons e-comment-show" type="button" ></ButtonComponent>
+                                        <ButtonComponent cssClass="e-flat mx-2 hidden sm:block" iconCss="e-icons e-comment-show" type="button"></ButtonComponent>
                                         <ButtonComponent cssClass="e-flat" iconCss=" e-icons e-more-vertical-1" type="button"></ButtonComponent>
                                     </div>
                                 </div>
@@ -132,16 +132,16 @@ export default function Header7() {
                                 </div>
                                 <div className="d-flex my-1">
                                     <div className="d-flex align-items-center position-relative mx-3 mx-sm-0 px-4 px-sm-5" style={{ marginBottom: "32px" }}>
-                                        <span className="e-avatar e-avatar-small e-avatar-circle position-absolute start-0 top-0 ms-4 d-block d-sm-none fs-6 fw-normal bg-secondary text-white ps-1">+2</span>
-                                        <span className="e-avatar e-avatar-small e-avatar-circle position-absolute start-0 top-0 ms-2 ms-sm-5 d-none d-sm-block">
-                                            <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
+                                        <span className="e-avatar e-avatar-small e-avatar-circle position-absolute start-0 top-0 ms-1">
+                                            <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
                                         <span className="e-avatar e-avatar-small e-avatar-circle position-absolute start-0 top-0 ms-4 d-none d-sm-block">
                                             <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-2.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
-                                        <span className="e-avatar e-avatar-small e-avatar-circle position-absolute start-0 top-0 ms-2">
-                                            <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-1.jpg" width={32} height={32} alt="profile picture" />
+                                        <span className="e-avatar e-avatar-small e-avatar-circle position-absolute start-0 top-0 ms-2 ms-sm-5 d-none d-sm-block">
+                                            <img src="/react/essential-ui-kit/blocks/assets/images/common/avatar/avatar-3.jpg" width={32} height={32} alt="profile picture" />
                                         </span>
+                                        <span className="e-avatar e-avatar-small e-avatar-circle position-absolute start-0 top-0 ms-4 d-block d-sm-none fs-6 fw-normal bg-secondary-secondary text-body-secondary text-center">+2</span>
                                     </div>
                                     <div className="d-flex gap-1">
                                         <ButtonComponent className="d-none d-sm-block e-flat" cssClass="e-flat" type="button">

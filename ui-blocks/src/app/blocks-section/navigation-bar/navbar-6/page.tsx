@@ -26,7 +26,7 @@ export default function Navbar6() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'navbar-6' && blockData.theme) {
@@ -64,9 +64,7 @@ export default function Navbar6() {
                                     <div className="flex items-center mr-6">
                                         <span className="flex items-center">
                                             <img className="mr-3 h-7" src="/react/essential-ui-kit/blocks/assets/images/common/brand-logos/svg/vector.svg" width={28} height={28} alt="company logo" />
-                                            <span className="text-lg font-semibold text-gray-900 dark:text-white">
-                                                Company Name
-                                            </span>
+                                            <span className="text-lg font-semibold text-gray-900 dark:text-white">Company Name</span>
                                         </span>
                                         <div className="flex items-center ms-5">
                                             <div className="hidden sm:flex mr-2">
@@ -80,12 +78,12 @@ export default function Navbar6() {
                                         </div>
                                     </div>
                                     <div className="hidden lg:block">
-                                        <ButtonComponent className="py-2 mr-2" cssClass="e-flat" type="button">Changelog</ButtonComponent>
-                                        <ButtonComponent className="py-2 mr-2" cssClass="e-flat" type="button">Support</ButtonComponent>
-                                        <ButtonComponent className="py-2 mr-2" cssClass="e-flat" type="button">Documentation</ButtonComponent>
-                                        <ButtonComponent className="py-2 mr-2 bg-transparent" type="button">Feedback</ButtonComponent>
+                                        <ButtonComponent className="py-2 mr-2" cssClass="e-flat" content="Changelog" type="button"></ButtonComponent>
+                                        <ButtonComponent className="py-2 mr-2" cssClass="e-flat" content="Support" type="button"></ButtonComponent>
+                                        <ButtonComponent className="py-2 mr-2" cssClass="e-flat" content="Documentation" type="button"></ButtonComponent>
+                                        <ButtonComponent className="py-2 mr-2 bg-transparent" content="Feedback" type="button"></ButtonComponent>
                                     </div>
-                                    <span id={styles.menu} className="lg:hidden">
+                                    <span id={styles["menu"]} className="lg:hidden">
                                         <MenuComponent items={[{ text: 'Portfolio' }, { text: 'Blog' }, { text: 'Shop' }, { text: 'Elements' }, { text: 'Forum' }, { text: 'Support' }, { text: 'Others', items: [{ text: 'Changelog' }, { text: 'Support' }, { text: 'Docs' }, { text: 'Feedback' }] }]} hamburgerMode={true} title="" showItemOnClick={true}></MenuComponent>
                                     </span>
                                 </div>
@@ -103,10 +101,10 @@ export default function Navbar6() {
                                     </div>
                                     <div className="flex items-center w-full lg:w-max mt-3 lg:mt-0 pl-6 pr-6 lg:pl-0 lg:pr-0">
                                         <div className="w-4/5 mr-3 lg:mt-0">
-                                            <ButtonComponent cssClass="w-full" iconCss="e-icons e-user" iconPosition="Left" type="button">Create Team</ButtonComponent>
+                                            <ButtonComponent cssClass="w-full" iconCss="e-icons e-user" iconPosition="Left" content="Create Team" type="button"></ButtonComponent>
                                         </div>
                                         <div className="w-4/5 p-0 lg:mt-0">
-                                            <ButtonComponent cssClass="w-full e-primary" iconCss="e-icons e-plus" iconPosition="Left" type="button">New Project</ButtonComponent>
+                                            <ButtonComponent cssClass="w-full e-primary" iconCss="e-icons e-plus" iconPosition="Left" content="New Project" type="button"></ButtonComponent>
                                         </div>
                                     </div>
                                 </div>
@@ -136,12 +134,12 @@ export default function Navbar6() {
                                     </div>
                                 </div>
                                 <div className="d-none d-lg-block">
-                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" type="button">Changelog</ButtonComponent>
-                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" type="button">Support</ButtonComponent>
-                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" type="button">Documentation</ButtonComponent>
-                                    <ButtonComponent className="py-2 me-2" type="button">Feedback</ButtonComponent>
+                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" content="Changelog" type="button"></ButtonComponent>
+                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" content="Support" type="button"></ButtonComponent>
+                                    <ButtonComponent className="py-2 me-2" cssClass="e-flat" content="Documentation" type="button"></ButtonComponent>
+                                    <ButtonComponent className="py-2 me-2" content="Feedback" type="button"></ButtonComponent>
                                 </div>
-                                <span id={styles.menu} className="d-lg-none">
+                                <span id={styles["menu"]} className="d-lg-none">
                                     <MenuComponent className="bg-body-tertiary" hamburgerMode={true} title="" showItemOnClick={true} items={[{ text: "Portfolio" }, { text: "Blog" }, { text: "Shop" }, { text: "Elements" }, { text: "Forum" }, { text: "Support" }, { text: "Others", items: [{ text: "Changelog" }, { text: "Support" }, { text: "Docs" }, { text: "Feedback" }] }]}></MenuComponent>
                                 </span>
                             </div>
@@ -161,10 +159,10 @@ export default function Navbar6() {
                                 </div>
                                 <div className="d-flex align-items-center col-xl-3 col-lg-4 p-0 overflow-hidden">
                                     <div className="w-50 me-3">
-                                        <ButtonComponent className="w-100" cssClass="e-outline e-secondary" iconCss="e-icons e-user" iconPosition="Left" type="button">Create Team</ButtonComponent>
+                                        <ButtonComponent className="w-100" cssClass="e-outline e-secondary" iconCss="e-icons e-user" iconPosition="Left" content="Create Team" type="button"></ButtonComponent>
                                     </div>
                                     <div className="w-50">
-                                        <ButtonComponent className="w-100" cssClass="e-primary" iconCss="e-icons e-plus" iconPosition="Left" type="button">New Project</ButtonComponent>
+                                        <ButtonComponent className="w-100" cssClass="e-primary" iconCss="e-icons e-plus" iconPosition="Left" content="New Project" type="button"></ButtonComponent>
                                     </div>
                                 </div>
                             </div>

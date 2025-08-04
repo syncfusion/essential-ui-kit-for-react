@@ -203,7 +203,7 @@ export default function Grid1() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'grid-1' && blockData.theme) {
@@ -315,7 +315,7 @@ export default function Grid1() {
                                         template={(data: any) => (
                                             <div className="d-flex align-items-center gap-3 py-1">
                                                 <div className="rounded-circle overflow-hidden" style={{ width: "32px", height: "32px" }}>
-                                                    <span className={`e-avatar e-avatar-circle e-avatar-small ${data.details.colorTheme === "Red" ? "bg-danger-subtle text-danger" : data.details.colorTheme === "Green" ? "bg-success-subtle text-success" : data.details.colorTheme === "Blue" ? "bg-info-subtle text-info" : data.details.colorTheme === "Orange" ? "bg-warning-subtle text-warning" : data.details.colorTheme === "Purple" ? "bg-primary-subtle text-primary" : ""}`}>{data.details.initial}</span>
+                                                    <span className={`e-avatar e-avatar-circle e-avatar-small ${data.details.colorTheme === "Red" ? "bg-danger-subtle text-danger-emphasis" : data.details.colorTheme === "Green" ? "bg-success-subtle text-success-emphasis" : data.details.colorTheme === "Blue" ? "bg-info-subtle text-info-emphasis" : data.details.colorTheme === "Orange" ? "bg-warning-subtle text-warning-emphasis" : data.details.colorTheme === "Purple" ? "bg-primary-subtle text-primary-emphasis" : ""}`}>{data.details.initial}</span>
                                                 </div>
                                                 <div className="d-flex flex-column">
                                                     <p className="text-body mb-0">{data.details.name}</p>

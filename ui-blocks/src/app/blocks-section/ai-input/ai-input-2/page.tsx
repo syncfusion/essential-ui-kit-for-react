@@ -9,6 +9,7 @@ export default function AIInput2() {
     /* SB Code - Start */
     const [theme, setTheme] = useState('tailwind');
     /* SB Code - End */
+    const [promptMessage, setPromptMessage] = useState('');
     const textareaRef = useRef<TextAreaComponent | null>(null);
 
     const adjustHeight = (): void => {
@@ -16,12 +17,13 @@ export default function AIInput2() {
         if (textarea) {
             textarea.style.height = 'auto';
             textarea.style.height = `${textarea.scrollHeight}px`;
+            setPromptMessage(textarea.value);
         }
     };
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'ai-input-2' && blockData.theme) {
@@ -58,9 +60,9 @@ export default function AIInput2() {
                             <div className="px-4 sm:px-6 flex flex-col-reverse" style={{ minHeight: '20rem' }}>
                                 <div className="bg-white dark:bg-gray-800 rounded-md pt-2 pb-3 px-3 mx-auto flex flex-col-reverse" style={{ maxWidth: '705px' }}>
                                     <span className="e-input-group mt-1 !border-0 !shadow-none">
-                                        <TextAreaComponent ref={textareaRef} placeholder="Enter prompt" rows={1} cols={300} resizeMode="None" input={adjustHeight} style={{ maxHeight: '10rem' }}></TextAreaComponent>
-                                        <span style={{ bottom: "7px", position: "absolute", right: "5px" }}>
-                                            <ButtonComponent className="e-flat e-icons e-assist-send !border-0" type="submit" style={{ pointerEvents: 'none' }}></ButtonComponent>
+                                        <TextAreaComponent ref={textareaRef} placeholder="Enter prompt" value={promptMessage} rows={1} cols={300} resizeMode="None" input={adjustHeight} style={{ maxHeight: '10rem' }}></TextAreaComponent>
+                                        <span style={{ bottom: "4px", position: "absolute", right: "5px" }}>
+                                            <ButtonComponent className="e-flat !border-0" iconCss="e-icons e-assist-send" disabled={!promptMessage} type="submit" style={{ pointerEvents: 'none' }}></ButtonComponent>
                                         </span>
                                     </span>
                                     <ChipListComponent className="gap-1">
@@ -84,9 +86,9 @@ export default function AIInput2() {
                             <div className="d-flex flex-column-reverse px-4 px-sm-5" style={{ minHeight: '22rem' }}>
                                 <div className="bg-body rounded py-3 px-3 mx-auto d-flex flex-column-reverse position-relative" style={{ maxWidth: '675px' }}>
                                     <span className="e-input-group mt-1 border-0 shadow-none">
-                                        <TextAreaComponent ref={textareaRef} placeholder="Enter prompt" rows={1} cols={300} resizeMode="None" input={adjustHeight} style={{ maxHeight: '10rem' }}></TextAreaComponent>
-                                        <span style={{ bottom: '7px', position: 'absolute', right: '5px' }}>
-                                            <ButtonComponent className="e-flat e-icons e-assist-send border-0" type="submit" style={{ pointerEvents: 'none' }}></ButtonComponent>
+                                        <TextAreaComponent ref={textareaRef} placeholder="Enter prompt" value={promptMessage} rows={1} cols={300} resizeMode="None" input={adjustHeight} style={{ maxHeight: '10rem' }}></TextAreaComponent>
+                                        <span style={{ bottom: '2px', position: 'absolute', right: '5px' }}>
+                                            <ButtonComponent className="e-outline border-0" iconCss="e-icons e-assist-send" disabled={!promptMessage} type="submit" style={{ pointerEvents: 'none' }}></ButtonComponent>
                                         </span>
                                     </span>
                                     <ChipListComponent className="gap-1">

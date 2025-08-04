@@ -14,57 +14,57 @@ export default function List2() {
 
     const notifications: any[] = [
         {
-            id: '1',
-            name: 'Esther Howard',
-            content: 'New Product Launch: Get 20% Off!',
-            subContent: 'Discover our latest product range and enjoy an exclusive discount for a limited time.',
-            time: '02:13 PM',
-            avatar: 'avatar-8.jpg',
+            id: 1,
+            name: "Esther Howard",
+            content: "New Product Launch: Get 20% Off!",
+            subContent: "Discover our latest product range and enjoy an exclusive discount for a limited time.",
+            time: "02:13 PM",
+            avatar: "avatar-8.jpg",
             read: false
         },
         {
-            id: '2',
-            name: 'Jenny Wilson',
-            content: 'Webinar Invite: Boost Your Sales in 2024',
-            subContent: 'Join our free webinar and learn top strategies to enhance your marketing campaigns next year.',
-            time: '03:15 PM',
-            avatar: 'avatar-9.jpg',
+            id: 2,
+            name: "Jenny Wilson",
+            content: "Webinar Invite: Boost Your Sales in 2024",
+            subContent: "Join our free webinar and learn top strategies to enhance your marketing campaigns next year.",
+            time: "03:15 PM",
+            avatar: "avatar-9.jpg",
             read: false
         },
         {
-            id: '3',
-            name: 'Eleanor Pena',
-            content: 'Limited-Time Offer: Early Access to Premium Features',
-            subContent: 'Be the first to try our premium marketing tools with this exclusive early access offer.',
-            time: '03:25 PM',
-            avatar: 'avatar-10.jpg',
+            id: 3,
+            name: "Eleanor Pena",
+            content: "Limited-Time Offer: Early Access to Premium Features",
+            subContent: "Be the first to try our premium marketing tools with this exclusive early access offer.",
+            time: "03:25 PM",
+            avatar: "avatar-10.jpg",
             read: true
         },
         {
-            id: '4',
-            name: 'Brooklyn Simmons',
-            content: 'Unlock Your Marketing Potential with Our New Toolkit',
-            subContent: 'Discover how our comprehensive marketing toolkit can help you optimize campaigns and drive better results.',
-            time: '04:00 PM',
-            avatar: 'avatar-13.jpg',
+            id: 4,
+            name: "Brooklyn Simmons",
+            content: "Unlock Your Marketing Potential with Our New Toolkit",
+            subContent: "Discover how our comprehensive marketing toolkit can help you optimize campaigns and drive better results.",
+            time: "04:00 PM",
+            avatar: "avatar-13.jpg",
             read: false
         },
         {
-            id: '5',
-            name: 'Jane Cooper',
-            content: 'Special Event: Meet Us at Marketing Expo 2024',
-            subContent: 'Don’t miss our booth at the Marketing Expo—get insights on the latest industry trends.',
-            time: '04:14 PM',
-            avatar: 'avatar-11.jpg',
+            id: 5,
+            name: "Jane Cooper",
+            content: "Special Event: Meet Us at Marketing Expo 2024",
+            subContent: "Don't miss our booth at the Marketing Expo—get insights on the latest industry trends.",
+            time: "04:14 PM",
+            avatar: "avatar-11.jpg",
             read: true
         },
         {
-            id: '6',
-            name: 'Floyd Miles',
-            content: 'Case Study: How XYZ Company Increased ROI by 50%',
-            subContent: 'Explore our latest case study on how targeted marketing helped boost ROI for a leading brand.',
-            time: '06:12 PM',
-            avatar: 'avatar-2.jpg',
+            id: 6,
+            name: "Floyd Miles",
+            content: "Case Study: How XYZ Company Increased ROI by 50%",
+            subContent: "Explore our latest case study on how targeted marketing helped boost ROI for a leading brand.",
+            time: "06:12 PM",
+            avatar: "avatar-2.jpg",
             read: true
         }
     ];  
@@ -85,7 +85,7 @@ export default function List2() {
 
     /* SB Code - Start */
     const handleMessageEvent = (event: MessageEvent) => {
-        if (event.origin === window.location.origin) {
+        if (event.origin === window.location.origin && /^{"(name":"[^"]+","theme":"[^"]+"|mode":"[^"]+")}$/.test(event.data)) {
             try {
                 const blockData = JSON.parse(event.data);
                 if (blockData.name === 'list-2' && blockData.theme) {
