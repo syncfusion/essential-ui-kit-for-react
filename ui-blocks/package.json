@@ -25,7 +25,7 @@
     "@syncfusion/ej2-react-querybuilder": "^29.2.10",
     "@syncfusion/ej2-react-richtexteditor": "^29.2.11",
     "@syncfusion/ej2-react-splitbuttons": "^29.2.4",
-    "next": "15.3.3",
+    "next": "15.4.7",
     "react": "^19",
     "react-dom": "^19"
   },
@@ -34,7 +34,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.3.3",
+    "eslint-config-next": "15.4.7",
     "typescript": "^5"
   }
 }
